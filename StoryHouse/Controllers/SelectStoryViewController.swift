@@ -23,7 +23,8 @@ class SelectStoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let name = AppData.sharedInstance.childName ?? ""
+        //let name = AppData.sharedInstance.childName ?? ""
+        let name = UserDefaultHelper.getChildname() ?? ""
         self.childName.text = "HELLO" + "\n\(name)"
         self.setUpUI(isCreateTrue: isCreateStoryEnable)
         self.navigationController?.navigationBar.isHidden = true
@@ -44,7 +45,7 @@ class SelectStoryViewController: UIViewController {
     
     func setUpUI(isCreateTrue: Bool) {
         if isCreateTrue {
-            self.createStoryView.borderWidth = 2
+            self.createStoryView.borderWidth = 6
             self.createStoryButton.tintColor = UIColor.white
             self.createStoryButton.backgroundColor = #colorLiteral(red: 0.9568627451, green: 0.5529411765, blue: 0.2509803922, alpha: 1)
             
@@ -53,7 +54,7 @@ class SelectStoryViewController: UIViewController {
             self.exploreStoryButton.backgroundColor = UIColor.white
         }
         else {
-            self.exploreStoryView.borderWidth = 2
+            self.exploreStoryView.borderWidth = 6
             self.exploreStoryButton.tintColor = UIColor.white
             self.exploreStoryButton.backgroundColor = #colorLiteral(red: 0.9568627451, green: 0.5529411765, blue: 0.2509803922, alpha: 1)
             
@@ -64,6 +65,7 @@ class SelectStoryViewController: UIViewController {
     }
     
     @IBAction func createStoryButtonTapped(_ sender: UIButton) {
+        
         if isCreateStoryEnable {
             self.setUpUI(isCreateTrue: isCreateStoryEnable)
         }
@@ -72,11 +74,8 @@ class SelectStoryViewController: UIViewController {
             self.setUpUI(isCreateTrue: isCreateStoryEnable)
         }
         
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let viewController = HeroViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
-        }
     }
     
     

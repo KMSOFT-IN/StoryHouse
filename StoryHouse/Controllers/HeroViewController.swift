@@ -11,7 +11,8 @@ class HeroViewController: UIViewController {
 
     @IBOutlet weak var heroCollectionView: UICollectionView!
     
-    let storyImage = ["ic_story1","ic_story2","ic_story3","ic_story4"]
+    //let storyImage = ["ic_story1","ic_story2","ic_story3","ic_story4"]
+    let storyImage = ["ic_char1","ic_char2","ic_char3","ic_char4"]
     var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -26,10 +27,18 @@ class HeroViewController: UIViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "HeroViewController") as! HeroViewController
     }
     
-    @IBAction func nextButtonTapped(_ sender: Any) {
-        let viewController = HeroNameViewController.getInstance()
-        viewController.selectedHero = self.storyImage[selectedIndex]
-        self.navigationController?.pushViewController(viewController, animated: true)
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        sender.alpha = 0.8
+
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
+              sender.alpha = 1.0
+              let viewController = PlacesViewController.getInstance()
+              self.navigationController?.pushViewController(viewController, animated: true)
+          }
+        
+      //  let viewController = HeroNameViewController.getInstance()
+       // viewController.selectedHero = self.storyImage[selectedIndex]
+   //     self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -50,7 +59,7 @@ extension HeroViewController: UICollectionViewDelegate , UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
         cell.imageBorderView.borderWidth = 0
         if (indexPath.item == self.selectedIndex) {
-            cell.imageBorderView.borderWidth = 4
+            cell.imageBorderView.borderWidth = 6
         }
         let image = storyImage[indexPath.item]
         cell.imageView.image = UIImage(named: image)

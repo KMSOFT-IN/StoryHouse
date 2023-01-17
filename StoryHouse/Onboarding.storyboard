@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -40,7 +41,7 @@
                                                     <constraint firstAttribute="width" constant="120" id="NGe-7H-bQx"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="ic_logout"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="ic_logout" title=" "/>
                                                 <connections>
                                                     <action selector="logoutButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="Zgj-Rd-Ryw"/>
                                                 </connections>
@@ -98,7 +99,7 @@ child’s name?</string>
                                                                     <constraint firstAttribute="width" constant="30" id="WFB-SK-nMp"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="ic_clear"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="ic_clear" title=" "/>
                                                                 <connections>
                                                                     <action selector="clearButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="Dic-QD-xf4"/>
                                                                 </connections>
@@ -131,7 +132,7 @@ child’s name?</string>
                                                     <constraint firstItem="ujL-dC-Mh8" firstAttribute="leading" secondItem="e2b-3t-rfr" secondAttribute="leading" id="cpA-6N-Zae"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1w-5T-oNW">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1w-5T-oNW">
                                                 <rect key="frame" x="0.0" y="316" width="250" height="70"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -161,7 +162,7 @@ child’s name?</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDr-ty-Rxc">
                                                 <rect key="frame" x="0.0" y="576" width="769.5" height="150"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stories left: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlS-Ip-hpF">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stories left: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlS-Ip-hpF" userLabel="Stories left:">
                                                         <rect key="frame" x="0.0" y="0.0" width="102" height="25.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
@@ -173,11 +174,11 @@ child’s name?</string>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-61-WTT">
-                                                        <rect key="frame" x="0.0" y="35.5" width="165" height="50"/>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-61-WTT">
+                                                        <rect key="frame" x="0.0" y="35.5" width="165" height="0.0"/>
                                                         <color key="backgroundColor" name="sky_color(4BBFEF)"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="8tn-4S-BGJ"/>
+                                                            <constraint firstAttribute="height" id="8tn-4S-BGJ"/>
                                                             <constraint firstAttribute="width" constant="165" id="s6y-Zd-hqE"/>
                                                         </constraints>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +196,7 @@ child’s name?</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For more stories, more characters and more magical fun." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKe-Bp-tlK">
-                                                        <rect key="frame" x="0.0" y="95.5" width="514" height="25.5"/>
+                                                        <rect key="frame" x="0.0" y="45.5" width="514" height="25.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>

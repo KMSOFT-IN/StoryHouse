@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 let APPNAME = "Story House"
+let PRIVACY_POLICY_URL = "https://www.iubenda.com/privacy-policy/46923166"
+let TERMS_URL = "https://www.iubenda.com/terms-and-conditions/46923166"
 
 class Constant {
     class Storyboard {

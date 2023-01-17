@@ -44,21 +44,31 @@ class ChildNameViewController: UIViewController {
             self.alert(message: "Please enter your child name.")
             return
         }
-        AppData.sharedInstance.childName = self.childNameTextFeild.text
+        let check = childNameTextFeild.text?.trim?.count ?? 0   
+        if check < 3 {
+            self.alert(message: "Please enter atleast three character.")
+            return
+        }
+        
+        UserDefaultHelper.setChildname(value: self.childNameTextFeild.text ?? "")
+        //AppData.sharedInstance.childName = self.childNameTextFeild.text
         
         let viewCOntroller = SelectStoryViewController.getInstance()
         self.navigationController?.pushViewController(viewCOntroller, animated: true)
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        
+        AppData.sharedInstance.childName = " "
+        UserDefaultHelper.clearUserdefault()
     }
     
     @IBAction func termsButtonTapped(_ sender: Any) {
-        
+        guard let url = URL(string: TERMS_URL) else { return }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func privacyButtonTapped(_ sender: Any) {
-        
+        guard let url = URL(string: PRIVACY_POLICY_URL) else { return }
+        UIApplication.shared.open(url)
     }
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iAN-KM-4R0">
     <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -62,7 +63,7 @@ story!</string>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smp-xc-8DK">
                                                 <rect key="frame" x="0.0" y="0.0" width="416" height="80"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                 <connections>
                                                     <action selector="signInWithAppleButtontapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wfY-rP-8VC"/>
                                                 </connections>
@@ -214,9 +215,9 @@ Jennifer!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyv-8K-B1x">
-                                        <rect key="frame" x="50" y="20" width="54" height="66.5"/>
+                                        <rect key="frame" x="50" y="20" width="58.5" height="66.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="ic_backButton"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="ic_backButton" title=" "/>
                                         <connections>
                                             <action selector="backButtontapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="K83-Hh-LiZ"/>
                                         </connections>
@@ -227,6 +228,14 @@ Jennifer!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaN-Te-qUe">
                                                 <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLy-ZC-Jym">
+                                                        <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <connections>
+                                                            <action selector="createStoryButtonTapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="bCJ-ha-U50"/>
+                                                        </connections>
+                                                    </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_createStory" translatesAutoresizingMaskIntoConstraints="NO" id="Jis-ql-IhY">
                                                         <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
                                                     </imageView>
@@ -252,14 +261,15 @@ Jennifer!</string>
                                                                 <color key="value" name="orange_color(#F48D40)"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="createStoryButtonTapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="z3L-J8-H6K"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="PLy-ZC-Jym" secondAttribute="bottom" id="39u-ql-MtY"/>
                                                     <constraint firstItem="Jis-ql-IhY" firstAttribute="top" secondItem="BaN-Te-qUe" secondAttribute="top" id="8sd-u9-yAd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PLy-ZC-Jym" secondAttribute="trailing" id="9E7-O8-aGp"/>
+                                                    <constraint firstItem="PLy-ZC-Jym" firstAttribute="leading" secondItem="BaN-Te-qUe" secondAttribute="leading" id="Ftc-UA-ege"/>
+                                                    <constraint firstItem="PLy-ZC-Jym" firstAttribute="top" secondItem="BaN-Te-qUe" secondAttribute="top" id="Ke8-6G-3Lf"/>
                                                     <constraint firstAttribute="trailing" secondItem="dK8-M3-fCQ" secondAttribute="trailing" constant="80" id="d9E-qs-ldc"/>
                                                     <constraint firstAttribute="bottom" secondItem="Jis-ql-IhY" secondAttribute="bottom" id="dSy-K3-twU"/>
                                                     <constraint firstAttribute="trailing" secondItem="Jis-ql-IhY" secondAttribute="trailing" id="h7I-5k-MgA"/>
@@ -282,6 +292,14 @@ Jennifer!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7n-6q-udJ">
                                                 <rect key="frame" x="658" y="0.0" width="628" height="490"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scN-lA-ede">
+                                                        <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <connections>
+                                                            <action selector="exploreStoryButtonTapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="bvy-Ae-yUf"/>
+                                                        </connections>
+                                                    </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exploreStory" translatesAutoresizingMaskIntoConstraints="NO" id="kbf-gl-Hvx">
                                                         <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
                                                     </imageView>
@@ -307,20 +325,21 @@ Jennifer!</string>
                                                                 <color key="value" name="orange_color(#F48D40)"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="exploreStoryButtonTapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="bkc-I4-Hdb"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="scN-lA-ede" firstAttribute="leading" secondItem="Q7n-6q-udJ" secondAttribute="leading" id="2Ld-qS-PfF"/>
                                                     <constraint firstItem="FqG-XP-WIt" firstAttribute="leading" secondItem="Q7n-6q-udJ" secondAttribute="leading" constant="80" id="8J2-6d-cY6"/>
                                                     <constraint firstItem="kbf-gl-Hvx" firstAttribute="leading" secondItem="Q7n-6q-udJ" secondAttribute="leading" id="AH8-u6-oQv"/>
                                                     <constraint firstAttribute="trailing" secondItem="kbf-gl-Hvx" secondAttribute="trailing" id="C6u-oz-qUu"/>
                                                     <constraint firstItem="kbf-gl-Hvx" firstAttribute="top" secondItem="Q7n-6q-udJ" secondAttribute="top" id="D8w-Qh-4da"/>
+                                                    <constraint firstAttribute="bottom" secondItem="scN-lA-ede" secondAttribute="bottom" id="LD0-x6-3xM"/>
                                                     <constraint firstAttribute="bottom" secondItem="kbf-gl-Hvx" secondAttribute="bottom" id="YpU-Tm-HaL"/>
+                                                    <constraint firstItem="scN-lA-ede" firstAttribute="top" secondItem="Q7n-6q-udJ" secondAttribute="top" id="m9X-ad-dVj"/>
                                                     <constraint firstAttribute="bottom" secondItem="FqG-XP-WIt" secondAttribute="bottom" constant="30" id="p41-28-ORh"/>
                                                     <constraint firstAttribute="trailing" secondItem="FqG-XP-WIt" secondAttribute="trailing" constant="80" id="tkf-t5-KXE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="scN-lA-ede" secondAttribute="trailing" id="zdw-ZF-mrB"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -337,9 +356,9 @@ Jennifer!</string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-td-ETx">
-                                        <rect key="frame" x="1242.5" y="20" width="73.5" height="66"/>
+                                        <rect key="frame" x="1238" y="20" width="78" height="66"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="ic_setting"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="ic_setting" title=" "/>
                                         <connections>
                                             <action selector="settingButtontapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="Sfo-Yd-6TQ"/>
                                         </connections>

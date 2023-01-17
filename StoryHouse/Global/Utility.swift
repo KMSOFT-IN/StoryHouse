@@ -25,7 +25,7 @@ import AVFoundation
     static var synthesizer = AVSpeechSynthesizer()
     class func playAudio(text: String) {
         
-        Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+        //Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         
         if text == "!" || text == "," { return }
         let utterance = AVSpeechUtterance(string: text)
@@ -35,6 +35,14 @@ import AVFoundation
         }
         utterance.voice = AVSpeechSynthesisVoice(identifier: voice)
         utterance.rate = 0.5
+        Utility.synthesizer.speak(utterance)
+    }
+    
+    class func playLatestAudio(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+      //  utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.5
+        let synthesizer = AVSpeechSynthesizer()
         Utility.synthesizer.speak(utterance)
     }
     

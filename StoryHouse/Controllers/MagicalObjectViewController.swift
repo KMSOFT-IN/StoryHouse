@@ -11,7 +11,7 @@ class MagicalObjectViewController: UIViewController {
     
     @IBOutlet weak var magicalObjectCollectionView: UICollectionView!
     
-    let magicalImages = ["ic_magicalObject1","ic_magicalObject2","ic_magicalObject3","ic_magicalObject4"]
+    let magicalImages = ["ic_object1","ic_object2","ic_object3","ic_object4"]
     var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -34,9 +34,13 @@ class MagicalObjectViewController: UIViewController {
     }
     
     
-    @IBAction func createMyStoryButtonTapped(_ sender: Any) {
-        let viewController  = LoadingViewController.getInstance()
-        self.navigationController?.pushViewController(viewController, animated: true)
+    @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
+        sender.alpha = 0.8
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
+              sender.alpha = 1.0
+              let viewController = LoadingViewController.getInstance()
+              self.navigationController?.pushViewController(viewController, animated: true)
+          }
     }
 }
 
@@ -52,7 +56,7 @@ extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
         cell.imageBorderView.borderWidth = 0
         if (indexPath.item == self.selectedIndex) {
-            cell.imageBorderView.borderWidth = 4
+            cell.imageBorderView.borderWidth = 6
         }
         let image = magicalImages[indexPath.item]
         cell.imageView.image = UIImage(named: image)

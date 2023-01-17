@@ -11,7 +11,8 @@ class PlacesViewController: UIViewController {
 
     @IBOutlet weak var placesCollectionView: UICollectionView!
     
-    let storyImage = ["ic_place1","ic_place2","ic_place3","ic_place4"]
+  //  let storyImage = ["ic_place1","ic_place2","ic_place3","ic_place4"]
+    let storyImage = ["ic_locaction1","ic_locaction2","ic_locaction3","ic_locaction4"]
     var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -32,10 +33,14 @@ class PlacesViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func nextButtonTapped(_ sender: Any) {
-        let viewController = MagicalObjectViewController.getInstance()
-        self.navigationController?.pushViewController(viewController, animated: true)
-        
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        sender.alpha = 0.8
+
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
+              sender.alpha = 1.0
+              let viewController = MagicalObjectViewController.getInstance()
+              self.navigationController?.pushViewController(viewController, animated: true)
+          }
     }
 }
 
@@ -48,7 +53,7 @@ extension PlacesViewController: UICollectionViewDelegate , UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
         cell.imageBorderView.borderWidth = 0
         if (indexPath.item == self.selectedIndex) {
-            cell.imageBorderView.borderWidth = 4
+            cell.imageBorderView.borderWidth = 6
         }
         let image = storyImage[indexPath.item]
         cell.imageView.image = UIImage(named: image)

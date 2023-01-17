@@ -17,8 +17,7 @@ class TabbarViewController: UIViewController {
     
     var synthesizer = AVSpeechSynthesizer()
     var playQueue = [AVSpeechUtterance]()
-    var stories:Story?
-    var story:Story1?
+    var story:Story?
     var paragraphDetails: [ParagraphDetails]?
     
     var storydata: StoryModels?
@@ -29,11 +28,15 @@ class TabbarViewController: UIViewController {
     var charCount = 0  // seperate paragraph into Words array
     var characterIndexTimer: Timer?
     var lastSelectedIndex = 0
-    var isFinishedAudio: Bool = false
+    
+    var isHE: Bool = true
+    var storyNumber: Int = 0
+    var isFirstTimeCall = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadJason()
+        
+        self.loadJson()
         self.setUpUI()
         
     }
@@ -46,7 +49,7 @@ class TabbarViewController: UIViewController {
         return true
     }
     
-    func loadJason(){
+    func loadJson(){
         
         if let path = Bundle.main.path(forResource: "StoriesJSON", ofType: "json"){
             do{
@@ -57,21 +60,27 @@ class TabbarViewController: UIViewController {
                 self.storydata = try jsonDecoder.decode(StoryModels.self, from: jsonData)
             } catch {
                 print(error.localizedDescription)
-                print("Json Data Loading Error")
+                //   print("Json Data Loading Error")
             }
         }
     }
     
     func setUpUI() {
         
+        self.isFirstTimeCall = true
         self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
         
-//        self.story = self.storydata?.story?.first?.data
-        self.stories = Story.story
+        self.paragraphDetails = self.storydata?.story?[self.storyNumber].data
         
-        self.totalIndex = self.stories?.storyDetail?.count ?? 0
+        self.totalIndex = self.paragraphDetails?.count ?? 0
         if (totalIndex > 0) {
-            self.setUpStory(index: 0)
+            if let index  = UserDefaultHelper.getParagraphIndex() {
+                self.currentIndex = index
+                self.setUpStory(index: self.currentIndex)
+            }
+            else {
+                self.setUpStory(index: 0)
+            }
         }
         self.imageTitle.textColor = UIColor.black
         self.lastSelectedIndex = 0
@@ -80,19 +89,24 @@ class TabbarViewController: UIViewController {
     }
     
     func setUpStory(index: Int) {
-        self.pageLable.text = "\(currentIndex + 1) / \(totalIndex)"
-        self.image.image = UIImage(named : self.stories?.storyImage?[index] ?? "")
-        self.imageTitle.text = self.stories?.storyDetail?[index] ?? ""
+        UserDefaultHelper.setParagraphIndex(value: index)
+        self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
+        self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "")
+        self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
     }
     
     @IBAction func homeButtonTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        
+        let viewController = SelectStoryViewController.getInstance()
+        var navigationController = UINavigationController()
+        let window = self.view.window
+        navigationController = UINavigationController(rootViewController: viewController)
+        window?.rootViewController = navigationController
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.stopTimer()
-        //Utility.stopSound()
         Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
     }
     
@@ -115,41 +129,54 @@ class TabbarViewController: UIViewController {
     }
     
     func resetUI() {
+        self.isFirstTimeCall = true
         self.charCount = 0
         self.lastSelectedIndex = 0
         self.characterIndexTimer = nil
         self.imageTitle.textColor = UIColor.black
         self.isPageChanged = true
         self.isPlayAudioON = false
-        self.isFinishedAudio = false
+        
         self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
-        
         self.isPageChanged = false
-        isPlayAudioON = !isPlayAudioON
+        self.isPlayAudioON = !self.isPlayAudioON
         if isPlayAudioON {
-            // Play
+            // Start to Play
             self.playPauseImageView.image = UIImage(named: "ic_TAB_pause")
-            if (Utility.synthesizer.isPaused == true) {
-                if (Utility.synthesizer.continueSpeaking()) {
-                    print("CONTINUE")
-                }
+            self.continueSpeaking()
+            
+            if isFirstTimeCall {
+                Utility.playAudio(text: self.imageTitle.text ?? "")
             }
-                self.callCharacter(title: self.stories?.storyDetail?[self.currentIndex] ?? "")
+            self.setCharacter(title: self.imageTitle.text ?? "")
+            
         }
         else {
-            // Pause
+            //Set Pause
+            self.pauseSpeaking()
             self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
-            if (Utility.synthesizer.isSpeaking == true) {
-                if (Utility.synthesizer.pauseSpeaking(at: .immediate)) {
-                    print("PAUSE")
-                }
+        }
+    }
+    
+    
+    func continueSpeaking() {
+        if (Utility.synthesizer.isPaused) {
+            if (Utility.synthesizer.continueSpeaking()) {
+                print("CONTINUE")
             }
         }
     }
     
+    func pauseSpeaking() {
+        if (Utility.synthesizer.isSpeaking) {
+            if (Utility.synthesizer.pauseSpeaking(at: .immediate)) {
+                print("PAUSE")
+            }
+        }
+    }
     
     @IBAction func shareButtontapped(_ sender: Any) {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -169,52 +196,38 @@ class TabbarViewController: UIViewController {
 
 extension TabbarViewController {
     
-    func callCharacter(title: String) {
-        self.imageTitle.text = title
+    func callCharacter() {
+        self.isFirstTimeCall = false
         self.stopTimer()
-        self.setCharacter(title: title)
+        self.setCharacter(title: self.imageTitle.text ?? "")
+        Utility.playAudio(text: self.imageTitle.text ?? "")
     }
     
     func setCharacter(title: String) {
+        self.isFirstTimeCall = false
         if !isPlayAudioON || isPageChanged { return }
-        
-        if self.isFinishedAudio {
-         //   Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-            self.resetUI()
-            return
-        }
-        
-        
         let words = title.components(separatedBy: " ")
-        
-        if self.charCount >= words.count { return }
-     
-        if !Utility.synthesizer.continueSpeaking() {
-            Utility.playAudio(text: title)
-        }
+        if self.charCount >= words.count {
+         //   self.resetUI()
+            return }
         
         let word = words[self.charCount]
         self.lastSelectedIndex += (word.count + 1)
-        
         if word == words.last {
-            self.isFinishedAudio = true
-            Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-            self.lastSelectedIndex -= 1
+                        self.lastSelectedIndex -= 1
+         
         }
         
         let attributedString = NSMutableAttributedString(string:title.trimmingCharacters(in: .whitespacesAndNewlines))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
                                       value: UIColor.red ,
                                       range: NSRange(location: 0, length: self.lastSelectedIndex))
-        
-        
-        
         self.imageTitle.attributedText = attributedString
-        self.characterIndexTimer = Timer.scheduledTimer(withTimeInterval: 0.37
-                                                        , repeats: false) { (timer) in
+        self.characterIndexTimer = Timer.scheduledTimer(withTimeInterval: 0.35
+                                                       , repeats: false) { (timer) in
             self.charCount += 1
             self.setCharacter(title: title)
-        }
+       }
     }
     
     func stopTimer()  {

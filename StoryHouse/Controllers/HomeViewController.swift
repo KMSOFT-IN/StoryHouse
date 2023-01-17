@@ -15,9 +15,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = TabbarViewController.getInstance()
-        self.navigationController?.pushViewController(vc, animated: true)
-       // self.appleSignInButton.addTarget(self, action: #selector(didTapSign), for: .touchUpInside)
+        
+        // self.appleSignInButton.addTarget(self, action: #selector(didTapSign), for: .touchUpInside)
     }
     
     @objc func didTapSign() {
@@ -36,17 +35,18 @@ class HomeViewController: UIViewController {
     
     @IBAction func signInWithAppleButtontapped(_ sender: Any) {
         let viewController = ChildNameViewController.getInstance()
-       // let viewController = TabbarViewController.getInstance()
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
     
+    
     @IBAction func termsButtonTapped(_ sender: Any) {
-        
+        guard let url = URL(string: TERMS_URL) else { return }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func privacyButtonTapped(_ sender: Any) {
-        
+        guard let url = URL(string: PRIVACY_POLICY_URL) else { return }
+        UIApplication.shared.open(url)
     }
     
 }
