@@ -59,6 +59,9 @@
 		888A48EA296E79770097C42D /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888A48E9296E79770097C42D /* Loading.storyboard */; };
 		88D119C6296E98360035B0A0 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D119C5296E98360035B0A0 /* TabbarViewController.swift */; };
 		88DF44B22976CA9A0070949F /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF44B12976CA9A0070949F /* UserDefaultHelper.swift */; };
+		88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1CA7E29780C5D008F3B28 /* EndViewController.swift */; };
+		88E1CA8129780C69008F3B28 /* End.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E1CA8029780C69008F3B28 /* End.storyboard */; };
+		88E1CA8729781672008F3B28 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1CA8629781672008F3B28 /* Gif+Image.swift */; };
 		88F562DE296E8CEE00813BC9 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +121,9 @@
 		88A38C49296E9D7E00B7910D /* StoryHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoryHouse.entitlements; sourceTree = "<group>"; };
 		88D119C5296E98360035B0A0 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		88DF44B12976CA9A0070949F /* UserDefaultHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		88E1CA7E29780C5D008F3B28 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
+		88E1CA8029780C69008F3B28 /* End.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = End.storyboard; sourceTree = "<group>"; };
+		88E1CA8629781672008F3B28 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
 		88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,8 +163,10 @@
 				881402E3296D6A2E00930582 /* ViewController.swift */,
 				881402F3296D6C8300930582 /* Fonts */,
 				88140324296D84FA00930582 /* Extension */,
+				88E1CA8529781672008F3B28 /* GIF Class */,
 				885BE268296EBE6900B09179 /* Model */,
 				881402E5296D6A2E00930582 /* Main.storyboard */,
+				88E1CA8029780C69008F3B28 /* End.storyboard */,
 				88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */,
 				888A48E9296E79770097C42D /* Loading.storyboard */,
 				888A48E7296E79410097C42D /* Category.storyboard */,
@@ -221,6 +229,7 @@
 				88140343296D9B9B00930582 /* HomeViewController.swift */,
 				888A48E5296E776A0097C42D /* ChildNameViewController.swift */,
 				88D119C5296E98360035B0A0 /* TabbarViewController.swift */,
+				88E1CA7E29780C5D008F3B28 /* EndViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -256,6 +265,14 @@
 				88140339296D874400930582 /* Constant.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		88E1CA8529781672008F3B28 /* GIF Class */ = {
+			isa = PBXGroup;
+			children = (
+				88E1CA8629781672008F3B28 /* Gif+Image.swift */,
+			);
+			path = "GIF Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +359,7 @@
 				881402E7296D6A2E00930582 /* Main.storyboard in Resources */,
 				88140314296D6C9C00930582 /* Poppins-ExtraBold.ttf in Resources */,
 				881402F7296D6C8D00930582 /* LICENSE.txt in Resources */,
+				88E1CA8129780C69008F3B28 /* End.storyboard in Resources */,
 				8844DC5129765AA40074610C /* StoriesJSON.json in Resources */,
 				8814030D296D6C9C00930582 /* Poppins-ThinItalic.ttf in Resources */,
 				881402F6296D6C8D00930582 /* LuckiestGuy-Regular.ttf in Resources */,
@@ -361,6 +379,8 @@
 				88140331296D84FA00930582 /* UIImage.swift in Sources */,
 				88140332296D84FA00930582 /* UIViewController.swift in Sources */,
 				88140334296D85B000930582 /* PlacesViewController.swift in Sources */,
+				88E1CA8729781672008F3B28 /* Gif+Image.swift in Sources */,
+				88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */,
 				88140344296D9B9B00930582 /* HomeViewController.swift in Sources */,
 				888A48E1296E62B70097C42D /* Utility.swift in Sources */,
 				888A48E6296E776A0097C42D /* ChildNameViewController.swift in Sources */,

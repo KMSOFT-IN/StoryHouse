@@ -7,15 +7,22 @@
 
 import UIKit
 
-class ChildNameViewController: UIViewController {
+class ChildNameViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var childNameTextFeild: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
+    @IBOutlet weak var femaleButton: UIButton!
+    @IBOutlet weak var maleButton: UIButton!
+    
+    var isGirlSelected: Bool  = true
+    
     @IBOutlet weak var storyLeft: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if self.isGirlSelected {
+            self.femaleButton.setImage(UIImage(named: "ic_fill_radio"), for: .normal)
+        }
     }
     
     static func getInstance() -> ChildNameViewController {
@@ -71,4 +78,42 @@ class ChildNameViewController: UIViewController {
         guard let url = URL(string: PRIVACY_POLICY_URL) else { return }
         UIApplication.shared.open(url)
     }
+    
+    @IBAction func QuestionGenderButtonTapped(_ sender: UIButton) {
+        let popController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "popoverId")
+        popController.preferredContentSize = CGSize(width: 250  ,height: 250)
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = sender // button
+        popController.popoverPresentationController?.sourceRect = sender.bounds
+        self.present(popController, animated: true, completion: nil)
+    }
+        
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    @IBAction func femaleRadionButtonTapped(_ sender: UIButton) {
+        self.isGirlSelected = true
+        self.setRadioButton()
+    }
+    func setRadioButton() {
+        if self.isGirlSelected {
+            self.femaleButton.setImage(UIImage(named: "ic_fill_radio"), for: .normal)
+            self.maleButton.setImage(UIImage(named: "ic_radio"), for: .normal)
+        }
+        else
+        {
+            self.maleButton.setImage(UIImage(named: "ic_fill_radio"), for: .normal)
+            self.femaleButton.setImage(UIImage(named: "ic_radio"), for: .normal)
+        }
+    }
+    
+    @IBAction func maleRadioButtonTapped(_ sender: UIButton) {
+        self.isGirlSelected = false
+        self.setRadioButton()
+    }
+    
+    
 }

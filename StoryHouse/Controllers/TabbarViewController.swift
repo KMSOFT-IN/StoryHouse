@@ -3,24 +3,28 @@
 //  StoryHouse
 //
 //  Created by iMac on 11/01/23.
-//
 
 import UIKit
 import AVKit
+//ic_mute
+//ic_unMute
 
 class TabbarViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageTitle: UILabel!
     @IBOutlet weak var playPauseImageView: UIImageView!
+    @IBOutlet weak var muteImageView: UIImageView!
     @IBOutlet weak var pageLable: UILabel!
     
+    
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secoundView: UIView!
     var synthesizer = AVSpeechSynthesizer()
     var playQueue = [AVSpeechUtterance]()
-    var story:Story?
     var paragraphDetails: [ParagraphDetails]?
-    
     var storydata: StoryModels?
+    
     var currentIndex: Int = 0  // Story Paragraph Index Number for next / Prev Page
     var totalIndex: Int = 0 // Number of Paragraph
     var isPlayAudioON: Bool = false
@@ -35,9 +39,10 @@ class TabbarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.loadJson()
         self.setUpUI()
+        self.firstView.applyShadow()
+        self.secoundView.applyShadow()
         
     }
     
@@ -50,7 +55,6 @@ class TabbarViewController: UIViewController {
     }
     
     func loadJson(){
-        
         if let path = Bundle.main.path(forResource: "StoriesJSON", ofType: "json"){
             do{
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -60,13 +64,11 @@ class TabbarViewController: UIViewController {
                 self.storydata = try jsonDecoder.decode(StoryModels.self, from: jsonData)
             } catch {
                 print(error.localizedDescription)
-                //   print("Json Data Loading Error")
             }
         }
     }
     
     func setUpUI() {
-        
         self.isFirstTimeCall = true
         self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
         
@@ -155,7 +157,6 @@ class TabbarViewController: UIViewController {
             
         }
         else {
-            //Set Pause
             self.pauseSpeaking()
             self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
         }
@@ -176,6 +177,19 @@ class TabbarViewController: UIViewController {
                 print("PAUSE")
             }
         }
+    }
+    
+    
+    @IBAction func muteButtonTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            self.muteImageView.image = UIImage(named: "ic_mute")
+        }
+        else {
+            self.muteImageView.image = UIImage(named: "ic_unMute")
+        }
+        
+        
     }
     
     @IBAction func shareButtontapped(_ sender: Any) {
