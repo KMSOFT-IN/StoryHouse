@@ -61,10 +61,7 @@
                                         <rect key="frame" x="596.5" y="76" width="769.5" height="828"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32T-Iw-8b7">
-                                                <rect key="frame" x="0.0" y="0.0" width="483" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="iv0-FW-eyr"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="749.5" height="168"/>
                                                 <string key="text">What’s your 
 child’s name?</string>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="72"/>
@@ -72,7 +69,7 @@ child’s name?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter  Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-ru-iQp">
-                                                <rect key="frame" x="0.0" y="180" width="569.5" height="26"/>
+                                                <rect key="frame" x="0.0" y="198" width="569.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="OH4-la-RbZ"/>
                                                 </constraints>
@@ -81,7 +78,7 @@ child’s name?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="e2b-3t-rfr">
-                                                <rect key="frame" x="0.0" y="216" width="615.5" height="70"/>
+                                                <rect key="frame" x="0.0" y="234" width="615.5" height="70"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujL-dC-Mh8">
                                                         <rect key="frame" x="0.0" y="0.0" width="615.5" height="70"/>
@@ -132,115 +129,123 @@ child’s name?</string>
                                                     <constraint firstItem="ujL-dC-Mh8" firstAttribute="leading" secondItem="e2b-3t-rfr" secondAttribute="leading" id="cpA-6N-Zae"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="WlC-gt-wKn">
-                                                <rect key="frame" x="0.0" y="354" width="314" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fJQ-WK-ZNl">
+                                                <rect key="frame" x="0.0" y="376.5" width="280" height="50"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="8al-mk-00Q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="50"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ren-Me-3PW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOu-WK-e2g">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_fill_radio" translatesAutoresizingMaskIntoConstraints="NO" id="zG3-6Z-uuG">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="3pA-LV-0Fz"/>
-                                                                    <constraint firstAttribute="width" constant="40" id="tGW-QO-IPp"/>
-                                                                </constraints>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="ic_fill_radio" title=" "/>
-                                                                <connections>
-                                                                    <action selector="femaleRadionButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="tFh-2A-Z7W"/>
-                                                                </connections>
-                                                            </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_girl" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-Hq-TK7">
-                                                                <rect key="frame" x="62" y="0.0" width="50" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="7aQ-rX-Pj6"/>
-                                                                    <constraint firstAttribute="width" constant="50" id="qiC-Vh-28t"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="CCG-lk-PGS"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="pYr-Uq-tg9"/>
                                                                 </constraints>
                                                             </imageView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="FpD-zI-fqp">
-                                                        <rect key="frame" x="202" y="0.0" width="112" height="50"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi3-gr-U3O">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_girl" translatesAutoresizingMaskIntoConstraints="NO" id="jWx-fb-8ZQ">
+                                                                <rect key="frame" x="70" y="0.0" width="50" height="50"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="M8E-a3-1jA"/>
-                                                                    <constraint firstAttribute="width" constant="40" id="vQo-U5-fGY"/>
-                                                                </constraints>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="ic_radio" title=" "/>
-                                                                <connections>
-                                                                    <action selector="maleRadioButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="Luq-Hd-Dl1"/>
-                                                                </connections>
-                                                            </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_boy" translatesAutoresizingMaskIntoConstraints="NO" id="2RZ-FV-pGf">
-                                                                <rect key="frame" x="62" y="0.0" width="50" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="K3h-CL-x7R"/>
-                                                                    <constraint firstAttribute="width" constant="50" id="yl8-f5-jCA"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="LTI-wP-aFB"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="joR-Ux-drP"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMH-Eu-UpE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <string key="title" base64-UTF8="YES">
+Cg
+</string>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="girlButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="r7O-jw-NnS"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
-                                                    </stackView>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="lMH-Eu-UpE" firstAttribute="leading" secondItem="Ren-Me-3PW" secondAttribute="leading" id="0JO-WC-VXk"/>
+                                                            <constraint firstAttribute="trailing" secondItem="lMH-Eu-UpE" secondAttribute="trailing" id="4na-qL-5tV"/>
+                                                            <constraint firstItem="jWx-fb-8ZQ" firstAttribute="centerY" secondItem="Ren-Me-3PW" secondAttribute="centerY" id="7tk-vu-PNN"/>
+                                                            <constraint firstItem="zG3-6Z-uuG" firstAttribute="leading" secondItem="Ren-Me-3PW" secondAttribute="leading" id="Ar1-JU-9wU"/>
+                                                            <constraint firstItem="lMH-Eu-UpE" firstAttribute="top" secondItem="Ren-Me-3PW" secondAttribute="top" id="F7Y-UE-Q9f"/>
+                                                            <constraint firstAttribute="bottom" secondItem="lMH-Eu-UpE" secondAttribute="bottom" id="hgU-lX-4l6"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jWx-fb-8ZQ" secondAttribute="trailing" id="lSO-Sz-L1T"/>
+                                                            <constraint firstItem="zG3-6Z-uuG" firstAttribute="centerY" secondItem="Ren-Me-3PW" secondAttribute="centerY" id="tQk-IJ-MsQ"/>
+                                                            <constraint firstItem="jWx-fb-8ZQ" firstAttribute="leading" secondItem="zG3-6Z-uuG" secondAttribute="trailing" constant="20" id="vrM-sj-5xH"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0C-1s-YiY">
+                                                        <rect key="frame" x="160" y="0.0" width="120" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio" translatesAutoresizingMaskIntoConstraints="NO" id="BSi-Al-XFK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="PKq-kN-8oK"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="tto-GJ-lmz"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_boy" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-CC-iSh">
+                                                                <rect key="frame" x="70" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="QEH-z0-MhC"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="zac-DO-MR9"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mW-Yk-Vt0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <string key="title" base64-UTF8="YES">
+Cg
+</string>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="boyButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="bXw-80-fok"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="0Oj-CC-iSh" firstAttribute="leading" secondItem="BSi-Al-XFK" secondAttribute="trailing" constant="20" id="CuA-5s-KSv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="7mW-Yk-Vt0" secondAttribute="trailing" id="DrL-ed-BLL"/>
+                                                            <constraint firstItem="BSi-Al-XFK" firstAttribute="leading" secondItem="Y0C-1s-YiY" secondAttribute="leading" id="LHE-iQ-Xf6"/>
+                                                            <constraint firstAttribute="trailing" secondItem="0Oj-CC-iSh" secondAttribute="trailing" id="R2l-Mh-zyZ"/>
+                                                            <constraint firstItem="BSi-Al-XFK" firstAttribute="centerY" secondItem="Y0C-1s-YiY" secondAttribute="centerY" id="TOt-Sh-KJz"/>
+                                                            <constraint firstItem="7mW-Yk-Vt0" firstAttribute="top" secondItem="Y0C-1s-YiY" secondAttribute="top" id="XAv-Od-wru"/>
+                                                            <constraint firstAttribute="bottom" secondItem="7mW-Yk-Vt0" secondAttribute="bottom" id="pEr-yT-Zlo"/>
+                                                            <constraint firstItem="0Oj-CC-iSh" firstAttribute="centerY" secondItem="Y0C-1s-YiY" secondAttribute="centerY" id="qOg-CZ-fW0"/>
+                                                            <constraint firstItem="7mW-Yk-Vt0" firstAttribute="leading" secondItem="Y0C-1s-YiY" secondAttribute="leading" id="zls-xU-dHi"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="s7n-GN-e9y"/>
+                                                </constraints>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDr-ty-Rxc">
-                                                <rect key="frame" x="0.0" y="576" width="769.5" height="150"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kAa-3S-iGh">
+                                                <rect key="frame" x="0.0" y="676" width="201.5" height="21"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stories left: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlS-Ip-hpF" userLabel="Stories left:">
-                                                        <rect key="frame" x="0.0" y="0.0" width="102" height="25.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="21"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Out of 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0P-w8-sWo">
-                                                        <rect key="frame" x="107" y="0.0" width="104" height="25.5"/>
+                                                        <rect key="frame" x="101" y="0.0" width="100.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-61-WTT">
-                                                        <rect key="frame" x="0.0" y="35.5" width="165" height="0.0"/>
-                                                        <color key="backgroundColor" name="sky_color(4BBFEF)"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" id="8tn-4S-BGJ"/>
-                                                            <constraint firstAttribute="width" constant="165" id="s6y-Zd-hqE"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Upgrade Now">
-                                                            <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="20"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="upgradeButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="rrd-mW-m6d"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For more stories, more characters and more magical fun." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKe-Bp-tlK">
-                                                        <rect key="frame" x="0.0" y="45.5" width="514" height="25.5"/>
-                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
-                                                        <color key="textColor" name="font_color(#292B5C)"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="UlS-Ip-hpF" firstAttribute="top" secondItem="FDr-ty-Rxc" secondAttribute="top" id="59W-Nt-Dzd"/>
-                                                    <constraint firstItem="C0P-w8-sWo" firstAttribute="top" secondItem="FDr-ty-Rxc" secondAttribute="top" id="7NJ-n4-ez0"/>
-                                                    <constraint firstItem="UlS-Ip-hpF" firstAttribute="leading" secondItem="FDr-ty-Rxc" secondAttribute="leading" id="CW6-w0-YFX"/>
-                                                    <constraint firstItem="C0P-w8-sWo" firstAttribute="leading" secondItem="UlS-Ip-hpF" secondAttribute="trailing" constant="5" id="IOu-dh-QDg"/>
-                                                    <constraint firstItem="XKe-Bp-tlK" firstAttribute="top" secondItem="Xvn-61-WTT" secondAttribute="bottom" constant="10" id="aXb-fj-xNF"/>
-                                                    <constraint firstAttribute="height" constant="150" id="ik4-1Z-8gp"/>
-                                                    <constraint firstItem="Xvn-61-WTT" firstAttribute="top" secondItem="UlS-Ip-hpF" secondAttribute="bottom" constant="10" id="ip0-qj-QqA"/>
-                                                    <constraint firstItem="XKe-Bp-tlK" firstAttribute="leading" secondItem="FDr-ty-Rxc" secondAttribute="leading" id="vgc-FD-UVA"/>
-                                                    <constraint firstItem="Xvn-61-WTT" firstAttribute="leading" secondItem="FDr-ty-Rxc" secondAttribute="leading" id="vmf-vS-ULO"/>
-                                                </constraints>
-                                            </view>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For more stories, more characters and more magical fun." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKe-Bp-tlK">
+                                                <rect key="frame" x="0.0" y="717" width="457" height="21"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                <color key="textColor" name="font_color(#292B5C)"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9p-Hj-rJg">
                                                 <rect key="frame" x="0.0" y="758" width="350" height="70"/>
                                                 <constraints>
@@ -249,7 +254,7 @@ child’s name?</string>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="ic_nextButton"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="ic_nextButton" title=" "/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="35"/>
@@ -260,7 +265,7 @@ child’s name?</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTY-2B-LcP">
-                                                <rect key="frame" x="0.0" y="318" width="174.5" height="26"/>
+                                                <rect key="frame" x="0.0" y="336" width="158" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="4RJ-nM-mrd"/>
                                                 </constraints>
@@ -269,10 +274,10 @@ child’s name?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YS-Dk-7Yz">
-                                                <rect key="frame" x="204" y="314" width="166.5" height="34.5"/>
+                                                <rect key="frame" x="178" y="332" width="187.5" height="34.5"/>
                                                 <color key="tintColor" name="font_color(#292B5C)"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Why we are asking"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="( Why we are asking )"/>
                                                 <connections>
                                                     <action selector="QuestionGenderButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="aS1-a0-uuz"/>
                                                 </connections>
@@ -280,23 +285,26 @@ child’s name?</string>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="32T-Iw-8b7" secondAttribute="trailing" constant="20" id="0tm-Jn-1i7"/>
                                             <constraint firstAttribute="bottom" secondItem="w9p-Hj-rJg" secondAttribute="bottom" id="23N-GY-FW8"/>
-                                            <constraint firstItem="FDr-ty-Rxc" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="8zj-Vl-510"/>
+                                            <constraint firstItem="XKe-Bp-tlK" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="8dH-3T-YVO"/>
+                                            <constraint firstItem="fJQ-WK-ZNl" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="Dlj-0h-zcT"/>
                                             <constraint firstItem="PTY-2B-LcP" firstAttribute="top" secondItem="e2b-3t-rfr" secondAttribute="bottom" constant="32" id="F0M-Ze-jRA"/>
                                             <constraint firstAttribute="trailing" secondItem="0ia-ru-iQp" secondAttribute="trailing" constant="200" id="KOb-sM-nJb"/>
-                                            <constraint firstAttribute="trailing" secondItem="FDr-ty-Rxc" secondAttribute="trailing" id="MXe-9W-yrm"/>
                                             <constraint firstItem="0ia-ru-iQp" firstAttribute="top" secondItem="32T-Iw-8b7" secondAttribute="bottom" constant="30" id="MdV-XK-bs6"/>
-                                            <constraint firstItem="WlC-gt-wKn" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="Tdh-nn-nbf"/>
+                                            <constraint firstItem="w9p-Hj-rJg" firstAttribute="top" secondItem="XKe-Bp-tlK" secondAttribute="bottom" constant="20" id="U5s-2Y-Gvs"/>
                                             <constraint firstItem="e2b-3t-rfr" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="VGC-mb-xg0"/>
+                                            <constraint firstItem="fJQ-WK-ZNl" firstAttribute="top" secondItem="5YS-Dk-7Yz" secondAttribute="bottom" constant="10" id="Vm8-TJ-uAP"/>
                                             <constraint firstItem="e2b-3t-rfr" firstAttribute="width" secondItem="YfQ-f1-gDC" secondAttribute="width" multiplier="0.8" id="dVZ-7J-Hp9"/>
                                             <constraint firstItem="w9p-Hj-rJg" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="daz-zR-Fuq"/>
-                                            <constraint firstItem="WlC-gt-wKn" firstAttribute="top" secondItem="PTY-2B-LcP" secondAttribute="bottom" constant="10" id="eQD-D0-E7o"/>
                                             <constraint firstItem="e2b-3t-rfr" firstAttribute="top" secondItem="0ia-ru-iQp" secondAttribute="bottom" constant="10" id="ecX-3x-Rtw"/>
                                             <constraint firstItem="PTY-2B-LcP" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="fyD-Ox-ghD"/>
                                             <constraint firstItem="0ia-ru-iQp" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="hlm-bY-0XE"/>
+                                            <constraint firstItem="kAa-3S-iGh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fJQ-WK-ZNl" secondAttribute="bottom" constant="20" id="iUH-Ib-uj3"/>
+                                            <constraint firstItem="XKe-Bp-tlK" firstAttribute="top" secondItem="kAa-3S-iGh" secondAttribute="bottom" constant="20" id="iVj-2Q-Fxh"/>
+                                            <constraint firstItem="kAa-3S-iGh" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="ivb-Iz-9qq"/>
                                             <constraint firstItem="5YS-Dk-7Yz" firstAttribute="centerY" secondItem="PTY-2B-LcP" secondAttribute="centerY" id="jYh-vY-tKJ"/>
-                                            <constraint firstItem="w9p-Hj-rJg" firstAttribute="top" secondItem="FDr-ty-Rxc" secondAttribute="bottom" constant="32" id="kdf-BO-ftk"/>
-                                            <constraint firstItem="5YS-Dk-7Yz" firstAttribute="leading" secondItem="PTY-2B-LcP" secondAttribute="trailing" constant="29.5" id="mKE-Fd-aFU"/>
+                                            <constraint firstItem="5YS-Dk-7Yz" firstAttribute="leading" secondItem="PTY-2B-LcP" secondAttribute="trailing" constant="20" id="mKE-Fd-aFU"/>
                                             <constraint firstItem="32T-Iw-8b7" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="rPL-wn-cGP"/>
                                             <constraint firstItem="32T-Iw-8b7" firstAttribute="top" secondItem="YfQ-f1-gDC" secondAttribute="top" id="tBp-3U-Z8A"/>
                                         </constraints>
@@ -412,8 +420,8 @@ child’s name?</string>
                     </view>
                     <connections>
                         <outlet property="childNameTextFeild" destination="0ap-Fs-pQb" id="o1W-TJ-SQB"/>
-                        <outlet property="femaleButton" destination="EOu-WK-e2g" id="amx-em-LQf"/>
-                        <outlet property="maleButton" destination="xi3-gr-U3O" id="FP3-Hj-8QW"/>
+                        <outlet property="femaleRadioImageView" destination="zG3-6Z-uuG" id="2sh-4Q-hhA"/>
+                        <outlet property="maleRadioImageView" destination="BSi-Al-XFK" id="SWO-Hh-Twz"/>
                         <outlet property="nextButton" destination="w9p-Hj-rJg" id="VVx-0c-2yV"/>
                         <outlet property="storyLeft" destination="C0P-w8-sWo" id="DOE-Dv-GZF"/>
                     </connections>
@@ -433,12 +441,8 @@ child’s name?</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7M-bY-Yk2">
                                 <rect key="frame" x="0.0" y="24" width="300" height="276"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWr-NB-o5C">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here from this selection we set story accordingly " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWr-NB-o5C">
                                         <rect key="frame" x="20" y="20" width="260" height="236"/>
-                                        <string key="text">mik djaos d
-ciodsjs
-dfwf
-fopewkf</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -489,9 +493,6 @@ fopewkf</string>
         </namedColor>
         <namedColor name="orange_color(#F48D40)">
             <color red="0.95686274509803926" green="0.55294117647058827" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="sky_color(4BBFEF)">
-            <color red="0.29411764705882354" green="0.74901960784313726" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

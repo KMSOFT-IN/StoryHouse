@@ -53,10 +53,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var navigationController = UINavigationController()
         navigationController.navigationBar.isHidden = true
         if (name == nil) || (name?.isEmpty ?? false) {
-            let viewController = HomeViewController.getInstance()
+            let viewController = SplashViewController.getInstance()
             navigationController = UINavigationController(rootViewController: viewController)
         } else {
-            let viewController = TabbarViewController.getInstance()
+           let viewController = TabbarViewController.getInstance()
+           //let viewController = EndViewController.getInstance()
             navigationController = UINavigationController(rootViewController: viewController)
         }
         self.window?.rootViewController = navigationController

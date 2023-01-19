@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  SplashViewController.swift
 //  StoryHouse
 //
 //  Created by iMac on 10/01/23.
@@ -8,7 +8,7 @@
 import UIKit
 import AuthenticationServices
 
-class HomeViewController: UIViewController {
+class SplashViewController: UIViewController {
     
     @IBOutlet var appleSignInButton: ASAuthorizationAppleIDButton!
     private let signInButton = ASAuthorizationAppleIDButton()
@@ -29,8 +29,8 @@ class HomeViewController: UIViewController {
         controller.performRequests()
     }
     
-    static func getInstance() -> HomeViewController {
-        return Constant.Storyboard.MAIN.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+    static func getInstance() -> SplashViewController {
+        return Constant.Storyboard.MAIN.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
     }
     
     @IBAction func signInWithAppleButtontapped(_ sender: Any) {
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
 }
 
 
-extension HomeViewController: ASAuthorizationControllerDelegate {
+extension SplashViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("failed!")
     }
@@ -72,7 +72,7 @@ extension HomeViewController: ASAuthorizationControllerDelegate {
     }
 }
 
-extension HomeViewController: ASAuthorizationControllerPresentationContextProviding {
+extension SplashViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return view.window!
     }

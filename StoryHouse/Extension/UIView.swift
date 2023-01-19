@@ -10,6 +10,28 @@ import UIKit
 
 extension UIView {
     
+    
+    func showAnimation(_ completionBlock: @escaping () -> Void) {
+        isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.1,
+                       delay: 0,
+                       options: .curveLinear,
+                       animations: { [weak self] in
+            self?.transform = CGAffineTransform.init(scaleX: 0.95, y: 0.95)
+        }) {  (done) in
+            UIView.animate(withDuration: 0.1,
+                           delay: 0,
+                           options: .curveLinear,
+                           animations: { [weak self] in
+                self?.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+            }) { [weak self] (_) in
+                self?.isUserInteractionEnabled = true
+                completionBlock()
+            }
+        }
+    }
+    
+    
     func applyShadow(){
         self.layer.cornerRadius = 8
         self.layer.masksToBounds = true;
@@ -24,7 +46,7 @@ extension UIView {
     func applyappColorShadow(){
         //self.layer.cornerRadius = 8
         self.layer.masksToBounds = true;
-       // self.backgroundColor = UIColor.white
+        // self.backgroundColor = UIColor.white
         self.layer.shadowColor = UIColor(hex: "#FF9F3F")?.cgColor
         self.layer.shadowOffset = CGSize(width: 0.0, height: 0)
         self.layer.shadowRadius = 0.2
@@ -73,44 +95,44 @@ extension UIView {
         self.removeConstraints(self.constraints)
     }
     
-//
-//    @IBInspectable var shadowColor: UIColor?{
-//        set {
-//            guard let uiColor = newValue else { return }
-//            layer.shadowColor = uiColor.cgColor
-//        }
-//        get{
-//            guard let color = layer.shadowColor else { return nil }
-//            return UIColor(cgColor: color)
-//        }
-//    }
-//
-//    @IBInspectable var shadowOpacity: Float{
-//        set {
-//            layer.shadowOpacity = newValue
-//        }
-//        get{
-//            return layer.shadowOpacity
-//        }
-//    }
-//
-//    @IBInspectable var shadowOffset: CGSize{
-//        set {
-//            layer.shadowOffset = newValue
-//        }
-//        get{
-//            return layer.shadowOffset
-//        }
-//    }
-//
-//    @IBInspectable var shadowRadius: CGFloat{
-//        set {
-//            layer.shadowRadius = newValue
-//        }
-//        get{
-//            return layer.shadowRadius
-//        }
-//    }
+    //
+    //    @IBInspectable var shadowColor: UIColor?{
+    //        set {
+    //            guard let uiColor = newValue else { return }
+    //            layer.shadowColor = uiColor.cgColor
+    //        }
+    //        get{
+    //            guard let color = layer.shadowColor else { return nil }
+    //            return UIColor(cgColor: color)
+    //        }
+    //    }
+    //
+    //    @IBInspectable var shadowOpacity: Float{
+    //        set {
+    //            layer.shadowOpacity = newValue
+    //        }
+    //        get{
+    //            return layer.shadowOpacity
+    //        }
+    //    }
+    //
+    //    @IBInspectable var shadowOffset: CGSize{
+    //        set {
+    //            layer.shadowOffset = newValue
+    //        }
+    //        get{
+    //            return layer.shadowOffset
+    //        }
+    //    }
+    //
+    //    @IBInspectable var shadowRadius: CGFloat{
+    //        set {
+    //            layer.shadowRadius = newValue
+    //        }
+    //        get{
+    //            return layer.shadowRadius
+    //        }
+    //    }
     
     func removeAllSubviews() {
         for v in self.subviews {
@@ -126,7 +148,7 @@ extension UIView {
         }, completion: nil)
         self.isHidden = false
     }
-
+    
     func animationHide(y:CGFloat){
         UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
                        animations: {
@@ -150,7 +172,7 @@ extension UIView {
                 callback?(true)
             }
             //callback?(true)
-          //  print("Call Me")
+            //  print("Call Me")
         })
     }
     
@@ -167,7 +189,7 @@ extension UIView {
             return UIColor(cgColor: color)
         }
     }
-
+    
     @IBInspectable var shadowOpacity: Float{
         set {
             layer.shadowOpacity = newValue
@@ -176,7 +198,7 @@ extension UIView {
             return layer.shadowOpacity
         }
     }
-
+    
     @IBInspectable var shadowOffset: CGSize{
         set {
             layer.shadowOffset = newValue
@@ -185,7 +207,7 @@ extension UIView {
             return layer.shadowOffset
         }
     }
-
+    
     @IBInspectable var shadowRadius: CGFloat{
         set {
             layer.shadowRadius = newValue

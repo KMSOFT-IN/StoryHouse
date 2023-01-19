@@ -35,8 +35,8 @@
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Congratulations! You’ve completed your story." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6v-J5-FgF">
-                                        <rect key="frame" x="150" y="169" width="740" height="45"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! You’ve completed your story." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6v-J5-FgF">
+                                        <rect key="frame" x="142" y="169" width="740" height="45"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="32"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
@@ -51,6 +51,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="430" height="90"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                <connections>
+                                                    <action selector="createNewStoryButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="j4w-GD-ENv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -80,6 +83,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="349" height="70"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                        <connections>
+                                                            <action selector="homebuttonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fdx-p7-Gdn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -105,6 +111,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="349" height="70"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                        <connections>
+                                                            <action selector="readAgainButtontapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ObU-Bh-YSE"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -130,6 +139,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="349" height="70"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                        <connections>
+                                                            <action selector="shareButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mWj-rH-1CC"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -166,6 +178,7 @@
                                     <constraint firstItem="xAg-8f-bE5" firstAttribute="top" secondItem="A6v-J5-FgF" secondAttribute="bottom" constant="30" id="hYh-c9-Ndr"/>
                                     <constraint firstItem="ezS-On-Myg" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="50" id="nkG-YG-gTJ"/>
                                     <constraint firstItem="xAg-8f-bE5" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="pUg-FL-9gm"/>
+                                    <constraint firstItem="A6v-J5-FgF" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="ufy-sq-sss"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -178,6 +191,9 @@
                             <constraint firstItem="23s-f9-9Gh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vCO-Sl-8OX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="celebrationView" destination="23s-f9-9Gh" id="0ya-dZ-4QQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

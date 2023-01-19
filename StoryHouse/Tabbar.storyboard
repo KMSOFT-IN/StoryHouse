@@ -380,9 +380,10 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="30" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-vW-yaA">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-vW-yaA">
                                                 <rect key="frame" x="15" y="105" width="516.5" height="629"/>
-                                                <string key="text">“Fairy Grandma,this dress is so pretty !” is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</string>
+                                                <string key="text">“Fairy Grandma,this dress is so pretty !” is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+“Fairy Grandma,this dress is so pretty !” is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</string>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="40"/>
                                                 <color key="textColor" name="font_color(#292B5C)"/>
                                                 <nil key="highlightedColor"/>
@@ -405,7 +406,7 @@
                                                                                     <constraint firstAttribute="height" constant="40" id="XnD-3s-J7s"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUS " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnC-xz-i2l">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUS " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="YnC-xz-i2l">
                                                                                 <rect key="frame" x="0.0" y="40" width="139" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
                                                                                 <color key="textColor" name="font_color(#292B5C)"/>
@@ -449,7 +450,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                                         <connections>
-                                                                            <action selector="playPauseButtonTapped:" destination="sI4-7y-cKe" eventType="touchUpInside" id="F7O-Q4-ekt"/>
+                                                                            <action selector="playPauseButtonTapped:" destination="sI4-7y-cKe" eventType="touchUpInside" id="SpV-Mx-2In"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -476,7 +477,7 @@
                                                                                     <constraint firstAttribute="height" constant="40" id="y21-fB-RpJ"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEXT PAGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vS6-aQ-fma">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEXT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vS6-aQ-fma">
                                                                                 <rect key="frame" x="0.0" y="40" width="139" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
                                                                                 <color key="textColor" name="font_color(#292B5C)"/>
@@ -510,6 +511,7 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="G7Q-fd-toh"/>
                                                     <constraint firstAttribute="trailing" secondItem="c9i-00-Y5a" secondAttribute="trailing" id="LfY-7t-hQV"/>
@@ -657,6 +659,7 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="DbJ-zp-fQr" firstAttribute="centerY" secondItem="ekG-uq-M6E" secondAttribute="centerY" id="5pU-wq-Lb1"/>
                                                     <constraint firstAttribute="trailing" secondItem="DbJ-zp-fQr" secondAttribute="trailing" id="FD1-n7-yfm"/>
@@ -665,11 +668,19 @@
                                                     <constraint firstItem="DbJ-zp-fQr" firstAttribute="leading" secondItem="ekG-uq-M6E" secondAttribute="leading" id="wXI-nD-QuI"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRb-hC-F55" customClass="Slider" customModule="StoryHouse" customModuleProvider="target">
+                                                <rect key="frame" x="50" y="40" width="326.5" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="dzX-9Y-le9"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="xRb-hC-F55" firstAttribute="centerY" secondItem="pkz-Gc-ftZ" secondAttribute="centerY" id="295-en-6EL"/>
+                                            <constraint firstItem="xRb-hC-F55" firstAttribute="leading" secondItem="H0P-zt-M9A" secondAttribute="leading" constant="50" id="3x7-59-pDR"/>
                                             <constraint firstAttribute="trailing" secondItem="vPG-BW-HrU" secondAttribute="trailing" constant="15" id="J5g-Yn-Tu7"/>
                                             <constraint firstItem="ekG-uq-M6E" firstAttribute="top" secondItem="vPG-BW-HrU" secondAttribute="bottom" constant="20" id="QxR-BQ-MPu"/>
+                                            <constraint firstItem="18f-zV-Are" firstAttribute="leading" secondItem="xRb-hC-F55" secondAttribute="trailing" constant="50" id="SJw-T3-yB3"/>
                                             <constraint firstItem="vPG-BW-HrU" firstAttribute="top" secondItem="m0r-vW-yaA" secondAttribute="bottom" constant="15" id="Vjw-je-qiq"/>
                                             <constraint firstAttribute="bottom" secondItem="ekG-uq-M6E" secondAttribute="bottom" constant="15" id="YGF-bt-1S7"/>
                                             <constraint firstItem="m0r-vW-yaA" firstAttribute="top" secondItem="18f-zV-Are" secondAttribute="bottom" constant="15" id="Yjk-pA-ROV"/>
@@ -717,6 +728,7 @@
                         <outlet property="pageLable" destination="pkz-Gc-ftZ" id="Nph-Sp-ZG2"/>
                         <outlet property="playPauseImageView" destination="EHK-Ly-j3s" id="jF5-29-DrC"/>
                         <outlet property="secoundView" destination="ekG-uq-M6E" id="gLp-nG-daJ"/>
+                        <outlet property="sliderView" destination="xRb-hC-F55" id="WzE-lG-Sp6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P2C-sp-pD8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

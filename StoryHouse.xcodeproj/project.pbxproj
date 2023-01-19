@@ -50,6 +50,9 @@
 		88140342296D995700930582 /* SelectStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88140341296D995700930582 /* SelectStoryViewController.swift */; };
 		88140344296D9B9B00930582 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88140343296D9B9B00930582 /* HomeViewController.swift */; };
 		881CBF37297680090094109D /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881CBF36297680090094109D /* StoryModel.swift */; };
+		88370B5D2978F0A400B2199C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88370B5C2978F0A400B2199C /* Home.storyboard */; };
+		883C9B3A29793A9700FD1C08 /* Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883C9B3929793A9700FD1C08 /* Gifs.swift */; };
+		883C9B3C29793AF600FD1C08 /* star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 883C9B3B29793AF600FD1C08 /* star.gif */; };
 		8844DC5129765AA40074610C /* StoriesJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 8844DC5029765AA40074610C /* StoriesJSON.json */; };
 		888A48E1296E62B70097C42D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A48DF296E62B70097C42D /* Utility.swift */; };
 		888A48E2296E62B70097C42D /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A48E0296E62B70097C42D /* AppData.swift */; };
@@ -58,10 +61,11 @@
 		888A48E8296E79410097C42D /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888A48E7296E79410097C42D /* Category.storyboard */; };
 		888A48EA296E79770097C42D /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888A48E9296E79770097C42D /* Loading.storyboard */; };
 		88D119C6296E98360035B0A0 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D119C5296E98360035B0A0 /* TabbarViewController.swift */; };
+		88DB927529796898009DF1FF /* slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB927429796898009DF1FF /* slider.swift */; };
+		88DB92772979729B009DF1FF /* celebration.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88DB92762979729B009DF1FF /* celebration.gif */; };
 		88DF44B22976CA9A0070949F /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF44B12976CA9A0070949F /* UserDefaultHelper.swift */; };
 		88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1CA7E29780C5D008F3B28 /* EndViewController.swift */; };
 		88E1CA8129780C69008F3B28 /* End.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E1CA8029780C69008F3B28 /* End.storyboard */; };
-		88E1CA8729781672008F3B28 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1CA8629781672008F3B28 /* Gif+Image.swift */; };
 		88F562DE296E8CEE00813BC9 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +115,9 @@
 		88140341296D995700930582 /* SelectStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStoryViewController.swift; sourceTree = "<group>"; };
 		88140343296D9B9B00930582 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		881CBF36297680090094109D /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
+		88370B5C2978F0A400B2199C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		883C9B3929793A9700FD1C08 /* Gifs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gifs.swift; sourceTree = "<group>"; };
+		883C9B3B29793AF600FD1C08 /* star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = star.gif; sourceTree = "<group>"; };
 		8844DC5029765AA40074610C /* StoriesJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoriesJSON.json; sourceTree = "<group>"; };
 		888A48DF296E62B70097C42D /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		888A48E0296E62B70097C42D /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -120,10 +127,11 @@
 		888A48E9296E79770097C42D /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		88A38C49296E9D7E00B7910D /* StoryHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoryHouse.entitlements; sourceTree = "<group>"; };
 		88D119C5296E98360035B0A0 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		88DB927429796898009DF1FF /* slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = slider.swift; sourceTree = "<group>"; };
+		88DB92762979729B009DF1FF /* celebration.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebration.gif; sourceTree = "<group>"; };
 		88DF44B12976CA9A0070949F /* UserDefaultHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		88E1CA7E29780C5D008F3B28 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		88E1CA8029780C69008F3B28 /* End.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = End.storyboard; sourceTree = "<group>"; };
-		88E1CA8629781672008F3B28 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
 		88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +174,7 @@
 				88E1CA8529781672008F3B28 /* GIF Class */,
 				885BE268296EBE6900B09179 /* Model */,
 				881402E5296D6A2E00930582 /* Main.storyboard */,
+				88370B5C2978F0A400B2199C /* Home.storyboard */,
 				88E1CA8029780C69008F3B28 /* End.storyboard */,
 				88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */,
 				888A48E9296E79770097C42D /* Loading.storyboard */,
@@ -270,7 +279,10 @@
 		88E1CA8529781672008F3B28 /* GIF Class */ = {
 			isa = PBXGroup;
 			children = (
-				88E1CA8629781672008F3B28 /* Gif+Image.swift */,
+				883C9B3B29793AF600FD1C08 /* star.gif */,
+				883C9B3929793A9700FD1C08 /* Gifs.swift */,
+				88DB92762979729B009DF1FF /* celebration.gif */,
+				88DB927429796898009DF1FF /* slider.swift */,
 			);
 			path = "GIF Class";
 			sourceTree = "<group>";
@@ -337,7 +349,9 @@
 				8814031E296D6C9C00930582 /* Poppins-MediumItalic.ttf in Resources */,
 				88140310296D6C9C00930582 /* Poppins-Light.ttf in Resources */,
 				888A48EA296E79770097C42D /* Loading.storyboard in Resources */,
+				88370B5D2978F0A400B2199C /* Home.storyboard in Resources */,
 				888A48E4296E77310097C42D /* Onboarding.storyboard in Resources */,
+				883C9B3C29793AF600FD1C08 /* star.gif in Resources */,
 				88140311296D6C9C00930582 /* Poppins-Medium.ttf in Resources */,
 				8814030E296D6C9C00930582 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				8814031A296D6C9C00930582 /* Poppins-Black.ttf in Resources */,
@@ -361,6 +375,7 @@
 				881402F7296D6C8D00930582 /* LICENSE.txt in Resources */,
 				88E1CA8129780C69008F3B28 /* End.storyboard in Resources */,
 				8844DC5129765AA40074610C /* StoriesJSON.json in Resources */,
+				88DB92772979729B009DF1FF /* celebration.gif in Resources */,
 				8814030D296D6C9C00930582 /* Poppins-ThinItalic.ttf in Resources */,
 				881402F6296D6C8D00930582 /* LuckiestGuy-Regular.ttf in Resources */,
 			);
@@ -375,11 +390,11 @@
 			files = (
 				88140336296D861E00930582 /* MagicalObjectViewController.swift in Sources */,
 				88140320296D7DD100930582 /* HeroViewController.swift in Sources */,
+				883C9B3A29793A9700FD1C08 /* Gifs.swift in Sources */,
 				88D119C6296E98360035B0A0 /* TabbarViewController.swift in Sources */,
 				88140331296D84FA00930582 /* UIImage.swift in Sources */,
 				88140332296D84FA00930582 /* UIViewController.swift in Sources */,
 				88140334296D85B000930582 /* PlacesViewController.swift in Sources */,
-				88E1CA8729781672008F3B28 /* Gif+Image.swift in Sources */,
 				88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */,
 				88140344296D9B9B00930582 /* HomeViewController.swift in Sources */,
 				888A48E1296E62B70097C42D /* Utility.swift in Sources */,
@@ -390,6 +405,7 @@
 				88140342296D995700930582 /* SelectStoryViewController.swift in Sources */,
 				8814032F296D84FA00930582 /* String.swift in Sources */,
 				8814033A296D874400930582 /* Constant.swift in Sources */,
+				88DB927529796898009DF1FF /* slider.swift in Sources */,
 				88140322296D7E9100930582 /* imageCollectionViewCell.swift in Sources */,
 				88140330296D84FA00930582 /* UIButton.swift in Sources */,
 				881402E0296D6A2E00930582 /* AppDelegate.swift in Sources */,
@@ -546,11 +562,11 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Story House";
+				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -583,11 +599,11 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Story House";
+				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

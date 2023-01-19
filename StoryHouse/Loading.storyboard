@@ -33,9 +33,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-DJ-FhQ">
-                                        <rect key="frame" x="241" y="90" width="542.5" height="386"/>
+                                        <rect key="frame" x="20" y="90" width="984" height="128"/>
                                         <string key="text">creating 
-Jennifer’s story!</string>
+Jennifer’s story! </string>
                                         <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="64"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
@@ -59,14 +59,16 @@ Jennifer’s story!</string>
                                     <constraint firstItem="mIx-im-8PK" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" id="4aM-ur-Hsk"/>
                                     <constraint firstAttribute="bottom" secondItem="mIx-im-8PK" secondAttribute="bottom" id="F83-V6-Glo"/>
                                     <constraint firstItem="Alc-DJ-FhQ" firstAttribute="top" secondItem="sLv-b3-B1h" secondAttribute="top" constant="90" id="LE3-1c-ab4"/>
+                                    <constraint firstItem="Alc-DJ-FhQ" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" constant="20" id="YPg-Fh-zlw"/>
                                     <constraint firstAttribute="trailing" secondItem="mIx-im-8PK" secondAttribute="trailing" id="by5-d7-j5c"/>
                                     <constraint firstItem="mIx-im-8PK" firstAttribute="top" secondItem="sLv-b3-B1h" secondAttribute="top" id="bz6-Lw-W9D"/>
                                     <constraint firstItem="QoM-7n-9z9" firstAttribute="centerY" secondItem="sLv-b3-B1h" secondAttribute="centerY" id="ems-eo-MTI"/>
                                     <constraint firstItem="Alc-DJ-FhQ" firstAttribute="centerX" secondItem="sLv-b3-B1h" secondAttribute="centerX" id="fUc-Zj-Zd2"/>
-                                    <constraint firstItem="QoM-7n-9z9" firstAttribute="top" secondItem="Alc-DJ-FhQ" secondAttribute="bottom" constant="10" id="oJq-rg-EGk"/>
+                                    <constraint firstItem="QoM-7n-9z9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Alc-DJ-FhQ" secondAttribute="bottom" constant="10" id="oJq-rg-EGk"/>
                                     <constraint firstItem="QoM-7n-9z9" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" id="sep-ER-ci3"/>
                                     <constraint firstItem="bZR-ZB-Hw3" firstAttribute="top" secondItem="QoM-7n-9z9" secondAttribute="bottom" id="v8j-hG-gpb"/>
                                     <constraint firstAttribute="trailing" secondItem="QoM-7n-9z9" secondAttribute="trailing" constant="130" id="whz-H4-d9u"/>
+                                    <constraint firstAttribute="trailing" secondItem="Alc-DJ-FhQ" secondAttribute="trailing" constant="20" id="ynO-ph-sM5"/>
                                 </constraints>
                             </view>
                         </subviews>

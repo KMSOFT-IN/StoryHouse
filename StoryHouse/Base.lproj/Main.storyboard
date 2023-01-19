@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Home View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SplashViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,10 +86,10 @@ story!</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ehv-mK-bEz">
-                                                <rect key="frame" x="40" y="852.5" width="178" height="37.5"/>
+                                                <rect key="frame" x="40" y="847.5" width="178" height="42.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-rQ-k4D">
-                                                        <rect key="frame" x="0.0" y="0.0" width="79.5" height="37.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-rQ-k4D">
+                                                        <rect key="frame" x="0.0" y="0.0" width="79.5" height="42.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-E3-Onl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="79.5" height="36.5"/>
@@ -103,7 +103,7 @@ story!</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZY-FQ-ock">
-                                                                <rect key="frame" x="0.0" y="36.5" width="79.5" height="1"/>
+                                                                <rect key="frame" x="0.0" y="41.5" width="79.5" height="1"/>
                                                                 <color key="tintColor" name="orange_color(#F48D40)"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="Ttd-ur-Wpa"/>
@@ -115,7 +115,7 @@ story!</string>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWF-Fv-FcE">
-                                                        <rect key="frame" x="84.5" y="0.0" width="2" height="37.5"/>
+                                                        <rect key="frame" x="84.5" y="0.0" width="2" height="42.5"/>
                                                         <color key="tintColor" name="line_color(2D2D2D)"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="2" id="QCq-6U-kOz"/>
@@ -125,10 +125,10 @@ story!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dwP-Ol-ec8">
-                                                        <rect key="frame" x="91.5" y="0.0" width="86.5" height="37.5"/>
+                                                        <rect key="frame" x="91.5" y="0.0" width="86.5" height="42.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-ZS-iVj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="86.5" height="36.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="86.5" height="41.5"/>
                                                                 <color key="tintColor" name="orange_color(#F48D40)"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title="Privacy">
@@ -139,7 +139,7 @@ story!</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxZ-Tr-Mep">
-                                                                <rect key="frame" x="0.0" y="36.5" width="86.5" height="1"/>
+                                                                <rect key="frame" x="0.0" y="41.5" width="86.5" height="1"/>
                                                                 <color key="tintColor" name="orange_color(#F48D40)"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="DFX-7R-Ti0"/>
@@ -203,218 +203,6 @@ story!</string>
             </objects>
             <point key="canvasLocation" x="825.76866764275246" y="-34.5703125"/>
         </scene>
-        <!--Select Story View Controller-->
-        <scene sceneID="aRb-wZ-Gay">
-            <objects>
-                <viewController storyboardIdentifier="SelectStoryViewController" id="1F3-Eu-R4h" customClass="SelectStoryViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E0g-Id-p2f">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-Pa-XBP">
-                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="jVp-wX-gdU">
-                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCy-1q-9ZO">
-                                        <rect key="frame" x="535" y="150" width="296" height="128"/>
-                                        <string key="text">Hello 
-Jennifer!</string>
-                                        <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="64"/>
-                                        <color key="textColor" name="font_color(#292B5C)"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyv-8K-B1x">
-                                        <rect key="frame" x="50" y="20" width="58.5" height="66.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="ic_backButton" title=" "/>
-                                        <connections>
-                                            <action selector="backButtontapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="K83-Hh-LiZ"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="GMJ-Cz-Tti">
-                                        <rect key="frame" x="40" y="430" width="1286" height="490"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaN-Te-qUe">
-                                                <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLy-ZC-Jym">
-                                                        <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                        <connections>
-                                                            <action selector="createStoryButtonTapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="bCJ-ha-U50"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_createStory" translatesAutoresizingMaskIntoConstraints="NO" id="Jis-ql-IhY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK8-M3-fCQ">
-                                                        <rect key="frame" x="80" y="385" width="468" height="75"/>
-                                                        <color key="backgroundColor" name="orange_color(#F48D40)"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="W2X-ab-yQY"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Create my story">
-                                                            <fontDescription key="titleFontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="22"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="35"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="orange_color(#F48D40)"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="PLy-ZC-Jym" secondAttribute="bottom" id="39u-ql-MtY"/>
-                                                    <constraint firstItem="Jis-ql-IhY" firstAttribute="top" secondItem="BaN-Te-qUe" secondAttribute="top" id="8sd-u9-yAd"/>
-                                                    <constraint firstAttribute="trailing" secondItem="PLy-ZC-Jym" secondAttribute="trailing" id="9E7-O8-aGp"/>
-                                                    <constraint firstItem="PLy-ZC-Jym" firstAttribute="leading" secondItem="BaN-Te-qUe" secondAttribute="leading" id="Ftc-UA-ege"/>
-                                                    <constraint firstItem="PLy-ZC-Jym" firstAttribute="top" secondItem="BaN-Te-qUe" secondAttribute="top" id="Ke8-6G-3Lf"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dK8-M3-fCQ" secondAttribute="trailing" constant="80" id="d9E-qs-ldc"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Jis-ql-IhY" secondAttribute="bottom" id="dSy-K3-twU"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jis-ql-IhY" secondAttribute="trailing" id="h7I-5k-MgA"/>
-                                                    <constraint firstItem="Jis-ql-IhY" firstAttribute="leading" secondItem="BaN-Te-qUe" secondAttribute="leading" id="lIh-Yl-JND"/>
-                                                    <constraint firstAttribute="bottom" secondItem="dK8-M3-fCQ" secondAttribute="bottom" constant="30" id="vIZ-OW-iI3"/>
-                                                    <constraint firstItem="dK8-M3-fCQ" firstAttribute="leading" secondItem="BaN-Te-qUe" secondAttribute="leading" constant="80" id="xeD-i2-0wJ"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="44"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="orange_color(#F48D40)"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7n-6q-udJ">
-                                                <rect key="frame" x="658" y="0.0" width="628" height="490"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scN-lA-ede">
-                                                        <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                        <connections>
-                                                            <action selector="exploreStoryButtonTapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="bvy-Ae-yUf"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exploreStory" translatesAutoresizingMaskIntoConstraints="NO" id="kbf-gl-Hvx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="628" height="490"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqG-XP-WIt">
-                                                        <rect key="frame" x="80" y="385" width="468" height="75"/>
-                                                        <color key="backgroundColor" name="orange_color(#F48D40)"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="65D-5M-EGN"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Explore stories">
-                                                            <fontDescription key="titleFontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="22"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="35"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="orange_color(#F48D40)"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="scN-lA-ede" firstAttribute="leading" secondItem="Q7n-6q-udJ" secondAttribute="leading" id="2Ld-qS-PfF"/>
-                                                    <constraint firstItem="FqG-XP-WIt" firstAttribute="leading" secondItem="Q7n-6q-udJ" secondAttribute="leading" constant="80" id="8J2-6d-cY6"/>
-                                                    <constraint firstItem="kbf-gl-Hvx" firstAttribute="leading" secondItem="Q7n-6q-udJ" secondAttribute="leading" id="AH8-u6-oQv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kbf-gl-Hvx" secondAttribute="trailing" id="C6u-oz-qUu"/>
-                                                    <constraint firstItem="kbf-gl-Hvx" firstAttribute="top" secondItem="Q7n-6q-udJ" secondAttribute="top" id="D8w-Qh-4da"/>
-                                                    <constraint firstAttribute="bottom" secondItem="scN-lA-ede" secondAttribute="bottom" id="LD0-x6-3xM"/>
-                                                    <constraint firstAttribute="bottom" secondItem="kbf-gl-Hvx" secondAttribute="bottom" id="YpU-Tm-HaL"/>
-                                                    <constraint firstItem="scN-lA-ede" firstAttribute="top" secondItem="Q7n-6q-udJ" secondAttribute="top" id="m9X-ad-dVj"/>
-                                                    <constraint firstAttribute="bottom" secondItem="FqG-XP-WIt" secondAttribute="bottom" constant="30" id="p41-28-ORh"/>
-                                                    <constraint firstAttribute="trailing" secondItem="FqG-XP-WIt" secondAttribute="trailing" constant="80" id="tkf-t5-KXE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="scN-lA-ede" secondAttribute="trailing" id="zdw-ZF-mrB"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="44"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="orange_color(#F48D40)"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-td-ETx">
-                                        <rect key="frame" x="1238" y="20" width="78" height="66"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="ic_setting" title=" "/>
-                                        <connections>
-                                            <action selector="settingButtontapped:" destination="1F3-Eu-R4h" eventType="touchUpInside" id="Sfo-Yd-6TQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="PCy-1q-9ZO" firstAttribute="top" secondItem="oyv-8K-B1x" secondAttribute="bottom" constant="63.5" id="4YH-Rp-jUW"/>
-                                    <constraint firstItem="GMJ-Cz-Tti" firstAttribute="height" secondItem="hHS-Pa-XBP" secondAttribute="height" multiplier="0.5" id="EJd-8V-g2m"/>
-                                    <constraint firstItem="0B7-td-ETx" firstAttribute="top" secondItem="hHS-Pa-XBP" secondAttribute="top" constant="20" id="F6M-Sz-oOU"/>
-                                    <constraint firstAttribute="trailing" secondItem="jVp-wX-gdU" secondAttribute="trailing" id="Ldp-7Z-1mK"/>
-                                    <constraint firstAttribute="bottom" secondItem="GMJ-Cz-Tti" secondAttribute="bottom" constant="60" id="OgF-Bu-u6Z"/>
-                                    <constraint firstItem="jVp-wX-gdU" firstAttribute="top" secondItem="hHS-Pa-XBP" secondAttribute="top" id="W6R-Z8-vum"/>
-                                    <constraint firstItem="PCy-1q-9ZO" firstAttribute="centerX" secondItem="hHS-Pa-XBP" secondAttribute="centerX" id="YZg-b5-8GB"/>
-                                    <constraint firstItem="jVp-wX-gdU" firstAttribute="leading" secondItem="hHS-Pa-XBP" secondAttribute="leading" id="aUn-IC-uAI"/>
-                                    <constraint firstAttribute="trailing" secondItem="GMJ-Cz-Tti" secondAttribute="trailing" constant="40" id="cLL-9p-NGc"/>
-                                    <constraint firstAttribute="bottom" secondItem="jVp-wX-gdU" secondAttribute="bottom" id="keH-oE-V0R"/>
-                                    <constraint firstItem="GMJ-Cz-Tti" firstAttribute="leading" secondItem="hHS-Pa-XBP" secondAttribute="leading" constant="40" id="lZz-an-E3o"/>
-                                    <constraint firstAttribute="trailing" secondItem="0B7-td-ETx" secondAttribute="trailing" constant="50" id="roc-3o-k8M"/>
-                                    <constraint firstItem="oyv-8K-B1x" firstAttribute="top" secondItem="hHS-Pa-XBP" secondAttribute="top" constant="20" id="u4a-ba-DnX"/>
-                                    <constraint firstItem="oyv-8K-B1x" firstAttribute="leading" secondItem="hHS-Pa-XBP" secondAttribute="leading" constant="50" id="vbx-Ud-Nx9"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Njz-hk-Qjn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hHS-Pa-XBP" firstAttribute="top" secondItem="Njz-hk-Qjn" secondAttribute="top" id="4hT-h8-eza"/>
-                            <constraint firstItem="Njz-hk-Qjn" firstAttribute="bottom" secondItem="hHS-Pa-XBP" secondAttribute="bottom" id="512-jB-9e0"/>
-                            <constraint firstItem="Njz-hk-Qjn" firstAttribute="trailing" secondItem="hHS-Pa-XBP" secondAttribute="trailing" id="8EW-xH-omo"/>
-                            <constraint firstItem="hHS-Pa-XBP" firstAttribute="leading" secondItem="Njz-hk-Qjn" secondAttribute="leading" id="cOx-ib-DXL"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="childName" destination="PCy-1q-9ZO" id="8pS-Ml-aCE"/>
-                        <outlet property="createStoryButton" destination="dK8-M3-fCQ" id="Ve9-50-Tpr"/>
-                        <outlet property="createStoryView" destination="BaN-Te-qUe" id="o23-72-Xpf"/>
-                        <outlet property="exploreStoryButton" destination="FqG-XP-WIt" id="upc-sz-521"/>
-                        <outlet property="exploreStoryView" destination="Q7n-6q-udJ" id="PwF-Tb-SXQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jeb-dX-MyW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1477.5988286969252" y="-26.3671875"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LHf-xv-nNe">
             <objects>
@@ -436,10 +224,6 @@ Jennifer!</string>
     </scenes>
     <resources>
         <image name="ic_appBackGroud" width="1193.5" height="834"/>
-        <image name="ic_backButton" width="30" height="52.5"/>
-        <image name="ic_createStory" width="538" height="466"/>
-        <image name="ic_exploreStory" width="538" height="465.5"/>
-        <image name="ic_setting" width="49.5" height="52"/>
         <image name="ic_signInWithApple" width="416" height="88"/>
         <image name="ic_storyHouse" width="742.5" height="834.5"/>
         <namedColor name="font_color(#292B5C)">

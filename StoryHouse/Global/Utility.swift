@@ -22,29 +22,26 @@ import AVFoundation
 #endif
     }
     
-    static var synthesizer = AVSpeechSynthesizer()
+    
+  /*  static var utterance = AVSpeechUtterance(string: "")
+    static var volume = 10
+    
     class func playAudio(text: String) {
-        
-        //Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-        
+        // Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         if text == "!" || text == "," { return }
-        let utterance = AVSpeechUtterance(string: text)
+        Utility.utterance = AVSpeechUtterance(string: text)
         var voice = " "
-        if let voiceObj = AVSpeechSynthesisVoice.speechVoices().filter({$0.name == "Rishi" }).first {
+        if let voiceObj = AVSpeechSynthesisVoice.speechVoices().filter({$0.name == "Samantha" }).first {
             voice = voiceObj.identifier
         }
-        utterance.voice = AVSpeechSynthesisVoice(identifier: voice)
-        utterance.rate = 0.5
+        Utility.utterance.voice = AVSpeechSynthesisVoice(identifier: voice)
+        Utility.utterance.rate = 0.5
+        Utility.utterance.volume = Float(Utility.volume)
+        
         Utility.synthesizer.speak(utterance)
     }
     
-    class func playLatestAudio(text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-      //  utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.5
-        let synthesizer = AVSpeechSynthesizer()
-        Utility.synthesizer.speak(utterance)
-    }
+   */
     
     class func getDateFromTimeStamp(timeStamp : Double) -> String {
         let date = Date(timeIntervalSince1970: timeStamp)

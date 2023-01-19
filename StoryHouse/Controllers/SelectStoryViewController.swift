@@ -1,5 +1,5 @@
 //
-//  SelectStoryViewController.swift
+//  HomeViewController.swift
 //  StoryHouse
 //
 //  Created by iMac on 10/01/23.
@@ -7,32 +7,38 @@
 
 import UIKit
 
-class SelectStoryViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    
     @IBOutlet weak var childName: UILabel!
-    
-    
     @IBOutlet weak var createStoryView: UIView!
     @IBOutlet weak var exploreStoryView: UIView!
-    
     @IBOutlet weak var createStoryButton: UIButton!
     @IBOutlet weak var exploreStoryButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var isCreateStoryEnable : Bool = true
+    var isFromTabbar: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let name = AppData.sharedInstance.childName ?? ""
         let name = UserDefaultHelper.getChildname() ?? ""
-        self.childName.text = "HELLO" + "\n\(name)"
+        self.childName.text = "HELLO" + "\n\(name) !"
         self.setUpUI(isCreateTrue: isCreateStoryEnable)
         self.navigationController?.navigationBar.isHidden = true
-        
     }
     
-    static func getInstance() -> SelectStoryViewController {
-        return Constant.Storyboard.MAIN.instantiateViewController(withIdentifier: "SelectStoryViewController") as! SelectStoryViewController
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if self.isFromTabbar {
+            self.backButton.isHidden = true
+        }
+        else {
+            self.backButton.isHidden = false
+        }
+    }
+    
+    static func getInstance() -> HomeViewController {
+        return Constant.Storyboard.HOME.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
     }
     
     @IBAction func backButtontapped(_ sender: Any) {

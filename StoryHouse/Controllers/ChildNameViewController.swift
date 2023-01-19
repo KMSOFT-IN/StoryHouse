@@ -11,18 +11,15 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
 
     @IBOutlet weak var childNameTextFeild: UITextField!
     @IBOutlet weak var nextButton: UIButton!
-    
-    @IBOutlet weak var femaleButton: UIButton!
-    @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var femaleRadioImageView: UIImageView!
+    @IBOutlet weak var maleRadioImageView: UIImageView!
+    @IBOutlet weak var storyLeft: UILabel!
     
     var isGirlSelected: Bool  = true
     
-    @IBOutlet weak var storyLeft: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.isGirlSelected {
-            self.femaleButton.setImage(UIImage(named: "ic_fill_radio"), for: .normal)
-        }
+        self.hideKeyboardWhenTappedAround()
     }
     
     static func getInstance() -> ChildNameViewController {
@@ -38,30 +35,32 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
         self.childNameTextFeild.text = ""
     }
     
-    @IBAction func moreChildButtonTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func upgradeButtonTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func nextButtonTapped(_ sender: Any) {
-        if childNameTextFeild.text == "" || childNameTextFeild.text?.isEmpty ?? false {
-            self.alert(message: "Please enter your child name.")
-            return
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        self.nextButton.showAnimation {
+            if self.childNameTextFeild.text == "" || self.childNameTextFeild.text?.isEmpty ?? false {
+                self.alert(message: "Please enter your child name.")
+                return
+            }
+            
+            let check = self.childNameTextFeild.text?.trim?.count ?? 0
+            
+            if check < 3 {
+                self.alert(message: "Please enter atleast three character.")
+                return
+            }
+            
+            UserDefaultHelper.setChildname(value: self.childNameTextFeild.text ?? "")
+            if self.isGirlSelected {
+                UserDefaultHelper.setGender(value: GENDER.GIRL.rawValue)
+            }
+            else {
+                UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
+            }
+            
+            let viewController = HomeViewController.getInstance()
+            viewController.isFromTabbar = false
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
-        let check = childNameTextFeild.text?.trim?.count ?? 0   
-        if check < 3 {
-            self.alert(message: "Please enter atleast three character.")
-            return
-        }
-        
-        UserDefaultHelper.setChildname(value: self.childNameTextFeild.text ?? "")
-        //AppData.sharedInstance.childName = self.childNameTextFeild.text
-        
-        let viewCOntroller = SelectStoryViewController.getInstance()
-        self.navigationController?.pushViewController(viewCOntroller, animated: true)
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
@@ -81,7 +80,7 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     
     @IBAction func QuestionGenderButtonTapped(_ sender: UIButton) {
         let popController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "popoverId")
-        popController.preferredContentSize = CGSize(width: 250  ,height: 250)
+        popController.preferredContentSize = CGSize(width: 150  ,height: 150)
         popController.modalPresentationStyle = UIModalPresentationStyle.popover
         popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
         popController.popoverPresentationController?.delegate = self
@@ -94,26 +93,19 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
         return UIModalPresentationStyle.none
     }
     
-    @IBAction func femaleRadionButtonTapped(_ sender: UIButton) {
-        self.isGirlSelected = true
-        self.setRadioButton()
-    }
-    func setRadioButton() {
-        if self.isGirlSelected {
-            self.femaleButton.setImage(UIImage(named: "ic_fill_radio"), for: .normal)
-            self.maleButton.setImage(UIImage(named: "ic_radio"), for: .normal)
-        }
-        else
-        {
-            self.maleButton.setImage(UIImage(named: "ic_fill_radio"), for: .normal)
-            self.femaleButton.setImage(UIImage(named: "ic_radio"), for: .normal)
-        }
+    
+    @IBAction func girlButtonTapped(_ sender: Any) {
+        self.setReferenceSelectionImage(selectedImage: self.femaleRadioImageView)
     }
     
-    @IBAction func maleRadioButtonTapped(_ sender: UIButton) {
-        self.isGirlSelected = false
-        self.setRadioButton()
+    @IBAction func boyButtonTapped(_ sender: Any) {
+        self.setReferenceSelectionImage(selectedImage: self.maleRadioImageView)
     }
     
+    func setReferenceSelectionImage(selectedImage: UIImageView) {
+        self.femaleRadioImageView.image = UIImage(named: "ic_radio")
+        self.maleRadioImageView.image = UIImage(named: "ic_radio")
+        selectedImage.image = UIImage(named: "ic_fill_radio")
+    }
     
 }

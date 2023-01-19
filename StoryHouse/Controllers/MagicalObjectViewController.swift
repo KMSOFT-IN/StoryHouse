@@ -10,7 +10,7 @@ import UIKit
 class MagicalObjectViewController: UIViewController {
     
     @IBOutlet weak var magicalObjectCollectionView: UICollectionView!
-    
+    let gifHandler: Gif = Gif()
     let magicalImages = ["ic_object1","ic_object2","ic_object3","ic_object4"]
     var selectedIndex = 0
     
@@ -24,6 +24,16 @@ class MagicalObjectViewController: UIViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "MagicalObjectViewController") as! MagicalObjectViewController
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = touches.first?.location(in: self.view) else { return }
+        let hitView = self.view.hitTest(location, with: event)
+        // if hitView == self.view {
+        let view = UIView(frame: CGRect(x: location.x - 50, y: location.y - 50, width: 100, height: 100))
+        self.view.addSubview(view)
+        self.gifHandler.setUpGif(name: "star", duration: 1, view: view)
+        //}
+    }
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -35,12 +45,19 @@ class MagicalObjectViewController: UIViewController {
     
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
-        sender.alpha = 0.8
+        sender.showAnimation {
+            let viewController = LoadingViewController.getInstance()
+            self.navigationController?.pushViewController(viewController, animated: true)
+
+        }
+        
+/*        sender.alpha = 0.8
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
               sender.alpha = 1.0
               let viewController = LoadingViewController.getInstance()
               self.navigationController?.pushViewController(viewController, animated: true)
           }
+ */
     }
 }
 

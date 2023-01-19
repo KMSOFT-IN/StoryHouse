@@ -10,6 +10,18 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func configureChildViewController(childController: UIViewController, onView: UIView) {
         onView.removeAllSubviews()
         self.addChild(childController)
@@ -19,7 +31,7 @@ extension UIViewController {
         childController.willMove(toParent: self)
     }
     func configureChildViewController1(childController: UIViewController, onView: UIView) {
-      //  onView.removeAllSubviews()
+        //  onView.removeAllSubviews()
         self.addChild(childController)
         onView.addSubview(childController.view)
         constrainViewEqual(holderView: onView, view: childController.view)
@@ -122,7 +134,7 @@ extension UIViewController {
     
     func convertImageToString (img: UIImage) -> String {
         let imageData: Data = img.jpegData(compressionQuality: 1.0) ?? Data()
-       // let imageData: Data = img.pngData() ?? Data()
+        // let imageData: Data = img.pngData() ?? Data()
         let imgString = imageData.base64EncodedString(options: .init(rawValue: 0))
         return imgString
     }
