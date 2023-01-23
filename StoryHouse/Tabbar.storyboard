@@ -385,7 +385,7 @@
                                                 <string key="text">“Fairy Grandma,this dress is so pretty !” is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
 “Fairy Grandma,this dress is so pretty !” is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</string>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="40"/>
-                                                <color key="textColor" name="font_color(#292B5C)"/>
+                                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPG-BW-HrU">
@@ -578,7 +578,7 @@
                                                                                     <constraint firstAttribute="height" constant="40" id="jHz-HK-QWs"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUTE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7O-BC-ozZ">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOLUME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7O-BC-ozZ">
                                                                                 <rect key="frame" x="0.0" y="40" width="138.5" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
                                                                                 <color key="textColor" name="font_color(#292B5C)"/>
@@ -669,7 +669,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRb-hC-F55" customClass="Slider" customModule="StoryHouse" customModuleProvider="target">
-                                                <rect key="frame" x="50" y="40" width="326.5" height="50"/>
+                                                <rect key="frame" x="48" y="40" width="330.5" height="51"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="dzX-9Y-le9"/>
                                                 </constraints>
@@ -725,6 +725,7 @@
                         <outlet property="image" destination="wWw-Rw-kaN" id="GxQ-wx-OJT"/>
                         <outlet property="imageTitle" destination="m0r-vW-yaA" id="D0v-Dn-ccn"/>
                         <outlet property="muteImageView" destination="eq9-xo-vM2" id="Z29-Px-bzh"/>
+                        <outlet property="muteLabel" destination="i7O-BC-ozZ" id="Nac-xi-9M8"/>
                         <outlet property="pageLable" destination="pkz-Gc-ftZ" id="Nph-Sp-ZG2"/>
                         <outlet property="playPauseImageView" destination="EHK-Ly-j3s" id="jF5-29-DrC"/>
                         <outlet property="secoundView" destination="ekG-uq-M6E" id="gLp-nG-daJ"/>
@@ -736,6 +737,11 @@
             <point key="canvasLocation" x="1687.9941434846264" y="0.5859375"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="xRb-hC-F55">
+            <size key="intrinsicContentSize" width="-1" height="37.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_TAB_home" width="39.5" height="39.5"/>
         <image name="ic_TAB_nextPage" width="40" height="39.5"/>

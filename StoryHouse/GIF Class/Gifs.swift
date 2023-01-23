@@ -6,6 +6,7 @@
 //  Copyright © 2016 iOSDevCenters. All rights reserved.
 //
 
+/*
 import UIKit
 import ImageIO
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
@@ -193,3 +194,4 @@ extension UIImage {
         return animation
     }
 }
+*/

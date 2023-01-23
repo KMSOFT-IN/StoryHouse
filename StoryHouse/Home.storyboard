@@ -55,14 +55,6 @@ Jennifer!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-76-x1s">
                                                 <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-jb-jv0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                        <connections>
-                                                            <action selector="createStoryButtonTapped:" destination="C8u-AV-5zE" eventType="touchUpInside" id="sIG-eo-vve"/>
-                                                        </connections>
-                                                    </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_createStory" translatesAutoresizingMaskIntoConstraints="NO" id="wfN-aK-tFx">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                     </imageView>
@@ -88,6 +80,14 @@ Jennifer!</string>
                                                                 <color key="value" name="orange_color(#F48D40)"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-jb-jv0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                        <connections>
+                                                            <action selector="createStoryButtonTapped:" destination="C8u-AV-5zE" eventType="touchUpInside" id="sIG-eo-vve"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -119,14 +119,6 @@ Jennifer!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXK-yy-Sva">
                                                 <rect key="frame" x="487" y="0.0" width="457" height="374"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXW-7E-4cY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                        <connections>
-                                                            <action selector="exploreStoryButtonTapped:" destination="C8u-AV-5zE" eventType="touchUpInside" id="gru-bR-lfr"/>
-                                                        </connections>
-                                                    </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exploreStory" translatesAutoresizingMaskIntoConstraints="NO" id="mzL-Rn-PVi">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                     </imageView>
@@ -152,6 +144,14 @@ Jennifer!</string>
                                                                 <color key="value" name="orange_color(#F48D40)"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXW-7E-4cY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                        <connections>
+                                                            <action selector="exploreStoryButtonTapped:" destination="C8u-AV-5zE" eventType="touchUpInside" id="gru-bR-lfr"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

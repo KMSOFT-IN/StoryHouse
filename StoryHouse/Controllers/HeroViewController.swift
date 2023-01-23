@@ -14,7 +14,6 @@ class HeroViewController: UIViewController {
     //let storyImage = ["ic_story1","ic_story2","ic_story3","ic_story4"]
     let storyImage = ["ic_char1","ic_char2","ic_char3","ic_char4"]
     var selectedIndex = 0
-    let gifHandler: Gif = Gif()
     
     override func viewDidLoad() {
         
@@ -30,7 +29,7 @@ class HeroViewController: UIViewController {
         // if hitView == self.view {
         let view = UIView(frame: CGRect(x: location.x - 50, y: location.y - 50, width: 100, height: 100))
         self.view.addSubview(view)
-        self.gifHandler.setUpGif(name: "star", duration: 1, view: view)
+
         //}
     }
     

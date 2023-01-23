@@ -12,6 +12,9 @@ let APPNAME = "Magic House"
 let PRIVACY_POLICY_URL = "https://www.iubenda.com/privacy-policy/46923166"
 let TERMS_URL = "https://www.iubenda.com/terms-and-conditions/46923166"
 
+let GRAY_COLOR = UIColor(hex: "#808080")
+let LIGHT_BLUE = UIColor(hex: "#ADD8E6")!
+
 class Constant {
     class Storyboard {
         static let MAIN                       = UIStoryboard(name: "Main", bundle: nil)

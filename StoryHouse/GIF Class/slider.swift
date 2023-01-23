@@ -6,9 +6,12 @@ final class Slider: UISlider {
     private let trackLayer = CAGradientLayer() // Step 7
     
     var sliderValueChangedCallback : (() -> Void)?
+    var hideSliderCallback : (() -> Void)?
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setup()
+        self.valueChanged(self)
     }
 
     private func setup() {
@@ -65,6 +68,12 @@ final class Slider: UISlider {
         CATransaction.commit()
         self.sliderValueChangedCallback?()
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.hideSliderCallback?()
+    }
+    
+    
 
     // Step 5
     private func createThumbImageView() {

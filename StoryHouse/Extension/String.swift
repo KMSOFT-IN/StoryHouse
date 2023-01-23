@@ -9,6 +9,18 @@ import Foundation
 import UIKit
 
 extension String {
+    
+    func highlightWordsIn(highlightedWords: String, attributes: [[NSAttributedString.Key: Any]]) -> NSMutableAttributedString {
+        let range = (self as NSString).range(of: highlightedWords)
+        let result = NSMutableAttributedString(string: self)
+        
+        for attribute in attributes {
+            result.addAttributes(attribute, range: range)
+        }
+        
+        return result
+    }
+    
     func trimRight() -> String {
         String(reversed().drop { $0.isWhitespace }.reversed())
     }

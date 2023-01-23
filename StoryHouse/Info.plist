@@ -30,6 +30,10 @@
 		</dict>
 		<key>UIStatusBarHidden~ipad</key>
 		<true/>
+		<key>New item</key>
+		<string></string>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 	</dict>
 </dict>
 </plist>
