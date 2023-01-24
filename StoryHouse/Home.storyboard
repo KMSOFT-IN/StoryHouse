@@ -55,32 +55,12 @@ Jennifer!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-76-x1s">
                                                 <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_createStory" translatesAutoresizingMaskIntoConstraints="NO" id="wfN-aK-tFx">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_createStory" translatesAutoresizingMaskIntoConstraints="NO" id="wfN-aK-tFx">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6W-l1-ohA">
-                                                        <rect key="frame" x="80" y="269" width="297" height="75"/>
-                                                        <color key="backgroundColor" name="orange_color(#F48D40)"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="xLT-Dy-Col"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Create my story">
-                                                            <fontDescription key="titleFontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="22"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="35"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="orange_color(#F48D40)"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_createStoryButton" translatesAutoresizingMaskIntoConstraints="NO" id="R37-b7-At2">
+                                                        <rect key="frame" x="70" y="273" width="317" height="71"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-jb-jv0">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                         <state key="normal" title="Button"/>
@@ -93,16 +73,16 @@ Jennifer!</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="Jnr-jb-jv0" secondAttribute="bottom" id="0xW-Ae-mRM"/>
+                                                    <constraint firstItem="R37-b7-At2" firstAttribute="leading" secondItem="eqB-76-x1s" secondAttribute="leading" constant="70" id="8AT-cn-0PY"/>
                                                     <constraint firstItem="Jnr-jb-jv0" firstAttribute="top" secondItem="eqB-76-x1s" secondAttribute="top" id="DJf-5Y-FXN"/>
                                                     <constraint firstItem="wfN-aK-tFx" firstAttribute="top" secondItem="eqB-76-x1s" secondAttribute="top" id="F9u-1e-olC"/>
                                                     <constraint firstItem="wfN-aK-tFx" firstAttribute="leading" secondItem="eqB-76-x1s" secondAttribute="leading" id="FGb-RN-ApA"/>
-                                                    <constraint firstAttribute="bottom" secondItem="j6W-l1-ohA" secondAttribute="bottom" constant="30" id="Jvj-Wm-qrb"/>
-                                                    <constraint firstItem="j6W-l1-ohA" firstAttribute="leading" secondItem="eqB-76-x1s" secondAttribute="leading" constant="80" id="XfP-Md-Z0S"/>
+                                                    <constraint firstAttribute="bottom" secondItem="R37-b7-At2" secondAttribute="bottom" constant="30" id="KhD-hL-hf1"/>
                                                     <constraint firstAttribute="trailing" secondItem="wfN-aK-tFx" secondAttribute="trailing" id="foi-ZP-mAg"/>
                                                     <constraint firstAttribute="bottom" secondItem="wfN-aK-tFx" secondAttribute="bottom" id="j2P-qU-qSf"/>
                                                     <constraint firstItem="Jnr-jb-jv0" firstAttribute="leading" secondItem="eqB-76-x1s" secondAttribute="leading" id="qLV-8L-jHE"/>
                                                     <constraint firstAttribute="trailing" secondItem="Jnr-jb-jv0" secondAttribute="trailing" id="vkc-Fa-GAk"/>
-                                                    <constraint firstAttribute="trailing" secondItem="j6W-l1-ohA" secondAttribute="trailing" constant="80" id="xB0-MF-fW4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="R37-b7-At2" secondAttribute="trailing" constant="70" id="wKc-NO-DuJ"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -112,61 +92,41 @@ Jennifer!</string>
                                                         <color key="value" name="orange_color(#F48D40)"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
+                                                        <real key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXK-yy-Sva">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kmz-op-jX0">
                                                 <rect key="frame" x="487" y="0.0" width="457" height="374"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exploreStory" translatesAutoresizingMaskIntoConstraints="NO" id="mzL-Rn-PVi">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exploreStory" translatesAutoresizingMaskIntoConstraints="NO" id="x60-oR-Kj6">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqz-GC-S7J">
-                                                        <rect key="frame" x="80" y="269" width="297" height="75"/>
-                                                        <color key="backgroundColor" name="orange_color(#F48D40)"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="BUK-ar-UmR"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Explore stories">
-                                                            <fontDescription key="titleFontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="22"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="35"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="orange_color(#F48D40)"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXW-7E-4cY">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_exploreStoryButton" translatesAutoresizingMaskIntoConstraints="NO" id="GYS-TV-dUq">
+                                                        <rect key="frame" x="70" y="273.5" width="317" height="70.5"/>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cll-q9-Vc6">
                                                         <rect key="frame" x="0.0" y="0.0" width="457" height="374"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                         <connections>
-                                                            <action selector="exploreStoryButtonTapped:" destination="C8u-AV-5zE" eventType="touchUpInside" id="gru-bR-lfr"/>
+                                                            <action selector="exploreStoryButtonTapped:" destination="C8u-AV-5zE" eventType="touchUpInside" id="KIG-4C-ZQg"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="mzL-Rn-PVi" firstAttribute="top" secondItem="eXK-yy-Sva" secondAttribute="top" id="HxC-HF-j0n"/>
-                                                    <constraint firstItem="mzL-Rn-PVi" firstAttribute="leading" secondItem="eXK-yy-Sva" secondAttribute="leading" id="NxF-Rf-i35"/>
-                                                    <constraint firstItem="jXW-7E-4cY" firstAttribute="top" secondItem="eXK-yy-Sva" secondAttribute="top" id="SKk-2S-CvG"/>
-                                                    <constraint firstAttribute="bottom" secondItem="mzL-Rn-PVi" secondAttribute="bottom" id="Tdn-Z8-b6d"/>
-                                                    <constraint firstItem="jXW-7E-4cY" firstAttribute="leading" secondItem="eXK-yy-Sva" secondAttribute="leading" id="U6o-Y7-Wd2"/>
-                                                    <constraint firstAttribute="bottom" secondItem="jXW-7E-4cY" secondAttribute="bottom" id="V77-TY-4In"/>
-                                                    <constraint firstAttribute="trailing" secondItem="mzL-Rn-PVi" secondAttribute="trailing" id="WsN-6N-AAp"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Bqz-GC-S7J" secondAttribute="bottom" constant="30" id="fFI-rC-ks2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Bqz-GC-S7J" secondAttribute="trailing" constant="80" id="il2-fL-0XY"/>
-                                                    <constraint firstItem="Bqz-GC-S7J" firstAttribute="leading" secondItem="eXK-yy-Sva" secondAttribute="leading" constant="80" id="t31-k1-lYv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="jXW-7E-4cY" secondAttribute="trailing" id="uQ0-rg-iLZ"/>
+                                                    <constraint firstItem="x60-oR-Kj6" firstAttribute="leading" secondItem="Kmz-op-jX0" secondAttribute="leading" id="1ST-gj-dPz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cll-q9-Vc6" secondAttribute="trailing" id="3Cd-X1-dXR"/>
+                                                    <constraint firstItem="x60-oR-Kj6" firstAttribute="top" secondItem="Kmz-op-jX0" secondAttribute="top" id="4hJ-32-qrJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GYS-TV-dUq" secondAttribute="bottom" constant="30" id="92i-QF-fIN"/>
+                                                    <constraint firstItem="cll-q9-Vc6" firstAttribute="top" secondItem="Kmz-op-jX0" secondAttribute="top" id="EiI-rJ-9wM"/>
+                                                    <constraint firstItem="GYS-TV-dUq" firstAttribute="leading" secondItem="Kmz-op-jX0" secondAttribute="leading" constant="70" id="IDC-nr-Flz"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cll-q9-Vc6" secondAttribute="bottom" id="IbE-lB-phA"/>
+                                                    <constraint firstItem="cll-q9-Vc6" firstAttribute="leading" secondItem="Kmz-op-jX0" secondAttribute="leading" id="eDh-qJ-nPB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="x60-oR-Kj6" secondAttribute="trailing" id="pxO-kM-Hc4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GYS-TV-dUq" secondAttribute="trailing" constant="70" id="sbK-eF-MiU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="x60-oR-Kj6" secondAttribute="bottom" id="wDG-wf-sQb"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -176,7 +136,7 @@ Jennifer!</string>
                                                         <color key="value" name="orange_color(#F48D40)"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -227,10 +187,8 @@ Jennifer!</string>
                     <connections>
                         <outlet property="backButton" destination="6Ky-5T-buv" id="R70-Sx-E9r"/>
                         <outlet property="childName" destination="wI1-XD-hyZ" id="W8L-wY-gjG"/>
-                        <outlet property="createStoryButton" destination="j6W-l1-ohA" id="3xg-ay-FMR"/>
                         <outlet property="createStoryView" destination="eqB-76-x1s" id="By4-n1-5CZ"/>
-                        <outlet property="exploreStoryButton" destination="Bqz-GC-S7J" id="PAo-wT-gNj"/>
-                        <outlet property="exploreStoryView" destination="eXK-yy-Sva" id="vbz-BM-oHj"/>
+                        <outlet property="exploreStoryView" destination="Kmz-op-jX0" id="jJY-gH-H7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sod-Mf-MEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -242,7 +200,9 @@ Jennifer!</string>
         <image name="ic_appBackGroud" width="1193.5" height="834"/>
         <image name="ic_backButton" width="30" height="52.5"/>
         <image name="ic_createStory" width="538" height="466"/>
+        <image name="ic_createStoryButton" width="349" height="71"/>
         <image name="ic_exploreStory" width="538" height="465.5"/>
+        <image name="ic_exploreStoryButton" width="349" height="70.5"/>
         <image name="ic_setting" width="49.5" height="52"/>
         <namedColor name="font_color(#292B5C)">
             <color red="0.16099999845027924" green="0.16899999976158142" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

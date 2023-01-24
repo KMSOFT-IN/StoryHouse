@@ -9,17 +9,16 @@ import UIKit
 
 class EndViewController: UIViewController {
     
-    
+    let gifHandler: Gif = Gif()
     @IBOutlet weak var celebrationView: UIView!
     var image = ""
     var imageTitle = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
+        self.gifHandler.setUpGif(name: "strimmer", duration: 6, view: self.celebrationView)
         UserDefaultHelper.setParagraphIndex(value: 0)
     }
     static func getInstance() -> EndViewController {
@@ -33,8 +32,6 @@ class EndViewController: UIViewController {
         let window = self.view.window
         navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
-        
-        
     }
     
     @IBAction func homebuttonTapped(_ sender: Any) {

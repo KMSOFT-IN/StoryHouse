@@ -15,6 +15,14 @@ class AppData {
     
     var appDelegate: AppDelegate!
     var childName: String?
+    var synthesizer: AVSpeechSynthesizer?
+    var voiceIdentifier: String?
+    var voice: String?
+    var selectedCharacterIndex: Int?
+    var selectedLocationIndex: Int?
+    var selectedMagicalObjectIndex: Int?
+    
+    
     
     static let sharedInstance: AppData = {
         let instance = AppData()

@@ -45,9 +45,14 @@ class UserDefaultHelper {
         return UserDefaults.standard.integer(forKey: "parIndex")
     }
     
-
-    
-//4.0
+    static func setMagicalObjectIndex(value: Int) {
+        UserDefaults.standard.setValue(value, forKey: "MagicalObjectIndex")
+        UserDefaults.standard.synchronize()
+    }
+    static func getMagicalObjectIndex() -> Int? {
+        return UserDefaults.standard.integer(forKey: "MagicalObjectIndex")
+    }
+    //4.0
     static func setChildname(value: String) {
         UserDefaults.standard.setValue(value, forKey: "childName" )
         UserDefaults.standard.synchronize()

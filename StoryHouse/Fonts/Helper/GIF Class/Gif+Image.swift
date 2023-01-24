@@ -36,12 +36,10 @@ extension UIImageView {
 extension UIImage {
     
     public class func gif(data: Data) -> UIImage? {
-        // Create source from data
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("SwiftGif: Source for the image does not exist")
             return nil
         }
-        
         return UIImage.animatedImageWithSource(source)
     }
     

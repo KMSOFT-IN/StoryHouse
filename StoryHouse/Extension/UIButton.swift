@@ -42,13 +42,16 @@ extension UILabel {
 
 extension UIButton {
 
-   /* override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isHighlighted = true
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         super.touchesBegan(touches, with: event)
     }
 
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isHighlighted = false
+        //isHighlighted = false
+      //  UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {
+               self.transform = CGAffineTransform.identity
+        //   }, completion: nil)
         super.touchesEnded(touches, with: event)
     }
 
@@ -56,5 +59,5 @@ extension UIButton {
         isHighlighted = false
         super.touchesCancelled(touches, with: event)
     }
-*/
+
 }

@@ -31,13 +31,11 @@ class TabbarViewController: UIViewController {
     var currentIndex: Int = 0  // Story Paragraph Index Number for next / Prev Page
     var totalIndex: Int = 0 // Number of Paragraph
     var isPlayAudioON: Bool = false
-    var charCount = 0  // seperate paragraph into Words array
     var characterIndexTimer: Timer?
-    var lastSelectedIndex = 0
     var isFirstTimePlay: Bool = true
     var isPageChanged: Bool = false
     var isHE: Bool = true
-    var storyNumber: Int = 0
+    var filterdStoryIndex: Int = 0
     var isMute: Bool = true
     let name = UserDefaultHelper.getChildname()
     
@@ -45,13 +43,17 @@ class TabbarViewController: UIViewController {
         super.viewDidLoad()
         CustomLoader.instance.gifName = "demo"
         self.setUpGesture()
+        self.setUpSlider()
         self.isFirstTimePlay = true
+    }
+    
+    func setUpSlider() {
         self.sliderView.value = self.systemVolume
-        
         self.sliderView.sliderValueChangedCallback = {
             self.muteLabel.text = "VOLUME"
             MPVolumeView.setVolume(self.sliderView.value)
             print(self.sliderView.value)
+            self.utterance.volume = self.sliderView.value
             if self.sliderView.value == 0 {
                 self.muteImageView.image = UIImage(named: "ic_mute")
             }
@@ -82,92 +84,31 @@ class TabbarViewController: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
     }
     
-    
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case .right:
-                print("Swiped right [PREV]")
-                //self.prevButtontapped()
                 self.prevPageButtonTapped(self)
             case .left:
-                print("Swiped left [NEXT]")
                 self.nextPageButtontapped(self)
-                //self.nextButtontapped()
             default:
                 break
             }
         }
     }
     
-    @IBAction func prevPageButtonTapped(_ sender: Any) {
-        self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
-        self.imageTitle.textColor = GRAY_COLOR
-        self.synthesizer.stopSpeaking(at: .immediate)
-        self.isPageChanged = true
-        
-        self.currentIndex -= 1
-        if (self.currentIndex < 0) {
-            self.currentIndex = 0
-        }
-        self.resetUI()
-      //  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.setUpStory(index: self.currentIndex)
-       // }
-    }
-    
-    
-    func prevButtontapped() {
-       // CustomLoader.instance.showLoaderView()
-        self.synthesizer.stopSpeaking(at: .immediate)
-        self.isPageChanged = true
-        
-        self.currentIndex -= 1
-        if (self.currentIndex < 0) {
-            self.currentIndex = 0
-        }
-        self.resetUI()
-      //  DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.setUpStory(index: self.currentIndex)
-          //  CustomLoader.instance.hideLoaderView()
-      //  }
-        
-    }
-    
-    func nextButtontapped() {
-     //   CustomLoader.instance.showLoaderView()
-        self.synthesizer.stopSpeaking(at: .immediate)
-        self.isPageChanged = true
-        
-        self.currentIndex += 1
-        if self.currentIndex >= self.totalIndex {
-            UserDefaultHelper.setParagraphIndex(value: 0)
-            self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-            let viewController = EndViewController.getInstance()
-            self.navigationController?.pushViewController(viewController, animated: true)
-            return
-        }
-        self.resetUI()
-     //   DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.setUpStory(index: self.currentIndex)
-         //   CustomLoader.instance.hideLoaderView()
-     //   }
-        
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         self.isFirstTimePlay = true
         self.pauseSpeaking()
         self.synthesizer.stopSpeaking(at: .immediate)
-        //CustomLoader.instance.hideLoaderView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.filterdStoryIndex = UserDefaultHelper.getMagicalObjectIndex() ?? 0
         self.imageTitle.textColor = GRAY_COLOR
         self.loadJson()
         self.setUpUI()
         self.sliderView.isHidden = true
-        self.muteImageView.image = UIImage(named: "ic_unMute")
         let gender =  UserDefaultHelper.getGender()
         if gender == GENDER.BOY.rawValue {
             self.isHE = true
@@ -184,7 +125,7 @@ class TabbarViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+        
     func loadJson() {
         if let path = Bundle.main.path(forResource: "StoriesJSON", ofType: "json"){
             do {
@@ -199,12 +140,9 @@ class TabbarViewController: UIViewController {
         }
     }
     
-    
     func setUpUI() {
-        
         self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
-        self.paragraphDetails = self.storydata?.story?[self.storyNumber].data
-        
+        self.paragraphDetails = self.storydata?.story?[self.filterdStoryIndex].data
         self.totalIndex = self.paragraphDetails?.count ?? 0
         if (totalIndex > 0) {
             if let index  = UserDefaultHelper.getParagraphIndex() {
@@ -215,25 +153,31 @@ class TabbarViewController: UIViewController {
                 self.setUpStory(index: 0)
             }
         }
-        
         self.imageTitle.textColor = GRAY_COLOR
-        self.lastSelectedIndex = 0
         self.navigationController?.navigationBar.isHidden = true
     }
     
     func setUpStory(index: Int) {
-        
         if index >= totalIndex {
             self.currentIndex = 0
             UserDefaultHelper.setParagraphIndex(value: 0)
             return }
         UserDefaultHelper.setParagraphIndex(value: index)
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
+        let img = UIImage(named : self.paragraphDetails?[index].imageName ?? "")
+        
+        /*if CGFloat((img?.size.width)!) > CGFloat((img?.size.height)!) {
+         self.image.contentMode = .scaleAspectFit
+         //since the width > height we may fit it and we'll have bands on top/bottom
+         } else {
+         self.image.contentMode = .scaleAspectFill
+         //width < height we fill it until width is taken up and clipped on top/bottom
+         }
+         */
+        
         self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "")
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         self.imageTitle.textColor = GRAY_COLOR
-        
-        
     }
     
     @IBAction func homeButtonTapped(_ sender: Any) {
@@ -251,14 +195,7 @@ class TabbarViewController: UIViewController {
         self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
     }
     
-   
-    
     @IBAction func nextPageButtontapped(_ sender: Any) {
-        self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
-        self.imageTitle.textColor = GRAY_COLOR
-        self.synthesizer.stopSpeaking(at: .immediate)
-        self.isPageChanged = true
-        
         self.currentIndex += 1
         if self.currentIndex >= self.totalIndex {
             UserDefaultHelper.setParagraphIndex(value: 0)
@@ -267,24 +204,38 @@ class TabbarViewController: UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
-        DispatchQueue.main.async {
+        self.setUpStory(index: self.currentIndex)
             self.resetUI()
-            self.setUpStory(index: self.currentIndex)
-        }
-        
-     //   DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
-      //  }
     }
     
+    @IBAction func prevPageButtonTapped(_ sender: Any) {
+        self.currentIndex -= 1
+        if (self.currentIndex < 0) {
+            self.currentIndex = 0
+        }
+        self.setUpStory(index: self.currentIndex)
+        self.resetUI()
+        
+        
+    }
     
     func resetUI() {
+        self.imageTitle.textColor = GRAY_COLOR
+        self.synthesizer.stopSpeaking(at: .immediate)
+        self.isPageChanged = true
         self.isFirstTimePlay = true
-        self.isPlayAudioON = false
-        self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
     }
     
     func autoNextPage() {
+        if self.isPageChanged {
+            self.isPageChanged = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.setUpAudio()
+            }
+            return
+        }
+       
         self.currentIndex += 1
         if self.currentIndex >= self.totalIndex {
             UserDefaultHelper.setParagraphIndex(value: 0)
@@ -296,27 +247,27 @@ class TabbarViewController: UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
-      //  DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.setUpStory(index: self.currentIndex)
-       // }
+        self.setUpStory(index: self.currentIndex)
         self.isFirstTimePlay = true
-        self.isPlayAudioON = false
+        self.isPlayAudioON = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.playPauseButtonTapped(self)
+            self.setUpAudio()
         }
         
     }
     
-       @IBAction func playPauseButtonTapped(_ sender: Any) {
-           self.isPageChanged = false
+    @IBAction func playPauseButtonTapped(_ sender: Any) {
         isPlayAudioON = !isPlayAudioON
+        self.setUpAudio()
+    }
+    
+    func setUpAudio() {
+        self.isPageChanged = false
         if isPlayAudioON {
             self.playPauseImageView.image = UIImage(named: "ic_TAB_pause")
             if self.isFirstTimePlay {
                 self.isFirstTimePlay = false
-                
-                    self.playAudio(text: self.imageTitle.text ?? "")
-                
+                self.playAudio(text: self.imageTitle.text ?? "")
             }
             self.continueSpeaking()
         }
@@ -353,10 +304,6 @@ class TabbarViewController: UIViewController {
         let image = self.image.image
         UIGraphicsEndImageContext()
         var childName = (UserDefaultHelper.getChildname() ?? "") + "'s ’s Magic House Story"
-        
-      //  let attributes = [[NSAttributedString.Key.foregroundColor:UIColor.red], [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]]
-       //   childName = "This is a text".highlightWordsIn(highlightedWords: "is a text", attributes: attributes)
-        
         let textToShare = (self.imageTitle.text ?? "")
         //if let myWebsite = URL(string: "http://itunes.apple.com/app/id1645684020") {
         let objectsToShare = [childName ,textToShare, image] as [Any]
@@ -364,30 +311,17 @@ class TabbarViewController: UIViewController {
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         activityVC.popoverPresentationController?.sourceView = sender as? UIView
         self.present(activityVC, animated: true, completion: nil)
-        //}
-      
     }
     
-    func fileToShare() {
-        let urlArray = ["A", "B"]
-        let activityController = UIActivityViewController(activityItems: urlArray, applicationActivities: nil)
-        activityController.completionWithItemsHandler = { (nil , completed , _, error) in
-            if (completed) {
-                print("Completed")
-            }
-            else {
-                print("Canceled !!!")
-            }
-            
-        }
-        self.present(activityController, animated: true) {
-            print(" Present Sucess !!")
-        }
-                     
-        
+    
+    @IBAction func settingButtontapped(_ sender: Any) {
+        self.pauseSpeaking()
+        self.synthesizer.stopSpeaking(at: .immediate)
+        let viewController = SettingViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true
+        )
     }
     
-
 }
 
 
@@ -395,38 +329,16 @@ class TabbarViewController: UIViewController {
 extension TabbarViewController : AVSpeechSynthesizerDelegate {
     
     func playAudio(text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-         var voice = ""
-         if let voiceObj = AVSpeechSynthesisVoice.speechVoices().filter({$0.name == "Catherine" }).first {
-         voice = voiceObj.identifier
-         }
         
-        // utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.voice = AVSpeechSynthesisVoice(identifier: voice)
-        utterance.rate = 0.4
-       // utterance.pitchMultiplier = 0.25
-        utterance.postUtteranceDelay = 0.01
-        utterance.volume = self.sliderView.value
+        self.utterance = AVSpeechUtterance(string: text)
+        self.utterance.voice = AVSpeechSynthesisVoice(identifier: AppData.sharedInstance.voiceIdentifier ?? "com.apple.ttsbundle.Rishi-compact")
+        self.utterance.rate = 0.4
+        self.utterance.postUtteranceDelay = 0.01
+        self.utterance.volume = self.sliderView.value
         
         self.synthesizer.delegate = self
         self.synthesizer.speak(utterance)
     }
-    
-    /*  class func playAudio1(text: String) {
-     // Utility.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-     if text == "!" || text == "," { return }
-     Utility.utterance = AVSpeechUtterance(string: text)
-     var voice = " "
-     if let voiceObj = AVSpeechSynthesisVoice.speechVoices().filter({$0.name == "Samantha" }).first {
-     voice = voiceObj.identifier
-     }
-     Utility.utterance.voice = AVSpeechSynthesisVoice(identifier: voice)
-     Utility.utterance.rate = 0.5
-     Utility.utterance.volume = Float(Utility.volume)
-     
-     Utility.synthesizer.speak(utterance)
-     }
-     */
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         let mutableAttributedString = NSMutableAttributedString(string: utterance.speechString)
@@ -439,24 +351,12 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
         //self.imageTitle.attributedText = NSAttributedString(string: utterance.speechString)
-        
         if let rootViewController = UIApplication.topViewController() {
             if rootViewController != self {
                 return
             }
         }
-        
-        if (synthesizer.isSpeaking) {
-            self.autoNextPage()
-        }
-        
-       if self.isPageChanged {
-            self.isPageChanged = false
-        }
-        else {
-            self.autoNextPage()
-        }
-       
+        self.autoNextPage()
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {

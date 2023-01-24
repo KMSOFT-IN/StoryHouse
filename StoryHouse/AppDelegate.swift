@@ -27,6 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
     
+    class func getKeyWindow() -> UIWindow? {
+        var window: UIWindow?
+        if #available(iOS 13.0, *) {
+            window = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .compactMap({$0 as? UIWindowScene})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+        }
+        else {
+            window = UIApplication.shared.keyWindow
+        }
+        return window
+    }
+    
     
 }
 

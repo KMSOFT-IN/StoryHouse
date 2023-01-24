@@ -23,7 +23,8 @@ class Constant {
         static let CATEGORY                   = UIStoryboard(name: "Category", bundle: nil)
         static let TABBAR                     = UIStoryboard(name: "Tabbar", bundle: nil)
         static let HOME                       = UIStoryboard(name: "Home", bundle: nil)
-        static let END                       = UIStoryboard(name: "End", bundle: nil)
+        static let END                        = UIStoryboard(name: "End", bundle: nil)
+        static let SETTING                    = UIStoryboard(name: "Setting", bundle: nil)
     }
 }
 

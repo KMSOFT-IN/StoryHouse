@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ln-3d-VG9">
-                                        <rect key="frame" x="100" y="50" width="824" height="718"/>
+                                        <rect key="frame" x="200" y="50" width="724" height="718"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_c" translatesAutoresizingMaskIntoConstraints="NO" id="mLA-hb-69t">
@@ -42,13 +42,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The END" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezS-On-Myg">
-                                        <rect key="frame" x="301" y="110" width="422.5" height="114"/>
+                                        <rect key="frame" x="301" y="120" width="422.5" height="143"/>
                                         <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="114"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6v-J5-FgF">
-                                        <rect key="frame" x="281" y="229" width="462" height="90"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6v-J5-FgF">
+                                        <rect key="frame" x="281" y="268" width="462" height="90"/>
                                         <string key="text">Congratulations! 
 You’ve completed your story.</string>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="32"/>
@@ -56,7 +56,7 @@ You’ve completed your story.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-8f-bE5">
-                                        <rect key="frame" x="297" y="349" width="430" height="90"/>
+                                        <rect key="frame" x="297" y="388" width="430" height="90"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_endStory" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKU-h8-KPi">
                                                 <rect key="frame" x="0.0" y="0.0" width="430" height="90"/>
@@ -189,16 +189,16 @@ You’ve completed your story.</string>
                                     <constraint firstItem="v6m-m2-HXR" firstAttribute="centerY" secondItem="23s-f9-9Gh" secondAttribute="centerY" id="M63-OV-Unh"/>
                                     <constraint firstAttribute="trailing" secondItem="mLA-hb-69t" secondAttribute="trailing" id="P6U-9g-8is"/>
                                     <constraint firstItem="mLA-hb-69t" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" id="PyX-tS-eIm"/>
-                                    <constraint firstItem="5Ln-3d-VG9" firstAttribute="leading" secondItem="23s-f9-9Gh" secondAttribute="leading" constant="100" id="QdG-FT-3In"/>
+                                    <constraint firstItem="5Ln-3d-VG9" firstAttribute="leading" secondItem="23s-f9-9Gh" secondAttribute="leading" constant="200" id="QdG-FT-3In"/>
                                     <constraint firstItem="5Ln-3d-VG9" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="50" id="X9i-Ha-57d"/>
                                     <constraint firstAttribute="trailing" secondItem="5Ln-3d-VG9" secondAttribute="trailing" constant="100" id="XTO-lT-V7T"/>
                                     <constraint firstItem="ezS-On-Myg" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="XxL-CN-vYd"/>
                                     <constraint firstAttribute="bottom" secondItem="Cl6-DZ-OAW" secondAttribute="bottom" constant="20" id="dLg-ju-Bft"/>
-                                    <constraint firstItem="Cl6-DZ-OAW" firstAttribute="top" relation="lessThanOrEqual" secondItem="xAg-8f-bE5" secondAttribute="bottom" constant="60" id="dZY-FB-mbz"/>
+                                    <constraint firstItem="Cl6-DZ-OAW" firstAttribute="top" secondItem="xAg-8f-bE5" secondAttribute="bottom" constant="20" id="dZY-FB-mbz"/>
                                     <constraint firstItem="Cl6-DZ-OAW" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="fnB-fq-mpn"/>
                                     <constraint firstItem="xAg-8f-bE5" firstAttribute="top" secondItem="A6v-J5-FgF" secondAttribute="bottom" constant="30" id="hYh-c9-Ndr"/>
                                     <constraint firstAttribute="bottom" secondItem="5Ln-3d-VG9" secondAttribute="bottom" id="kgq-1G-Mp5"/>
-                                    <constraint firstItem="ezS-On-Myg" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="110" id="nkG-YG-gTJ"/>
+                                    <constraint firstItem="ezS-On-Myg" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="120" id="nkG-YG-gTJ"/>
                                     <constraint firstItem="xAg-8f-bE5" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="pUg-FL-9gm"/>
                                     <constraint firstItem="A6v-J5-FgF" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="ufy-sq-sss"/>
                                     <constraint firstItem="mLA-hb-69t" firstAttribute="leading" secondItem="23s-f9-9Gh" secondAttribute="leading" id="wB7-of-wwE"/>
