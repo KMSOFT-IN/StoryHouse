@@ -41,6 +41,7 @@ class TabbarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.filterdStoryIndex = UserDefaultHelper.getMagicalObjectIndex() ?? 0
         CustomLoader.instance.gifName = "demo"
         self.setUpGesture()
         self.setUpSlider()
@@ -201,6 +202,9 @@ class TabbarViewController: UIViewController {
             UserDefaultHelper.setParagraphIndex(value: 0)
             self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
             let viewController = EndViewController.getInstance()
+            let index = 0
+            viewController.image = self.paragraphDetails?[index].imageName ?? " "
+            viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index] as! String
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }

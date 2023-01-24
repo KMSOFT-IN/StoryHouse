@@ -60,13 +60,10 @@ class EndViewController: UIViewController {
         let childName = (UserDefaultHelper.getChildname() ?? "") + "'s ’s Magic House Story"
         //if let myWebsite = URL(string: "http://itunes.apple.com/app/id1645684020") {
         let objectsToShare = [childName ,  textToShare , image] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-            activityVC.popoverPresentationController?.sourceView = sender as? UIView
-            self.present(activityVC, animated: true, completion: nil)
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+        activityVC.popoverPresentationController?.sourceView = sender as? UIView
+        self.present(activityVC, animated: true, completion: nil)
         //}
     }
-        
-    
-    
 }

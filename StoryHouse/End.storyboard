@@ -154,7 +154,7 @@ You’ve completed your story.</string>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                         <connections>
-                                                            <action selector="shareButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mWj-rH-1CC"/>
+                                                            <action selector="shareButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="snU-es-zFm"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
