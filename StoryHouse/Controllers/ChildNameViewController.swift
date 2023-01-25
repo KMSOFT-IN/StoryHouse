@@ -36,7 +36,6 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        self.nextButton.showAnimation {
             if self.childNameTextFeild.text == "" || self.childNameTextFeild.text?.isEmpty ?? false {
                 self.alert(message: "Please enter your child name.")
                 return
@@ -60,7 +59,6 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
             let viewController = HomeViewController.getInstance()
             viewController.isFromTabbar = false
             self.navigationController?.pushViewController(viewController, animated: true)
-        }
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {

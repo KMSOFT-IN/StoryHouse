@@ -159,6 +159,7 @@ story!</string>
                                             <constraint firstItem="y7G-hK-ChN" firstAttribute="centerY" secondItem="sAu-6J-Q8a" secondAttribute="centerY" constant="-50" id="QZj-me-qxX"/>
                                             <constraint firstAttribute="bottom" secondItem="ehv-mK-bEz" secondAttribute="bottom" constant="40" id="S2g-Y4-YTE"/>
                                             <constraint firstItem="qKB-C4-6kf" firstAttribute="leading" secondItem="sAu-6J-Q8a" secondAttribute="leadingMargin" constant="50" id="fYS-cX-Tag"/>
+                                            <constraint firstItem="ehv-mK-bEz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qKB-C4-6kf" secondAttribute="bottom" constant="10" id="qHd-YC-fU4"/>
                                             <constraint firstItem="qKB-C4-6kf" firstAttribute="leading" secondItem="y7G-hK-ChN" secondAttribute="leading" id="rTi-tS-cVE"/>
                                             <constraint firstItem="qKB-C4-6kf" firstAttribute="trailing" secondItem="y7G-hK-ChN" secondAttribute="trailing" id="wku-am-D38"/>
                                             <constraint firstItem="qKB-C4-6kf" firstAttribute="top" secondItem="y7G-hK-ChN" secondAttribute="bottom" constant="60" id="zjj-5f-mBi"/>

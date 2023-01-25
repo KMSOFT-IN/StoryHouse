@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -23,29 +23,23 @@
             <objects>
                 <viewController storyboardIdentifier="LoadingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bsE-nk-6PF" customClass="LoadingViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NG0-Hk-MHE">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLv-b3-B1h">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-im-8PK">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-7n-9z9">
-                                        <rect key="frame" x="0.0" y="486" width="894" height="350"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="350" id="Lqw-be-cNs"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-ZB-Hw3">
-                                        <rect key="frame" x="461" y="836" width="102" height="33"/>
+                                        <rect key="frame" x="632" y="665" width="102" height="33"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-DJ-FhQ">
-                                        <rect key="frame" x="20" y="90" width="984" height="130"/>
+                                        <rect key="frame" x="20" y="90" width="1326" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="ego-cJ-euz"/>
                                         </constraints>
@@ -55,6 +49,12 @@ Jennifer’s story! </string>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-7n-9z9">
+                                        <rect key="frame" x="0.0" y="315" width="1236" height="350"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="350" id="Lqw-be-cNs"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>

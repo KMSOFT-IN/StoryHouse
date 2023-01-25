@@ -13,6 +13,7 @@ class EndViewController: UIViewController {
     @IBOutlet weak var celebrationView: UIView!
     var image = ""
     var imageTitle = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,11 +22,12 @@ class EndViewController: UIViewController {
         self.gifHandler.setUpGif(name: "strimmer", duration: 6, view: self.celebrationView)
         UserDefaultHelper.setParagraphIndex(value: 0)
     }
+    
     static func getInstance() -> EndViewController {
         return Constant.Storyboard.END.instantiateViewController(withIdentifier: "EndViewController") as! EndViewController
     }
     
-    @IBAction func createNewStoryButtonTapped(_ sender: Any) {
+    @IBAction func createNewStoryButtonTapped(_ sender: UIButton) {
         let viewController = HomeViewController.getInstance()
         viewController.isFromTabbar = true
         var navigationController = UINavigationController()
@@ -34,28 +36,25 @@ class EndViewController: UIViewController {
         window?.rootViewController = navigationController
     }
     
-    @IBAction func homebuttonTapped(_ sender: Any) {
-        
+    @IBAction func homebuttonTapped(_ sender: UIButton) {
         let viewController = HomeViewController.getInstance()
         viewController.isFromTabbar = true
         var navigationController = UINavigationController()
         let window = self.view.window
         navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
-       
     }
     
-    @IBAction func readAgainButtontapped(_ sender: Any) {
-        
+    @IBAction func readAgainButtontapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func shareButtonTapped(_ sender: Any) {
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
         //let image = UIImage(named: "AppIcon")!
-        let image = UIImage(named: image)!
-        let textToShare = imageTitle
+        let image = UIImage(named: self.image)!
+        let textToShare = self.imageTitle
         UIGraphicsEndImageContext()
         let childName = (UserDefaultHelper.getChildname() ?? "") + "'s ’s Magic House Story"
         //if let myWebsite = URL(string: "http://itunes.apple.com/app/id1645684020") {
@@ -64,6 +63,5 @@ class EndViewController: UIViewController {
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         activityVC.popoverPresentationController?.sourceView = sender as? UIView
         self.present(activityVC, animated: true, completion: nil)
-        //}
     }
 }

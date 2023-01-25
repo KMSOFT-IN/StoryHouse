@@ -60,8 +60,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfQ-f1-gDC">
                                         <rect key="frame" x="596.5" y="76" width="769.5" height="828"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32T-Iw-8b7">
-                                                <rect key="frame" x="0.0" y="0.0" width="749.5" height="168"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="32T-Iw-8b7">
+                                                <rect key="frame" x="0.0" y="0.0" width="749.5" height="144"/>
                                                 <string key="text">What’s your 
 child’s name?</string>
                                                 <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="72"/>
@@ -69,7 +69,7 @@ child’s name?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter  Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-ru-iQp">
-                                                <rect key="frame" x="0.0" y="198" width="569.5" height="26"/>
+                                                <rect key="frame" x="0.0" y="174" width="569.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="OH4-la-RbZ"/>
                                                 </constraints>
@@ -78,7 +78,7 @@ child’s name?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="e2b-3t-rfr">
-                                                <rect key="frame" x="0.0" y="234" width="615.5" height="70"/>
+                                                <rect key="frame" x="0.0" y="210" width="615.5" height="70"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujL-dC-Mh8">
                                                         <rect key="frame" x="0.0" y="0.0" width="615.5" height="70"/>
@@ -130,7 +130,7 @@ child’s name?</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fJQ-WK-ZNl">
-                                                <rect key="frame" x="0.0" y="376.5" width="280" height="50"/>
+                                                <rect key="frame" x="0.0" y="352.5" width="280" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ren-Me-3PW">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
@@ -224,16 +224,16 @@ Cg
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kAa-3S-iGh">
-                                                <rect key="frame" x="0.0" y="676" width="201.5" height="21"/>
+                                                <rect key="frame" x="0.0" y="667" width="211" height="25.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stories left: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlS-Ip-hpF" userLabel="Stories left:">
-                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="102" height="25.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Out of 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0P-w8-sWo">
-                                                        <rect key="frame" x="101" y="0.0" width="100.5" height="21"/>
+                                                        <rect key="frame" x="107" y="0.0" width="104" height="25.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>
@@ -241,7 +241,7 @@ Cg
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For more stories, more characters and more magical fun." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKe-Bp-tlK">
-                                                <rect key="frame" x="0.0" y="717" width="457" height="21"/>
+                                                <rect key="frame" x="0.0" y="712.5" width="514" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                                 <color key="textColor" name="font_color(#292B5C)"/>
                                                 <nil key="highlightedColor"/>
@@ -265,7 +265,7 @@ Cg
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTY-2B-LcP">
-                                                <rect key="frame" x="0.0" y="336" width="158" height="26"/>
+                                                <rect key="frame" x="0.0" y="312" width="174.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="4RJ-nM-mrd"/>
                                                 </constraints>
@@ -274,7 +274,7 @@ Cg
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YS-Dk-7Yz">
-                                                <rect key="frame" x="178" y="332" width="187.5" height="34.5"/>
+                                                <rect key="frame" x="194.5" y="308" width="187.5" height="34.5"/>
                                                 <color key="tintColor" name="font_color(#292B5C)"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="( Why we are asking )"/>

@@ -49,9 +49,9 @@ extension UIButton {
 
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //isHighlighted = false
-      //  UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {
                self.transform = CGAffineTransform.identity
-        //   }, completion: nil)
+           }, completion: nil)
         super.touchesEnded(touches, with: event)
     }
 

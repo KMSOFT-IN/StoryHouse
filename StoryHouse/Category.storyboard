@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -24,17 +24,17 @@
             <objects>
                 <viewController storyboardIdentifier="HeroViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mMh-Am-rcO" customClass="HeroViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Bf-0x-DnZ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTq-pH-9eJ">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="okb-1P-1o0">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPn-S4-KEH">
-                                        <rect key="frame" x="896" y="20" width="78" height="66"/>
+                                        <rect key="frame" x="1238" y="20" width="78" height="66"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="ic_setting" title=" "/>
                                         <connections>
@@ -50,19 +50,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create my story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-ke-v6O">
-                                        <rect key="frame" x="420" y="37" width="184.5" height="32.5"/>
+                                        <rect key="frame" x="591" y="37" width="184.5" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who is the hero of your story?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SR-Ek-AMe">
-                                        <rect key="frame" x="205" y="109.5" width="614.5" height="40"/>
+                                        <rect key="frame" x="376" y="109.5" width="614.5" height="40"/>
                                         <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="40"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oso-bK-UqU">
-                                        <rect key="frame" x="337" y="1192" width="350" height="70"/>
+                                        <rect key="frame" x="508" y="850" width="350" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="U7P-Tn-8L7"/>
                                             <constraint firstAttribute="height" constant="70" id="zhz-gc-rHb"/>
@@ -80,7 +80,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1R-g4-Ama">
-                                        <rect key="frame" x="50" y="511" width="924" height="300"/>
+                                        <rect key="frame" x="50" y="340" width="1266" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="cLl-Zy-qBb"/>
@@ -188,17 +188,17 @@
             <objects>
                 <viewController storyboardIdentifier="PlacesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CIx-ch-MGb" customClass="PlacesViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rvx-gr-fqW">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sk1-gy-DeB">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-4S-fC9">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVh-QG-atQ">
-                                        <rect key="frame" x="896" y="20" width="78" height="66"/>
+                                        <rect key="frame" x="1238" y="20" width="78" height="66"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="ic_setting" title=" "/>
                                         <connections>
@@ -214,19 +214,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create my story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-80-Nih">
-                                        <rect key="frame" x="419.5" y="37" width="185" height="32.5"/>
+                                        <rect key="frame" x="590.5" y="37" width="185" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Where will your story take place?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2U-3g-LJQ">
-                                        <rect key="frame" x="163.5" y="109.5" width="697" height="40"/>
+                                        <rect key="frame" x="334.5" y="109.5" width="697" height="40"/>
                                         <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="40"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hd-oG-RKB">
-                                        <rect key="frame" x="337" y="1192" width="350" height="70"/>
+                                        <rect key="frame" x="508" y="850" width="350" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="AIy-pq-jMT"/>
                                             <constraint firstAttribute="height" constant="70" id="wYk-vi-iJQ"/>
@@ -244,7 +244,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-Ho-Qxm">
-                                        <rect key="frame" x="50" y="511" width="924" height="300"/>
+                                        <rect key="frame" x="50" y="340" width="1266" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="Cdz-HL-SVb"/>
@@ -350,17 +350,17 @@
             <objects>
                 <viewController storyboardIdentifier="MagicalObjectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="omn-xd-Y9h" customClass="MagicalObjectViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNf-yk-Wbo">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFO-1A-bJU">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="5Td-It-57o">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUt-qL-qjn">
-                                        <rect key="frame" x="896" y="20" width="78" height="66"/>
+                                        <rect key="frame" x="1238" y="20" width="78" height="66"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="ic_setting" title=" "/>
                                         <connections>
@@ -376,19 +376,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create my story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaQ-Ho-RYW">
-                                        <rect key="frame" x="419.5" y="37" width="185" height="32.5"/>
+                                        <rect key="frame" x="590.5" y="37" width="185" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="what is the magical object?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqJ-ut-1iW">
-                                        <rect key="frame" x="233" y="109.5" width="558" height="40"/>
+                                        <rect key="frame" x="404" y="109.5" width="558" height="40"/>
                                         <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="40"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QR-0F-SB3">
-                                        <rect key="frame" x="337" y="1192" width="350" height="70"/>
+                                        <rect key="frame" x="508" y="850" width="350" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="49X-Fg-EpE"/>
                                             <constraint firstAttribute="height" constant="70" id="Aal-8F-erA"/>
@@ -406,7 +406,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hym-AN-Evg">
-                                        <rect key="frame" x="50" y="511" width="924" height="300"/>
+                                        <rect key="frame" x="50" y="340" width="1266" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="xnd-wl-gzn"/>
@@ -518,17 +518,17 @@
             <objects>
                 <viewController storyboardIdentifier="HeroNameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WVp-Ud-eRh" customClass="HeroNameViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ehh-xb-vLQ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U59-LD-hhl">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="E1P-PL-j00">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZp-Ry-vK6">
-                                        <rect key="frame" x="900.5" y="20" width="73.5" height="66"/>
+                                        <rect key="frame" x="1242.5" y="20" width="73.5" height="66"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="ic_setting"/>
                                         <connections>
@@ -544,19 +544,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create my story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkH-gZ-AYD">
-                                        <rect key="frame" x="420" y="37" width="184.5" height="32.5"/>
+                                        <rect key="frame" x="591" y="37" width="184.5" height="32.5"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhAt is your hero’s name?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcL-Zh-nDh">
-                                        <rect key="frame" x="249.5" y="109.5" width="525.5" height="40"/>
+                                        <rect key="frame" x="420.5" y="109.5" width="525.5" height="40"/>
                                         <fontDescription key="fontDescription" name="LuckiestGuy-Regular" family="Luckiest Guy" pointSize="40"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f8-MX-3pf">
-                                        <rect key="frame" x="337" y="1192" width="350" height="70"/>
+                                        <rect key="frame" x="508" y="850" width="350" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="DpT-uU-ho5"/>
                                             <constraint firstAttribute="width" constant="350" id="PmL-2w-1bl"/>
@@ -574,7 +574,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_story1" translatesAutoresizingMaskIntoConstraints="NO" id="zgJ-5M-4Nd">
-                                        <rect key="frame" x="378" y="527" width="268" height="268"/>
+                                        <rect key="frame" x="549" y="356" width="268" height="268"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="268" id="7qm-oY-4ZE"/>
                                             <constraint firstAttribute="width" constant="268" id="b3s-fE-rbh"/>
@@ -589,13 +589,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Character Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-iM-Oyi">
-                                        <rect key="frame" x="411" y="815" width="202" height="237"/>
+                                        <rect key="frame" x="582" y="644" width="202" height="66"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-ww-m9L">
-                                        <rect key="frame" x="287" y="1062" width="450" height="70"/>
+                                        <rect key="frame" x="458" y="720" width="450" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Character Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-Ex-ukl">
                                                 <rect key="frame" x="50" y="0.0" width="295" height="70"/>

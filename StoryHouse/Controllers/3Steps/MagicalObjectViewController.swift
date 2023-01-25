@@ -43,24 +43,10 @@ class MagicalObjectViewController: UIViewController {
     
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
-        sender.showAnimation {
-            let viewController = LoadingViewController.getInstance()
-            self.navigationController?.pushViewController(viewController, animated: true)
-
-        }
-        
-/*        sender.alpha = 0.8
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
-              sender.alpha = 1.0
-              let viewController = LoadingViewController.getInstance()
-              self.navigationController?.pushViewController(viewController, animated: true)
-          }
- */
+        let viewController = LoadingViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
-
-
 
 extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -38,22 +38,8 @@ class HeroViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        sender.showAnimation {
             let viewController = PlacesViewController.getInstance()
-            
             self.navigationController?.pushViewController(viewController, animated: true)
-        }
-            
-      /*  sender.alpha = 0.8
-
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
-              sender.alpha = 1.0
-              
-          }
-        */
-      //  let viewController = HeroNameViewController.getInstance()
-       // viewController.selectedHero = self.storyImage[selectedIndex]
-   //     self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {

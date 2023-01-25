@@ -42,22 +42,9 @@ class PlacesViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        sender.showAnimation {
             let viewController = MagicalObjectViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
-        }
     }
-        
-        /*
-        sender.alpha = 0.8
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
-              sender.alpha = 1.0
-              let viewController = MagicalObjectViewController.getInstance()
-              self.navigationController?.pushViewController(viewController, animated: true)
-          }
-    }
-         */
-         
 }
 
 extension PlacesViewController: UICollectionViewDelegate , UICollectionViewDataSource {
