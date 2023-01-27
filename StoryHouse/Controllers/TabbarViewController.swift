@@ -108,6 +108,7 @@ class TabbarViewController: UIViewController {
         self.filterdStoryIndex = UserDefaultHelper.getMagicalObjectIndex() ?? 0
         self.imageTitle.textColor = GRAY_COLOR
         self.loadJson()
+        
         self.setUpUI()
         self.sliderView.isHidden = true
         let gender =  UserDefaultHelper.getGender()
@@ -126,9 +127,9 @@ class TabbarViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-        
+    
     func loadJson() {
-        if let path = Bundle.main.path(forResource: "StoriesJSON", ofType: "json"){
+        if let path = Bundle.main.path(forResource: "111", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)

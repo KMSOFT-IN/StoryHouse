@@ -29,9 +29,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23s-f9-9Gh">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_endBG" translatesAutoresizingMaskIntoConstraints="NO" id="aST-EK-F7Y">
+                                        <rect key="frame" x="100" y="150" width="824" height="618"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ln-3d-VG9">
                                         <rect key="frame" x="200" y="50" width="724" height="718"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_c" translatesAutoresizingMaskIntoConstraints="NO" id="mLA-hb-69t">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
@@ -108,16 +110,26 @@ You’ve completed your story.</string>
                                             <constraint firstAttribute="width" constant="280" id="sle-iW-lU3"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Chadi" translatesAutoresizingMaskIntoConstraints="NO" id="m8v-js-YKs">
+                                        <rect key="frame" x="215" y="518.5" width="100" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="9fI-xj-IgK"/>
+                                            <constraint firstAttribute="width" constant="100" id="eYL-8b-LIT"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Cl6-DZ-OAW" firstAttribute="top" secondItem="anD-dz-0na" secondAttribute="bottom" constant="40" id="0kI-VH-v9E"/>
                                     <constraint firstItem="A6v-J5-FgF" firstAttribute="top" secondItem="ezS-On-Myg" secondAttribute="bottom" constant="5" id="0uA-ca-n7U"/>
+                                    <constraint firstAttribute="trailing" secondItem="aST-EK-F7Y" secondAttribute="trailing" constant="100" id="89A-4I-Aex"/>
                                     <constraint firstAttribute="trailing" secondItem="v6m-m2-HXR" secondAttribute="trailing" id="AA0-cQ-reM"/>
                                     <constraint firstAttribute="bottom" secondItem="Cl6-DZ-OAW" secondAttribute="bottom" constant="20" id="CbM-aX-47H"/>
                                     <constraint firstAttribute="bottom" secondItem="mLA-hb-69t" secondAttribute="bottom" id="EE3-ys-Hfw"/>
+                                    <constraint firstItem="Cl6-DZ-OAW" firstAttribute="leading" secondItem="m8v-js-YKs" secondAttribute="trailing" constant="8.5" id="Ihu-2c-Zbr"/>
                                     <constraint firstItem="v6m-m2-HXR" firstAttribute="centerY" secondItem="23s-f9-9Gh" secondAttribute="centerY" id="M63-OV-Unh"/>
                                     <constraint firstAttribute="trailing" secondItem="mLA-hb-69t" secondAttribute="trailing" id="P6U-9g-8is"/>
+                                    <constraint firstItem="aST-EK-F7Y" firstAttribute="leading" secondItem="23s-f9-9Gh" secondAttribute="leading" constant="100" id="PSh-a8-0cs"/>
                                     <constraint firstItem="mLA-hb-69t" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" id="PyX-tS-eIm"/>
                                     <constraint firstItem="5Ln-3d-VG9" firstAttribute="leading" secondItem="23s-f9-9Gh" secondAttribute="leading" constant="200" id="QdG-FT-3In"/>
                                     <constraint firstItem="anD-dz-0na" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="UGT-3b-7lT"/>
@@ -125,10 +137,13 @@ You’ve completed your story.</string>
                                     <constraint firstAttribute="trailing" secondItem="5Ln-3d-VG9" secondAttribute="trailing" constant="100" id="XTO-lT-V7T"/>
                                     <constraint firstItem="ezS-On-Myg" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="XxL-CN-vYd"/>
                                     <constraint firstItem="Cl6-DZ-OAW" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="fnB-fq-mpn"/>
+                                    <constraint firstItem="aST-EK-F7Y" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="150" id="hXC-S0-wJy"/>
                                     <constraint firstItem="anD-dz-0na" firstAttribute="top" secondItem="A6v-J5-FgF" secondAttribute="bottom" constant="10" id="hvr-q0-OJL"/>
                                     <constraint firstAttribute="bottom" secondItem="5Ln-3d-VG9" secondAttribute="bottom" id="kgq-1G-Mp5"/>
                                     <constraint firstItem="ezS-On-Myg" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="120" id="nkG-YG-gTJ"/>
+                                    <constraint firstItem="m8v-js-YKs" firstAttribute="centerY" secondItem="Cl6-DZ-OAW" secondAttribute="centerY" id="uDj-VT-14m"/>
                                     <constraint firstItem="A6v-J5-FgF" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="ufy-sq-sss"/>
+                                    <constraint firstAttribute="bottom" secondItem="aST-EK-F7Y" secondAttribute="bottom" id="w8V-dE-Eig"/>
                                     <constraint firstItem="mLA-hb-69t" firstAttribute="leading" secondItem="23s-f9-9Gh" secondAttribute="leading" id="wB7-of-wwE"/>
                                 </constraints>
                             </view>
@@ -152,7 +167,9 @@ You’ve completed your story.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_Chadi" width="1084" height="956"/>
         <image name="ic_c" width="2375" height="2267"/>
+        <image name="ic_endBG" width="4776" height="3336"/>
         <image name="ic_endStory" width="456" height="101"/>
         <image name="ic_goHome" width="349" height="70.5"/>
         <image name="ic_monkey" width="267" height="429"/>

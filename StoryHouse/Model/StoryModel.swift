@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct StoryModels: Codable {
+struct StoryModels: Decodable {
     var story: [Story]?
 }
 
-struct Story : Codable {
+struct Story : Decodable {
     var storyNumber : String?
     var data : [ParagraphDetails]?
 }
 
-struct ParagraphDetails: Codable {
+struct ParagraphDetails: Decodable {
     var imageName: String?
     var he: String?
     var she: String?
