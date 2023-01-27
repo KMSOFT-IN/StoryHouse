@@ -1,1 +1,63 @@
 
+
+
+{
+    "story": [
+        {
+            "storyNumber": "20",
+            "data": [
+                {
+                    "imageName":"100-1",
+                    "he":"Once upon a time, in a dense forest, there lived a young zebra named Zippy. He was a curious and adventurous zebra, always eager to explore the unknown. One day, while on a journey through the forest, Zippy stumbled upon a mysterious wand lying on the ground.",
+                    "she":"Once upon a time, in a lush forest, there lived a young zebra named Zoe. She was a kind and curious zebra, always eager to explore the unknown. One day, while on a journey through the forest, Zoe stumbled upon a mysterious wand lying on the ground."
+                },
+                {
+                    "imageName":"100-2",
+                    "he":"Excited by his discovery, Zippy picked up the wand and examined it closely. It was made of a shimmering silver material and had intricate designs etched onto it. Suddenly, a voice spoke to Zippy in his head, 'I am the magical wand of the forest, and I have chosen you to be my wielder. With me, you will have the power to control the elements and bring balance to the forest.'",
+                    "she":"Excited by her discovery, Zoe picked up the wand and examined it closely. It was made of a shimmering gold material and had intricate designs etched onto it. Suddenly, a voice spoke to Zoe in her head, 'I am the magical wand of the forest, and I have chosen you to be my wielder. With me, you will have the power to control the elements and bring balance to the forest.'"
+                },
+                {
+                    "imageName":"100-3",
+                    "he":"Zippy was amazed by the wand's powers and decided to set out on a journey to use it for good. He traveled through the forest, helping animals in need and restoring the natural balance to the land.",
+                    "she":"Zoe was amazed by the wand's powers and decided to set out on a journey to use it for good. She traveled through the forest, helping animals in need and restoring the natural balance to the land."
+                },
+                {
+                    "imageName":"100-4",
+                    "he":"One day, Zippy came across a group of monkeys who were having trouble finding enough food to survive. Zippy knew just what to do. He raised the wand and with a wave, he summoned a bountiful harvest of fruits and nuts for the monkeys to feast on.",
+                    "she":"One day, Zoe came across a group of birds who were having trouble finding a safe place to nest. Zoe knew just what to do. She raised the wand and with a wave, she summoned a beautiful tree with strong branches for the birds to make their nest."
+                },
+                {
+                    "imageName":"100-5",
+                    "he":"The animals of the forest were amazed by Zippy's powers and they began to turn to him for help. He used the wand to create a stream for the deer to drink from, and to stop a raging fire that threatened the home of the rabbits.",
+                    "she":"The animals of the forest were amazed by Zoe's powers and they began to turn to her for help. She used the wand to create a pond for the fish to swim in, and to stop a heavy rain that threatened the home of the hedgehogs."
+                },
+                {
+                    "imageName":"100-6",
+                    "he":"As Zippy continued to use the wand for good, he became known as the hero of the forest. He continued to use the wand to help the animals and the forest, always making sure to bring balance to the land.",
+                    "she":"As Zoe continued to use the wand for good, she became known as the protector of the forest. She continued to use the wand to help the animals and the forest, always making sure to bring balance to the land."
+                },
+                {
+                    "imageName":"100-7",
+                    "he":"One day, a group of hunters came into the forest with the intention of catching the animals. Zippy knew he had to act fast to protect his friends. He raised the wand and with a powerful spell, he created a thick fog that obscured the hunters' view and allowed the animals to escape.",
+                    "she":"One day, a group of poachers entered the forest with the intention of catching the animals. Zoe knew she had to act fast to protect her friends. She raised the wand and with a powerful spell, she created a barrier of thorns that kept the poachers away and the animals safe."
+                },
+                {
+                    "imageName":"100-8",
+                    "he":"Thanks to Zippy's quick thinking, the animals were safe. The hunters, realizing their mistake, apologized and promised never to harm the forest again.",
+                    "she":"Thanks to Zoe's quick thinking, the animals were safe. The poachers, realizing their mistake, apologized and promised never to harm the forest again."
+                },
+                {
+                    "imageName":"100-9",
+                    "he":"As time passed, Zippy became a respected leader among the animals of the forest. He continued to use the wand to help and protect them, and the forest prospered under his watchful eye. And so, Zippy the zebra, with the help of the magical wand, became the guardian of the forest, and the animals lived in peace and harmony.",
+                    "she":"As time passed, Zoe became a respected leader among the animals of the forest. She continued to use the wand to help and protect them, and the forest prospered under her watchful eye. And so, Zoe the zebra, with the help of the magical wand, became the guardian of the forest, and the animals lived in peace and harmony."
+                },
+                {
+                    "imageName":"100-10",
+                    "he":"The end.",
+                    "she":"The end."
+                },
+            ]
+        } ,
+    ]
+}
+
