@@ -1,2 +1,64 @@
 
 
+
+{
+    "story": [
+        {
+            "storyNumber": "4",
+            "data": [
+                {
+                    "imageName":"000-1",
+                    "he":"Once upon a time, in the heart of the forest, there lived a tall and lanky giraffe named Gerald. He was known for his kind and gentle nature, and he always had a smile on his face.",
+                    "she":"Once upon a time, deep in the heart of the forest, there lived a giraffe named Gia. Gia was a curious and adventurous giraffe, always eager to explore her surroundings and discover new things."
+                },
+                {
+                    "imageName":"000-2",
+                    "he":"One day, as Gerald was out for a walk in the forest, he stumbled upon a strange object lying on the ground. It was a wand, made of a shimmering silver wood and decorated with sparkling gems. He picked it up and felt a strange tingling sensation in his hooves.",
+                    "she":"One day, as Gia was wandering through the forest, she came across a mysterious object lying on the ground. It was a wand, made of a beautiful golden wood and adorned with sparkling jewels. Gia picked up the wand and immediately felt a strange tingling sensation in her hooves."
+                },
+                {
+                    "imageName":"000-3",
+                    "he":"Curious about the wand's powers, Gerald decided to give it a try. He pointed the wand at a nearby rock and whispered the magic words, 'Abracadabra!' To his amazement, the rock turned into a delicious cake. He couldn't resist and took a bite, it was delicious.",
+                    "she":"Curious about the wand's powers, Gia decided to give it a try. She pointed the wand at a nearby tree and whispered the magic words, 'Abra-ca-dabra!' To her amazement, the tree began to shrink and soon it was small enough for Gia to hold in her hooves."
+                },
+                {
+                    "imageName":"000-4",
+                    "he":"Encouraged by his success, Gerald continued to explore the forest, using his wand to make all kinds of things happen. He made the birds sing louder and the flowers bloom brighter. He even made a small pond for the forest animals to drink from.",
+                    "she":"Encouraged by her success, Gia continued to explore the forest, using her wand to make the most incredible things happen. She made the flowers bloom, and the birds sing. She even made it rain candy, much to the delight of the forest animals."
+                },
+                {
+                    "imageName":"000-5",
+                    "he":"But Gerald's adventures were not without danger. One day, he came across a group of hunters who were intent on destroying the forest and all the animals that lived there. Without hesitation, Gerald used his wand to make the hunters disappear, saving the forest and its inhabitants from certain doom.",
+                    "she":"But Gia's adventures were not without danger. One day, she came across a group of hunters who were intent on destroying the forest and all the animals that lived there. Without hesitation, Gia used her wand to make the hunters vanish, saving the forest and its inhabitants from certain doom."
+                },
+                {
+                    "imageName":"000-6",
+                    "he":"As Gerald continued his journey, he met many new friends, including a wise old owl, a playful monkey, and a brave lion. Together, they had many more adventures and Gerald learned many new spells with his wand.",
+                    "she":"As Gia continued her journey, she met many new friends, including a wise old owl, a playful monkey and a brave lion. Together, they had many more adventures and Gia learned many new spells with her wand."
+                },
+                {
+                    "imageName":"000-7",
+                    "he":"As Gerald grew older, he knew it was time to pass on his magic wand to a new generation of young animals. He sought out a young and curious giraffe, just like himself, and gave him the wand, telling him to use it wisely and with compassion.",
+                    "she":"As Gia grew older, she knew it was time to pass on her magic wand to a new generation of young animals. She sought out a young and curious giraffe, just like herself, and gave her the wand, telling her to use it wisely and with compassion."
+                },
+                {
+                    "imageName":"000-8",
+                    "he":"The young giraffe, named Gerald II, was thrilled to receive the wand and promised to use it to protect the forest and all its inhabitants. Gerald bid him farewell and watched as Gerald II set off on his own adventures.",
+                    "she":"The young giraffe, named Gia II, was thrilled to receive the wand and promised to use it to protect the forest and all its inhabitants. Gia bid her farewell and watched as Gia II set off on her own adventures."
+                },
+                {
+                    "imageName":"000-9",
+                    "he":"Gerald lived the rest of his days surrounded by his friends in the forest, happy in the knowledge that his legacy would live on through the young giraffe and his magical wand. He knew that as long as there was magic in the forest, the animals would always be safe and happy.",
+                    "she":"Gia lived the rest of her days surrounded by her friends in the forest, happy in the knowledge that her legacy would live on through the young giraffe and her magical wand. She knew that as long as there was magic in the forest, the animals would always be safe and happy."
+                },
+                {
+                    "imageName":"000-10",
+                    "he":"The End.",
+                    "she":"The End."
+                },
+            ]
+        } ,
+        
+    ]
+}
+
