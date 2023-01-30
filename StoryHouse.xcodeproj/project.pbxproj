@@ -53,6 +53,7 @@
 		88167778297E5B7400725569 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88167777297E5B7400725569 /* SettingViewController.swift */; };
 		881CBF37297680090094109D /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881CBF36297680090094109D /* StoryModel.swift */; };
 		882D145C2981553B003F3208 /* Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D145B2981553B003F3208 /* Gifs.swift */; };
+		88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88313AB329876DC2000D1248 /* CategoryModel.swift */; };
 		88319FE7297AC78A00FA59B0 /* strimmer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88319FE6297AC78A00FA59B0 /* strimmer.gif */; };
 		88319FE9297AC89D00FA59B0 /* Streamers.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88319FE8297AC89D00FA59B0 /* Streamers.gif */; };
 		88319FEB297ACC4C00FA59B0 /* MPVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88319FEA297ACC4C00FA59B0 /* MPVolumeView.swift */; };
@@ -190,6 +191,7 @@
 		88167777297E5B7400725569 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		881CBF36297680090094109D /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		882D145B2981553B003F3208 /* Gifs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gifs.swift; sourceTree = "<group>"; };
+		88313AB329876DC2000D1248 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		88319FE6297AC78A00FA59B0 /* strimmer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = strimmer.gif; sourceTree = "<group>"; };
 		88319FE8297AC89D00FA59B0 /* Streamers.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Streamers.gif; sourceTree = "<group>"; };
 		88319FEA297ACC4C00FA59B0 /* MPVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPVolumeView.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				88A63D6B29837A3800E9DA8B /* JSON */,
 				881CBF36297680090094109D /* StoryModel.swift */,
 				88167775297E5A4600725569 /* Setting.storyboard */,
+				88313AB329876DC2000D1248 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1223,6 +1226,7 @@
 				88140331296D84FA00930582 /* UIImage.swift in Sources */,
 				88140332296D84FA00930582 /* UIViewController.swift in Sources */,
 				88140334296D85B000930582 /* PlacesViewController.swift in Sources */,
+				88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */,
 				88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */,
 				88140344296D9B9B00930582 /* SplashViewController.swift in Sources */,
 				888A48E1296E62B70097C42D /* Utility.swift in Sources */,

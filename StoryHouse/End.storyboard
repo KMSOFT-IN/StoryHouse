@@ -44,7 +44,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The END" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezS-On-Myg">
-                                        <rect key="frame" x="301" y="120" width="422.5" height="114"/>
+                                        <rect key="frame" x="301" y="140" width="422.5" height="114"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="114" id="cCt-an-c86"/>
                                         </constraints>
@@ -53,7 +53,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6v-J5-FgF">
-                                        <rect key="frame" x="281" y="239" width="462" height="90"/>
+                                        <rect key="frame" x="281" y="259" width="462" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="28C-oE-0WX"/>
                                         </constraints>
@@ -64,7 +64,7 @@ You’ve completed your story.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anD-dz-0na">
-                                        <rect key="frame" x="270" y="339" width="484.5" height="110"/>
+                                        <rect key="frame" x="270" y="359" width="484.5" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="110" id="bXy-99-yJw"/>
                                         </constraints>
@@ -75,10 +75,10 @@ You’ve completed your story.</string>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Cl6-DZ-OAW">
-                                        <rect key="frame" x="323.5" y="489" width="377.5" height="259"/>
+                                        <rect key="frame" x="330" y="509" width="364" height="239"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUd-mS-OBV">
-                                                <rect key="frame" x="0.0" y="0.0" width="377.5" height="73"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="364" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_goHome" title=" "/>
                                                 <connections>
@@ -86,7 +86,7 @@ You’ve completed your story.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="If2-4r-1GV">
-                                                <rect key="frame" x="0.0" y="93" width="377.5" height="73"/>
+                                                <rect key="frame" x="0.0" y="86.5" width="364" height="66"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_readyAgain" title=" "/>
                                                 <connections>
@@ -94,7 +94,7 @@ You’ve completed your story.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKD-q7-KtM">
-                                                <rect key="frame" x="0.0" y="186" width="377.5" height="73"/>
+                                                <rect key="frame" x="0.0" y="172.5" width="364" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_shareStory" title=" "/>
                                                 <connections>
@@ -111,7 +111,7 @@ You’ve completed your story.</string>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Chadi" translatesAutoresizingMaskIntoConstraints="NO" id="m8v-js-YKs">
-                                        <rect key="frame" x="215" y="518.5" width="100" height="200"/>
+                                        <rect key="frame" x="221.5" y="528.5" width="100" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="9fI-xj-IgK"/>
                                             <constraint firstAttribute="width" constant="100" id="eYL-8b-LIT"/>
@@ -124,8 +124,9 @@ You’ve completed your story.</string>
                                     <constraint firstItem="A6v-J5-FgF" firstAttribute="top" secondItem="ezS-On-Myg" secondAttribute="bottom" constant="5" id="0uA-ca-n7U"/>
                                     <constraint firstAttribute="trailing" secondItem="aST-EK-F7Y" secondAttribute="trailing" constant="100" id="89A-4I-Aex"/>
                                     <constraint firstAttribute="trailing" secondItem="v6m-m2-HXR" secondAttribute="trailing" id="AA0-cQ-reM"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cl6-DZ-OAW" secondAttribute="bottom" constant="20" id="CbM-aX-47H"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Cl6-DZ-OAW" secondAttribute="bottom" constant="20" id="CbM-aX-47H"/>
                                     <constraint firstAttribute="bottom" secondItem="mLA-hb-69t" secondAttribute="bottom" id="EE3-ys-Hfw"/>
+                                    <constraint firstItem="v6m-m2-HXR" firstAttribute="leading" secondItem="Cl6-DZ-OAW" secondAttribute="trailing" constant="50" id="FF7-lk-geb"/>
                                     <constraint firstItem="Cl6-DZ-OAW" firstAttribute="leading" secondItem="m8v-js-YKs" secondAttribute="trailing" constant="8.5" id="Ihu-2c-Zbr"/>
                                     <constraint firstItem="v6m-m2-HXR" firstAttribute="centerY" secondItem="23s-f9-9Gh" secondAttribute="centerY" id="M63-OV-Unh"/>
                                     <constraint firstAttribute="trailing" secondItem="mLA-hb-69t" secondAttribute="trailing" id="P6U-9g-8is"/>
@@ -140,7 +141,7 @@ You’ve completed your story.</string>
                                     <constraint firstItem="aST-EK-F7Y" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="150" id="hXC-S0-wJy"/>
                                     <constraint firstItem="anD-dz-0na" firstAttribute="top" secondItem="A6v-J5-FgF" secondAttribute="bottom" constant="10" id="hvr-q0-OJL"/>
                                     <constraint firstAttribute="bottom" secondItem="5Ln-3d-VG9" secondAttribute="bottom" id="kgq-1G-Mp5"/>
-                                    <constraint firstItem="ezS-On-Myg" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="120" id="nkG-YG-gTJ"/>
+                                    <constraint firstItem="ezS-On-Myg" firstAttribute="top" secondItem="23s-f9-9Gh" secondAttribute="top" constant="140" id="nkG-YG-gTJ"/>
                                     <constraint firstItem="m8v-js-YKs" firstAttribute="centerY" secondItem="Cl6-DZ-OAW" secondAttribute="centerY" id="uDj-VT-14m"/>
                                     <constraint firstItem="A6v-J5-FgF" firstAttribute="centerX" secondItem="23s-f9-9Gh" secondAttribute="centerX" id="ufy-sq-sss"/>
                                     <constraint firstAttribute="bottom" secondItem="aST-EK-F7Y" secondAttribute="bottom" id="w8V-dE-Eig"/>

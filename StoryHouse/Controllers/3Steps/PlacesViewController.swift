@@ -12,10 +12,12 @@ class PlacesViewController: UIViewController {
     @IBOutlet weak var placesCollectionView: UICollectionView!
   //  let storyImage = ["ic_place1","ic_place2","ic_place3","ic_place4"]
     let storyImage = ["ic_locaction1","ic_locaction2","ic_locaction3","ic_locaction4"]
+    var locationList : [CategoryModel] = []
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationList = CategoryModel.locationList
         self.placesCollectionView.dataSource  = self
         self.placesCollectionView.delegate = self
     }
@@ -49,7 +51,7 @@ class PlacesViewController: UIViewController {
 
 extension PlacesViewController: UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.locationList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,15 +60,15 @@ extension PlacesViewController: UICollectionViewDelegate , UICollectionViewDataS
         if (indexPath.item == self.selectedIndex) {
             cell.imageBorderView.borderWidth = 6
         }
-        let image = storyImage[indexPath.item]
+        let image = self.locationList[indexPath.item].imageName
         cell.imageView.image = UIImage(named: image)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
-        self.selectedIndex = indexPath.item
-        AppData.sharedInstance.selectedLocationIndex = indexPath.item
+        self.selectedIndex = self.locationList[indexPath.item].tag
+        AppData.sharedInstance.selectedLocationIndex = self.selectedIndex
         self.placesCollectionView.reloadData()
     }
 }

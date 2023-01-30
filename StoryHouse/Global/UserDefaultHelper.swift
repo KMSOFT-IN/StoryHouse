@@ -9,63 +9,76 @@ import Foundation
 
 class UserDefaultHelper {
     
-    // 1.
-    static func setIsOnboardingDone(value: Bool) {
-        UserDefaults.standard.setValue(value, forKey: "OnBoarding")
-        UserDefaults.standard.synchronize()
-    }
-    static func getIsOnboardingDone() -> Bool {
-        return UserDefaults.standard.bool(forKey: "OnBoarding")
-    }
-
-    //2.0
+    // MARK: 1. SET VOICE
     static func setVoice(value: String) {
-        UserDefaults.standard.setValue(value, forKey: "voice")
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.VOICE)
         UserDefaults.standard.synchronize()
     }
     static func getVoice() -> String? {
-        return UserDefaults.standard.string(forKey: "voice")
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.VOICE)
     }
-       
-    //3.0
+    
+    // MARK: 2. SET GENDER
     static func setGender(value: String) {
-        UserDefaults.standard.setValue(value, forKey: "gender")
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.GENDER)
         UserDefaults.standard.synchronize()
     }
     static func getGender() -> String? {
-        return UserDefaults.standard.string(forKey: "gender")
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.GENDER)
     }
     
-    //3.0
+    // MARK: 3. SET PARAGRAPH INDEX
     static func setParagraphIndex(value: Int) {
-        UserDefaults.standard.setValue(value, forKey: "parIndex")
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.PARAGRAPH_INDEX)
         UserDefaults.standard.synchronize()
     }
     static func getParagraphIndex() -> Int? {
-        return UserDefaults.standard.integer(forKey: "parIndex")
+        return UserDefaults.standard.integer(forKey: Constant.UserDefault.PARAGRAPH_INDEX)
     }
     
-    static func setMagicalObjectIndex(value: Int) {
-        UserDefaults.standard.setValue(value, forKey: "MagicalObjectIndex")
+    // MARK: 4. SET STORY NUMBER
+    static func setSelectedStoryNumber(value: Int?) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.STORY_NUMBER)
         UserDefaults.standard.synchronize()
     }
-    static func getMagicalObjectIndex() -> Int? {
-        return UserDefaults.standard.integer(forKey: "MagicalObjectIndex")
+    static func getSelectedStoryNumber() -> Int? {
+        return UserDefaults.standard.integer(forKey: Constant.UserDefault.STORY_NUMBER)
     }
-    //4.0
+    
+    // MARK: 5. SET CHILD NAME
     static func setChildname(value: String) {
-        UserDefaults.standard.setValue(value, forKey: "childName" )
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.USERNAME )
         UserDefaults.standard.synchronize()
     }
     static func getChildname() -> String? {
-        return UserDefaults.standard.string(forKey: "childName")
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.USERNAME)
     }
     
+    // MARK: 6. SET ONBOARDING DONE.
+    static func set_Is_Onboarding_Done(value: Bool) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.IS_ONBOARDING_DONE )
+        UserDefaults.standard.synchronize()
+    }
+    static func get_Is_Onboarding_Done() -> Bool? {
+        return UserDefaults.standard.bool(forKey: Constant.UserDefault.IS_ONBOARDING_DONE)
+    }
+    
+    // MARK: 7. SET VOICE IDENTIFIER.
+    static func setVoiceIdentifier(value: String?) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.VOICE_IDENTIFIER)
+        UserDefaults.standard.synchronize()
+    }
+    static func getVoiceIdentifier() -> String? {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.VOICE_IDENTIFIER)
+    }
     
     static func clearUserdefault() {
-        UserDefaultHelper.setIsOnboardingDone(value: false)
         UserDefaultHelper.setVoice(value: "")
+        UserDefaultHelper.setVoiceIdentifier(value: "")
         UserDefaultHelper.setGender(value: "")
+        UserDefaultHelper.setParagraphIndex(value: 0)
+        UserDefaultHelper.setSelectedStoryNumber(value: 0)
+        UserDefaultHelper.set_Is_Onboarding_Done(value: false)
         UserDefaultHelper.setChildname(value: "")
     }
 }

@@ -38,6 +38,7 @@ class EndViewController: UIViewController {
     
     @IBAction func homebuttonTapped(_ sender: UIButton) {
         let viewController = HomeViewController.getInstance()
+        UserDefaultHelper.set_Is_Onboarding_Done(value: false)
         viewController.isFromTabbar = true
         var navigationController = UINavigationController()
         let window = self.view.window
@@ -53,7 +54,7 @@ class EndViewController: UIViewController {
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
         //let image = UIImage(named: "AppIcon")!
-        let image = UIImage(named: self.image)!
+        let image = UIImage(named: self.image) ?? UIImage(named: "ic_placeHolder")
         let textToShare = self.imageTitle
         UIGraphicsEndImageContext()
         let childName = (UserDefaultHelper.getChildname() ?? "") + "'s ’s Magic House Story"

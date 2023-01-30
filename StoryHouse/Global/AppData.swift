@@ -18,10 +18,11 @@ class AppData {
     var synthesizer: AVSpeechSynthesizer?
     var voiceIdentifier: String?
     var voice: String?
-    var selectedCharacterIndex: Int?
-    var selectedLocationIndex: Int?
-    var selectedMagicalObjectIndex: Int?
     
+    var selectedCharacterIndex: Int = 0
+    var selectedLocationIndex: Int = 0
+    var selectedMagicalObjectIndex: Int = 0
+    var selectedStoryNumber : Int = 0
     
     
     static let sharedInstance: AppData = {

@@ -11,10 +11,12 @@ class MagicalObjectViewController: UIViewController {
     
     @IBOutlet weak var magicalObjectCollectionView: UICollectionView!
     let magicalImages = ["ic_object1","ic_object2","ic_object3","ic_object4"]
+    var magicalObjectList : [CategoryModel] = []
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.magicalObjectList = CategoryModel.magicalObjectList
         self.magicalObjectCollectionView.dataSource  = self
         self.magicalObjectCollectionView.delegate = self
     }
@@ -23,26 +25,22 @@ class MagicalObjectViewController: UIViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "MagicalObjectViewController") as! MagicalObjectViewController
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self.view) else { return }
-        let hitView = self.view.hitTest(location, with: event)
-        // if hitView == self.view {
-        let view = UIView(frame: CGRect(x: location.x - 50, y: location.y - 50, width: 100, height: 100))
-        self.view.addSubview(view)
-        //}
-    }
     
-    @IBAction func backButtonTapped(_ sender: Any) {
+    @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     
-    @IBAction func settingButtonTapped(_ sender: Any) {
+    @IBAction func settingButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
+        
+        if let storyIndex = Int("\(AppData.sharedInstance.selectedCharacterIndex)\(AppData.sharedInstance.selectedLocationIndex)\(AppData.sharedInstance.selectedMagicalObjectIndex)") {
+            UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
+            UserDefaultHelper.set_Is_Onboarding_Done(value: true)
+        }
         let viewController = LoadingViewController.getInstance()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -50,7 +48,7 @@ class MagicalObjectViewController: UIViewController {
 
 extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.magicalObjectList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -59,14 +57,14 @@ extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionVi
         if (indexPath.item == self.selectedIndex) {
             cell.imageBorderView.borderWidth = 6
         }
-        let image = magicalImages[indexPath.item]
+        let image = self.magicalObjectList[indexPath.item].imageName
         cell.imageView.image = UIImage(named: image)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedIndex = indexPath.item
-        UserDefaultHelper.setMagicalObjectIndex(value: indexPath.item)
+        self.selectedIndex = self.magicalObjectList[indexPath.item].tag
+        AppData.sharedInstance.selectedMagicalObjectIndex = self.selectedIndex
         UserDefaultHelper.setParagraphIndex(value: 0)
         self.magicalObjectCollectionView.reloadData()
     }

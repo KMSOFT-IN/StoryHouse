@@ -28,7 +28,9 @@ import AVFoundation
             AppData.sharedInstance.synthesizer = AVSpeechSynthesizer()
         }
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(identifier: AppData.sharedInstance.voiceIdentifier ?? "")
+        if let identifier = UserDefaultHelper.getVoiceIdentifier() {
+            utterance.voice = AVSpeechSynthesisVoice(identifier: identifier)
+        }
         AppData.sharedInstance.synthesizer!.speak(utterance)
     }
      

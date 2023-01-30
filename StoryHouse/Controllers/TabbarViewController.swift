@@ -41,7 +41,8 @@ class TabbarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.filterdStoryIndex = UserDefaultHelper.getMagicalObjectIndex() ?? 0
+        
+        self.setStoryNumber()
         CustomLoader.instance.gifName = "demo"
         self.setUpGesture()
         self.setUpSlider()
@@ -104,8 +105,17 @@ class TabbarViewController: UIViewController {
         self.synthesizer.stopSpeaking(at: .immediate)
     }
     
+    func setStoryNumber() {
+        if let storyNumber = UserDefaultHelper.getSelectedStoryNumber() {
+            self.filterdStoryIndex = storyNumber
+        }
+        else {
+            self.filterdStoryIndex = 000
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        self.filterdStoryIndex = UserDefaultHelper.getMagicalObjectIndex() ?? 0
+        self.setStoryNumber()
         self.imageTitle.textColor = GRAY_COLOR
         self.loadJson()
         
@@ -129,7 +139,7 @@ class TabbarViewController: UIViewController {
     }
     
     func loadJson() {
-        if let path = Bundle.main.path(forResource: "111", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "\(self.filterdStoryIndex)", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
@@ -144,7 +154,7 @@ class TabbarViewController: UIViewController {
     
     func setUpUI() {
         self.playPauseImageView.image = UIImage(named: "ic_TAB_play")
-        self.paragraphDetails = self.storydata?.story?[self.filterdStoryIndex].data
+        self.paragraphDetails = self.storydata?.story?.first?.data
         self.totalIndex = self.paragraphDetails?.count ?? 0
         if (totalIndex > 0) {
             if let index  = UserDefaultHelper.getParagraphIndex() {
@@ -166,18 +176,9 @@ class TabbarViewController: UIViewController {
             return }
         UserDefaultHelper.setParagraphIndex(value: index)
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
-        let img = UIImage(named : self.paragraphDetails?[index].imageName ?? "")
+
         
-        /*if CGFloat((img?.size.width)!) > CGFloat((img?.size.height)!) {
-         self.image.contentMode = .scaleAspectFit
-         //since the width > height we may fit it and we'll have bands on top/bottom
-         } else {
-         self.image.contentMode = .scaleAspectFill
-         //width < height we fill it until width is taken up and clipped on top/bottom
-         }
-         */
-        
-        self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "")
+        self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         self.imageTitle.textColor = GRAY_COLOR
     }
@@ -186,6 +187,7 @@ class TabbarViewController: UIViewController {
         self.pauseSpeaking()
         self.synthesizer.stopSpeaking(at: .immediate)
         let viewController = HomeViewController.getInstance()
+        UserDefaultHelper.set_Is_Onboarding_Done(value: false)
         viewController.isFromTabbar = true
         var navigationController = UINavigationController()
         let window = self.view.window
@@ -204,7 +206,7 @@ class TabbarViewController: UIViewController {
             self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
             let viewController = EndViewController.getInstance()
             let index = 0
-            viewController.image = self.paragraphDetails?[index].imageName ?? " "
+            viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
             viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index] as! String
             self.navigationController?.pushViewController(viewController, animated: true)
             return
@@ -247,7 +249,7 @@ class TabbarViewController: UIViewController {
             synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
             let viewController = EndViewController.getInstance()
             let index = 0
-            viewController.image = self.paragraphDetails?[index].imageName ?? " "
+            viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
             viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index] as! String
             self.navigationController?.pushViewController(viewController, animated: true)
             return
@@ -334,9 +336,9 @@ class TabbarViewController: UIViewController {
 extension TabbarViewController : AVSpeechSynthesizerDelegate {
     
     func playAudio(text: String) {
-        
+        // "Rishi,com.apple.voice.compact.en-IN.Rishi"
         self.utterance = AVSpeechUtterance(string: text)
-        self.utterance.voice = AVSpeechSynthesisVoice(identifier: AppData.sharedInstance.voiceIdentifier ?? "com.apple.ttsbundle.Rishi-compact")
+        self.utterance.voice = AVSpeechSynthesisVoice(identifier: UserDefaultHelper.getVoiceIdentifier() ?? "com.apple.voice.compact.en-IN.Rishi")
         self.utterance.rate = 0.4
         self.utterance.postUtteranceDelay = 0.01
         self.utterance.volume = self.sliderView.value

@@ -30,10 +30,10 @@ class SettingViewController: UIViewController {
     
     func setUpUI() {
         self.voiceTextfeild.placeholder = "Please select voice from here."
-        self.voiceTextfeild.text = UserDefaultHelper.getVoice()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(Cellclass.self, forCellReuseIdentifier: "Cell")
+        self.voiceTextfeild.text = UserDefaultHelper.getVoice() ?? "Rishi"
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.register(Cellclass.self, forCellReuseIdentifier: "Cell")
     }
     
     @IBAction func voiceSelectionButtontapped(_ sender: Any) {
@@ -80,7 +80,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let name = String(data.split(separator: ",").first ?? "")
         self.voiceTextfeild.text = name
         let identifier = String(data.split(separator: ",").last ?? "")
-        AppData.sharedInstance.voiceIdentifier = identifier
+        UserDefaultHelper.setVoiceIdentifier(value: identifier)
         UserDefaultHelper.setVoice(value: name)
         removeTransparentView()
     }

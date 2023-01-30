@@ -13,24 +13,15 @@ class HeroViewController: UIViewController {
     
     //let storyImage = ["ic_story1","ic_story2","ic_story3","ic_story4"]
     let storyImage = ["ic_char1","ic_char2","ic_char3","ic_char4"]
+    var characterList : [CategoryModel] = []
     var selectedIndex = 0
     
     override func viewDidLoad() {
-        
+        self.characterList = CategoryModel.characterList
         super.viewDidLoad()
         self.heroCollectionView.dataSource  = self
         self.heroCollectionView.delegate = self
         
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self.view) else { return }
-        let hitView = self.view.hitTest(location, with: event)
-        // if hitView == self.view {
-        let view = UIView(frame: CGRect(x: location.x - 50, y: location.y - 50, width: 100, height: 100))
-        self.view.addSubview(view)
-
-        //}
     }
     
     static func getInstance() -> HeroViewController {
@@ -53,7 +44,7 @@ class HeroViewController: UIViewController {
 
 extension HeroViewController: UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return characterList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,15 +53,15 @@ extension HeroViewController: UICollectionViewDelegate , UICollectionViewDataSou
         if (indexPath.item == self.selectedIndex) {
             cell.imageBorderView.borderWidth = 6
         }
-        let image = storyImage[indexPath.item]
+        let image = characterList[indexPath.item].imageName
         cell.imageView.image = UIImage(named: image)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
-        self.selectedIndex = indexPath.item
-        AppData.sharedInstance.selectedCharacterIndex = indexPath.item
+        self.selectedIndex = self.characterList[indexPath.item].tag
+        AppData.sharedInstance.selectedCharacterIndex = self.selectedIndex
         self.heroCollectionView.reloadData()
     }
 }

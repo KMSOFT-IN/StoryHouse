@@ -26,6 +26,16 @@ class Constant {
         static let END                        = UIStoryboard(name: "End", bundle: nil)
         static let SETTING                    = UIStoryboard(name: "Setting", bundle: nil)
     }
+    
+    class UserDefault {
+        static let VOICE = "Voice"
+        static let VOICE_IDENTIFIER = "VoiceIdentifier"
+        static let GENDER = "Gender"
+        static let USERNAME = "User"
+        static let IS_ONBOARDING_DONE = "isOnboardingDone" // for choosen three index from given Category .
+        static let PARAGRAPH_INDEX  = "ParagraphIndex"
+        static let STORY_NUMBER  = "StoryNumber"
+    }
 }
 
 enum GENDER: String {
