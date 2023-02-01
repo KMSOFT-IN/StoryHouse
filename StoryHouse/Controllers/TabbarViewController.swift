@@ -20,6 +20,7 @@ class TabbarViewController: UIViewController {
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secoundView: UIView!
     
+    @IBOutlet weak var number: UILabel!
     @IBOutlet weak var muteLabel: UILabel!
     var synthesizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
@@ -42,7 +43,7 @@ class TabbarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setStoryNumber()
+      //  self.setStoryNumber()
         CustomLoader.instance.gifName = "demo"
         self.setUpGesture()
         self.setUpSlider()
@@ -165,6 +166,7 @@ class TabbarViewController: UIViewController {
                 self.setUpStory(index: 0)
             }
         }
+        self.number.text = self.storydata?.story?.first?.storyNumber
         self.imageTitle.textColor = GRAY_COLOR
         self.navigationController?.navigationBar.isHidden = true
     }

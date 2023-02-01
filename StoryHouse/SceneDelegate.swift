@@ -55,6 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navigationController = UINavigationController(rootViewController: viewController)
         } else {
             if UserDefaultHelper.get_Is_Onboarding_Done() ?? false {
+                
                 let viewController = TabbarViewController.getInstance()
                  navigationController = UINavigationController(rootViewController: viewController)
             }
