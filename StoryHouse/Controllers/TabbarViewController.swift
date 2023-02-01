@@ -42,8 +42,15 @@ class TabbarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gender =  UserDefaultHelper.getGender()
+        if gender == GENDER.BOY.rawValue {
+            self.isHE = true
+        }
+        else {
+            self.isHE = false
+        }
         
-      //  self.setStoryNumber()
+        //  self.setStoryNumber()
         CustomLoader.instance.gifName = "demo"
         self.setUpGesture()
         self.setUpSlider()
@@ -178,7 +185,7 @@ class TabbarViewController: UIViewController {
             return }
         UserDefaultHelper.setParagraphIndex(value: index)
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
-
+        
         
         self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
@@ -214,8 +221,8 @@ class TabbarViewController: UIViewController {
             return
         }
         self.setUpStory(index: self.currentIndex)
-            self.resetUI()
-            
+        self.resetUI()
+        
     }
     
     @IBAction func prevPageButtonTapped(_ sender: Any) {
@@ -244,7 +251,7 @@ class TabbarViewController: UIViewController {
             }
             return
         }
-       
+        
         self.currentIndex += 1
         if self.currentIndex >= self.totalIndex {
             UserDefaultHelper.setParagraphIndex(value: 0)
