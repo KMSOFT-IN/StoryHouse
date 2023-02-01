@@ -55,6 +55,7 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
             else {
                 UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
             }
+        
             
             let viewController = HomeViewController.getInstance()
             viewController.isFromTabbar = false
@@ -93,10 +94,12 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     
     
     @IBAction func girlButtonTapped(_ sender: Any) {
+        self.isGirlSelected = true
         self.setReferenceSelectionImage(selectedImage: self.femaleRadioImageView)
     }
     
     @IBAction func boyButtonTapped(_ sender: Any) {
+        self.isGirlSelected = false
         self.setReferenceSelectionImage(selectedImage: self.maleRadioImageView)
     }
     

@@ -36,12 +36,15 @@ class TabbarViewController: UIViewController {
     var isFirstTimePlay: Bool = true
     var isPageChanged: Bool = false
     var isHE: Bool = true
-    var filterdStoryIndex: Int = 0
+    var filterdStoryIndex: String = "111"
     var isMute: Bool = true
     let name = UserDefaultHelper.getChildname()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setStoryNumber()
+        self.loadJson()
+        
         let gender =  UserDefaultHelper.getGender()
         if gender == GENDER.BOY.rawValue {
             self.isHE = true
@@ -118,24 +121,16 @@ class TabbarViewController: UIViewController {
             self.filterdStoryIndex = storyNumber
         }
         else {
-            self.filterdStoryIndex = 000
+            self.filterdStoryIndex = "000"
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.setStoryNumber()
         self.imageTitle.textColor = GRAY_COLOR
-        self.loadJson()
-        
         self.setUpUI()
         self.sliderView.isHidden = true
-        let gender =  UserDefaultHelper.getGender()
-        if gender == GENDER.BOY.rawValue {
-            self.isHE = true
-        }
-        else {
-            self.isHE = false
-        }
+        
     }
     
     static func getInstance() -> TabbarViewController {
@@ -195,9 +190,11 @@ class TabbarViewController: UIViewController {
     @IBAction func homeButtonTapped(_ sender: Any) {
         self.pauseSpeaking()
         self.synthesizer.stopSpeaking(at: .immediate)
+        UserDefaultHelper.setParagraphIndex(value: 0)
         let viewController = HomeViewController.getInstance()
+        //let viewController = ChildNameViewController.getInstance()
         UserDefaultHelper.set_Is_Onboarding_Done(value: false)
-        viewController.isFromTabbar = true
+        //viewController.isFromTabbar = true
         var navigationController = UINavigationController()
         let window = self.view.window
         navigationController = UINavigationController(rootViewController: viewController)

@@ -36,13 +36,17 @@ class MagicalObjectViewController: UIViewController {
     }
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
+        AppData.sharedInstance.selectedMagicalObjectIndex = self.selectedIndex
         
-        if let storyIndex = Int("\(AppData.sharedInstance.selectedCharacterIndex)\(AppData.sharedInstance.selectedLocationIndex)\(AppData.sharedInstance.selectedMagicalObjectIndex)") {
-            UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
-            UserDefaultHelper.set_Is_Onboarding_Done(value: true)
-        }
-        let viewController = LoadingViewController.getInstance()
-        self.navigationController?.pushViewController(viewController, animated: true)
+             let storyIndex = ("\(AppData.sharedInstance.selectedCharacterIndex)"  + "\(AppData.sharedInstance.selectedLocationIndex)" + "\(AppData.sharedInstance.selectedMagicalObjectIndex)")
+                UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
+                UserDefaultHelper.set_Is_Onboarding_Done(value: true)
+                let viewController = LoadingViewController.getInstance()
+                self.navigationController?.pushViewController(viewController, animated: true)
+
+            
+            
+        
     }
 }
 

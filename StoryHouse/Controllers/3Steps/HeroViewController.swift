@@ -29,6 +29,7 @@ class HeroViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        AppData.sharedInstance.selectedCharacterIndex =  self.selectedIndex
             let viewController = PlacesViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
     }

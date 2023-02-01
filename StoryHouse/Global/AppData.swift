@@ -22,6 +22,7 @@ class AppData {
     var selectedCharacterIndex: Int = 0
     var selectedLocationIndex: Int = 0
     var selectedMagicalObjectIndex: Int = 0
+    
     var selectedStoryNumber : Int = 0
     
     

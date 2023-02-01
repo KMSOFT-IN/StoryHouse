@@ -37,12 +37,12 @@ class UserDefaultHelper {
     }
     
     // MARK: 4. SET STORY NUMBER
-    static func setSelectedStoryNumber(value: Int?) {
+    static func setSelectedStoryNumber(value: String?) {
         UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.STORY_NUMBER)
         UserDefaults.standard.synchronize()
     }
-    static func getSelectedStoryNumber() -> Int? {
-        return UserDefaults.standard.integer(forKey: Constant.UserDefault.STORY_NUMBER)
+    static func getSelectedStoryNumber() -> String? {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.STORY_NUMBER)
     }
     
     // MARK: 5. SET CHILD NAME
@@ -77,7 +77,7 @@ class UserDefaultHelper {
         UserDefaultHelper.setVoiceIdentifier(value: "")
         UserDefaultHelper.setGender(value: "")
         UserDefaultHelper.setParagraphIndex(value: 0)
-        UserDefaultHelper.setSelectedStoryNumber(value: 0)
+        UserDefaultHelper.setSelectedStoryNumber(value: "000")
         UserDefaultHelper.set_Is_Onboarding_Done(value: false)
         UserDefaultHelper.setChildname(value: "")
     }

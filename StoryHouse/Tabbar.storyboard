@@ -849,7 +849,7 @@
     </scenes>
     <designables>
         <designable name="xRb-hC-F55">
-            <size key="intrinsicContentSize" width="-1" height="37.5"/>
+            <size key="intrinsicContentSize" width="-1" height="30"/>
         </designable>
     </designables>
     <resources>
