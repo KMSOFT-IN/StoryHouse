@@ -21,10 +21,14 @@ class MagicalObjectViewController: UIViewController {
         self.magicalObjectCollectionView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.selectedIndex = 0
+    }
+    
     static func getInstance() -> MagicalObjectViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "MagicalObjectViewController") as! MagicalObjectViewController
     }
-    
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -32,7 +36,7 @@ class MagicalObjectViewController: UIViewController {
     
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
@@ -43,11 +47,8 @@ class MagicalObjectViewController: UIViewController {
                 UserDefaultHelper.set_Is_Onboarding_Done(value: true)
                 let viewController = LoadingViewController.getInstance()
                 self.navigationController?.pushViewController(viewController, animated: true)
-
-            
-            
-        
     }
+    
 }
 
 extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionViewDataSource {

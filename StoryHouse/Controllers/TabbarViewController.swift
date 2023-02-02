@@ -39,9 +39,11 @@ class TabbarViewController: UIViewController {
     var filterdStoryIndex: String = "111"
     var isMute: Bool = true
     let name = UserDefaultHelper.getChildname()
+    let gifHandler = Gif()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setStoryNumber()
         self.loadJson()
         
@@ -58,6 +60,34 @@ class TabbarViewController: UIViewController {
         self.setUpGesture()
         self.setUpSlider()
         self.isFirstTimePlay = true
+        self.navigationController?.setViewControllers([self], animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.setStoryNumber()
+        self.imageTitle.textColor = GRAY_COLOR
+        self.setUpUI()
+        self.sliderView.isHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.setGifs(touches: touches)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.setGifs(touches: touches)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.setGifs(touches: touches)
+    }
+    
+    func setGifs(touches: Set<UITouch>) {
+        guard let location = touches.first?.location(in: self.view) else { return }
+        let view = UIView(frame: CGRect(x: location.x - 25, y: location.y - 25, width: 50, height: 50))
+        view.layer.cornerRadius = 25
+        self.view.addSubview(view)
+        self.gifHandler.setTouchGif(name: "glitter", duration: 0.5, view: view, cornerRadius: 25)
     }
     
     func setUpSlider() {
@@ -125,14 +155,6 @@ class TabbarViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.setStoryNumber()
-        self.imageTitle.textColor = GRAY_COLOR
-        self.setUpUI()
-        self.sliderView.isHidden = true
-        
-    }
-    
     static func getInstance() -> TabbarViewController {
         return Constant.Storyboard.TABBAR.instantiateViewController(withIdentifier: "TabbarViewController") as! TabbarViewController
     }
@@ -168,7 +190,11 @@ class TabbarViewController: UIViewController {
                 self.setUpStory(index: 0)
             }
         }
-        self.number.text = self.storydata?.story?.first?.storyNumber
+        if Utility.isDebug() {
+            self.number.text = self.storydata?.story?.first?.storyNumber
+        } else {
+            self.number.isHidden = true
+        }
         self.imageTitle.textColor = GRAY_COLOR
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -181,8 +207,12 @@ class TabbarViewController: UIViewController {
         UserDefaultHelper.setParagraphIndex(value: index)
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
         
+        UIView.transition(with: self.image,
+                          duration: 0.75,
+                          options: .transitionCrossDissolve,
+                          animations: { self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder") },
+                          completion: nil)
         
-        self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         self.imageTitle.textColor = GRAY_COLOR
     }
@@ -219,7 +249,6 @@ class TabbarViewController: UIViewController {
         }
         self.setUpStory(index: self.currentIndex)
         self.resetUI()
-        
     }
     
     @IBAction func prevPageButtonTapped(_ sender: Any) {

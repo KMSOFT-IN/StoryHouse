@@ -52,6 +52,7 @@
 		88167776297E5A4600725569 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88167775297E5A4600725569 /* Setting.storyboard */; };
 		88167778297E5B7400725569 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88167777297E5B7400725569 /* SettingViewController.swift */; };
 		881CBF37297680090094109D /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881CBF36297680090094109D /* StoryModel.swift */; };
+		88222EE0298BC98200FC942D /* glitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88222EDF298BC98200FC942D /* glitter.gif */; };
 		882D145C2981553B003F3208 /* Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D145B2981553B003F3208 /* Gifs.swift */; };
 		88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88313AB329876DC2000D1248 /* CategoryModel.swift */; };
 		88319FE7297AC78A00FA59B0 /* strimmer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88319FE6297AC78A00FA59B0 /* strimmer.gif */; };
@@ -137,6 +138,7 @@
 		88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1CA7E29780C5D008F3B28 /* EndViewController.swift */; };
 		88E1CA8129780C69008F3B28 /* End.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E1CA8029780C69008F3B28 /* End.storyboard */; };
 		88F562DE296E8CEE00813BC9 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */; };
+		88FC89EB298B915D006DC384 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FC89EA298B915D006DC384 /* LoadingCollectionViewCell.swift */; };
 		88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC48297BA4AC003388F4 /* CustomLoader.swift */; };
 		88FDBC4B297BA4B9003388F4 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88FDBC4A297BA4B9003388F4 /* demo.gif */; };
 		88FDBC4E297BA4CE003388F4 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */; };
@@ -190,6 +192,7 @@
 		88167775297E5A4600725569 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		88167777297E5B7400725569 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		881CBF36297680090094109D /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
+		88222EDF298BC98200FC942D /* glitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter.gif; sourceTree = "<group>"; };
 		882D145B2981553B003F3208 /* Gifs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gifs.swift; sourceTree = "<group>"; };
 		88313AB329876DC2000D1248 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		88319FE6297AC78A00FA59B0 /* strimmer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = strimmer.gif; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 		88E1CA7E29780C5D008F3B28 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		88E1CA8029780C69008F3B28 /* End.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = End.storyboard; sourceTree = "<group>"; };
 		88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
+		88FC89EA298B915D006DC384 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		88FDBC48297BA4AC003388F4 /* CustomLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		88FDBC4A297BA4B9003388F4 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
@@ -349,8 +353,8 @@
 		881402F8296D6C9C00930582 /* Poppins */ = {
 			isa = PBXGroup;
 			children = (
-				881402F9296D6C9C00930582 /* Poppins-ExtraLight.ttf */,
 				881402FA296D6C9C00930582 /* Poppins-ThinItalic.ttf */,
+				881402F9296D6C9C00930582 /* Poppins-ExtraLight.ttf */,
 				881402FB296D6C9C00930582 /* Poppins-ExtraLightItalic.ttf */,
 				881402FC296D6C9C00930582 /* Poppins-BoldItalic.ttf */,
 				881402FD296D6C9C00930582 /* Poppins-Light.ttf */,
@@ -376,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				882462A2297F9B32004005CE /* 3Steps */,
-				88140321296D7E9100930582 /* imageCollectionViewCell.swift */,
 				88140337296D86F100930582 /* LoadingViewController.swift */,
 				8814033B296D8EB600930582 /* HeroNameViewController.swift */,
 				88140341296D995700930582 /* SelectStoryViewController.swift */,
@@ -385,6 +388,7 @@
 				88D119C5296E98360035B0A0 /* TabbarViewController.swift */,
 				88E1CA7E29780C5D008F3B28 /* EndViewController.swift */,
 				88167777297E5B7400725569 /* SettingViewController.swift */,
+				88FC89E9298B9140006DC384 /* Cell */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1023,6 +1027,7 @@
 			isa = PBXGroup;
 			children = (
 				882D145B2981553B003F3208 /* Gifs.swift */,
+				88222EDF298BC98200FC942D /* glitter.gif */,
 				883C9B3B29793AF600FD1C08 /* star.gif */,
 				88319FE8297AC89D00FA59B0 /* Streamers.gif */,
 				88319FE6297AC78A00FA59B0 /* strimmer.gif */,
@@ -1030,6 +1035,15 @@
 				88DB927429796898009DF1FF /* slider.swift */,
 			);
 			path = "GIF Class";
+			sourceTree = "<group>";
+		};
+		88FC89E9298B9140006DC384 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88140321296D7E9100930582 /* imageCollectionViewCell.swift */,
+				88FC89EA298B915D006DC384 /* LoadingCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		88FDBC47297BA49D003388F4 /* Helper */ = {
@@ -1152,6 +1166,7 @@
 				8854048229839DCD007F18BE /* 133.json in Resources */,
 				8814031D296D6C9C00930582 /* Poppins-Italic.ttf in Resources */,
 				8892D81F29839B2D00CD510F /* 030.json in Resources */,
+				88222EE0298BC98200FC942D /* glitter.gif in Resources */,
 				8814030C296D6C9C00930582 /* Poppins-ExtraLight.ttf in Resources */,
 				885404E92983A0DE007F18BE /* 232.json in Resources */,
 				885404DD2983A092007F18BE /* 212.json in Resources */,
@@ -1232,6 +1247,7 @@
 				888A48E1296E62B70097C42D /* Utility.swift in Sources */,
 				888A48E6296E776A0097C42D /* ChildNameViewController.swift in Sources */,
 				88140340296D98CD00930582 /* UIColor.swift in Sources */,
+				88FC89EB298B915D006DC384 /* LoadingCollectionViewCell.swift in Sources */,
 				88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */,
 				8814033C296D8EB600930582 /* HeroNameViewController.swift in Sources */,
 				881402E4296D6A2E00930582 /* ViewController.swift in Sources */,
@@ -1397,9 +1413,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
@@ -1434,9 +1450,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";

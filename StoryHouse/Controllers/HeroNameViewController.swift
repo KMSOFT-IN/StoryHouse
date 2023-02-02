@@ -39,9 +39,7 @@ class HeroNameViewController: UIViewController {
     @IBAction func nextButtonTapped(_ sender: Any) {
         let viewController = PlacesViewController.getInstance()
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
-    
     
 }
 

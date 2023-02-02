@@ -11,8 +11,9 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
 
     @IBOutlet weak var childNameTextFeild: UITextField!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var femaleRadioImageView: UIImageView!
-    @IBOutlet weak var maleRadioImageView: UIImageView!
+    @IBOutlet weak var questionGenderButton: UIButton!
+    @IBOutlet weak var femaleView: UIView!
+    @IBOutlet weak var maleView: UIView!
     @IBOutlet weak var storyLeft: UILabel!
     
     var isGirlSelected: Bool  = true
@@ -20,6 +21,7 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        self.setQuestionGenderButon()
     }
     
     static func getInstance() -> ChildNameViewController {
@@ -29,6 +31,12 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         self.nextButton.applyappColorShadow()
+    }
+    
+    func setQuestionGenderButon() {
+        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue]
+        let attributeString = NSMutableAttributedString(string: "(Why are we asking)", attributes: attributes)
+        self.questionGenderButton.setAttributedTitle(attributeString, for: .normal)
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
@@ -78,14 +86,8 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     }
     
     @IBAction func QuestionGenderButtonTapped(_ sender: UIButton) {
-        let popController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "popoverId")
-        popController.preferredContentSize = CGSize(width: 150  ,height: 150)
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = sender // button
-        popController.popoverPresentationController?.sourceRect = sender.bounds
-        self.present(popController, animated: true, completion: nil)
+        guard let url = URL(string: FAQ_URL) else { return }
+        UIApplication.shared.open(url)
     }
         
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -95,18 +97,14 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     
     @IBAction func girlButtonTapped(_ sender: Any) {
         self.isGirlSelected = true
-        self.setReferenceSelectionImage(selectedImage: self.femaleRadioImageView)
+        self.femaleView.borderWidth = 2.5
+        self.maleView.borderWidth = 0
     }
     
     @IBAction func boyButtonTapped(_ sender: Any) {
         self.isGirlSelected = false
-        self.setReferenceSelectionImage(selectedImage: self.maleRadioImageView)
-    }
-    
-    func setReferenceSelectionImage(selectedImage: UIImageView) {
-        self.femaleRadioImageView.image = UIImage(named: "ic_radio")
-        self.maleRadioImageView.image = UIImage(named: "ic_radio")
-        selectedImage.image = UIImage(named: "ic_fill_radio")
+        self.maleView.borderWidth = 2.5
+        self.femaleView.borderWidth = 0
     }
     
 }

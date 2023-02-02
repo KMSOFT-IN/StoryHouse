@@ -21,7 +21,11 @@ class HeroViewController: UIViewController {
         super.viewDidLoad()
         self.heroCollectionView.dataSource  = self
         self.heroCollectionView.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.selectedIndex = 0
     }
     
     static func getInstance() -> HeroViewController {
@@ -39,7 +43,7 @@ class HeroViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
 }
 

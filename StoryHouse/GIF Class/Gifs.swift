@@ -34,6 +34,22 @@ class Gif {
         }
     }
     
+    func setTouchGif(name: String, duration: Double, view: UIView, cornerRadius: CGFloat = 0) {
+        let jeremyGif = UIImage.gifImageWithName(name)
+        let imageView = UIImageView(image: jeremyGif)
+        imageView.clipsToBounds = true
+        imageView.frame = view.bounds
+        imageView.layer.cornerRadius = cornerRadius
+        imageView.contentMode = .scaleToFill
+        view.addSubview(imageView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            UIView.animate(withDuration: 1, animations: { view.alpha = 0.0; imageView.alpha = 0.0 }) { _ in
+                imageView.removeFromSuperview()
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
 }
 
 extension UIImage {

@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-ZB-Hw3">
-                                        <rect key="frame" x="632" y="665" width="102" height="33"/>
+                                        <rect key="frame" x="632" y="680" width="102" height="33"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
@@ -49,28 +50,83 @@ Jennifer’s story! </string>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-7n-9z9">
-                                        <rect key="frame" x="0.0" y="315" width="1236" height="350"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading_char" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-7n-9z9">
+                                        <rect key="frame" x="610" y="300" width="360" height="380"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="350" id="Lqw-be-cNs"/>
+                                            <constraint firstAttribute="height" constant="380" id="Lqw-be-cNs"/>
+                                            <constraint firstAttribute="width" constant="360" id="fED-EG-qoW"/>
                                         </constraints>
                                     </imageView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-Mr-Arb">
+                                        <rect key="frame" x="10" y="635" width="600" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="GcC-lx-AIa"/>
+                                            <constraint firstAttribute="width" constant="600" id="K3V-bJ-aBU"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="59X-Qi-LvN">
+                                            <size key="itemSize" width="29" height="32.5"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadingCollectionViewCell" id="4QW-WD-P8v" customClass="LoadingCollectionViewCell" customModule="StoryHouse" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="-1.5" width="29" height="32.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YOJ-nQ-CNJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="29" height="32.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON9-3t-el7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <color key="backgroundColor" name="sky_color(4BBFEF)"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="6Dg-Ni-Ry7"/>
+                                                                <constraint firstAttribute="height" constant="30" id="imA-GR-900"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ON9-3t-el7" firstAttribute="leading" secondItem="YOJ-nQ-CNJ" secondAttribute="leading" id="3vi-Oo-9ve"/>
+                                                        <constraint firstItem="ON9-3t-el7" firstAttribute="top" secondItem="YOJ-nQ-CNJ" secondAttribute="top" id="7n1-yK-LEt"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ON9-3t-el7" secondAttribute="bottom" id="9wN-7h-Ree"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ON9-3t-el7" secondAttribute="trailing" id="das-fL-Ima"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="29" height="32.5"/>
+                                                <connections>
+                                                    <outlet property="view" destination="ON9-3t-el7" id="Thp-2V-yv9"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="bsE-nk-6PF" id="p0J-t3-XPd"/>
+                                            <outlet property="delegate" destination="bsE-nk-6PF" id="FE9-Z7-aj1"/>
+                                        </connections>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="bZR-ZB-Hw3" firstAttribute="centerX" secondItem="sLv-b3-B1h" secondAttribute="centerX" id="1lh-uS-WTY"/>
                                     <constraint firstItem="mIx-im-8PK" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" id="4aM-ur-Hsk"/>
+                                    <constraint firstItem="JWa-Mr-Arb" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" constant="10" id="8TY-x4-L1G"/>
                                     <constraint firstAttribute="bottom" secondItem="mIx-im-8PK" secondAttribute="bottom" id="F83-V6-Glo"/>
+                                    <constraint firstItem="bZR-ZB-Hw3" firstAttribute="top" secondItem="JWa-Mr-Arb" secondAttribute="bottom" constant="15" id="Il1-Dt-rrP"/>
                                     <constraint firstItem="Alc-DJ-FhQ" firstAttribute="top" secondItem="sLv-b3-B1h" secondAttribute="top" constant="90" id="LE3-1c-ab4"/>
                                     <constraint firstItem="Alc-DJ-FhQ" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" constant="20" id="YPg-Fh-zlw"/>
+                                    <constraint firstItem="QoM-7n-9z9" firstAttribute="leading" secondItem="JWa-Mr-Arb" secondAttribute="trailing" id="ZDO-V7-R7e"/>
                                     <constraint firstAttribute="trailing" secondItem="mIx-im-8PK" secondAttribute="trailing" id="by5-d7-j5c"/>
                                     <constraint firstItem="mIx-im-8PK" firstAttribute="top" secondItem="sLv-b3-B1h" secondAttribute="top" id="bz6-Lw-W9D"/>
                                     <constraint firstItem="QoM-7n-9z9" firstAttribute="centerY" secondItem="sLv-b3-B1h" secondAttribute="centerY" id="ems-eo-MTI"/>
                                     <constraint firstItem="Alc-DJ-FhQ" firstAttribute="centerX" secondItem="sLv-b3-B1h" secondAttribute="centerX" id="fUc-Zj-Zd2"/>
                                     <constraint firstItem="QoM-7n-9z9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Alc-DJ-FhQ" secondAttribute="bottom" constant="10" id="oJq-rg-EGk"/>
-                                    <constraint firstItem="QoM-7n-9z9" firstAttribute="leading" secondItem="sLv-b3-B1h" secondAttribute="leading" id="sep-ER-ci3"/>
                                     <constraint firstItem="bZR-ZB-Hw3" firstAttribute="top" secondItem="QoM-7n-9z9" secondAttribute="bottom" id="v8j-hG-gpb"/>
-                                    <constraint firstAttribute="trailing" secondItem="QoM-7n-9z9" secondAttribute="trailing" constant="130" id="whz-H4-d9u"/>
                                     <constraint firstAttribute="trailing" secondItem="Alc-DJ-FhQ" secondAttribute="trailing" constant="20" id="ynO-ph-sM5"/>
                                 </constraints>
                             </view>
@@ -86,6 +142,7 @@ Jennifer’s story! </string>
                     </view>
                     <connections>
                         <outlet property="chilldNameTitle" destination="Alc-DJ-FhQ" id="wZI-mJ-Xuv"/>
+                        <outlet property="loadingCollectionView" destination="JWa-Mr-Arb" id="vOp-Ba-bXQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XH5-Ko-IKU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -95,9 +152,12 @@ Jennifer’s story! </string>
     </scenes>
     <resources>
         <image name="ic_appBackGroud" width="1193.5" height="834"/>
-        <image name="ic_loading" width="1062.5" height="360.5"/>
+        <image name="ic_loading_char" width="391.5" height="439.5"/>
         <namedColor name="font_color(#292B5C)">
             <color red="0.16099999845027924" green="0.16899999976158142" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="sky_color(4BBFEF)">
+            <color red="0.29411764705882354" green="0.74901960784313726" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

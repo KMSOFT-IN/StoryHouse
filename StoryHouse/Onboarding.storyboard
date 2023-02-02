@@ -68,7 +68,7 @@ child’s name?</string>
                                                 <color key="textColor" red="0.16078431372549018" green="0.16862745098039217" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter  Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-ru-iQp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-ru-iQp">
                                                 <rect key="frame" x="0.0" y="174" width="569.5" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="OH4-la-RbZ"/>
@@ -130,27 +130,20 @@ child’s name?</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fJQ-WK-ZNl">
-                                                <rect key="frame" x="0.0" y="352.5" width="280" height="50"/>
+                                                <rect key="frame" x="0.0" y="355" width="148" height="54"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ren-Me-3PW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_fill_radio" translatesAutoresizingMaskIntoConstraints="NO" id="zG3-6Z-uuG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="50" id="CCG-lk-PGS"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="pYr-Uq-tg9"/>
-                                                                </constraints>
-                                                            </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_girl" translatesAutoresizingMaskIntoConstraints="NO" id="jWx-fb-8ZQ">
-                                                                <rect key="frame" x="70" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="2" y="2" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="LTI-wP-aFB"/>
                                                                     <constraint firstAttribute="height" constant="50" id="joR-Ux-drP"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMH-Eu-UpE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain">
                                                                     <string key="title" base64-UTF8="YES">
@@ -166,34 +159,34 @@ Cg
                                                         <constraints>
                                                             <constraint firstItem="lMH-Eu-UpE" firstAttribute="leading" secondItem="Ren-Me-3PW" secondAttribute="leading" id="0JO-WC-VXk"/>
                                                             <constraint firstAttribute="trailing" secondItem="lMH-Eu-UpE" secondAttribute="trailing" id="4na-qL-5tV"/>
+                                                            <constraint firstItem="jWx-fb-8ZQ" firstAttribute="top" secondItem="Ren-Me-3PW" secondAttribute="top" constant="2" id="5xV-n5-cBM"/>
                                                             <constraint firstItem="jWx-fb-8ZQ" firstAttribute="centerY" secondItem="Ren-Me-3PW" secondAttribute="centerY" id="7tk-vu-PNN"/>
-                                                            <constraint firstItem="zG3-6Z-uuG" firstAttribute="leading" secondItem="Ren-Me-3PW" secondAttribute="leading" id="Ar1-JU-9wU"/>
                                                             <constraint firstItem="lMH-Eu-UpE" firstAttribute="top" secondItem="Ren-Me-3PW" secondAttribute="top" id="F7Y-UE-Q9f"/>
                                                             <constraint firstAttribute="bottom" secondItem="lMH-Eu-UpE" secondAttribute="bottom" id="hgU-lX-4l6"/>
-                                                            <constraint firstAttribute="trailing" secondItem="jWx-fb-8ZQ" secondAttribute="trailing" id="lSO-Sz-L1T"/>
-                                                            <constraint firstItem="zG3-6Z-uuG" firstAttribute="centerY" secondItem="Ren-Me-3PW" secondAttribute="centerY" id="tQk-IJ-MsQ"/>
-                                                            <constraint firstItem="jWx-fb-8ZQ" firstAttribute="leading" secondItem="zG3-6Z-uuG" secondAttribute="trailing" constant="20" id="vrM-sj-5xH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jWx-fb-8ZQ" secondAttribute="trailing" constant="2" id="lSO-Sz-L1T"/>
+                                                            <constraint firstAttribute="bottom" secondItem="jWx-fb-8ZQ" secondAttribute="bottom" constant="2" id="mBA-vs-vGw"/>
+                                                            <constraint firstItem="jWx-fb-8ZQ" firstAttribute="leading" secondItem="Ren-Me-3PW" secondAttribute="leading" constant="2" id="qtF-px-cb6"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="sky_color(4BBFEF)"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="2.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0C-1s-YiY">
-                                                        <rect key="frame" x="160" y="0.0" width="120" height="50"/>
+                                                        <rect key="frame" x="94" y="0.0" width="54" height="54"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio" translatesAutoresizingMaskIntoConstraints="NO" id="BSi-Al-XFK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="PKq-kN-8oK"/>
-                                                                    <constraint firstAttribute="width" constant="50" id="tto-GJ-lmz"/>
-                                                                </constraints>
-                                                            </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_boy" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-CC-iSh">
-                                                                <rect key="frame" x="70" y="0.0" width="50" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="QEH-z0-MhC"/>
-                                                                    <constraint firstAttribute="width" constant="50" id="zac-DO-MR9"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="2" y="2" width="50" height="50"/>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mW-Yk-Vt0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain">
                                                                     <string key="title" base64-UTF8="YES">
@@ -207,21 +200,26 @@ Cg
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="0Oj-CC-iSh" firstAttribute="leading" secondItem="BSi-Al-XFK" secondAttribute="trailing" constant="20" id="CuA-5s-KSv"/>
+                                                            <constraint firstAttribute="bottom" secondItem="0Oj-CC-iSh" secondAttribute="bottom" constant="2" id="7lO-w9-hys"/>
+                                                            <constraint firstItem="0Oj-CC-iSh" firstAttribute="top" secondItem="Y0C-1s-YiY" secondAttribute="top" constant="2" id="Dju-3x-WeI"/>
                                                             <constraint firstAttribute="trailing" secondItem="7mW-Yk-Vt0" secondAttribute="trailing" id="DrL-ed-BLL"/>
-                                                            <constraint firstItem="BSi-Al-XFK" firstAttribute="leading" secondItem="Y0C-1s-YiY" secondAttribute="leading" id="LHE-iQ-Xf6"/>
-                                                            <constraint firstAttribute="trailing" secondItem="0Oj-CC-iSh" secondAttribute="trailing" id="R2l-Mh-zyZ"/>
-                                                            <constraint firstItem="BSi-Al-XFK" firstAttribute="centerY" secondItem="Y0C-1s-YiY" secondAttribute="centerY" id="TOt-Sh-KJz"/>
+                                                            <constraint firstItem="0Oj-CC-iSh" firstAttribute="leading" secondItem="Y0C-1s-YiY" secondAttribute="leading" constant="2" id="FUx-zy-fZt"/>
+                                                            <constraint firstAttribute="trailing" secondItem="0Oj-CC-iSh" secondAttribute="trailing" constant="2" id="R2l-Mh-zyZ"/>
                                                             <constraint firstItem="7mW-Yk-Vt0" firstAttribute="top" secondItem="Y0C-1s-YiY" secondAttribute="top" id="XAv-Od-wru"/>
                                                             <constraint firstAttribute="bottom" secondItem="7mW-Yk-Vt0" secondAttribute="bottom" id="pEr-yT-Zlo"/>
                                                             <constraint firstItem="0Oj-CC-iSh" firstAttribute="centerY" secondItem="Y0C-1s-YiY" secondAttribute="centerY" id="qOg-CZ-fW0"/>
                                                             <constraint firstItem="7mW-Yk-Vt0" firstAttribute="leading" secondItem="Y0C-1s-YiY" secondAttribute="leading" id="zls-xU-dHi"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="sky_color(4BBFEF)"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="s7n-GN-e9y"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kAa-3S-iGh">
                                                 <rect key="frame" x="0.0" y="667" width="211" height="25.5"/>
@@ -274,10 +272,12 @@ Cg
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YS-Dk-7Yz">
-                                                <rect key="frame" x="194.5" y="308" width="187.5" height="34.5"/>
+                                                <rect key="frame" x="194.5" y="305.5" width="211" height="39.5"/>
                                                 <color key="tintColor" name="font_color(#292B5C)"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="( Why we are asking )"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="(Why we are asking)">
+                                                    <fontDescription key="titleFontDescription" name="Poppins-Italic" family="Poppins" pointSize="18"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="QuestionGenderButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="aS1-a0-uuz"/>
                                                 </connections>
@@ -420,9 +420,10 @@ Cg
                     </view>
                     <connections>
                         <outlet property="childNameTextFeild" destination="0ap-Fs-pQb" id="o1W-TJ-SQB"/>
-                        <outlet property="femaleRadioImageView" destination="zG3-6Z-uuG" id="2sh-4Q-hhA"/>
-                        <outlet property="maleRadioImageView" destination="BSi-Al-XFK" id="SWO-Hh-Twz"/>
+                        <outlet property="femaleView" destination="Ren-Me-3PW" id="Jhn-B9-nQN"/>
+                        <outlet property="maleView" destination="Y0C-1s-YiY" id="Ll1-eP-35u"/>
                         <outlet property="nextButton" destination="w9p-Hj-rJg" id="VVx-0c-2yV"/>
+                        <outlet property="questionGenderButton" destination="5YS-Dk-7Yz" id="SI4-w5-MYL"/>
                         <outlet property="storyLeft" destination="C0P-w8-sWo" id="DOE-Dv-GZF"/>
                     </connections>
                 </viewController>
@@ -476,11 +477,9 @@ Cg
     <resources>
         <image name="ic_boy" width="50" height="50"/>
         <image name="ic_clear" width="30.5" height="30"/>
-        <image name="ic_fill_radio" width="40" height="40"/>
         <image name="ic_girl" width="50" height="50"/>
         <image name="ic_logout" width="92" height="32"/>
         <image name="ic_nextButton" width="349" height="71"/>
-        <image name="ic_radio" width="40" height="40"/>
         <image name="ic_welocomeBear" width="597" height="627"/>
         <namedColor name="font_color(#292B5C)">
             <color red="0.16099999845027924" green="0.16899999976158142" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -493,6 +492,9 @@ Cg
         </namedColor>
         <namedColor name="orange_color(#F48D40)">
             <color red="0.95686274509803926" green="0.55294117647058827" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="sky_color(4BBFEF)">
+            <color red="0.29411764705882354" green="0.74901960784313726" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

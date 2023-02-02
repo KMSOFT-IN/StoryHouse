@@ -22,12 +22,17 @@ class PlacesViewController: UIViewController {
         self.placesCollectionView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.selectedIndex = 0
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self.view) else { return }
-        let hitView = self.view.hitTest(location, with: event)
-        // if hitView == self.view {
-        let view = UIView(frame: CGRect(x: location.x - 50, y: location.y - 50, width: 100, height: 100))
-        self.view.addSubview(view)
+//        guard let location = touches.first?.location(in: self.view) else { return }
+//        let hitView = self.view.hitTest(location, with: event)
+//        // if hitView == self.view {
+//        let view = UIView(frame: CGRect(x: location.x - 50, y: location.y - 50, width: 100, height: 100))
+//        self.view.addSubview(view)
         //}
     }
     
@@ -40,10 +45,11 @@ class PlacesViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        AppData.sharedInstance.selectedLocationIndex = selectedIndex
             let viewController = MagicalObjectViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
     }
