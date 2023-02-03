@@ -22,9 +22,7 @@ class AppData {
     var selectedCharacterIndex: Int = 0
     var selectedLocationIndex: Int = 0
     var selectedMagicalObjectIndex: Int = 0
-    
     var selectedStoryNumber : Int = 0
-    
     
     static let sharedInstance: AppData = {
         let instance = AppData()
@@ -32,5 +30,12 @@ class AppData {
     }()
     
     private init() {}
+    
+    static func resetData() {
+        AppData.sharedInstance.childName = ""
+        AppData.sharedInstance.selectedCharacterIndex = 0
+        AppData.sharedInstance.selectedLocationIndex = 0
+        AppData.sharedInstance.selectedMagicalObjectIndex = 0
+    }
 
 }

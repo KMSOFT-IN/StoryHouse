@@ -34,7 +34,8 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
     }
     
     func setQuestionGenderButon() {
-        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue]
+        let font = UIFont(name: "Poppins-Italic", size: 18) ?? UIFont.italicSystemFont(ofSize: 18)
+        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue,  NSAttributedString.Key.font: font]
         let attributeString = NSMutableAttributedString(string: "(Why are we asking)", attributes: attributes)
         self.questionGenderButton.setAttributedTitle(attributeString, for: .normal)
     }

@@ -36,7 +36,10 @@ class MagicalObjectViewController: UIViewController {
     
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
-//        self.navigationController?.popViewController(animated: true)
+        let childNameVC = ChildNameViewController.getInstance()
+        self.navigationController?.setViewControllers([childNameVC], animated: true)
+        AppData.resetData()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {

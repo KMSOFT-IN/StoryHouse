@@ -272,7 +272,7 @@ Cg
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YS-Dk-7Yz">
-                                                <rect key="frame" x="194.5" y="305.5" width="211" height="39.5"/>
+                                                <rect key="frame" x="174.5" y="305.5" width="211" height="39.5"/>
                                                 <color key="tintColor" name="font_color(#292B5C)"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="(Why we are asking)">
@@ -304,7 +304,7 @@ Cg
                                             <constraint firstItem="XKe-Bp-tlK" firstAttribute="top" secondItem="kAa-3S-iGh" secondAttribute="bottom" constant="20" id="iVj-2Q-Fxh"/>
                                             <constraint firstItem="kAa-3S-iGh" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="ivb-Iz-9qq"/>
                                             <constraint firstItem="5YS-Dk-7Yz" firstAttribute="centerY" secondItem="PTY-2B-LcP" secondAttribute="centerY" id="jYh-vY-tKJ"/>
-                                            <constraint firstItem="5YS-Dk-7Yz" firstAttribute="leading" secondItem="PTY-2B-LcP" secondAttribute="trailing" constant="20" id="mKE-Fd-aFU"/>
+                                            <constraint firstItem="5YS-Dk-7Yz" firstAttribute="leading" secondItem="PTY-2B-LcP" secondAttribute="trailing" id="mKE-Fd-aFU"/>
                                             <constraint firstItem="32T-Iw-8b7" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="rPL-wn-cGP"/>
                                             <constraint firstItem="32T-Iw-8b7" firstAttribute="top" secondItem="YfQ-f1-gDC" secondAttribute="top" id="tBp-3U-Z8A"/>
                                         </constraints>

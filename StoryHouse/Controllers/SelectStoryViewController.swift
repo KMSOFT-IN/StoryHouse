@@ -26,12 +26,12 @@ class HomeViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if self.isFromTabbar {
-            self.backButton.isHidden = true
-        }
-        else {
-            self.backButton.isHidden = false
-        }
+//        if self.isFromTabbar {
+//            self.backButton.isHidden = true
+//        }
+//        else {
+//            self.backButton.isHidden = false
+//        }
     }
     
     static func getInstance() -> HomeViewController {
@@ -43,7 +43,10 @@ class HomeViewController : UIViewController {
     }
     
     @IBAction func settingButtontapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let childNameVC = ChildNameViewController.getInstance()
+        self.navigationController?.setViewControllers([childNameVC], animated: true)
+        AppData.resetData()
+        self.navigationController?.popToRootViewController(animated: true)
     }
    
     func setBorderWidth(view: UIView) {
