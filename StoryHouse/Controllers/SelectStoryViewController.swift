@@ -62,6 +62,7 @@ class HomeViewController : UIViewController {
     }
     
     @IBAction func exploreStoryButtonTapped(_ sender: UIButton) {
+        Utility.showAlert(title: APPNAME, message: "Coming Soon...", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
         self.setBorderWidth(view: self.exploreStoryView)
     }
     

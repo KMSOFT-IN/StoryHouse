@@ -28,9 +28,17 @@ import AVFoundation
             AppData.sharedInstance.synthesizer = AVSpeechSynthesizer()
         }
         let utterance = AVSpeechUtterance(string: text)
-        if let identifier = UserDefaultHelper.getVoiceIdentifier() {
-            utterance.voice = AVSpeechSynthesisVoice(identifier: identifier)
+        let voiceList = AVSpeechSynthesisVoice.speechVoices().filter({$0.language.contains("en")})
+        if let grandmaVoice = voiceList.filter({$0.name.contains("Grandma")}).first {
+            utterance.voice = AVSpeechSynthesisVoice(identifier: grandmaVoice.identifier)
+        } else if let marthaVoice = voiceList.filter({$0.name.contains("Martha")}).first {
+            utterance.voice = AVSpeechSynthesisVoice(identifier: marthaVoice.identifier)
+        } else if let karenVoice = voiceList.filter({$0.name.contains("Karen")}).first {
+            utterance.voice = AVSpeechSynthesisVoice(identifier: karenVoice.identifier)
         }
+//        if let identifier = UserDefaultHelper.getVoiceIdentifier() {
+//            utterance.voice = AVSpeechSynthesisVoice(identifier: identifier)
+//        }
         AppData.sharedInstance.synthesizer!.speak(utterance)
     }
      
@@ -62,6 +70,19 @@ import AVFoundation
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = textFieldPlaceHolder
         }
+        alertController.addAction(UIAlertAction(title: okButtonTitle, style: .default, handler: {
+            alert -> Void in
+            okClicked?((alertController.textFields![0] as UITextField).text!)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action : UIAlertAction!) -> Void in
+            cancelClicked?()
+        }))
+        viewController.present(alertController, animated: true, completion: nil)
+    }
+    
+    class func showAlert(title: String, message: String, viewController: UIViewController, okButtonTitle: String, isCancelButtonNeeded: Bool = false, cancelButtonTitle: String = "Cancel", okClicked: ((_ text: String) -> Void)? = nil, cancelClicked: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: okButtonTitle, style: .default, handler: {
             alert -> Void in
             okClicked?((alertController.textFields![0] as UITextField).text!)

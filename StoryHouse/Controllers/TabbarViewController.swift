@@ -208,13 +208,20 @@ class TabbarViewController: UIViewController {
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
         
         UIView.transition(with: self.image,
-                          duration: 0.75,
-                          options: .transitionCrossDissolve,
+                          duration: 5,
+                          options: .curveEaseIn,
                           animations: { self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder") },
                           completion: nil)
         
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         self.imageTitle.textColor = GRAY_COLOR
+//        UIView.animate(withDuration: 1, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+//            self.image.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2) // Scale your image
+//         }) { (finished) in
+//             UIView.animate(withDuration: 1, animations: {
+//              self.image.transform = CGAffineTransform.identity // undo in 1 seconds
+//           })
+//        }
     }
     
     @IBAction func homeButtonTapped(_ sender: Any) {
