@@ -12,11 +12,15 @@
 	<dict>
 		<key>App Uses Non-Exempt Encryption</key>
 		<false/>
-		<key>ITSAppUsesNonExemptEncryption</key>
-		<false/>
 		<key>Appearance</key>
 		<string>Light</string>
+		<key>ITSAppUsesNonExemptEncryption</key>
+		<false/>
+		<key>New item</key>
+		<string></string>
 		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
 		<false/>
 		<key>UISceneConfigurations</key>
 		<dict>
@@ -34,10 +38,6 @@
 		</dict>
 		<key>UIStatusBarHidden~ipad</key>
 		<true/>
-		<key>New item</key>
-		<string></string>
-		<key>UIApplicationSupportsTabbedSceneCollection</key>
-		<false/>
 	</dict>
 </dict>
 </plist>

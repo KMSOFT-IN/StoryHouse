@@ -34,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-ZB-Hw3">
-                                        <rect key="frame" x="632" y="680" width="102" height="33"/>
+                                        <rect key="frame" x="632" y="710" width="102" height="33"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
@@ -50,15 +50,11 @@ Jennifer’s story! </string>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading_char" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-7n-9z9">
-                                        <rect key="frame" x="610" y="300" width="360" height="380"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="380" id="Lqw-be-cNs"/>
-                                            <constraint firstAttribute="width" constant="360" id="fED-EG-qoW"/>
-                                        </constraints>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_loading_char" translatesAutoresizingMaskIntoConstraints="NO" id="QoM-7n-9z9">
+                                        <rect key="frame" x="610" y="270.5" width="391.5" height="439.5"/>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-Mr-Arb">
-                                        <rect key="frame" x="10" y="635" width="600" height="30"/>
+                                        <rect key="frame" x="10" y="665" width="600" height="30"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GcC-lx-AIa"/>
@@ -123,7 +119,7 @@ Jennifer’s story! </string>
                                     <constraint firstItem="QoM-7n-9z9" firstAttribute="leading" secondItem="JWa-Mr-Arb" secondAttribute="trailing" id="ZDO-V7-R7e"/>
                                     <constraint firstAttribute="trailing" secondItem="mIx-im-8PK" secondAttribute="trailing" id="by5-d7-j5c"/>
                                     <constraint firstItem="mIx-im-8PK" firstAttribute="top" secondItem="sLv-b3-B1h" secondAttribute="top" id="bz6-Lw-W9D"/>
-                                    <constraint firstItem="QoM-7n-9z9" firstAttribute="centerY" secondItem="sLv-b3-B1h" secondAttribute="centerY" id="ems-eo-MTI"/>
+                                    <constraint firstItem="QoM-7n-9z9" firstAttribute="centerY" secondItem="sLv-b3-B1h" secondAttribute="centerY" priority="750" id="ems-eo-MTI"/>
                                     <constraint firstItem="Alc-DJ-FhQ" firstAttribute="centerX" secondItem="sLv-b3-B1h" secondAttribute="centerX" id="fUc-Zj-Zd2"/>
                                     <constraint firstItem="QoM-7n-9z9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Alc-DJ-FhQ" secondAttribute="bottom" constant="10" id="oJq-rg-EGk"/>
                                     <constraint firstItem="bZR-ZB-Hw3" firstAttribute="top" secondItem="QoM-7n-9z9" secondAttribute="bottom" id="v8j-hG-gpb"/>

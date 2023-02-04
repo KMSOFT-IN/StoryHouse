@@ -32,6 +32,7 @@ class AppData {
     private init() {}
     
     static func resetData() {
+        UserDefaultHelper.setChildname(value: "")
         AppData.sharedInstance.childName = ""
         AppData.sharedInstance.selectedCharacterIndex = 0
         AppData.sharedInstance.selectedLocationIndex = 0

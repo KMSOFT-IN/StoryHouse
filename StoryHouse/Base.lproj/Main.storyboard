@@ -57,7 +57,7 @@ story!</string>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKB-C4-6kf">
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKB-C4-6kf">
                                                 <rect key="frame" x="58" y="606" width="430.5" height="80"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_signInWithApple" translatesAutoresizingMaskIntoConstraints="NO" id="QET-tD-LUD">

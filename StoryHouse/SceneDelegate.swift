@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        self.navigateToHomeVC()
+        self.splashScreen()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
@@ -46,31 +46,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
-    func navigateToHomeVC() {
+    private func splashScreen() {
+        let launchScreenVC = UIStoryboard.init(name: "LaunchScreen", bundle: nil)
+        let rootVC = launchScreenVC.instantiateViewController(withIdentifier: "splashController")
+        self.window?.rootViewController = rootVC
+        self.window?.backgroundColor = .white
+        self.window?.makeKeyAndVisible()
+        Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(dismissSplashController), userInfo: nil, repeats: false)
+    }
+    
+    @objc func dismissSplashController() {
         let name = UserDefaultHelper.getChildname()
         var navigationController = UINavigationController()
         navigationController.navigationBar.isHidden = true
         if (name == nil) || (name?.isEmpty ?? false) {
-            let viewController = SplashViewController.getInstance()
+            let viewController = ChildNameViewController.getInstance()
             navigationController = UINavigationController(rootViewController: viewController)
         } else {
             if UserDefaultHelper.get_Is_Onboarding_Done() ?? false {
-                
                 let viewController = TabbarViewController.getInstance()
-                 navigationController = UINavigationController(rootViewController: viewController)
+                navigationController = UINavigationController(rootViewController: viewController)
             }
             else {
                 let viewController = HomeViewController.getInstance()
-                 navigationController = UINavigationController(rootViewController: viewController)
+                navigationController = UINavigationController(rootViewController: viewController)
             }
         }
-        
         self.window?.rootViewController = navigationController
         self.window?.isUserInteractionEnabled = true
         self.window?.backgroundColor = .white
         self.window?.makeKeyAndVisible()
     }
-
-
+    
 }
 
