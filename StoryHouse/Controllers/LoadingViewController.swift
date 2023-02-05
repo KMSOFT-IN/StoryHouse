@@ -13,6 +13,7 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingCollectionView: UICollectionView!
     
     let loadingDotsCount: Int = 15
+    var loadingCount: Int = 1
     var selectedDot: Int = 0
     var timer: Timer = Timer()
     
@@ -41,8 +42,12 @@ class LoadingViewController: UIViewController {
         self.selectedDot += 1
         self.loadingCollectionView.reloadData()
         if self.selectedDot == self.loadingDotsCount {
-            self.timer.invalidate()
-            self.navigateToTabbarViewController()
+            self.selectedDot = 0
+            if self.loadingCount == 2 {
+                self.timer.invalidate()
+                self.navigateToTabbarViewController()
+            }
+            self.loadingCount += 1
         }
     }
     

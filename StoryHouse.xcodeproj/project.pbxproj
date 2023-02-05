@@ -59,6 +59,7 @@
 		882A8BA3298F9D1600F71DCF /* glitter5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA2298F9D1600F71DCF /* glitter5.gif */; };
 		882A8BA5298FA46F00F71DCF /* dust.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA4298FA46F00F71DCF /* dust.gif */; };
 		882A8BA7298FA72C00F71DCF /* glitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA6298FA72C00F71DCF /* glitter.gif */; };
+		882A8BAA298FD61000F71DCF /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A8BA9298FD61000F71DCF /* Extractor.swift */; };
 		882D145C2981553B003F3208 /* Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D145B2981553B003F3208 /* Gifs.swift */; };
 		88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88313AB329876DC2000D1248 /* CategoryModel.swift */; };
 		88319FE7297AC78A00FA59B0 /* strimmer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88319FE6297AC78A00FA59B0 /* strimmer.gif */; };
@@ -205,6 +206,7 @@
 		882A8BA2298F9D1600F71DCF /* glitter5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter5.gif; sourceTree = "<group>"; };
 		882A8BA4298FA46F00F71DCF /* dust.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dust.gif; sourceTree = "<group>"; };
 		882A8BA6298FA72C00F71DCF /* glitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter.gif; sourceTree = "<group>"; };
+		882A8BA9298FD61000F71DCF /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 		882D145B2981553B003F3208 /* Gifs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gifs.swift; sourceTree = "<group>"; };
 		88313AB329876DC2000D1248 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		88319FE6297AC78A00FA59B0 /* strimmer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = strimmer.gif; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				881402DF296D6A2E00930582 /* AppDelegate.swift */,
 				881402E1296D6A2E00930582 /* SceneDelegate.swift */,
 				881402E3296D6A2E00930582 /* ViewController.swift */,
+				882A8BA8298FD5F300F71DCF /* Helper */,
 				881402F3296D6C8300930582 /* Fonts */,
 				88140324296D84FA00930582 /* Extension */,
 				88E1CA8529781672008F3B28 /* GIF Class */,
@@ -427,6 +430,14 @@
 				88140335296D861E00930582 /* MagicalObjectViewController.swift */,
 			);
 			path = 3Steps;
+			sourceTree = "<group>";
+		};
+		882A8BA8298FD5F300F71DCF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				882A8BA9298FD61000F71DCF /* Extractor.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		8854046929839CEC007F18BE /* 21 */ = {
@@ -1274,6 +1285,7 @@
 				88FC89EB298B915D006DC384 /* LoadingCollectionViewCell.swift in Sources */,
 				88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */,
 				8814033C296D8EB600930582 /* HeroNameViewController.swift in Sources */,
+				882A8BAA298FD61000F71DCF /* Extractor.swift in Sources */,
 				881402E4296D6A2E00930582 /* ViewController.swift in Sources */,
 				88140342296D995700930582 /* SelectStoryViewController.swift in Sources */,
 				8814032F296D84FA00930582 /* String.swift in Sources */,
@@ -1438,7 +1450,7 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
@@ -1475,7 +1487,7 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;

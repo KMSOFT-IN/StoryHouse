@@ -57,7 +57,8 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
                 return
             }
             
-            /*UserDefaultHelper.setChildname(value: self.childNameTextFeild.text ?? "")
+            UserDefaultHelper.setChildname(value: self.childNameTextFeild.text ?? "")
+            /*
             if self.isGirlSelected {
                 UserDefaultHelper.setGender(value: GENDER.GIRL.rawValue)
             }

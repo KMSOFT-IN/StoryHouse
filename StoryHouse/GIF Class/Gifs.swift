@@ -29,6 +29,11 @@ class Gif {
         imageView.frame = view.bounds
         imageView.contentMode = .scaleToFill
         view.addSubview(imageView)
+        if name == "dust" {
+            imageView.alpha = 0.75
+        } else {
+            imageView.alpha = 1.0
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             imageView.removeFromSuperview()
         }

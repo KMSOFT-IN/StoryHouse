@@ -324,7 +324,7 @@ class TabbarViewController: UIViewController {
             let viewController = EndViewController.getInstance()
             let index = 0
             viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
-            viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index] as! String
+            viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index].he as! String
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
@@ -381,12 +381,9 @@ class TabbarViewController: UIViewController {
     @IBAction func shareButtontapped(_ sender: Any) {
         UIGraphicsBeginImageContext(view.frame.size)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
-        //let image = UIImage(named: "AppIcon")!
         let image = self.image.image
         UIGraphicsEndImageContext()
-        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-//        let textToShare = (self.imageTitle.text ?? "")
-        //if let myWebsite = URL(string: "http://itunes.apple.com/app/id1645684020") {
+//        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
         let objectsToShare = [image, self] as [Any]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
@@ -407,14 +404,8 @@ class TabbarViewController: UIViewController {
 
 extension TabbarViewController: UIActivityItemSource {
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-//        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
         return ""
     }
-
-//    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
-//        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-//        return childName
-//    }
 
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
         let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
@@ -428,12 +419,7 @@ extension TabbarViewController: UIActivityItemSource {
         metadata.iconProvider = NSItemProvider(object: image)
         return metadata
     }
-
-
-
 }
-                
-
 
 extension TabbarViewController : AVSpeechSynthesizerDelegate {
     
@@ -541,26 +527,3 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
  
  */
 
-
-                class AssetExtractor {
-            
-            static func createLocalUrl(forImageNamed name: String) -> URL? {
-                
-                let fileManager = FileManager.default
-                let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-                let url = cacheDirectory.appendingPathComponent("\(name).png")
-                
-                guard fileManager.fileExists(atPath: url.path) else {
-                    guard
-                        let image = UIImage(named: name),
-                        let data = image.pngData()
-                    else { return nil }
-                    
-                    fileManager.createFile(atPath: url.path, contents: data, attributes: nil)
-                    return url
-                }
-                
-                return url
-            }
-            
-        }

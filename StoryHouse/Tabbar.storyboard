@@ -776,7 +776,7 @@
                                             <segue destination="c4T-UQ-i1u" kind="embed" id="oYQ-iw-sZH"/>
                                         </connections>
                                     </containerView>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSg-PX-z52">
+                                    <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSg-PX-z52">
                                         <rect key="frame" x="40" y="40" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="4hq-VY-VQA"/>
@@ -861,7 +861,7 @@
     </scenes>
     <designables>
         <designable name="xRb-hC-F55">
-            <size key="intrinsicContentSize" width="-1" height="37.5"/>
+            <size key="intrinsicContentSize" width="-1" height="30"/>
         </designable>
     </designables>
     <resources>

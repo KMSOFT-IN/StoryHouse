@@ -87,10 +87,12 @@ import AVFoundation
             alert -> Void in
             okClicked?((alertController.textFields![0] as UITextField).text!)
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in
-            cancelClicked?()
-        }))
+        if isCancelButtonNeeded {
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+                (action : UIAlertAction!) -> Void in
+                cancelClicked?()
+            }))            
+        }
         viewController.present(alertController, animated: true, completion: nil)
     }
     
