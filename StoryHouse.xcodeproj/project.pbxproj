@@ -52,7 +52,13 @@
 		88167776297E5A4600725569 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88167775297E5A4600725569 /* Setting.storyboard */; };
 		88167778297E5B7400725569 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88167777297E5B7400725569 /* SettingViewController.swift */; };
 		881CBF37297680090094109D /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881CBF36297680090094109D /* StoryModel.swift */; };
-		88222EE0298BC98200FC942D /* glitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88222EDF298BC98200FC942D /* glitter.gif */; };
+		88222EE0298BC98200FC942D /* glitter1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88222EDF298BC98200FC942D /* glitter1.gif */; };
+		882A8B9D298F99EA00F71DCF /* glitter2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8B9C298F99EA00F71DCF /* glitter2.gif */; };
+		882A8B9F298F9B3D00F71DCF /* glitter3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8B9E298F9B3D00F71DCF /* glitter3.gif */; };
+		882A8BA1298F9C1500F71DCF /* glitter4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA0298F9C1500F71DCF /* glitter4.gif */; };
+		882A8BA3298F9D1600F71DCF /* glitter5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA2298F9D1600F71DCF /* glitter5.gif */; };
+		882A8BA5298FA46F00F71DCF /* dust.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA4298FA46F00F71DCF /* dust.gif */; };
+		882A8BA7298FA72C00F71DCF /* glitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A8BA6298FA72C00F71DCF /* glitter.gif */; };
 		882D145C2981553B003F3208 /* Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D145B2981553B003F3208 /* Gifs.swift */; };
 		88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88313AB329876DC2000D1248 /* CategoryModel.swift */; };
 		88319FE7297AC78A00FA59B0 /* strimmer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88319FE6297AC78A00FA59B0 /* strimmer.gif */; };
@@ -192,7 +198,13 @@
 		88167775297E5A4600725569 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		88167777297E5B7400725569 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		881CBF36297680090094109D /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
-		88222EDF298BC98200FC942D /* glitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter.gif; sourceTree = "<group>"; };
+		88222EDF298BC98200FC942D /* glitter1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter1.gif; sourceTree = "<group>"; };
+		882A8B9C298F99EA00F71DCF /* glitter2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter2.gif; sourceTree = "<group>"; };
+		882A8B9E298F9B3D00F71DCF /* glitter3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter3.gif; sourceTree = "<group>"; };
+		882A8BA0298F9C1500F71DCF /* glitter4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter4.gif; sourceTree = "<group>"; };
+		882A8BA2298F9D1600F71DCF /* glitter5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter5.gif; sourceTree = "<group>"; };
+		882A8BA4298FA46F00F71DCF /* dust.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dust.gif; sourceTree = "<group>"; };
+		882A8BA6298FA72C00F71DCF /* glitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter.gif; sourceTree = "<group>"; };
 		882D145B2981553B003F3208 /* Gifs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gifs.swift; sourceTree = "<group>"; };
 		88313AB329876DC2000D1248 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		88319FE6297AC78A00FA59B0 /* strimmer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = strimmer.gif; sourceTree = "<group>"; };
@@ -1027,11 +1039,17 @@
 			isa = PBXGroup;
 			children = (
 				882D145B2981553B003F3208 /* Gifs.swift */,
-				88222EDF298BC98200FC942D /* glitter.gif */,
+				882A8BA6298FA72C00F71DCF /* glitter.gif */,
+				882A8BA2298F9D1600F71DCF /* glitter5.gif */,
+				882A8BA0298F9C1500F71DCF /* glitter4.gif */,
+				882A8B9E298F9B3D00F71DCF /* glitter3.gif */,
+				882A8B9C298F99EA00F71DCF /* glitter2.gif */,
+				88222EDF298BC98200FC942D /* glitter1.gif */,
 				883C9B3B29793AF600FD1C08 /* star.gif */,
 				88319FE8297AC89D00FA59B0 /* Streamers.gif */,
 				88319FE6297AC78A00FA59B0 /* strimmer.gif */,
 				88DB92762979729B009DF1FF /* celebration.gif */,
+				882A8BA4298FA46F00F71DCF /* dust.gif */,
 				88DB927429796898009DF1FF /* slider.swift */,
 			);
 			path = "GIF Class";
@@ -1143,6 +1161,7 @@
 				88370B5D2978F0A400B2199C /* Home.storyboard in Resources */,
 				8854048829839E29007F18BE /* 131.json in Resources */,
 				885404BA29839F76007F18BE /* 331.json in Resources */,
+				882A8BA7298FA72C00F71DCF /* glitter.gif in Resources */,
 				8892D82B29839B6400CD510F /* 102.json in Resources */,
 				8892D81729839B0800CD510F /* 020.json in Resources */,
 				8854046D29839D0B007F18BE /* 122.json in Resources */,
@@ -1152,6 +1171,7 @@
 				885404C929839FF3007F18BE /* 200.json in Resources */,
 				8854048E29839E64007F18BE /* 303.json in Resources */,
 				8892D82129839B3500CD510F /* 031.json in Resources */,
+				882A8BA3298F9D1600F71DCF /* glitter5.gif in Resources */,
 				883C9B3C29793AF600FD1C08 /* star.gif in Resources */,
 				8892D82929839B5300CD510F /* 101.json in Resources */,
 				8854049129839E71007F18BE /* 302.json in Resources */,
@@ -1160,13 +1180,14 @@
 				8892D81329839AF600CD510F /* 012.json in Resources */,
 				885404E02983A0A1007F18BE /* 211.json in Resources */,
 				8892D80929839A7100CD510F /* 001.json in Resources */,
+				882A8BA1298F9C1500F71DCF /* glitter4.gif in Resources */,
 				8854047F29839DBA007F18BE /* 110.json in Resources */,
 				8814031A296D6C9C00930582 /* Poppins-Black.ttf in Resources */,
 				885404A529839F06007F18BE /* 320.json in Resources */,
 				8854048229839DCD007F18BE /* 133.json in Resources */,
 				8814031D296D6C9C00930582 /* Poppins-Italic.ttf in Resources */,
 				8892D81F29839B2D00CD510F /* 030.json in Resources */,
-				88222EE0298BC98200FC942D /* glitter.gif in Resources */,
+				88222EE0298BC98200FC942D /* glitter1.gif in Resources */,
 				8814030C296D6C9C00930582 /* Poppins-ExtraLight.ttf in Resources */,
 				885404E92983A0DE007F18BE /* 232.json in Resources */,
 				885404DD2983A092007F18BE /* 212.json in Resources */,
@@ -1205,6 +1226,7 @@
 				8892D82329839B3B00CD510F /* 032.json in Resources */,
 				885404C029839F9D007F18BE /* 203.json in Resources */,
 				881402E7296D6A2E00930582 /* Main.storyboard in Resources */,
+				882A8BA5298FA46F00F71DCF /* dust.gif in Resources */,
 				885404AB29839F26007F18BE /* 312.json in Resources */,
 				885404E62983A0C6007F18BE /* 233.json in Resources */,
 				8854048B29839E4A007F18BE /* 130.json in Resources */,
@@ -1215,6 +1237,7 @@
 				885404AE29839F36007F18BE /* 311.json in Resources */,
 				8854047029839D22007F18BE /* 121.json in Resources */,
 				881402F7296D6C8D00930582 /* LICENSE.txt in Resources */,
+				882A8B9F298F9B3D00F71DCF /* glitter3.gif in Resources */,
 				88E1CA8129780C69008F3B28 /* End.storyboard in Resources */,
 				88319FE7297AC78A00FA59B0 /* strimmer.gif in Resources */,
 				8844DC5129765AA40074610C /* StoriesJSON.json in Resources */,
@@ -1222,6 +1245,7 @@
 				8892D82D29839B6C00CD510F /* 103.json in Resources */,
 				88DB92772979729B009DF1FF /* celebration.gif in Resources */,
 				8814030D296D6C9C00930582 /* Poppins-ThinItalic.ttf in Resources */,
+				882A8B9D298F99EA00F71DCF /* glitter2.gif in Resources */,
 				885404DA2983A07A007F18BE /* 213.json in Resources */,
 				881402F6296D6C8D00930582 /* LuckiestGuy-Regular.ttf in Resources */,
 			);

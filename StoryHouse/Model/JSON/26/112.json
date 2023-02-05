@@ -56,6 +56,11 @@
                     "he":"With the turtle's guidance, Zippy was able to find the seaweed and use it to make an antidote for the potion. He drank the antidote and immediately regained the ability to breathe air.",
                     "she":"With the octopus's guidance, Zoey was able to find the plant and use it to make an antidote for the potion. She drank the antidote and immediately regained the ability to communicate with all creatures."
                 },
+                {
+                    "imageName":"112-10",
+                    "he":"The End.",
+                    "she":"The End."
+                },
             ]
         } ,
     ]

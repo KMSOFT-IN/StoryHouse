@@ -8,7 +8,7 @@ import UIKit
 import AVKit
 import MediaPlayer
 import AVFoundation
-
+import LinkPresentation
 class TabbarViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
@@ -40,6 +40,7 @@ class TabbarViewController: UIViewController {
     var isMute: Bool = true
     let name = UserDefaultHelper.getChildname()
     let gifHandler = Gif()
+    var animationTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -206,23 +207,52 @@ class TabbarViewController: UIViewController {
             return }
         UserDefaultHelper.setParagraphIndex(value: index)
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
-        
-        UIView.transition(with: self.image,
-                          duration: 5,
-                          options: .curveEaseIn,
-                          animations: { self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder") },
-                          completion: nil)
-        
+//        UIView.transition(with: self.image,
+//                          duration: 5,
+//                          options: .curveEaseIn,
+//                          animations: { self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder") },
+//                          completion: nil)
+        self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         self.imageTitle.textColor = GRAY_COLOR
-//        UIView.animate(withDuration: 1, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-//            self.image.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2) // Scale your image
-//         }) { (finished) in
-//             UIView.animate(withDuration: 1, animations: {
-//              self.image.transform = CGAffineTransform.identity // undo in 1 seconds
-//           })
-//        }
+//        self.imageAnimationStart()
+        self.startImageAnimationTimer()
     }
+    
+    @objc func imageAnimationStart() {
+        self.gifHandler.setUpGif(name: "dust", duration: 7, view: self.image)
+        UIView.animate(withDuration: 3, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.image.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2) // Scale your image
+         }) { (finished) in
+             UIView.animate(withDuration: 3, animations: {
+              self.image.transform = CGAffineTransform.identity // undo in 1 seconds
+             }) { (finished) in
+                 self.startImageAnimationTimer()
+             }
+        }
+    }
+    
+    func resetImageAnimation() {
+        self.stopAnimationTimer()
+        self.view.subviews.forEach({$0.layer.removeAllAnimations()})
+        self.view.layer.removeAllAnimations()
+        self.view.layoutIfNeeded()
+        self.image.image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder") // undo in 1 seconds
+    }
+    
+    func startImageAnimationTimer() {
+        self.stopAnimationTimer()
+        self.animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.imageAnimationStart), userInfo: nil, repeats: false)
+//        Timer(timeInterval: 0.1, target: self, selector: #selector(self.imageAnimationStart), userInfo: nil, repeats: true)
+    }
+    
+    func stopAnimationTimer() {
+        if self.animationTimer != nil {
+            self.animationTimer?.invalidate()
+            self.animationTimer = nil
+        }
+    }
+
     
     @IBAction func homeButtonTapped(_ sender: Any) {
         self.pauseSpeaking()
@@ -254,6 +284,7 @@ class TabbarViewController: UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
+        self.resetImageAnimation()
         self.setUpStory(index: self.currentIndex)
         self.resetUI()
     }
@@ -263,6 +294,7 @@ class TabbarViewController: UIViewController {
         if (self.currentIndex < 0) {
             self.currentIndex = 0
         }
+        self.resetImageAnimation()
         self.setUpStory(index: self.currentIndex)
         self.resetUI()
         
@@ -352,10 +384,10 @@ class TabbarViewController: UIViewController {
         //let image = UIImage(named: "AppIcon")!
         let image = self.image.image
         UIGraphicsEndImageContext()
-        var childName = (UserDefaultHelper.getChildname() ?? "") + "'s ’s Magic House Story"
-        let textToShare = (self.imageTitle.text ?? "")
+        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+//        let textToShare = (self.imageTitle.text ?? "")
         //if let myWebsite = URL(string: "http://itunes.apple.com/app/id1645684020") {
-        let objectsToShare = [childName ,textToShare, image] as [Any]
+        let objectsToShare = [image, self] as [Any]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         activityVC.popoverPresentationController?.sourceView = sender as? UIView
@@ -373,6 +405,34 @@ class TabbarViewController: UIViewController {
     
 }
 
+extension TabbarViewController: UIActivityItemSource {
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+//        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+        return ""
+    }
+
+//    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
+//        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+//        return childName
+//    }
+
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+        return childName
+    }
+
+    func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
+        let metadata = LPLinkMetadata()
+        metadata.title = "\(UserDefaultHelper.getChildname() ?? "") 's Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+        let image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder")!
+        metadata.iconProvider = NSItemProvider(object: image)
+        return metadata
+    }
+
+
+
+}
+                
 
 
 extension TabbarViewController : AVSpeechSynthesizerDelegate {
@@ -482,3 +542,25 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
  */
 
 
+                class AssetExtractor {
+            
+            static func createLocalUrl(forImageNamed name: String) -> URL? {
+                
+                let fileManager = FileManager.default
+                let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                let url = cacheDirectory.appendingPathComponent("\(name).png")
+                
+                guard fileManager.fileExists(atPath: url.path) else {
+                    guard
+                        let image = UIImage(named: name),
+                        let data = image.pngData()
+                    else { return nil }
+                    
+                    fileManager.createFile(atPath: url.path, contents: data, attributes: nil)
+                    return url
+                }
+                
+                return url
+            }
+            
+        }
