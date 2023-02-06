@@ -62,7 +62,19 @@ final class Slider: UISlider {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         // Step 9
-        let thumbRectA = thumbRect(forBounds: bounds, trackRect: trackRect(forBounds: bounds), value: value)
+        var tempValue = value
+        if value > 0.0 && value <= 0.20 {
+            tempValue = 0.20
+        } else if value > 0.20 && value <= 0.40 {
+            tempValue = 0.40
+        } else if value > 0.40 && value <= 0.60 {
+            tempValue = 0.60
+        } else if value > 0.60 && value <= 0.80 {
+            tempValue = 0.80
+        } else if value > 0.80 && value <= 1.0 {
+            tempValue = 1
+        }
+        let thumbRectA = thumbRect(forBounds: bounds, trackRect: trackRect(forBounds: bounds), value: tempValue)
         trackLayer.frame = .init(x: 0, y: frame.height / 4, width: thumbRectA.midX, height: frame.height / 2)
         // Step 10
         CATransaction.commit()

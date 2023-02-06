@@ -95,6 +95,18 @@ class TabbarViewController: UIViewController {
         self.sliderView.value = self.systemVolume
         self.sliderView.sliderValueChangedCallback = {
             self.muteLabel.text = "VOLUME"
+            if self.sliderView.value > 0.0 && self.sliderView.value <= 0.20 {
+                self.sliderView.value = 0.20
+            } else if self.sliderView.value > 0.20 && self.sliderView.value <= 0.40 {
+                self.sliderView.value = 0.40
+            } else if self.sliderView.value > 0.40 && self.sliderView.value <= 0.60 {
+                self.sliderView.value = 0.60
+            } else if self.sliderView.value > 0.60 && self.sliderView.value <= 0.80 {
+                self.sliderView.value = 0.80
+            } else if self.sliderView.value > 0.80 && self.sliderView.value <= 1.0 {
+                self.sliderView.value = 1
+            }
+            self.sliderView.layoutIfNeeded()
             MPVolumeView.setVolume(self.sliderView.value)
             print(self.sliderView.value)
             self.utterance.volume = self.sliderView.value
@@ -425,7 +437,7 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
         // "Rishi,com.apple.voice.compact.en-IN.Rishi"
         self.utterance = AVSpeechUtterance(string: text)
         self.utterance.voice = AVSpeechSynthesisVoice(identifier: UserDefaultHelper.getVoiceIdentifier() ?? "com.apple.voice.compact.en-IN.Rishi")
-        self.utterance.rate = 0.3
+        self.utterance.rate = 0.35
         self.utterance.postUtteranceDelay = 0.01
         self.utterance.volume = self.sliderView.value
         
