@@ -33,8 +33,8 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_appBackGroud" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-im-8PK">
                                         <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-ZB-Hw3">
-                                        <rect key="frame" x="632" y="710" width="102" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-ZB-Hw3">
+                                        <rect key="frame" x="630" y="710" width="106.5" height="33"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>

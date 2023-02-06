@@ -220,11 +220,11 @@ class TabbarViewController: UIViewController {
     }
     
     @objc func imageAnimationStart() {
-        self.gifHandler.setUpGif(name: "dust", duration: 7, view: self.image)
-        UIView.animate(withDuration: 3, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        self.gifHandler.setUpGif(name: "dust", duration: 11, view: self.image)
+        UIView.animate(withDuration: 5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.image.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2) // Scale your image
          }) { (finished) in
-             UIView.animate(withDuration: 3, animations: {
+             UIView.animate(withDuration: 5, animations: {
               self.image.transform = CGAffineTransform.identity // undo in 1 seconds
              }) { (finished) in
                  self.startImageAnimationTimer()
@@ -243,7 +243,6 @@ class TabbarViewController: UIViewController {
     func startImageAnimationTimer() {
         self.stopAnimationTimer()
         self.animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.imageAnimationStart), userInfo: nil, repeats: false)
-//        Timer(timeInterval: 0.1, target: self, selector: #selector(self.imageAnimationStart), userInfo: nil, repeats: true)
     }
     
     func stopAnimationTimer() {
@@ -253,7 +252,6 @@ class TabbarViewController: UIViewController {
         }
     }
 
-    
     @IBAction func homeButtonTapped(_ sender: Any) {
         self.pauseSpeaking()
         self.synthesizer.stopSpeaking(at: .immediate)
@@ -427,7 +425,7 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
         // "Rishi,com.apple.voice.compact.en-IN.Rishi"
         self.utterance = AVSpeechUtterance(string: text)
         self.utterance.voice = AVSpeechSynthesisVoice(identifier: UserDefaultHelper.getVoiceIdentifier() ?? "com.apple.voice.compact.en-IN.Rishi")
-        self.utterance.rate = 0.4
+        self.utterance.rate = 0.3
         self.utterance.postUtteranceDelay = 0.01
         self.utterance.volume = self.sliderView.value
         
@@ -444,7 +442,6 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        
         //self.imageTitle.attributedText = NSAttributedString(string: utterance.speechString)
         if let rootViewController = UIApplication.topViewController() {
             if rootViewController != self {
