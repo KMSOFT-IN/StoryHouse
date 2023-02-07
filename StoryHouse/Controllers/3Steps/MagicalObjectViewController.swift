@@ -44,12 +44,18 @@ class MagicalObjectViewController: UIViewController {
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
         AppData.sharedInstance.selectedMagicalObjectIndex = self.selectedIndex
-        
-             let storyIndex = ("\(AppData.sharedInstance.selectedCharacterIndex)"  + "\(AppData.sharedInstance.selectedLocationIndex)" + "\(AppData.sharedInstance.selectedMagicalObjectIndex)")
-                UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
-                UserDefaultHelper.set_Is_Onboarding_Done(value: true)
-                let viewController = LoadingViewController.getInstance()
-                self.navigationController?.pushViewController(viewController, animated: true)
+        let storyIndex = ("\(AppData.sharedInstance.selectedCharacterIndex)"  + "\(AppData.sharedInstance.selectedLocationIndex)" + "\(AppData.sharedInstance.selectedMagicalObjectIndex)")
+        UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
+        UserDefaultHelper.set_Is_Onboarding_Done(value: true)
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_OBJECT, parameters: ["OBJECT_INDEX" : self.selectedIndex])
+        let storyParam = ["HERO_INDEX": AppData.sharedInstance.selectedCharacterIndex,
+                          "PLACE_INDEX": AppData.sharedInstance.selectedLocationIndex,
+                          "OBJECT_INDEX": AppData.sharedInstance.selectedMagicalObjectIndex]
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_CREATED, parameters: storyParam)
+        AppData.sharedInstance.storyCreatedCount += 1
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.TOTAL_STORY_CREATED_COUNT_IN_SESSION, parameters: ["COUNT" : AppData.sharedInstance.storyCreatedCount])
+        let viewController = LoadingViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

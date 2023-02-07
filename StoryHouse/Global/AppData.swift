@@ -18,11 +18,15 @@ class AppData {
     var synthesizer: AVSpeechSynthesizer?
     var voiceIdentifier: String?
     var voice: String?
+    var logger: AppLogger = AppLogger()
     
     var selectedCharacterIndex: Int = 0
     var selectedLocationIndex: Int = 0
     var selectedMagicalObjectIndex: Int = 0
     var selectedStoryNumber : Int = 0
+    var storyCreatedCount : Int = 0
+    var storyStartTime: String = "00"
+    var storyEndTime: String = "00"
     
     static let sharedInstance: AppData = {
         let instance = AppData()

@@ -72,6 +72,36 @@ class UserDefaultHelper {
         return UserDefaults.standard.string(forKey: Constant.UserDefault.VOICE_IDENTIFIER)
     }
     
+    static func isFirstLaunch() -> Bool {
+        return !UserDefaults.standard.bool(forKey: Constant.UserDefault.FIRST_LAUNCH)
+    }
+    
+    static func setFirstLaunch(value: Bool) {
+        UserDefaults.standard.setValue(!value, forKey: Constant.UserDefault.FIRST_LAUNCH)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getLastAppOpen() -> Date? {
+        return UserDefaults.standard.value(forKey: Constant.UserDefault.LAST_APP_OPEN) as? Date
+    }
+    
+    static func setLastAppOpen(value: Date) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.LAST_APP_OPEN)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func saveCurrentDate() {
+        UserDefaults.standard.set(Date(), forKey: Constant.UserDefault.CURRENT_DATE)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getCurrentDate() -> Date? {
+        let storedDate = UserDefaults.standard.object(forKey: Constant.UserDefault.CURRENT_DATE) as? Date
+        print("Stored Date: ", storedDate)
+        return storedDate
+    }
+    
+    
     static func clearUserdefault() {
         UserDefaultHelper.setVoice(value: "")
         UserDefaultHelper.setVoiceIdentifier(value: "")

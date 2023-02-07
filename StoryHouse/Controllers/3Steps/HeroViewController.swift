@@ -33,9 +33,10 @@ class HeroViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_HERO, parameters: ["HERO_INDEX" : self.selectedIndex])
         AppData.sharedInstance.selectedCharacterIndex =  self.selectedIndex
-            let viewController = PlacesViewController.getInstance()
-            self.navigationController?.pushViewController(viewController, animated: true)
+        let viewController = PlacesViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {

@@ -6,13 +6,43 @@
 //
 
 import UIKit
+import AppsFlyerLib
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
+        AppData.sharedInstance.logger.setupLogger()
+        NotificationCenter.default.addObserver(self, selector: NSSelectorFromString("sendLaunch"), name: UIApplication.didBecomeActiveNotification, object: nil)
+        AppsFlyerLib.shared().isDebug = true
+        AppsFlyerLib.shared().start(completionHandler: { (dictionary, error) in
+            if (error != nil){
+                print(error ?? "")
+                return
+            }
+            else {
+                print(dictionary ?? "")
+                return
+            }
+        })
+        self.launchLog()
         return true
+    }
+    
+    @objc func sendLaunch() {
+        AppsFlyerLib.shared().start()
+    }
+    
+    func launchLog() {
+        if UserDefaultHelper.isFirstLaunch() {
+            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.FIRST_APP_OPEN, parameters: nil)
+            UserDefaultHelper.setFirstLaunch(value: true)
+        }
+        
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.APP_OPEN, parameters: nil)
+        AppData.sharedInstance.logger.setUserPropertyLastAppOpen()
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.LAST_APP_OPEN, parameters: [Constant.Analytics.LAST_APP_OPEN : (UserDefaultHelper.getLastAppOpen() ?? Date()).getISO8601Date()])
     }
     
     class func getAppDelegate() -> AppDelegate {
@@ -42,7 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return window
     }
     
-    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        AppsFlyerLib.shared().start()
+    }
 }
 
 extension UIApplication {

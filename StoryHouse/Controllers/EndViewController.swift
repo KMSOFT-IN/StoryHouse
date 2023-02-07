@@ -16,6 +16,13 @@ class EndViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppData.sharedInstance.storyEndTime = Date().toTimeString
+        let getDiffernece = Utility.findDateDiff(time1Str: AppData.sharedInstance.storyStartTime, time2Str: AppData.sharedInstance.storyEndTime)
+        let storyParam = ["startTime" : AppData.sharedInstance.storyStartTime,
+                          "endTime" : AppData.sharedInstance.storyEndTime,
+                          "lapsed" : getDiffernece]
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_READ_TIME, parameters: storyParam)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +70,7 @@ class EndViewController: UIViewController {
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         activityVC.popoverPresentationController?.sourceView = sender as? UIView
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
         self.present(activityVC, animated: true, completion: nil)
     }
 }

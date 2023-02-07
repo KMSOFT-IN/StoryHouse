@@ -66,6 +66,12 @@
 		88319FE9297AC89D00FA59B0 /* Streamers.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88319FE8297AC89D00FA59B0 /* Streamers.gif */; };
 		88319FEB297ACC4C00FA59B0 /* MPVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88319FEA297ACC4C00FA59B0 /* MPVolumeView.swift */; };
 		88370B5D2978F0A400B2199C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88370B5C2978F0A400B2199C /* Home.storyboard */; };
+		8838D07D299231D6006FE6ED /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8838D07C299231D6006FE6ED /* AppCenterAnalytics */; };
+		8838D07F299231D6006FE6ED /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 8838D07E299231D6006FE6ED /* AppCenterCrashes */; };
+		8838D082299236D9006FE6ED /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8838D081299236D9006FE6ED /* Mixpanel */; };
+		8838D0852992528A006FE6ED /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8838D0842992528A006FE6ED /* AppsFlyerLib */; };
+		8838D08729926844006FE6ED /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838D08629926844006FE6ED /* AppLogger.swift */; };
+		8838D08929926F61006FE6ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838D08829926F61006FE6ED /* Date.swift */; };
 		883C9B3C29793AF600FD1C08 /* star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 883C9B3B29793AF600FD1C08 /* star.gif */; };
 		8844DC5129765AA40074610C /* StoriesJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 8844DC5029765AA40074610C /* StoriesJSON.json */; };
 		884B122E2990BB6800CE41F9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 884B122D2990BB6800CE41F9 /* FirebaseAnalytics */; };
@@ -216,6 +222,8 @@
 		88319FE8297AC89D00FA59B0 /* Streamers.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Streamers.gif; sourceTree = "<group>"; };
 		88319FEA297ACC4C00FA59B0 /* MPVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPVolumeView.swift; sourceTree = "<group>"; };
 		88370B5C2978F0A400B2199C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		8838D08629926844006FE6ED /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		8838D08829926F61006FE6ED /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		883C9B3B29793AF600FD1C08 /* star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = star.gif; sourceTree = "<group>"; };
 		8844DC5029765AA40074610C /* StoriesJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StoriesJSON.json; sourceTree = "<group>"; };
 		884B12322990BD8000CE41F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -309,7 +317,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				884B122E2990BB6800CE41F9 /* FirebaseAnalytics in Frameworks */,
+				8838D082299236D9006FE6ED /* Mixpanel in Frameworks */,
 				884B12302990BB6800CE41F9 /* FirebaseCrashlytics in Frameworks */,
+				8838D07D299231D6006FE6ED /* AppCenterAnalytics in Frameworks */,
+				8838D07F299231D6006FE6ED /* AppCenterCrashes in Frameworks */,
+				8838D0852992528A006FE6ED /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +430,7 @@
 		88140324296D84FA00930582 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8838D08829926F61006FE6ED /* Date.swift */,
 				88140325296D84FA00930582 /* UIView.swift */,
 				88140328296D84FA00930582 /* String.swift */,
 				88140329296D84FA00930582 /* UIButton.swift */,
@@ -443,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				882A8BA9298FD61000F71DCF /* Extractor.swift */,
+				8838D08629926844006FE6ED /* AppLogger.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1120,6 +1134,10 @@
 			packageProductDependencies = (
 				884B122D2990BB6800CE41F9 /* FirebaseAnalytics */,
 				884B122F2990BB6800CE41F9 /* FirebaseCrashlytics */,
+				8838D07C299231D6006FE6ED /* AppCenterAnalytics */,
+				8838D07E299231D6006FE6ED /* AppCenterCrashes */,
+				8838D081299236D9006FE6ED /* Mixpanel */,
+				8838D0842992528A006FE6ED /* AppsFlyerLib */,
 			);
 			productName = StoryHouse;
 			productReference = 881402DC296D6A2E00930582 /* StoryHouse.app */;
@@ -1151,6 +1169,9 @@
 			mainGroup = 881402D3296D6A2E00930582;
 			packageReferences = (
 				884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8838D07B299231D6006FE6ED /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				8838D080299236D9006FE6ED /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+				8838D0832992528A006FE6ED /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 			);
 			productRefGroup = 881402DD296D6A2E00930582 /* Products */;
 			projectDirPath = "";
@@ -1315,6 +1336,7 @@
 				88140331296D84FA00930582 /* UIImage.swift in Sources */,
 				88140332296D84FA00930582 /* UIViewController.swift in Sources */,
 				88140334296D85B000930582 /* PlacesViewController.swift in Sources */,
+				8838D08929926F61006FE6ED /* Date.swift in Sources */,
 				88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */,
 				88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */,
 				88140344296D9B9B00930582 /* SplashViewController.swift in Sources */,
@@ -1334,6 +1356,7 @@
 				88140322296D7E9100930582 /* imageCollectionViewCell.swift in Sources */,
 				88140330296D84FA00930582 /* UIButton.swift in Sources */,
 				881402E0296D6A2E00930582 /* AppDelegate.swift in Sources */,
+				8838D08729926844006FE6ED /* AppLogger.swift in Sources */,
 				882D145C2981553B003F3208 /* Gifs.swift in Sources */,
 				881CBF37297680090094109D /* StoryModel.swift in Sources */,
 				8814032C296D84FA00930582 /* UIView.swift in Sources */,
@@ -1489,7 +1512,7 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1527,7 +1550,7 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
@@ -1580,6 +1603,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8838D07B299231D6006FE6ED /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		8838D080299236D9006FE6ED /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8838D0832992528A006FE6ED /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1591,6 +1638,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8838D07C299231D6006FE6ED /* AppCenterAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8838D07B299231D6006FE6ED /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterAnalytics;
+		};
+		8838D07E299231D6006FE6ED /* AppCenterCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8838D07B299231D6006FE6ED /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterCrashes;
+		};
+		8838D081299236D9006FE6ED /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8838D080299236D9006FE6ED /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+		8838D0842992528A006FE6ED /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8838D0832992528A006FE6ED /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
 		884B122D2990BB6800CE41F9 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -36,6 +36,29 @@ class Constant {
         static let IS_ONBOARDING_DONE = "isOnboardingDone" // for choosen three index from given Category .
         static let PARAGRAPH_INDEX  = "ParagraphIndex"
         static let STORY_NUMBER  = "StoryNumber"
+        static let LAST_APP_OPEN = "LAST_APP_OPEN"
+        static let FIRST_LAUNCH = "FIRST_LAUNCH"
+        static let CURRENT_DATE = "CURRENT_DATE"
+        
+    }
+    
+    class Analytics {
+        static let FIRST_APP_OPEN: String = "First_App_Open"
+        static let APP_OPEN: String = "APP_OPEN"
+        static let LAST_APP_OPEN: String = "LAST_APP_OPEN"
+        static let APP_SESSION: String = "APP_SESSION"
+        static let TOTAL_STORY_CREATED_COUNT_IN_SESSION = "TOTAL_STORY_CREATED_COUNT_IN_SESSION"
+        static let TOTAL_STORY_READNIG_TIME = "TOTAL_STORY_READNIG_TIME"
+        static let INITIATE_CREATE_STORY: String = "INITIATE_CREATE_STORY"
+        static let SELECTED_STORY_HERO: String = "SELECTED_STORY_HERO"
+        static let SELECTED_STORY_PLACE: String = "SELECTED_STORY_PLACE"
+        static let SELECTED_STORY_OBJECT: String = "SELECTED_STORY_OBJECT"
+        static let STORY_CREATED: String = "STORY_CREATED"
+        static let ENTER_IN_BACKGROUND: String = "ENTER_IN_BACKGROUND"
+        static let ENTER_IN_FOREGROUND: String = "ENTER_IN_FOREGROUND"
+        static let STORY_READ_TIME: String = "STORY_READ_TIME"
+        static let STORY_READ_END_TIME: String = "STORY_READ_END_TIME"
+        static let SHARE_STORY: String = "SHARE_STORY"
     }
 }
 
@@ -44,4 +67,8 @@ enum GENDER: String {
     case GIRL = "girl"
 }
 
+let YYYYMMDD = "yyyyMMdd"
+let appFullDateFormat = "dd MMM yyyy"
+let appDateFormat = "dd MMM"
+let appTimeFormat = "hh:mm:ss a"
 

@@ -7,6 +7,10 @@
 
 import UIKit
 import Firebase
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
+import Mixpanel
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

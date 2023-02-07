@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppsFlyerLib
 
 class HomeViewController : UIViewController {
 
@@ -58,6 +59,7 @@ class HomeViewController : UIViewController {
     @IBAction func createStoryButtonTapped(_ sender: UIButton) {
         self.setBorderWidth(view: self.createStoryView)
         let viewController = HeroViewController.getInstance()
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.INITIATE_CREATE_STORY)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
