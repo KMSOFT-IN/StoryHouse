@@ -39,6 +39,7 @@ class Constant {
         static let LAST_APP_OPEN = "LAST_APP_OPEN"
         static let FIRST_LAUNCH = "FIRST_LAUNCH"
         static let CURRENT_DATE = "CURRENT_DATE"
+        static let USER_ID = "USER_ID"
         
     }
     
@@ -49,6 +50,7 @@ class Constant {
         static let APP_SESSION: String = "APP_SESSION"
         static let TOTAL_STORY_CREATED_COUNT_IN_SESSION = "TOTAL_STORY_CREATED_COUNT_IN_SESSION"
         static let TOTAL_STORY_READNIG_TIME = "TOTAL_STORY_READNIG_TIME"
+        //When User Tap On Create My Story
         static let INITIATE_CREATE_STORY: String = "INITIATE_CREATE_STORY"
         static let SELECTED_STORY_HERO: String = "SELECTED_STORY_HERO"
         static let SELECTED_STORY_PLACE: String = "SELECTED_STORY_PLACE"
@@ -57,8 +59,10 @@ class Constant {
         static let ENTER_IN_BACKGROUND: String = "ENTER_IN_BACKGROUND"
         static let ENTER_IN_FOREGROUND: String = "ENTER_IN_FOREGROUND"
         static let STORY_READ_TIME: String = "STORY_READ_TIME"
-        static let STORY_READ_END_TIME: String = "STORY_READ_END_TIME"
+        static let STORY_COMPLETED: String = "STORY_COMPLETED"
         static let SHARE_STORY: String = "SHARE_STORY"
+        static let USER_ID = "USER_ID"
+        static let NAME = "Name"
     }
 }
 

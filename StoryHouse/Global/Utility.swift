@@ -163,7 +163,7 @@ import AVFoundation
         let interval = time2.timeIntervalSince(time1)
         let hour = interval / 3600;
         let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
-        let secods  = (interval.truncatingRemainder(dividingBy: 3600) / 60) / 60
+        let secods  =  interval.truncatingRemainder(dividingBy: 60)
         let intervalInt = Int(interval)
         return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes \(Int(secods)) secods"
     }

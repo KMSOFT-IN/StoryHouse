@@ -51,7 +51,9 @@ class PlacesViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)    }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_PLACE, parameters: ["PLACE_INDEX" : self.selectedIndex])
+        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+                     "PLACE_INDEX" : self.selectedIndex] as [String : Any]
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_PLACE, parameters: param)
         AppData.sharedInstance.selectedLocationIndex = selectedIndex
             let viewController = MagicalObjectViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)

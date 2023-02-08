@@ -39,9 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.FIRST_APP_OPEN, parameters: nil)
             UserDefaultHelper.setFirstLaunch(value: true)
         }
-        
+        if (UserDefaultHelper.getUser().isEmpty) {
+            let userId = UUID().uuidString
+            UserDefaultHelper.saveUser(userId: userId)
+            AppData.sharedInstance.logger.setUserProperty(userId: userId)
+        }
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.APP_OPEN, parameters: nil)
-        AppData.sharedInstance.logger.setUserPropertyLastAppOpen()
+//        AppData.sharedInstance.logger.setUserPropertyLastAppOpen()
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.LAST_APP_OPEN, parameters: [Constant.Analytics.LAST_APP_OPEN : (UserDefaultHelper.getLastAppOpen() ?? Date()).getISO8601Date()])
     }
     

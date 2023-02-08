@@ -47,17 +47,32 @@ class MagicalObjectViewController: UIViewController {
         let storyIndex = ("\(AppData.sharedInstance.selectedCharacterIndex)"  + "\(AppData.sharedInstance.selectedLocationIndex)" + "\(AppData.sharedInstance.selectedMagicalObjectIndex)")
         UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
         UserDefaultHelper.set_Is_Onboarding_Done(value: true)
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_OBJECT, parameters: ["OBJECT_INDEX" : self.selectedIndex])
-        let storyParam = ["HERO_INDEX": AppData.sharedInstance.selectedCharacterIndex,
+        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+                     "OBJECT_INDEX" : self.selectedIndex] as [String : Any]
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_OBJECT, parameters: param)
+        let storyParam = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+                          "HERO_INDEX": AppData.sharedInstance.selectedCharacterIndex,
                           "PLACE_INDEX": AppData.sharedInstance.selectedLocationIndex,
-                          "OBJECT_INDEX": AppData.sharedInstance.selectedMagicalObjectIndex]
+                          "OBJECT_INDEX": AppData.sharedInstance.selectedMagicalObjectIndex,
+                          "STORY_INDEX" : storyIndex] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_CREATED, parameters: storyParam)
         AppData.sharedInstance.storyCreatedCount += 1
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.TOTAL_STORY_CREATED_COUNT_IN_SESSION, parameters: ["COUNT" : AppData.sharedInstance.storyCreatedCount])
+        if AppData.sharedInstance.storyCreatedCount == 1 {
+            AppData.sharedInstance.totalStroyReadingStartTime = Date().toTimeString
+        }
+        self.addTotalStoryCountEvent()
         let viewController = LoadingViewController.getInstance()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func addTotalStoryCountEvent() {
+        let diff = Utility.findDateDiff(time1Str: AppData.sharedInstance.totalStroyReadingStartTime, time2Str: AppData.sharedInstance.totalStroyReadingEndTime)
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.TOTAL_STORY_CREATED_COUNT_IN_SESSION, parameters: [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+                        "COUNT" : AppData.sharedInstance.storyCreatedCount,
+                        "start_time": AppData.sharedInstance.totalStroyReadingStartTime,
+                        "end_time" : AppData.sharedInstance.totalStroyReadingEndTime,
+                        "lapsed" : diff])
+    }
 }
 
 extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionViewDataSource {

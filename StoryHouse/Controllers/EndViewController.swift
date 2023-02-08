@@ -16,13 +16,7 @@ class EndViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppData.sharedInstance.storyEndTime = Date().toTimeString
-        let getDiffernece = Utility.findDateDiff(time1Str: AppData.sharedInstance.storyStartTime, time2Str: AppData.sharedInstance.storyEndTime)
-        let storyParam = ["startTime" : AppData.sharedInstance.storyStartTime,
-                          "endTime" : AppData.sharedInstance.storyEndTime,
-                          "lapsed" : getDiffernece]
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_READ_TIME, parameters: storyParam)
-        
+        UserDefaultHelper.set_Is_Onboarding_Done(value: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +39,6 @@ class EndViewController: UIViewController {
     
     @IBAction func homebuttonTapped(_ sender: UIButton) {
         let viewController = HomeViewController.getInstance()
-        UserDefaultHelper.set_Is_Onboarding_Done(value: false)
         viewController.isFromTabbar = true
         var navigationController = UINavigationController()
         let window = self.view.window

@@ -45,13 +45,6 @@ class LoadingViewController: UIViewController {
             self.selectedDot = 0
             if self.loadingCount == 2 {
                 self.timer.invalidate()
-                if AppData.sharedInstance.storyCreatedCount == 1 {
-                    AppData.sharedInstance.storyStartTime = Date().toTimeString
-                }
-                let storyParam = ["startTime" : AppData.sharedInstance.storyStartTime,
-                                  "endTime" : "",
-                                  "lapsed" : ""]
-                AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_READ_TIME, parameters: storyParam)
                 self.navigateToTabbarViewController()
             }
             self.loadingCount += 1

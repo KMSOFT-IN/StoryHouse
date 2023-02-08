@@ -23,11 +23,12 @@ class AppData {
     var selectedCharacterIndex: Int = 0
     var selectedLocationIndex: Int = 0
     var selectedMagicalObjectIndex: Int = 0
-    var selectedStoryNumber : Int = 0
+    var selectedStoryNumber : String = "000"
     var storyCreatedCount : Int = 0
     var storyStartTime: String = "00"
     var storyEndTime: String = "00"
-    
+    var totalStroyReadingStartTime: String = "00"
+    var totalStroyReadingEndTime: String = "00"
     static let sharedInstance: AppData = {
         let instance = AppData()
         return instance

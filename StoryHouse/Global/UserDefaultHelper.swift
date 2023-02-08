@@ -101,6 +101,15 @@ class UserDefaultHelper {
         return storedDate
     }
     
+    static func saveUser(userId: String) {
+        UserDefaults.standard.set(userId, forKey: Constant.UserDefault.USER_ID)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getUser() -> String {
+        let userId = UserDefaults.standard.value(forKey: Constant.UserDefault.USER_ID) as? String ?? ""
+        return userId
+    }
     
     static func clearUserdefault() {
         UserDefaultHelper.setVoice(value: "")

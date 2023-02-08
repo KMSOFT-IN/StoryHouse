@@ -161,10 +161,12 @@ class TabbarViewController: UIViewController {
     
     func setStoryNumber() {
         if let storyNumber = UserDefaultHelper.getSelectedStoryNumber() {
+            AppData.sharedInstance.selectedStoryNumber = storyNumber
             self.filterdStoryIndex = storyNumber
         }
         else {
             self.filterdStoryIndex = "000"
+            AppData.sharedInstance.selectedStoryNumber = self.filterdStoryIndex
         }
     }
     
@@ -219,18 +221,48 @@ class TabbarViewController: UIViewController {
             return }
         UserDefaultHelper.setParagraphIndex(value: index)
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
-//        UIView.transition(with: self.image,
-//                          duration: 5,
-//                          options: .curveEaseIn,
-//                          animations: { self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder") },
-//                          completion: nil)
+        
         self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
         self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         self.imageTitle.textColor = GRAY_COLOR
-        
-//        self.imageAnimationStart()
         self.startImageAnimationTimer()
+        if self.currentIndex == 0 {
+            self.addStartStoryEvent()
+        } else if self.currentIndex == (totalIndex - 1) {
+            self.addEndStoryEvent()
+        }
     }
+    
+    func addStartStoryEvent() {
+        AppData.sharedInstance.storyStartTime = Date().toTimeString
+        let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),
+                          "startTime" : AppData.sharedInstance.storyStartTime,
+                          "endTime" : "",
+                          "lapsed" : "",
+                          "completed_page_index" : self.currentIndex,
+                          "story_index": UserDefaultHelper.getSelectedStoryNumber() ?? ""] as [String : Any]
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_READ_TIME, parameters: storyParam)
+    }
+    
+    func addEndStoryEvent() {
+        AppData.sharedInstance.storyEndTime = Date().toTimeString
+        AppData.sharedInstance.totalStroyReadingEndTime = Date().toTimeString
+        let getDiffernece = Utility.findDateDiff(time1Str: AppData.sharedInstance.storyStartTime, time2Str: AppData.sharedInstance.storyEndTime)
+        let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),
+                          "startTime" : AppData.sharedInstance.storyStartTime,
+                          "endTime" : AppData.sharedInstance.storyEndTime,
+                          "lapsed" : getDiffernece,
+                          "completed_page_index" : self.currentIndex,
+                          "story_index": UserDefaultHelper.getSelectedStoryNumber() ?? ""] as [String : Any]
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_READ_TIME, parameters: storyParam)
+        if self.currentIndex == (self.totalIndex - 1) {
+            let completeStoryParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),
+                                      "completed_page_index" : self.currentIndex,
+                                      "story_index": UserDefaultHelper.getSelectedStoryNumber() ?? ""] as [String : Any]
+            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_COMPLETED, parameters: completeStoryParam)
+        }
+    }
+    
     
     @objc func imageAnimationStart() {
         self.gifHandler.setUpGif(name: "dust", duration: 11, view: self.image)
@@ -266,6 +298,7 @@ class TabbarViewController: UIViewController {
     }
 
     @IBAction func homeButtonTapped(_ sender: Any) {
+        self.addEndStoryEvent()
         self.pauseSpeaking()
         self.synthesizer.stopSpeaking(at: .immediate)
         UserDefaultHelper.setParagraphIndex(value: 0)
