@@ -17,6 +17,7 @@ let GRAY_COLOR = UIColor(hex: "#808080")
 let LIGHT_BLUE = UIColor(hex: "#ADD8E6")!
 
 class Constant {
+    
     class Storyboard {
         static let MAIN                       = UIStoryboard(name: "Main", bundle: nil)
         static let ONBOARDING                 = UIStoryboard(name: "Onboarding", bundle: nil)
@@ -40,7 +41,6 @@ class Constant {
         static let FIRST_LAUNCH = "FIRST_LAUNCH"
         static let CURRENT_DATE = "CURRENT_DATE"
         static let USER_ID = "USER_ID"
-        
     }
     
     class Analytics {
@@ -63,6 +63,15 @@ class Constant {
         static let SHARE_STORY: String = "SHARE_STORY"
         static let USER_ID = "USER_ID"
         static let NAME = "Name"
+    }
+    
+    class IN_APP_PURHCHASE_PRODUCTS {
+        
+        static let PREMIUM_MONTH = "in.kmsoft.storyTailor"
+ 
+        static let LIST = [
+            IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH
+        ]
     }
 }
 

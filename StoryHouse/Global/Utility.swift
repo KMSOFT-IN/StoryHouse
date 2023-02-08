@@ -147,6 +147,28 @@ import AVFoundation
         }
     }
     
+    class func alertWithTextField(title: String, message: String, keyboardType: UIKeyboardType, okButtonTitle: String = "OK", isCancelButtonNeeded: Bool = false, cancelButtonTitle: String = "Cancel", textFieldPlaceHolder: String = "", defaultString: String = "", okClicked: ((_ text: String) -> Void)? = nil, cancelClicked: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = textFieldPlaceHolder
+            textField.keyboardType = keyboardType
+            if defaultString != "" {
+                textField.text = defaultString
+            }
+        }
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action : UIAlertAction!) -> Void in
+            cancelClicked?()
+        }))
+        
+        alertController.addAction(UIAlertAction(title: okButtonTitle, style: .default, handler: {
+            alert -> Void in
+            okClicked?((alertController.textFields![0] as UITextField).text!)
+        }))
+        alertController.show()
+    }
+    
     class func generateBoundaryString() -> String {
         return "Boundary-\(UUID().uuidString)"
     }

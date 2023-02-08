@@ -146,6 +146,10 @@
 		8892D82929839B5300CD510F /* 101.json in Resources */ = {isa = PBXBuildFile; fileRef = 8892D82829839B5300CD510F /* 101.json */; };
 		8892D82B29839B6400CD510F /* 102.json in Resources */ = {isa = PBXBuildFile; fileRef = 8892D82A29839B6400CD510F /* 102.json */; };
 		8892D82D29839B6C00CD510F /* 103.json in Resources */ = {isa = PBXBuildFile; fileRef = 8892D82C29839B6C00CD510F /* 103.json */; };
+		889ABFAF2993D52000A5EDF7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ABFAD2993D52000A5EDF7 /* IAPHelper.swift */; };
+		889ABFB02993D52000A5EDF7 /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ABFAE2993D52000A5EDF7 /* IAPProduct.swift */; };
+		889ABFB22993D89D00A5EDF7 /* InAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ABFB12993D89D00A5EDF7 /* InAppPurchaseViewController.swift */; };
+		889ABFB42993DD9100A5EDF7 /* ReceiptValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ABFB32993DD9100A5EDF7 /* ReceiptValidation.swift */; };
 		88A63D7529838DD000E9DA8B /* 111.json in Resources */ = {isa = PBXBuildFile; fileRef = 88A63D7429838DD000E9DA8B /* 111.json */; };
 		88D119C6296E98360035B0A0 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D119C5296E98360035B0A0 /* TabbarViewController.swift */; };
 		88DB927529796898009DF1FF /* slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB927429796898009DF1FF /* slider.swift */; };
@@ -296,6 +300,10 @@
 		8892D82829839B5300CD510F /* 101.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 101.json; sourceTree = "<group>"; };
 		8892D82A29839B6400CD510F /* 102.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 102.json; sourceTree = "<group>"; };
 		8892D82C29839B6C00CD510F /* 103.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 103.json; sourceTree = "<group>"; };
+		889ABFAD2993D52000A5EDF7 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		889ABFAE2993D52000A5EDF7 /* IAPProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		889ABFB12993D89D00A5EDF7 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
+		889ABFB32993DD9100A5EDF7 /* ReceiptValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptValidation.swift; sourceTree = "<group>"; };
 		88A38C49296E9D7E00B7910D /* StoryHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoryHouse.entitlements; sourceTree = "<group>"; };
 		88A63D7429838DD000E9DA8B /* 111.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 111.json; sourceTree = "<group>"; };
 		88D119C5296E98360035B0A0 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +430,7 @@
 				88D119C5296E98360035B0A0 /* TabbarViewController.swift */,
 				88E1CA7E29780C5D008F3B28 /* EndViewController.swift */,
 				88167777297E5B7400725569 /* SettingViewController.swift */,
+				889ABFB12993D89D00A5EDF7 /* InAppPurchaseViewController.swift */,
 				88FC89E9298B9140006DC384 /* Cell */,
 			);
 			path = Controllers;
@@ -455,6 +464,7 @@
 		882A8BA8298FD5F300F71DCF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				889ABFAC2993D52000A5EDF7 /* IAP */,
 				882A8BA9298FD61000F71DCF /* Extractor.swift */,
 				8838D08629926844006FE6ED /* AppLogger.swift */,
 			);
@@ -820,6 +830,7 @@
 				881CBF36297680090094109D /* StoryModel.swift */,
 				88167775297E5A4600725569 /* Setting.storyboard */,
 				88313AB329876DC2000D1248 /* CategoryModel.swift */,
+				889ABFB32993DD9100A5EDF7 /* ReceiptValidation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -993,6 +1004,15 @@
 				8892D82629839B4C00CD510F /* 100.json */,
 			);
 			path = 20;
+			sourceTree = "<group>";
+		};
+		889ABFAC2993D52000A5EDF7 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				889ABFAD2993D52000A5EDF7 /* IAPHelper.swift */,
+				889ABFAE2993D52000A5EDF7 /* IAPProduct.swift */,
+			);
+			path = IAP;
 			sourceTree = "<group>";
 		};
 		88A63D6B29837A3800E9DA8B /* JSON */ = {
@@ -1338,11 +1358,13 @@
 				88140334296D85B000930582 /* PlacesViewController.swift in Sources */,
 				8838D08929926F61006FE6ED /* Date.swift in Sources */,
 				88313AB429876DC2000D1248 /* CategoryModel.swift in Sources */,
+				889ABFB42993DD9100A5EDF7 /* ReceiptValidation.swift in Sources */,
 				88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */,
 				88140344296D9B9B00930582 /* SplashViewController.swift in Sources */,
 				888A48E1296E62B70097C42D /* Utility.swift in Sources */,
 				888A48E6296E776A0097C42D /* ChildNameViewController.swift in Sources */,
 				88140340296D98CD00930582 /* UIColor.swift in Sources */,
+				889ABFAF2993D52000A5EDF7 /* IAPHelper.swift in Sources */,
 				88FC89EB298B915D006DC384 /* LoadingCollectionViewCell.swift in Sources */,
 				88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */,
 				8814033C296D8EB600930582 /* HeroNameViewController.swift in Sources */,
@@ -1356,6 +1378,7 @@
 				88140322296D7E9100930582 /* imageCollectionViewCell.swift in Sources */,
 				88140330296D84FA00930582 /* UIButton.swift in Sources */,
 				881402E0296D6A2E00930582 /* AppDelegate.swift in Sources */,
+				889ABFB02993D52000A5EDF7 /* IAPProduct.swift in Sources */,
 				8838D08729926844006FE6ED /* AppLogger.swift in Sources */,
 				882D145C2981553B003F3208 /* Gifs.swift in Sources */,
 				881CBF37297680090094109D /* StoryModel.swift in Sources */,
@@ -1365,6 +1388,7 @@
 				881402E2296D6A2E00930582 /* SceneDelegate.swift in Sources */,
 				88DF44B22976CA9A0070949F /* UserDefaultHelper.swift in Sources */,
 				888A48E2296E62B70097C42D /* AppData.swift in Sources */,
+				889ABFB22993D89D00A5EDF7 /* InAppPurchaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
