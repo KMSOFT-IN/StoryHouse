@@ -143,6 +143,15 @@
         "revision" : "ab3a58b7209a17d781c0d1dbb3e1ff3da306bae8",
         "version" : "1.20.3"
       }
+    },
+    {
+      "identity" : "swifty-receipt-validator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/crashoverride777/swifty-receipt-validator.git",
+      "state" : {
+        "revision" : "737cdefc8975775b9fa4b82d3e445c05affb3107",
+        "version" : "6.5.0"
+      }
     }
   ],
   "version" : 2

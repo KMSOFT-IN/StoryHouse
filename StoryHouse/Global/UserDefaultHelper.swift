@@ -72,6 +72,14 @@ class UserDefaultHelper {
         return UserDefaults.standard.string(forKey: Constant.UserDefault.VOICE_IDENTIFIER)
     }
     
+    static func setUserHeroName(value: String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.USER_HERO_NAME)
+        UserDefaults.standard.synchronize()
+    }
+    static func getUserHeroName() -> String {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.USER_HERO_NAME) ?? ""
+    }
+    
     static func isFirstLaunch() -> Bool {
         return !UserDefaults.standard.bool(forKey: Constant.UserDefault.FIRST_LAUNCH)
     }

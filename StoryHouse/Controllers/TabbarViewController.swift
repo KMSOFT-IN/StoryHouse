@@ -41,6 +41,8 @@ class TabbarViewController: UIViewController {
     let name = UserDefaultHelper.getChildname()
     let gifHandler = Gif()
     var animationTimer: Timer?
+    let femaleName = ["Gizzy","Gertie","Gira","Gigi","Gracie","Gertrude","Giselle","Zara","Zoe","Zoey","Cassandra","Maria","Carla","Foxy","Fraya","Freya","Fennec","Fawna","Fia","Fiora","Ferris","Lisa","Fuzzy","Fury","Gazelle","Minty","Poppy","Winkie","Fuzzy","Cinderella","Twiggy","Nanny"]
+    let maleName = ["Gerald","George","Gizmo","Zebra","Zack","Zippy","Zor","Zeb","Fox","Fin","Felix","Foxy","Finnegan","Fenton","Monkey","Max","Mango"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,6 +164,7 @@ class TabbarViewController: UIViewController {
     func setStoryNumber() {
         if let storyNumber = UserDefaultHelper.getSelectedStoryNumber() {
             AppData.sharedInstance.selectedStoryNumber = storyNumber
+            AppData.sharedInstance.heroName = UserDefaultHelper.getUserHeroName()
             self.filterdStoryIndex = storyNumber
         }
         else {
@@ -223,7 +226,17 @@ class TabbarViewController: UIViewController {
         self.pageLable.text = "\(self.currentIndex + 1) / \(totalIndex)"
         
         self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
-        self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
+        if !AppData.sharedInstance.heroName.isEmpty {
+            let str = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
+            if let findIndex = isHE ? self.maleName.firstIndex(where: {(str?.contains($0) ?? false)}) : self.femaleName.firstIndex(where: {(str?.contains($0) ?? false)}) {
+                let nameReplace = isHE ? self.maleName[findIndex] : self.femaleName[findIndex]
+                let replacingString = str?.replacingOccurrences(of: nameReplace, with: AppData.sharedInstance.heroName)
+                self.imageTitle.text = replacingString
+            }
+            //self.imageTitle.text = replacingString//isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
+        } else {
+            self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
+        }
         self.imageTitle.textColor = GRAY_COLOR
         self.startImageAnimationTimer()
         if self.currentIndex == 0 {
@@ -570,4 +583,3 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
  }
  
  */
-

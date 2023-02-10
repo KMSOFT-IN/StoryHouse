@@ -7,6 +7,7 @@
 
 import StoreKit
 import UIKit
+import SwiftyReceiptValidator
 
 class InAppPurchaseViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class InAppPurchaseViewController: UIViewController {
     var isReceiptValidationRunning: Bool = false
     
     var purchaseSucessfulCallback: (() -> Void)?
+    var receiptValidator: SwiftyReceiptValidatorType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,13 @@ class InAppPurchaseViewController: UIViewController {
                                                                        subscriptionExpireDate: Date().adding(.minute, value: 10).timeIntervalSince1970)
             AppData.sharedInstance.user?.saveToFirebase()
         }*/
+        let configuration = SRVConfiguration(
+            productionURL: "https://buy.itunes.apple.com/verifyReceipt",
+            sandboxURL: "https://sandbox.itunes.apple.com/verifyReceipt",
+            sessionConfiguration: .default
+        )
+        
+        self.receiptValidator = SwiftyReceiptValidator(configuration: configuration, isLoggingEnabled: false)
         AppData.sharedInstance.iAPProduct.delegate = self
         IAPProduct.setProductIndentifiers(productList: self.products)
 //        Utils.showProgress()
@@ -86,14 +95,39 @@ extension InAppPurchaseViewController: IAPProductDelegate {
         }
         let filter = productList.filter({$0.productIdentifier == self.selectedProduct})
         if self.selectedProduct == Constant.IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH  {
-            if(filter.count > 0) {
-                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+            // Transaction is in queue, user has been charged.  Client should complete the transaction.
+            let productId = transaction.payment.productIdentifier
+
+            let validationRequest = SRVPurchaseValidationRequest(
+                productId: productId,
+                sharedSecret: "cd72731f425e40c39dc41f3603b37f26"
+            )
+                
+            receiptValidator.validate(validationRequest) { result in
+                switch result {
+                case .success(let response):
+                    defer {
+                        // IMPORTANT: Finish the transaction ONLY after validation was successful
+                        // if validation error e.g due to internet, the transaction will stay in pending state
+                        // and than can/will be resumed on next app launch
+//                        queue.finishTransaction(transaction)
+                    }
+                    print("Receipt validation was successfull with receipt response \(response)")
+                    // Unlock products and/or do additional checks
+                case .failure(let error):
+                    print("Receipt validation failed with error \(error.localizedDescription)")
+                    // Inform user of error
                 }
             }
-            else {
-                self.checkUserHaveValidLicense { haveValidLicense, data, error in
-                }
-            }
+
+//            if(filter.count > 0) {
+//                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+//                }
+//            }
+//            else {
+//                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+//                }
+//            }
         }
         else {
 //            Utils.dismissProgress()
@@ -145,11 +179,6 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                                     self.navigationController?.popToRootViewController(animated: true)
                                 })
                                 
-                                if let receiptInfo = receipt.latest_receipt_info?.first,
-                                   let productId = receiptInfo.product_id,
-                                   let transactionId = receiptInfo.transaction_id {
-                                    let subscriptionExpireDate = receiptInfo.expiresDate.timeIntervalSince1970
-                                }
                                 /*AppData.sharedInstance.profile?.isSubscriptionActive = true
                                  AppData.sharedInstance.profile?.subscriptionExpireDate = receipt.latest_receipt_info?.first?.expiresDate.timeIntervalSince1970
                                  AppData.sharedInstance.profile?.productId = receipt.latest_receipt_info?.first?.product_id

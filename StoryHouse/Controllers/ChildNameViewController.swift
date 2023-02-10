@@ -109,4 +109,9 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
         self.femaleView.borderWidth = 0
     }
     
+    @IBAction func premiumVcButton(_ sender: UIButton) {
+        let vc = PremiumViewController.getInstance()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

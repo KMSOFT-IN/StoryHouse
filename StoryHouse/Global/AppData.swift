@@ -29,6 +29,7 @@ class AppData {
     var storyEndTime: String = "00"
     var totalStroyReadingStartTime: String = "00"
     var totalStroyReadingEndTime: String = "00"
+    var heroName: String = ""
     var iAPProduct = IAPProduct()
     static let sharedInstance: AppData = {
         let instance = AppData()

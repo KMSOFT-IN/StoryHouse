@@ -282,16 +282,27 @@ Cg
                                                     <action selector="QuestionGenderButtonTapped:" destination="FHe-ky-SxI" eventType="touchUpInside" id="aS1-a0-uuz"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-gs-Br1">
+                                                <rect key="frame" x="360" y="758" width="95" height="70"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Purchase"/>
+                                                <connections>
+                                                    <action selector="premiumVcButton:" destination="FHe-ky-SxI" eventType="touchUpInside" id="GIF-jE-YeE"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="32T-Iw-8b7" secondAttribute="trailing" constant="20" id="0tm-Jn-1i7"/>
                                             <constraint firstAttribute="bottom" secondItem="w9p-Hj-rJg" secondAttribute="bottom" id="23N-GY-FW8"/>
                                             <constraint firstItem="XKe-Bp-tlK" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="8dH-3T-YVO"/>
+                                            <constraint firstItem="Rcc-gs-Br1" firstAttribute="leading" secondItem="w9p-Hj-rJg" secondAttribute="trailing" constant="10" id="9TI-7K-s8z"/>
                                             <constraint firstItem="fJQ-WK-ZNl" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="Dlj-0h-zcT"/>
                                             <constraint firstItem="PTY-2B-LcP" firstAttribute="top" secondItem="e2b-3t-rfr" secondAttribute="bottom" constant="32" id="F0M-Ze-jRA"/>
+                                            <constraint firstItem="Rcc-gs-Br1" firstAttribute="bottom" secondItem="w9p-Hj-rJg" secondAttribute="bottom" id="JTw-Gh-eAL"/>
                                             <constraint firstAttribute="trailing" secondItem="0ia-ru-iQp" secondAttribute="trailing" constant="200" id="KOb-sM-nJb"/>
                                             <constraint firstItem="0ia-ru-iQp" firstAttribute="top" secondItem="32T-Iw-8b7" secondAttribute="bottom" constant="30" id="MdV-XK-bs6"/>
+                                            <constraint firstItem="Rcc-gs-Br1" firstAttribute="centerY" secondItem="w9p-Hj-rJg" secondAttribute="centerY" id="RoR-Y2-Vlf"/>
                                             <constraint firstItem="w9p-Hj-rJg" firstAttribute="top" secondItem="XKe-Bp-tlK" secondAttribute="bottom" constant="20" id="U5s-2Y-Gvs"/>
                                             <constraint firstItem="e2b-3t-rfr" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="VGC-mb-xg0"/>
                                             <constraint firstItem="fJQ-WK-ZNl" firstAttribute="top" secondItem="5YS-Dk-7Yz" secondAttribute="bottom" constant="10" id="Vm8-TJ-uAP"/>
@@ -307,6 +318,7 @@ Cg
                                             <constraint firstItem="5YS-Dk-7Yz" firstAttribute="leading" secondItem="PTY-2B-LcP" secondAttribute="trailing" id="mKE-Fd-aFU"/>
                                             <constraint firstItem="32T-Iw-8b7" firstAttribute="leading" secondItem="YfQ-f1-gDC" secondAttribute="leading" id="rPL-wn-cGP"/>
                                             <constraint firstItem="32T-Iw-8b7" firstAttribute="top" secondItem="YfQ-f1-gDC" secondAttribute="top" id="tBp-3U-Z8A"/>
+                                            <constraint firstItem="Rcc-gs-Br1" firstAttribute="top" secondItem="w9p-Hj-rJg" secondAttribute="top" id="xTp-In-qZC"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFu-9A-aYr">

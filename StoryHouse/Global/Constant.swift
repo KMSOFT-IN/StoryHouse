@@ -41,6 +41,7 @@ class Constant {
         static let FIRST_LAUNCH = "FIRST_LAUNCH"
         static let CURRENT_DATE = "CURRENT_DATE"
         static let USER_ID = "USER_ID"
+        static let USER_HERO_NAME = "USER_HERO_NAME"
     }
     
     class Analytics {

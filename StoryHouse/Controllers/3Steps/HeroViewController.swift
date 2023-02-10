@@ -37,7 +37,7 @@ class HeroViewController: UIViewController {
                      "HERO_INDEX" : self.selectedIndex] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_HERO, parameters: param)
         AppData.sharedInstance.selectedCharacterIndex =  self.selectedIndex
-        let viewController = PlacesViewController.getInstance()
+        let viewController = HeroNameViewController.getInstance()//PlacesViewController.getInstance()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

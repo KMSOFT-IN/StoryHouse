@@ -7,6 +7,7 @@
 //
 
 import StoreKit
+import SwiftyReceiptValidator
 
 public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> ()
@@ -170,21 +171,19 @@ public class IAPHelper : NSObject, SKProductsRequestDelegate, SKPaymentTransacti
     }
     
     func receiptValidation(sandBox: Bool = false, callback: ((_ success: Bool, _ data: Any?, _ error: Error?) -> Void)?) {
-        //let SUBSCRIPTION_SECRET = "4709f9069c034e69ae446e8a0162bb5c" // BuddyUp Tawheed account
-       // let SUBSCRIPTION_SECRET = "d2327fff847b4d578b24ca4ab3b2d0c8" // BuddyUp- K target
-        let SUBSCRIPTION_SECRET = "9629d3f603654089b225df35ac19fea2" // Buddup App Stoe client
+        let SUBSCRIPTION_SECRET = "cd72731f425e40c39dc41f3603b37f26" // MagicHouse App Stoe client
         
         let receiptPath = Bundle.main.appStoreReceiptURL?.path
         if FileManager.default.fileExists(atPath: receiptPath!){
             var receiptData:NSData?
             do {
-                receiptData = try NSData(contentsOf: Bundle.main.appStoreReceiptURL!, options: NSData.ReadingOptions.alwaysMapped)
+                receiptData = try NSData(contentsOf: Bundle.main.appStoreReceiptURL!)
             }
             catch {
                 print("ERROR: " + error.localizedDescription)
             }
             //let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            let base64encodedReceipt = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions.endLineWithCarriageReturn)
+            let base64encodedReceipt = receiptData?.base64EncodedString()
 
             print(base64encodedReceipt!)
 

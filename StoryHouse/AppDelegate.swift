@@ -12,8 +12,9 @@ import AppsFlyerLib
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
+//        UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
         AppData.sharedInstance.logger.setupLogger()
+        IQKeyboardManager.shared.enable = true
         NotificationCenter.default.addObserver(self, selector: NSSelectorFromString("sendLaunch"), name: UIApplication.didBecomeActiveNotification, object: nil)
         AppsFlyerLib.shared().isDebug = true
         AppsFlyerLib.shared().start(completionHandler: { (dictionary, error) in

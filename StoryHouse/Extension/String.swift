@@ -57,3 +57,12 @@ extension String {
         return dateFormatter.date(from: self)
     }
 }
+
+extension String {
+
+    func stringByRemovingAll(subStrings: [String], replaceString: String) -> String {
+        var resultString = self
+        _ = subStrings.map { _ in resultString = resultString.replacingOccurrences(of: resultString, with: replaceString) }
+        return resultString
+    }
+}
