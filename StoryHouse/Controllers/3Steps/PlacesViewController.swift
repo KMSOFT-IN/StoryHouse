@@ -55,7 +55,7 @@ class PlacesViewController: UIViewController {
                      "PLACE_INDEX" : self.selectedIndex] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_PLACE, parameters: param)
         AppData.sharedInstance.selectedLocationIndex = selectedIndex
-            let viewController = MagicalObjectViewController.getInstance()
+            let viewController = PlaceNameViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

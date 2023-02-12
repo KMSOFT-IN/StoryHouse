@@ -56,7 +56,7 @@ class ChildNameViewController: UIViewController, UIPopoverPresentationController
                 self.alert(message: "Please enter atleast three character.")
                 return
             }
-            
+            AppData.sharedInstance.logger.setUserNameMixPanel(name: self.childNameTextFeild.text ?? "")
             UserDefaultHelper.setChildname(value: self.childNameTextFeild.text ?? "")
             /*
             if self.isGirlSelected {

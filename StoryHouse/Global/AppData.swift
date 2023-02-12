@@ -30,6 +30,7 @@ class AppData {
     var totalStroyReadingStartTime: String = "00"
     var totalStroyReadingEndTime: String = "00"
     var heroName: String = ""
+    var placeName: String = ""
     var iAPProduct = IAPProduct()
     static let sharedInstance: AppData = {
         let instance = AppData()

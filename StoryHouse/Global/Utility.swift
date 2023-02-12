@@ -41,6 +41,19 @@ import AVFoundation
 //        }
         AppData.sharedInstance.synthesizer!.speak(utterance)
     }
+    
+    class func setVoiceIdentifier() {
+        let voiceList = AVSpeechSynthesisVoice.speechVoices().filter({$0.language.contains("en")})
+        if let grandmaVoice = voiceList.filter({$0.name.contains("Grandma")}).first {
+            UserDefaultHelper.setVoiceIdentifier(value: grandmaVoice.identifier)
+        } else if let marthaVoice = voiceList.filter({$0.name.contains("Martha")}).first {
+            UserDefaultHelper.setVoiceIdentifier(value: marthaVoice.identifier)
+        } else if let karenVoice = voiceList.filter({$0.name.contains("Karen")}).first {
+            UserDefaultHelper.setVoiceIdentifier(value: karenVoice.identifier)
+        }
+    }
+    
+    
      
     class func getDateFromTimeStamp(timeStamp : Double) -> String {
         let date = Date(timeIntervalSince1970: timeStamp)

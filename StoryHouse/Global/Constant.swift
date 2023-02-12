@@ -12,7 +12,7 @@ let APPNAME = "Magic House"
 let PRIVACY_POLICY_URL = "https://www.iubenda.com/privacy-policy/46923166"
 let TERMS_URL = "https://www.iubenda.com/terms-and-conditions/46923166"
 let FAQ_URL = "https://magichouse.studio/FAQ-a34dac768b77410ab965b520a2901d05"
-
+let APPLINK = "https://apps.apple.com/us/app/magic-house-a-i/id1664656561"
 let GRAY_COLOR = UIColor(hex: "#808080")
 let LIGHT_BLUE = UIColor(hex: "#ADD8E6")!
 
@@ -42,6 +42,7 @@ class Constant {
         static let CURRENT_DATE = "CURRENT_DATE"
         static let USER_ID = "USER_ID"
         static let USER_HERO_NAME = "USER_HERO_NAME"
+        static let USER_PLACE_NAME = "USER_PLACE_NAME"
     }
     
     class Analytics {

@@ -23,28 +23,15 @@ class HeroNameViewController: UIViewController {
         self.heroImageView.makeRounded()
         self.setUpDropDownMenu()
         UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
-        
     }
     static func getInstance() -> HeroNameViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "HeroNameViewController") as! HeroNameViewController
     }
     
     func setUpDropDownMenu() {
-        
         chooseOptionsDropDown.anchorView = hisherLabel
-        
-        // By default, the dropdown will have its origin on the top left corner of its anchor view
-        // So it will come over the anchor view and hide it completely
-        // If you want to have the dropdown underneath your anchor view, you can do this:
         chooseOptionsDropDown.bottomOffset = CGPoint(x: 0, y: hisherLabel.bounds.height)
-        
-        // You can also use localizationKeysDataSource instead. Check the docs.
-        chooseOptionsDropDown.dataSource = [
-            "His",
-            "Her"
-        ]
-        
-        // Action triggered on selection
+        chooseOptionsDropDown.dataSource = ["His","Her"]
         chooseOptionsDropDown.selectionAction = { [weak self] (index, item) in
             self?.hisherLabel.text = "\(item) name is \(self?.heroNameTextField.text ?? "")"
             if index == 0 {
@@ -58,32 +45,25 @@ class HeroNameViewController: UIViewController {
         appearance.cellHeight = 60
         appearance.backgroundColor = UIColor(white: 1, alpha: 1)
         appearance.selectionBackgroundColor = UIColor(red: 0.6494, green: 0.8155, blue: 1.0, alpha: 0.2)
-        //        appearance.separatorColor = UIColor(white: 0.7, alpha: 0.8)
         appearance.cornerRadius = 10
         appearance.shadowColor = UIColor(white: 0.6, alpha: 1)
         appearance.shadowOpacity = 0.9
         appearance.shadowRadius = 25
         appearance.animationduration = 0.25
         appearance.textColor = .darkGray
-        //        appearance.textFont = UIFont(name: "Georgia", size: 14)
         
         if #available(iOS 11.0, *) {
             appearance.setupMaskedCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         }
-        
-        /*** FOR CUSTOM CELLS ***/
         chooseOptionsDropDown.cellNib = UINib(nibName: "MyCell", bundle: nil)
-        
         chooseOptionsDropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? MyCell else { return }
-            // Setup your custom UI components
             if index == 0 {
                 cell.logoImageView.image = UIImage(named: "ic_boy")
             } else {
                 cell.logoImageView.image = UIImage(named: "ic_girl")
             }
         }
-        /*** ---------------- ***/
     }
     
     
@@ -100,13 +80,13 @@ class HeroNameViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         let heroName = self.heroNameTextField.text ?? ""
         if heroName.isEmpty {
-            Utility.alert(message: "Please enter hero name.")
+            Utility.alert(message: "Please enter your hero name.")
         } else {
             AppData.sharedInstance.heroName = heroName
             UserDefaultHelper.setUserHeroName(value: AppData.sharedInstance.heroName)

@@ -70,7 +70,7 @@ extension HeroViewController: UICollectionViewDelegate , UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
         self.selectedIndex = self.characterList[indexPath.item].tag
         AppData.sharedInstance.selectedCharacterIndex = self.selectedIndex
         self.heroCollectionView.reloadData()

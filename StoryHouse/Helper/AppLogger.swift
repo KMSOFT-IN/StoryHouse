@@ -103,4 +103,8 @@ class AppLogger: NSObject {
 //        AppsFlyerLib.shared().customerUserID = userId
 //        AppCenter.userId = userId
     }
+    
+    func setUserNameMixPanel(name: String) {
+        Mixpanel.mainInstance().people.set(property: "Name", to: name)
+    }
 }

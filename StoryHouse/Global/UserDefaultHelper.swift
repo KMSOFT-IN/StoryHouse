@@ -80,6 +80,14 @@ class UserDefaultHelper {
         return UserDefaults.standard.string(forKey: Constant.UserDefault.USER_HERO_NAME) ?? ""
     }
     
+    static func setUserPlaceName(value: String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.USER_PLACE_NAME)
+        UserDefaults.standard.synchronize()
+    }
+    static func getUserPlaceName() -> String {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.USER_PLACE_NAME) ?? ""
+    }
+    
     static func isFirstLaunch() -> Bool {
         return !UserDefaults.standard.bool(forKey: Constant.UserDefault.FIRST_LAUNCH)
     }

@@ -44,6 +44,8 @@ class TabbarViewController: UIViewController {
     let femaleName = ["Gizzy","Gertie","Gira","Gigi","Gracie","Gertrude","Giselle","Zara","Zoe","Zoey","Cassandra","Maria","Carla","Foxy","Fraya","Freya","Fennec","Fawna","Fia","Fiora","Ferris","Lisa","Fuzzy","Fury","Gazelle","Minty","Poppy","Winkie","Fuzzy","Cinderella","Twiggy","Nanny"]
     let maleName = ["Gerald","George","Gizmo","Zebra","Zack","Zippy","Zor","Zeb","Fox","Fin","Felix","Foxy","Finnegan","Fenton","Monkey","Max","Mango"]
     
+    let placesName = ["forest", "Forest", "underwater", "UnderWater", "Outer Space", "outer space", "savannah", "Savannah"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -165,6 +167,7 @@ class TabbarViewController: UIViewController {
         if let storyNumber = UserDefaultHelper.getSelectedStoryNumber() {
             AppData.sharedInstance.selectedStoryNumber = storyNumber
             AppData.sharedInstance.heroName = UserDefaultHelper.getUserHeroName()
+            AppData.sharedInstance.placeName = UserDefaultHelper.getUserPlaceName()
             self.filterdStoryIndex = storyNumber
         }
         else {
@@ -227,11 +230,16 @@ class TabbarViewController: UIViewController {
         
         self.image.image = UIImage(named : self.paragraphDetails?[index].imageName ?? "") ?? UIImage(named: "ic_placeHolder")
         if !AppData.sharedInstance.heroName.isEmpty {
-            let str = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
-            if let findIndex = isHE ? self.maleName.firstIndex(where: {(str?.contains($0) ?? false)}) : self.femaleName.firstIndex(where: {(str?.contains($0) ?? false)}) {
+            let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
+            if let findIndex = isHE ? self.maleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) : self.femaleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) {
                 let nameReplace = isHE ? self.maleName[findIndex] : self.femaleName[findIndex]
-                let replacingString = str?.replacingOccurrences(of: nameReplace, with: AppData.sharedInstance.heroName)
-                self.imageTitle.text = replacingString
+                var nameReplaceImageTitle = imageTitleStr?.replacingOccurrences(of: nameReplace, with: AppData.sharedInstance.heroName)
+                if let findPlaceIndex = self.placesName.firstIndex(where: {imageTitleStr?.contains($0) ?? false}) {
+                    let placeReplace = self.placesName[findPlaceIndex]
+                    let placeRplaceImageTitle = nameReplaceImageTitle?.replacingOccurrences(of: placeReplace, with: AppData.sharedInstance.placeName)
+                    nameReplaceImageTitle = placeRplaceImageTitle
+                }
+                self.imageTitle.text = nameReplaceImageTitle
             }
             //self.imageTitle.text = replacingString//isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         } else {
@@ -436,17 +444,42 @@ class TabbarViewController: UIViewController {
     }
     
     @IBAction func shareButtontapped(_ sender: Any) {
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = self.image.image
-        UIGraphicsEndImageContext()
-//        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-        let objectsToShare = [image, self] as [Any]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-        activityVC.popoverPresentationController?.sourceView = sender as? UIView
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
-        self.present(activityVC, animated: true, completion: nil)
+        self.addWaterMarkToImage { tempImage in
+            UIGraphicsBeginImageContext(self.view.frame.size)
+            self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+            
+            var image = self.image.image
+            if tempImage != nil {
+                image = tempImage
+            }
+            UIGraphicsEndImageContext()
+    //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+            let objectsToShare = [image, self] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.popoverPresentationController?.sourceView = sender as? UIView
+            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func addWaterMarkToImage(_ callBack: ((_ image: UIImage?) -> Void)?) {
+        let backgroundImage = self.image.image!
+        let watermarkImage = #imageLiteral(resourceName: "ic_placeHolder1")
+
+        let size = backgroundImage.size
+        let scale = backgroundImage.scale
+
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        backgroundImage.draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+        watermarkImage.draw(in: CGRect(x: 10, y: size.height - 60, width: 50, height: 50))
+
+        if let result = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            callBack?(result)
+        }
+        callBack?(nil)
     }
     
     
@@ -466,13 +499,15 @@ extension TabbarViewController: UIActivityItemSource {
     }
 
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+//        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK).\n\(self.imageTitle.text ?? "")"
         return childName
     }
 
     func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
         let metadata = LPLinkMetadata()
-        metadata.title = "\(UserDefaultHelper.getChildname() ?? "") 's Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+        metadata.title = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK)./n\n\(self.imageTitle.text ?? "")"
+//        "\(UserDefaultHelper.getChildname() ?? "") 's Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
         let image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder")!
         metadata.iconProvider = NSItemProvider(object: image)
         return metadata

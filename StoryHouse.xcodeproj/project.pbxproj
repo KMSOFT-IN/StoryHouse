@@ -122,6 +122,7 @@
 		885404E92983A0DE007F18BE /* 232.json in Resources */ = {isa = PBXBuildFile; fileRef = 885404E82983A0DE007F18BE /* 232.json */; };
 		885404EC2983A0F1007F18BE /* 231.json in Resources */ = {isa = PBXBuildFile; fileRef = 885404EB2983A0F1007F18BE /* 231.json */; };
 		885404EF2983A104007F18BE /* 230.json in Resources */ = {isa = PBXBuildFile; fileRef = 885404EE2983A104007F18BE /* 230.json */; };
+		885A29E3299753EE00F9087A /* PlaceNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A29E2299753EE00F9087A /* PlaceNameViewController.swift */; };
 		886AD4652996152E0016ADF4 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886AD45B2996152E0016ADF4 /* DropDown.swift */; };
 		886AD4662996152E0016ADF4 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886AD45C2996152E0016ADF4 /* DropDownCell.swift */; };
 		886AD4672996152E0016ADF4 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886AD45D2996152E0016ADF4 /* DropDown+Appearance.swift */; };
@@ -309,6 +310,7 @@
 		885404E82983A0DE007F18BE /* 232.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 232.json; sourceTree = "<group>"; };
 		885404EB2983A0F1007F18BE /* 231.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 231.json; sourceTree = "<group>"; };
 		885404EE2983A104007F18BE /* 230.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 230.json; sourceTree = "<group>"; };
+		885A29E2299753EE00F9087A /* PlaceNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceNameViewController.swift; sourceTree = "<group>"; };
 		886AD45B2996152E0016ADF4 /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		886AD45C2996152E0016ADF4 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		886AD45D2996152E0016ADF4 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				88167777297E5B7400725569 /* SettingViewController.swift */,
 				889ABFB12993D89D00A5EDF7 /* InAppPurchaseViewController.swift */,
 				88383538299405D6001C28C3 /* PremiumViewController.swift */,
+				885A29E2299753EE00F9087A /* PlaceNameViewController.swift */,
 				88FC89E9298B9140006DC384 /* Cell */,
 			);
 			path = Controllers;
@@ -1551,6 +1554,7 @@
 				88140332296D84FA00930582 /* UIViewController.swift in Sources */,
 				887FEC6E2996237F00937018 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				887FEC6F2996237F00937018 /* IQInvocation.swift in Sources */,
+				885A29E3299753EE00F9087A /* PlaceNameViewController.swift in Sources */,
 				887FEC792996237F00937018 /* IQUIScrollView+Additions.swift in Sources */,
 				88140334296D85B000930582 /* PlacesViewController.swift in Sources */,
 				887FEC762996237F00937018 /* IQKeyboardManager+Debug.swift in Sources */,
