@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LinkPresentation
 
 class EndViewController: UIViewController {
     
@@ -50,20 +51,70 @@ class EndViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
-        //let image = UIImage(named: "AppIcon")!
-        let image = UIImage(named: self.image) ?? UIImage(named: "ic_placeHolder")
-        let textToShare = self.imageTitle
-        UIGraphicsEndImageContext()
-        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s ’s Magic House Story"
-        //if let myWebsite = URL(string: "http://itunes.apple.com/app/id1645684020") {
-        let objectsToShare = [childName ,  textToShare , image] as [Any]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-        activityVC.popoverPresentationController?.sourceView = sender as? UIView
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
-        self.present(activityVC, animated: true, completion: nil)
+    @IBAction func shareButtonTapped(_ sender: UIButton) {        
+        self.addWaterMarkToImage { tempImage in
+            UIGraphicsBeginImageContext(self.view.frame.size)
+            self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+            
+            var image = UIImage(named: self.image)
+            if tempImage != nil {
+                image = tempImage
+            }
+            UIGraphicsEndImageContext()
+    //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+            let objectsToShare = [image, self] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.popoverPresentationController?.sourceView = sender as? UIView
+            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func shareButtontapped(_ sender: Any) {
+        
+        
+    }
+    
+    func addWaterMarkToImage(_ callBack: ((_ image: UIImage?) -> Void)?) {
+        if let backgroundImage = UIImage(named: self.image) {
+            let watermarkImage = #imageLiteral(resourceName: "watermark")
+            
+            let size = backgroundImage.size
+            let scale = backgroundImage.scale
+            
+            UIGraphicsBeginImageContextWithOptions(size, false, scale)
+            backgroundImage.draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+            watermarkImage.draw(in: CGRect(x: 10, y: size.height - 60, width: 50, height: 50))
+            
+            if let result = UIGraphicsGetImageFromCurrentImageContext() {
+                UIGraphicsEndImageContext()
+                callBack?(result)
+            }
+            callBack?(nil)
+        } else {
+            callBack?(nil)
+        }
+    }
+}
+
+extension EndViewController: UIActivityItemSource {
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return ""
+    }
+
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+//        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK).\n\(self.imageTitle)"
+        return childName
+    }
+
+    func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
+        let metadata = LPLinkMetadata()
+        metadata.title = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK)./n\n\(self.imageTitle)"
+//        "\(UserDefaultHelper.getChildname() ?? "") 's Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+//        let image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder")!
+//        metadata.iconProvider = NSItemProvider(object: image)
+        return metadata
     }
 }

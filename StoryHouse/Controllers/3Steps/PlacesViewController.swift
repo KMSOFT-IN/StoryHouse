@@ -17,14 +17,18 @@ class PlacesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationList = CategoryModel.locationList
-        self.placesCollectionView.dataSource  = self
-        self.placesCollectionView.delegate = self
+//        self.locationList = CategoryModel.locationList
+//        self.placesCollectionView.dataSource  = self
+//        self.placesCollectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.selectedIndex = 0
+        self.locationList = CategoryModel.locationList
+        self.placesCollectionView.dataSource  = self
+        self.placesCollectionView.delegate = self
+        self.placesCollectionView.reloadData()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -45,10 +49,9 @@ class PlacesViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        let childNameVC = ChildNameViewController.getInstance()
-        self.navigationController?.setViewControllers([childNameVC], animated: true)
-        AppData.resetData()
-        self.navigationController?.popToRootViewController(animated: true)    }
+        let viewController = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
@@ -72,16 +75,42 @@ extension PlacesViewController: UICollectionViewDelegate , UICollectionViewDataS
         if (indexPath.item == self.selectedIndex) {
             cell.imageBorderView.borderWidth = 6
         }
+        if !AppData.sharedInstance.isSubscriptionActive {
+            if indexPath.row == 2 || indexPath.row == 3 {
+                cell.lockImageView.isHidden = false
+            } else {
+                cell.lockImageView.isHidden = true
+            }
+        } else {
+            cell.lockImageView.isHidden = true
+        }
         let image = self.locationList[indexPath.item].imageName
         cell.imageView.image = UIImage(named: image)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
+
+        if AppData.sharedInstance.isSubscriptionActive {
+            self.didSelectCollectionView(indexPath: indexPath)
+        } else {
+            if indexPath.row == 2 || indexPath.row == 3 {
+                self.navigateToSubscriptionScreen()
+            } else {
+                self.didSelectCollectionView(indexPath: indexPath)
+            }
+        }
+    }
+    
+    func didSelectCollectionView(indexPath: IndexPath) {
         self.selectedIndex = self.locationList[indexPath.item].tag
         AppData.sharedInstance.selectedLocationIndex = self.selectedIndex
         self.placesCollectionView.reloadData()
+    }
+    
+    func navigateToSubscriptionScreen() {
+        let viewController = PremiumViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

@@ -33,7 +33,8 @@ class PlaceNameViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let viewController = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {

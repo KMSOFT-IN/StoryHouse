@@ -19,7 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        IAPProduct.setProductIndentifiers(productList: Constant.IN_APP_PURHCHASE_PRODUCTS.LIST)
+        AppData.sharedInstance.iAPProduct.loadProdictList()
         self.splashScreen()
+        self.checkSubscription()
         FirebaseApp.configure()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
@@ -34,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        self.checkSubscription()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -82,6 +86,61 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.isUserInteractionEnabled = true
         self.window?.backgroundColor = .white
         self.window?.makeKeyAndVisible()
+    }
+    
+    func checkSubscription() {
+        let expireDate = UserDefaultHelper.getSubgscriptionExpireDate()
+        if (Double(expireDate) ?? 0) > Date().timeIntervalSince1970 * 1000 {
+            UserDefaultHelper.setSubscriptionActive(value: true)
+            AppData.sharedInstance.isSubscriptionActive = true
+        } else {
+            
+            if (Double(expireDate) ?? 0) > Date().adding(.day, value: 1).timeIntervalSince1970 * 1000 {
+                AppData.resetSubscription()
+            }
+            AppData.sharedInstance.isSubscriptionActive = false
+            UserDefaultHelper.setSubscriptionActive(value: false)
+            self.checkUserHaveValidLicense { haveValidLicense, data, error in
+                
+            }
+        }
+    }
+    
+    func checkUserHaveValidLicense(callback: ((_ haveValidLicense: Bool, _ data: ReceiptValidation?, _ error: Error?) -> Void)?) {
+        IAPProduct.store.receiptValidation { success, data, error in
+            DispatchQueue.main.async {
+                if success {
+                    print(data ?? "Oh no")
+                    if let dictionary = data as? [String: Any] {
+                        if let receipt = ReceiptValidation.getInstance(dictionary: dictionary) {
+                            if receipt.status == 0
+                                && (Double(receipt.latest_receipt_info?.first?.expires_date_ms ?? "0") ?? 0) > Date().timeIntervalSince1970 * 1000
+                                 {
+                                UserDefaultHelper.setSubscriptionActive(value: true)
+                                UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
+                                AppData.sharedInstance.isSubscriptionActive = true
+                                callback?(true, receipt, nil)
+                                return
+                            }
+                            else {
+                                UserDefaultHelper.setSubscriptionExpireDate(value: "")
+                                UserDefaultHelper.setSubscriptionActive(value: false)
+                                AppData.sharedInstance.isSubscriptionActive = false
+                            }
+                            callback?(false, receipt, nil)
+                            return
+                        }
+                    }
+                    callback?(false, nil, nil)
+                    return
+                }
+                else {
+                    print(error?.localizedDescription ?? "")
+                    callback?(false, nil, error)
+                    return
+                }
+            }
+        }
     }
     
 }

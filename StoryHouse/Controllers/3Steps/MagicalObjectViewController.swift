@@ -16,14 +16,17 @@ class MagicalObjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.magicalObjectList = CategoryModel.magicalObjectList
-        self.magicalObjectCollectionView.dataSource  = self
-        self.magicalObjectCollectionView.delegate = self
+//        self.magicalObjectList = CategoryModel.magicalObjectList
+//        self.magicalObjectCollectionView.dataSource  = self
+//        self.magicalObjectCollectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.selectedIndex = 0
+        self.magicalObjectList = CategoryModel.magicalObjectList
+        self.magicalObjectCollectionView.dataSource  = self
+        self.magicalObjectCollectionView.delegate = self
     }
     
     static func getInstance() -> MagicalObjectViewController {
@@ -36,10 +39,8 @@ class MagicalObjectViewController: UIViewController {
     
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
-        let childNameVC = ChildNameViewController.getInstance()
-        self.navigationController?.setViewControllers([childNameVC], animated: true)
-        AppData.resetData()
-        self.navigationController?.popToRootViewController(animated: true)
+        let viewController = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func createMyStoryButtonTapped(_ sender: UIButton) {
@@ -91,16 +92,43 @@ extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionVi
         if (indexPath.item == self.selectedIndex) {
             cell.imageBorderView.borderWidth = 6
         }
+        if !AppData.sharedInstance.isSubscriptionActive {
+            if indexPath.row == 2 || indexPath.row == 3 {
+                cell.lockImageView.isHidden = false
+            } else {
+                cell.lockImageView.isHidden = true
+            }
+        } else {
+            cell.lockImageView.isHidden = true
+        }
+
         let image = self.magicalObjectList[indexPath.item].imageName
         cell.imageView.image = UIImage(named: image)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if AppData.sharedInstance.isSubscriptionActive {
+            self.didSelectCollectionView(indexPath: indexPath)
+        } else {
+            if indexPath.row == 2 || indexPath.row == 3 {
+                self.navigateToSubscriptionScreen()
+            } else {
+                self.didSelectCollectionView(indexPath: indexPath)
+            }
+        }
+    }
+    
+    func didSelectCollectionView(indexPath: IndexPath) {
         self.selectedIndex = self.magicalObjectList[indexPath.item].tag
         AppData.sharedInstance.selectedMagicalObjectIndex = self.selectedIndex
         UserDefaultHelper.setParagraphIndex(value: 0)
         self.magicalObjectCollectionView.reloadData()
+    }
+    
+    func navigateToSubscriptionScreen() {
+        let viewController = PremiumViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

@@ -11,9 +11,9 @@ import SwiftyReceiptValidator
 
 class InAppPurchaseViewController: UIViewController {
 
+    @IBOutlet weak var progressView: UIActivityIndicatorView!
     var selectedProduct: String?
     let products = Constant.IN_APP_PURHCHASE_PRODUCTS.LIST
-    
     var isFromPurchase = false
     var isReceiptValidationRunning: Bool = false
     
@@ -37,7 +37,8 @@ class InAppPurchaseViewController: UIViewController {
         self.receiptValidator = SwiftyReceiptValidator(configuration: configuration, isLoggingEnabled: false)
         AppData.sharedInstance.iAPProduct.delegate = self
         IAPProduct.setProductIndentifiers(productList: self.products)
-//        Utils.showProgress()
+        self.progressView.startAnimating()
+        self.view.isUserInteractionEnabled = false
         AppData.sharedInstance.iAPProduct.loadProdictList()
         
         // Do any additional setup after loading the view.
@@ -54,12 +55,10 @@ class InAppPurchaseViewController: UIViewController {
     */
     
     func purchaseWithProductId(productId: String) {
-//        if Utility.isDebug() {
-//            AppData.sharedInstance.logger.logAnalyticsInitiatePurchaseEvent(eventName: "InitiatePurchase", parameters: ["PRODUCT_ID":productId])
-//        }
         self.isFromPurchase = true
         if let product = IAPProduct.productList.filter({$0.productIdentifier == productId}).first {
-//            Utils.showProgress()
+            self.progressView.startAnimating()
+            self.view.isUserInteractionEnabled = false
             self.selectedProduct = product.productIdentifier
             AppData.sharedInstance.iAPProduct.purchaseProduct(product: product)
 //            AppData.sharedInstance.logger.logAnalyticsInitiatePurchaseEvent(eventName: "InitiatePurchase", parameters: ["PRODUCT_ID":productId])
@@ -68,7 +67,8 @@ class InAppPurchaseViewController: UIViewController {
     
     func restore() {
         self.isFromPurchase = true
-//        Utils.showProgress()
+        self.progressView.startAnimating()
+        self.view.isUserInteractionEnabled = false
         AppData.sharedInstance.iAPProduct.restorePurchase()
     }
 }
@@ -79,7 +79,8 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     func getProductList(productList: [SKProduct]) {
         DispatchQueue.main.async {
             if (!self.isFromPurchase) {
-//                Utils.dismissProgress()
+                self.progressView.stopAnimating()
+                self.view.isUserInteractionEnabled = true
             }
             //self.showView()
             if(productList.count <= 0) {
@@ -91,46 +92,29 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     
     func purchasedProductListWithIndex(transaction: SKPaymentTransaction, productList: [SKProduct], index: [Int]) {
         if (!self.isFromPurchase) {
-//            Utils.dismissProgress()
+            self.progressView.stopAnimating()
+            self.view.isUserInteractionEnabled = true
         }
         let filter = productList.filter({$0.productIdentifier == self.selectedProduct})
         if self.selectedProduct == Constant.IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH  {
-            // Transaction is in queue, user has been charged.  Client should complete the transaction.
-            let productId = transaction.payment.productIdentifier
-
-            let validationRequest = SRVPurchaseValidationRequest(
-                productId: productId,
-                sharedSecret: "cd72731f425e40c39dc41f3603b37f26"
-            )
-                
-            receiptValidator.validate(validationRequest) { result in
-                switch result {
-                case .success(let response):
-                    defer {
-                        // IMPORTANT: Finish the transaction ONLY after validation was successful
-                        // if validation error e.g due to internet, the transaction will stay in pending state
-                        // and than can/will be resumed on next app launch
-//                        queue.finishTransaction(transaction)
+            if(filter.count > 0) {
+                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+                    if haveValidLicense {
+                        self.navigationController?.popViewController(animated: true)
                     }
-                    print("Receipt validation was successfull with receipt response \(response)")
-                    // Unlock products and/or do additional checks
-                case .failure(let error):
-                    print("Receipt validation failed with error \(error.localizedDescription)")
-                    // Inform user of error
                 }
             }
-
-//            if(filter.count > 0) {
-//                self.checkUserHaveValidLicense { haveValidLicense, data, error in
-//                }
-//            }
-//            else {
-//                self.checkUserHaveValidLicense { haveValidLicense, data, error in
-//                }
-//            }
+            else {
+                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+                    if haveValidLicense {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
         }
         else {
-//            Utils.dismissProgress()
+            self.progressView.stopAnimating()
+            self.view.isUserInteractionEnabled = true
             self.purchaseSucessfulCallback?()
             let transactopnId = transaction.transactionIdentifier ?? ""
             let productId = self.selectedProduct ?? ""
@@ -139,7 +123,8 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     
     func purchasedCancelWithError(error: NSError?) {
         DispatchQueue.main.async {
-//            Utils.dismissProgress()
+            self.progressView.stopAnimating()
+            self.view.isUserInteractionEnabled = true
             if error?.code != 2 {
                 Utility.alert(message: error?.localizedDescription ?? "Unable to complete transaction. Please try again.", title: APPNAME, button1: "Ok", action: { (index: Int) in
                 })
@@ -149,7 +134,8 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     
     func restoreWithError(error: NSError) {
         DispatchQueue.main.async {
-//            Utils.dismissProgress()
+            self.progressView.stopAnimating()
+            self.view.isUserInteractionEnabled = true
             Utility.alert(message: error.localizedDescription, title: APPNAME,button1: "Ok" ,action: { (index: Int) in
             })
         }
@@ -161,7 +147,10 @@ extension InAppPurchaseViewController: IAPProductDelegate {
         }
         self.isReceiptValidationRunning = true
         IAPProduct.store.receiptValidation { success, data, error in
-//            Utils.dismissProgress()
+            DispatchQueue.main.async {
+                self.progressView.stopAnimating()
+                self.view.isUserInteractionEnabled = true
+            }
             self.isFromPurchase = false
             self.isReceiptValidationRunning = false
             DispatchQueue.main.async {
@@ -174,10 +163,11 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                                  {
 //                                AppData.sharedInstance.logger.logAnalyticsPurchasedEvent(eventName: "PurchaseCompleted", parameters: ["PRODUCT_ID":self.selectedProduct ?? ""])
                                 //logAnalyticsInitiatePurchaseEvent(eventName: "InitiatePurchase", parameters: ["PRODUCT_ID":productId])
+                                UserDefaultHelper.setSubscriptionActive(value: true)
+                                UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
+                                AppData.sharedInstance.isSubscriptionActive = true
                                 self.purchaseSucessfulCallback?()
-                                Utility.alert(message: "Subscription purchased successfully.", title: APPNAME,button1: "Ok" ,action: { (index: Int) in
-                                    self.navigationController?.popToRootViewController(animated: true)
-                                })
+                                
                                 
                                 /*AppData.sharedInstance.profile?.isSubscriptionActive = true
                                  AppData.sharedInstance.profile?.subscriptionExpireDate = receipt.latest_receipt_info?.first?.expiresDate.timeIntervalSince1970
@@ -188,6 +178,9 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                                 return
                             }
                             else {
+                                UserDefaultHelper.setSubscriptionExpireDate(value: "")
+                                UserDefaultHelper.setSubscriptionActive(value: false)
+                                AppData.sharedInstance.isSubscriptionActive = false
                                 Utility.alert(message: "Subscription is expired. Please renew.", title: APPNAME,button1: "Ok" ,action: { (index: Int) in
                                 })
                             }

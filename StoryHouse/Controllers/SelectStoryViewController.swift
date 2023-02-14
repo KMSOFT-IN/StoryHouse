@@ -44,10 +44,8 @@ class HomeViewController : UIViewController {
     }
     
     @IBAction func settingButtontapped(_ sender: Any) {
-        let childNameVC = ChildNameViewController.getInstance()
-        self.navigationController?.setViewControllers([childNameVC], animated: true)
-        AppData.resetData()
-        self.navigationController?.popToRootViewController(animated: true)
+        let viewController = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
    
     func setBorderWidth(view: UIView) {

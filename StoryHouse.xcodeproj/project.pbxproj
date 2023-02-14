@@ -49,7 +49,6 @@
 		88140340296D98CD00930582 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814033F296D98CD00930582 /* UIColor.swift */; };
 		88140342296D995700930582 /* SelectStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88140341296D995700930582 /* SelectStoryViewController.swift */; };
 		88140344296D9B9B00930582 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88140343296D9B9B00930582 /* SplashViewController.swift */; };
-		88167776297E5A4600725569 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88167775297E5A4600725569 /* Setting.storyboard */; };
 		88167778297E5B7400725569 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88167777297E5B7400725569 /* SettingViewController.swift */; };
 		881CBF37297680090094109D /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881CBF36297680090094109D /* StoryModel.swift */; };
 		88222EE0298BC98200FC942D /* glitter1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88222EDF298BC98200FC942D /* glitter1.gif */; };
@@ -197,6 +196,9 @@
 		88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC48297BA4AC003388F4 /* CustomLoader.swift */; };
 		88FDBC4B297BA4B9003388F4 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88FDBC4A297BA4B9003388F4 /* demo.gif */; };
 		88FDBC4E297BA4CE003388F4 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */; };
+		B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2538729299BA09C00982CF5 /* Setting.storyboard */; };
+		B253872C299BA49400982CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253872B299BA49400982CF5 /* SettingsViewController.swift */; };
+		B26BDCE7299B69A80017CA2A /* Premium.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26BDCE6299B69A80017CA2A /* Premium.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -244,7 +246,6 @@
 		8814033F296D98CD00930582 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		88140341296D995700930582 /* SelectStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStoryViewController.swift; sourceTree = "<group>"; };
 		88140343296D9B9B00930582 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		88167775297E5A4600725569 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		88167777297E5B7400725569 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		881CBF36297680090094109D /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		88222EDF298BC98200FC942D /* glitter1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = glitter1.gif; sourceTree = "<group>"; };
@@ -388,6 +389,9 @@
 		88FDBC48297BA4AC003388F4 /* CustomLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		88FDBC4A297BA4B9003388F4 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
+		B2538729299BA09C00982CF5 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		B253872B299BA49400982CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B26BDCE6299B69A80017CA2A /* Premium.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Premium.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,7 +447,9 @@
 				88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */,
 				888A48E9296E79770097C42D /* Loading.storyboard */,
 				888A48E7296E79410097C42D /* Category.storyboard */,
+				B2538729299BA09C00982CF5 /* Setting.storyboard */,
 				888A48E3296E77310097C42D /* Onboarding.storyboard */,
+				B26BDCE6299B69A80017CA2A /* Premium.storyboard */,
 				881402E8296D6A2F00930582 /* Assets.xcassets */,
 				881402EA296D6A2F00930582 /* LaunchScreen.storyboard */,
 				881402ED296D6A2F00930582 /* Info.plist */,
@@ -496,6 +502,7 @@
 			children = (
 				882462A2297F9B32004005CE /* 3Steps */,
 				88140337296D86F100930582 /* LoadingViewController.swift */,
+				B253872B299BA49400982CF5 /* SettingsViewController.swift */,
 				8814033B296D8EB600930582 /* HeroNameViewController.swift */,
 				88140341296D995700930582 /* SelectStoryViewController.swift */,
 				88140343296D9B9B00930582 /* SplashViewController.swift */,
@@ -903,7 +910,6 @@
 			children = (
 				88A63D6B29837A3800E9DA8B /* JSON */,
 				881CBF36297680090094109D /* StoryModel.swift */,
-				88167775297E5A4600725569 /* Setting.storyboard */,
 				88313AB329876DC2000D1248 /* CategoryModel.swift */,
 				889ABFB32993DD9100A5EDF7 /* ReceiptValidation.swift */,
 			);
@@ -1472,12 +1478,12 @@
 				8814031C296D6C9C00930582 /* Poppins-SemiBold.ttf in Resources */,
 				881402EC296D6A2F00930582 /* LaunchScreen.storyboard in Resources */,
 				881402E9296D6A2F00930582 /* Assets.xcassets in Resources */,
+				B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */,
 				8892D80F29839AE400CD510F /* 010.json in Resources */,
 				885404C329839FAE007F18BE /* 202.json in Resources */,
 				88A63D7529838DD000E9DA8B /* 111.json in Resources */,
 				885404EF2983A104007F18BE /* 230.json in Resources */,
 				8892D81129839AEE00CD510F /* 011.json in Resources */,
-				88167776297E5A4600725569 /* Setting.storyboard in Resources */,
 				88FDBC4B297BA4B9003388F4 /* demo.gif in Resources */,
 				885404EC2983A0F1007F18BE /* 231.json in Resources */,
 				8854047829839D7D007F18BE /* 113.json in Resources */,
@@ -1501,6 +1507,7 @@
 				88E1CA8129780C69008F3B28 /* End.storyboard in Resources */,
 				88319FE7297AC78A00FA59B0 /* strimmer.gif in Resources */,
 				8844DC5129765AA40074610C /* StoriesJSON.json in Resources */,
+				B26BDCE7299B69A80017CA2A /* Premium.storyboard in Resources */,
 				8892D81529839AFF00CD510F /* 013.json in Resources */,
 				8892D82D29839B6C00CD510F /* 103.json in Resources */,
 				88DB92772979729B009DF1FF /* celebration.gif in Resources */,
@@ -1551,6 +1558,7 @@
 				887FEC7C2996237F00937018 /* IQUIView+Hierarchy.swift in Sources */,
 				88140331296D84FA00930582 /* UIImage.swift in Sources */,
 				887FEC712996237F00937018 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				B253872C299BA49400982CF5 /* SettingsViewController.swift in Sources */,
 				88140332296D84FA00930582 /* UIViewController.swift in Sources */,
 				887FEC6E2996237F00937018 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				887FEC6F2996237F00937018 /* IQInvocation.swift in Sources */,
@@ -1760,7 +1768,7 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1798,7 +1806,7 @@
 				CODE_SIGN_ENTITLEMENTS = StoryHouse/StoryHouse.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = DR3239T4NF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;

@@ -14,6 +14,9 @@ class HeroNameViewController: UIViewController {
     @IBOutlet weak var hisherLabel: UILabel!
     @IBOutlet weak var hisherNameTextField: UITextField!
     @IBOutlet weak var hisherChooseButton: UIButton!
+    @IBOutlet weak var rememberButton: UIButton!
+    @IBOutlet weak var rememberImageView: UIImageView!
+    
     let chooseOptionsDropDown = DropDown()
     var selectedHero = ""
     var selectedImage: UIImage!
@@ -22,8 +25,12 @@ class HeroNameViewController: UIViewController {
         super.viewDidLoad()
         self.heroImageView.image = selectedImage
         self.heroImageView.layer.cornerRadius = 20
+        self.heroNameTextField.text = UserDefaultHelper.getChildname() ?? ""
+        if !UserDefaultHelper.getIsRemember() {
+            self.hisherLabel.text = "His name is \(self.heroNameTextField.text ?? "")"
+            UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
+        }
         self.setUpDropDownMenu()
-        UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
     }
     static func getInstance() -> HeroNameViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "HeroNameViewController") as! HeroNameViewController
@@ -40,6 +47,20 @@ class HeroNameViewController: UIViewController {
             } else {
                 UserDefaultHelper.setGender(value: GENDER.GIRL.rawValue)
             }
+        }
+        
+        if UserDefaultHelper.getIsRemember() {
+            self.rememberImageView.image = UIImage(named: "ic_check")
+            if UserDefaultHelper.getGender() == GENDER.BOY.rawValue {
+                chooseOptionsDropDown.selectRow(0)
+                self.hisherLabel.text = "His name is \(self.heroNameTextField.text ?? "")"
+            } else {
+                chooseOptionsDropDown.selectRow(at: 1)
+                self.hisherLabel.text = "Her name is \(self.heroNameTextField.text ?? "")"
+            }
+        } else {
+            self.rememberImageView.image = UIImage(named: "ic_uncheck")
+            UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
         }
         let appearance = DropDown.appearance()
         
@@ -81,7 +102,8 @@ class HeroNameViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        //self.navigationController?.popViewController(animated: true)
+        let viewController = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -90,7 +112,7 @@ class HeroNameViewController: UIViewController {
             Utility.alert(message: "Please enter your hero name.")
         } else {
             AppData.sharedInstance.heroName = heroName
-            UserDefaultHelper.setUserHeroName(value: AppData.sharedInstance.heroName)
+            UserDefaultHelper.setChildname(value: AppData.sharedInstance.heroName)
             let viewController = PlacesViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
@@ -100,6 +122,15 @@ class HeroNameViewController: UIViewController {
         self.chooseOptionsDropDown.show()
     }
     
+    @IBAction func rememberButtonTapped(_ sender: UIButton) {
+        if self.rememberImageView.image == UIImage(named: "ic_uncheck") {
+            self.rememberImageView.image = UIImage(named: "ic_check")
+            UserDefaultHelper.setIsRemember(value: true)
+        } else {
+            self.rememberImageView.image = UIImage(named: "ic_uncheck")
+            UserDefaultHelper.setIsRemember(value: false)
+        }
+    }
 }
 
 extension UIImageView {

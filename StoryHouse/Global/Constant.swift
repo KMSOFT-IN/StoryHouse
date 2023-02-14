@@ -27,6 +27,7 @@ class Constant {
         static let HOME                       = UIStoryboard(name: "Home", bundle: nil)
         static let END                        = UIStoryboard(name: "End", bundle: nil)
         static let SETTING                    = UIStoryboard(name: "Setting", bundle: nil)
+        static let PREMIUM                    = UIStoryboard(name: "Premium", bundle: nil)
     }
     
     class UserDefault {
@@ -39,6 +40,9 @@ class Constant {
         static let STORY_NUMBER  = "StoryNumber"
         static let LAST_APP_OPEN = "LAST_APP_OPEN"
         static let FIRST_LAUNCH = "FIRST_LAUNCH"
+        static let SUBSCRIPTION_ACTIVE = "SUBSCRIPTION_ACTIVE"
+        static let SUBSCRIPTION_EXPIRE_DATE = "SUBSCRIPTION_EXPIRE_DATE"
+        static let IS_REMEMBER = "IS_REMEMBER"
         static let CURRENT_DATE = "CURRENT_DATE"
         static let USER_ID = "USER_ID"
         static let USER_HERO_NAME = "USER_HERO_NAME"

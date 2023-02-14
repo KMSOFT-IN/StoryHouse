@@ -12,7 +12,6 @@ import AppsFlyerLib
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
         Utility.setVoiceIdentifier()
         AppData.sharedInstance.logger.setupLogger()
         IQKeyboardManager.shared.enable = true
@@ -29,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         self.launchLog()
+        AppData.sharedInstance.isSubscriptionActive = UserDefaultHelper.getIsSubgscriptionActive()
         return true
     }
     

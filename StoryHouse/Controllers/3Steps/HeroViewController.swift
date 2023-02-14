@@ -17,15 +17,19 @@ class HeroViewController: UIViewController {
     var selectedIndex = 0
     
     override func viewDidLoad() {
-        self.characterList = CategoryModel.characterList
+//        self.characterList = CategoryModel.characterList
         super.viewDidLoad()
-        self.heroCollectionView.dataSource  = self
-        self.heroCollectionView.delegate = self
+//        self.heroCollectionView.dataSource  = self
+//        self.heroCollectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.selectedIndex = 0
+        self.characterList = CategoryModel.characterList
+        self.heroCollectionView.dataSource  = self
+        self.heroCollectionView.delegate = self
+        self.heroCollectionView.reloadData()
     }
     
     static func getInstance() -> HeroViewController {
@@ -47,10 +51,8 @@ class HeroViewController: UIViewController {
     }
     
     @IBAction func settingButtonTapped(_ sender: Any) {
-        let childNameVC = ChildNameViewController.getInstance()
-        self.navigationController?.setViewControllers([childNameVC], animated: true)
-        AppData.resetData()
-        self.navigationController?.popToRootViewController(animated: true)
+        let viewController = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -65,6 +67,15 @@ extension HeroViewController: UICollectionViewDelegate , UICollectionViewDataSou
         if (indexPath.item == self.selectedIndex) {
             cell.imageBorderView.borderWidth = 6
         }
+        if !AppData.sharedInstance.isSubscriptionActive {
+            if indexPath.row == 2 || indexPath.row == 3 {
+                cell.lockImageView.isHidden = false
+            } else {
+                cell.lockImageView.isHidden = true
+            }            
+        } else {
+            cell.lockImageView.isHidden = true
+        }
         let image = characterList[indexPath.item].imageName
         cell.imageView.image = UIImage(named: image)
         return cell
@@ -72,9 +83,26 @@ extension HeroViewController: UICollectionViewDelegate , UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! imageCollectionViewCell
+        if AppData.sharedInstance.isSubscriptionActive {
+            self.didSelectCollectionView(indexPath: indexPath)
+        } else {
+            if indexPath.row == 2 || indexPath.row == 3 {
+                self.navigateToSubscriptionScreen()
+            } else {
+                self.didSelectCollectionView(indexPath: indexPath)
+            }
+        }
+    }
+    
+    func didSelectCollectionView(indexPath: IndexPath) {
         self.selectedIndex = self.characterList[indexPath.item].tag
         AppData.sharedInstance.selectedCharacterIndex = self.selectedIndex
         self.heroCollectionView.reloadData()
+    }
+    
+    func navigateToSubscriptionScreen() {
+        let viewController = PremiumViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

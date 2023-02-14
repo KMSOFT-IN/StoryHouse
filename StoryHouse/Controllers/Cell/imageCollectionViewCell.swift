@@ -11,6 +11,7 @@ class imageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageBorderView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var lockImageView: UIImageView!
     
     /*override func awakeFromNib() {
            super.awakeFromNib()

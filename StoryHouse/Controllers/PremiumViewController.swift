@@ -9,9 +9,11 @@ import UIKit
 
 class PremiumViewController: InAppPurchaseViewController {
 
+    @IBOutlet weak var shadowView: UIView!
+    
     
     static func getInstance() -> PremiumViewController {
-        return Constant.Storyboard.HOME.instantiateViewController(withIdentifier: "PremiumViewController") as! PremiumViewController
+        return Constant.Storyboard.PREMIUM.instantiateViewController(withIdentifier: "PremiumViewController") as! PremiumViewController
     }
     
     
@@ -19,8 +21,19 @@ class PremiumViewController: InAppPurchaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setShadow()
     }
     
+    func setShadow() {
+        self.shadowView.layer.cornerRadius = 8
+        self.shadowView.layer.masksToBounds = true;
+        self.shadowView.backgroundColor = UIColor.white
+        self.shadowView.layer.shadowColor = UIColor(hex: "#DCD9D9")?.cgColor
+        self.shadowView.layer.shadowOpacity = 0.8
+        self.shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.shadowView.layer.shadowRadius = 10.0
+        self.shadowView.layer.masksToBounds = false
+    }
 
     /*
     // MARK: - Navigation

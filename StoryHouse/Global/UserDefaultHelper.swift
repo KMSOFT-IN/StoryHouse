@@ -97,6 +97,34 @@ class UserDefaultHelper {
         UserDefaults.standard.synchronize()
     }
     
+    static func getIsSubgscriptionActive() -> Bool {
+        return UserDefaults.standard.bool(forKey: Constant.UserDefault.SUBSCRIPTION_ACTIVE)
+    }
+    
+    static func setSubscriptionActive(value: Bool) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.SUBSCRIPTION_ACTIVE)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getSubgscriptionExpireDate() -> String {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.SUBSCRIPTION_EXPIRE_DATE) ?? ""
+    }
+    
+    static func setSubscriptionExpireDate(value: String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.SUBSCRIPTION_EXPIRE_DATE)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getIsRemember() -> Bool {
+        return UserDefaults.standard.bool(forKey: Constant.UserDefault.IS_REMEMBER)
+    }
+    
+    static func setIsRemember(value: Bool) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.IS_REMEMBER)
+        UserDefaults.standard.synchronize()
+    }
+    
+    
     static func getLastAppOpen() -> Date? {
         return UserDefaults.standard.value(forKey: Constant.UserDefault.LAST_APP_OPEN) as? Date
     }

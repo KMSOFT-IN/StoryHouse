@@ -31,6 +31,7 @@ class AppData {
     var totalStroyReadingEndTime: String = "00"
     var heroName: String = ""
     var placeName: String = ""
+    var isSubscriptionActive: Bool = false
     var iAPProduct = IAPProduct()
     static let sharedInstance: AppData = {
         let instance = AppData()
@@ -45,6 +46,12 @@ class AppData {
         AppData.sharedInstance.selectedCharacterIndex = 0
         AppData.sharedInstance.selectedLocationIndex = 0
         AppData.sharedInstance.selectedMagicalObjectIndex = 0
+    }
+    
+    static func resetSubscription() {
+        AppData.sharedInstance.isSubscriptionActive = false
+        UserDefaultHelper.setSubscriptionActive(value: false)
+        UserDefaultHelper.setSubscriptionExpireDate(value: "")
     }
 
 }
