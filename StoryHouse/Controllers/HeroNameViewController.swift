@@ -16,11 +16,12 @@ class HeroNameViewController: UIViewController {
     @IBOutlet weak var hisherChooseButton: UIButton!
     let chooseOptionsDropDown = DropDown()
     var selectedHero = ""
+    var selectedImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.heroImageView.image = UIImage(named: selectedHero)
-        self.heroImageView.makeRounded()
+        self.heroImageView.image = selectedImage
+        self.heroImageView.layer.cornerRadius = 20
         self.setUpDropDownMenu()
         UserDefaultHelper.setGender(value: GENDER.BOY.rawValue)
     }

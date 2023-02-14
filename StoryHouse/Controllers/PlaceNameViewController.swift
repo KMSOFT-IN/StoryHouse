@@ -12,13 +12,13 @@ class PlaceNameViewController: UIViewController {
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var placeNameTextField: UITextField!
-    
+    var selectedImage: UIImage!
     var selectedHero = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.placeImageView.image = UIImage(named: selectedHero)
-        self.placeImageView.makeRounded()
+        self.placeImageView.image = selectedImage
+        self.placeImageView.layer.cornerRadius = 20
     }
     static func getInstance() -> PlaceNameViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "PlaceNameViewController") as! PlaceNameViewController

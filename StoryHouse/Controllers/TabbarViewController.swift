@@ -466,7 +466,7 @@ class TabbarViewController: UIViewController {
     
     func addWaterMarkToImage(_ callBack: ((_ image: UIImage?) -> Void)?) {
         let backgroundImage = self.image.image!
-        let watermarkImage = #imageLiteral(resourceName: "ic_placeHolder1")
+        let watermarkImage = #imageLiteral(resourceName: "watermark")
 
         let size = backgroundImage.size
         let scale = backgroundImage.scale

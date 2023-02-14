@@ -61,8 +61,13 @@ class MagicalObjectViewController: UIViewController {
             AppData.sharedInstance.totalStroyReadingStartTime = Date().toTimeString
         }
         self.addTotalStoryCountEvent()
-        let viewController = LoadingViewController.getInstance()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if Utility.isDebug() {
+            let viewController = TabbarViewController.getInstance()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            let viewController = LoadingViewController.getInstance()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func addTotalStoryCountEvent() {

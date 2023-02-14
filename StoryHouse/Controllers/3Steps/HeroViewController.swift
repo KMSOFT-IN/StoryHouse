@@ -38,6 +38,7 @@ class HeroViewController: UIViewController {
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_HERO, parameters: param)
         AppData.sharedInstance.selectedCharacterIndex =  self.selectedIndex
         let viewController = HeroNameViewController.getInstance()//PlacesViewController.getInstance()
+        viewController.selectedImage = UIImage(named: self.storyImage[self.selectedIndex])
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
