@@ -19,7 +19,7 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let name = UserDefaultHelper.getChildname() ?? ""
+        let name = UserDefaultHelper.getUserHeroName()
         self.chilldNameTitle.text = "creating" + "\n \(name)" + "’s story!"
     }
     

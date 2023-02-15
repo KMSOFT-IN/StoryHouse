@@ -18,7 +18,7 @@ class PlaceNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.placeImageView.image = selectedImage
-        self.placeImageView.layer.cornerRadius = 20
+        self.placeImageView.makeRounded()
     }
     static func getInstance() -> PlaceNameViewController {
         return Constant.Storyboard.CATEGORY.instantiateViewController(withIdentifier: "PlaceNameViewController") as! PlaceNameViewController
@@ -40,7 +40,7 @@ class PlaceNameViewController: UIViewController {
     @IBAction func nextButtonTapped(_ sender: Any) {
         let placeName = self.placeNameTextField.text ?? ""
         if placeName.isEmpty {
-            Utility.alert(message: "Please enter your place name.")
+            Utility.showAlert(title: APPNAME, message: "Please enter place name.", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
         } else {
             AppData.sharedInstance.placeName = placeName
             UserDefaultHelper.setUserPlaceName(value: AppData.sharedInstance.placeName)

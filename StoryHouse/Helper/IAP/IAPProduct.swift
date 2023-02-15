@@ -92,7 +92,6 @@ public class IAPProduct {
         var purchasedProductIndexes: [Int] = []
         for (index, product) in IAPProduct.productList.enumerated() {
             guard product.productIdentifier == productID else { continue }
-            
             purchasedProductList.append(product)
             purchasedProductIndexes.append(index)
         }

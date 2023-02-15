@@ -166,7 +166,7 @@ class TabbarViewController: UIViewController {
     func setStoryNumber() {
         if let storyNumber = UserDefaultHelper.getSelectedStoryNumber() {
             AppData.sharedInstance.selectedStoryNumber = storyNumber
-            AppData.sharedInstance.heroName = UserDefaultHelper.getChildname() ?? ""
+            AppData.sharedInstance.heroName = UserDefaultHelper.getUserHeroName()
             AppData.sharedInstance.placeName = UserDefaultHelper.getUserPlaceName()
             self.filterdStoryIndex = storyNumber
         }
