@@ -33,6 +33,8 @@ class AppData {
     var placeName: String = ""
     var isSubscriptionActive: Bool = false
     var iAPProduct = IAPProduct()
+    let notificationHelper = PushNotificationHelper()
+    var fcmToken: String = ""
     static let sharedInstance: AppData = {
         let instance = AppData()
         return instance

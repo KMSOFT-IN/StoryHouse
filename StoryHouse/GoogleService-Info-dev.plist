@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>267634737507-kgffv0vnd4ukrldpdma0unlpbt7s4dgm.apps.googleusercontent.com</string>
+	<string>125607188198-fm67peojl12k1qo4u06bd5gg6bei03bm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.267634737507-kgffv0vnd4ukrldpdma0unlpbt7s4dgm</string>
+	<string>com.googleusercontent.apps.125607188198-fm67peojl12k1qo4u06bd5gg6bei03bm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDBoF1KyuYgyfmBXLNdSVU-B4jyzgmglP8</string>
+	<string>AIzaSyCD9q6g_A-zkhhgRCMgkVbKr8-0zy0OxpU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>267634737507</string>
+	<string>125607188198</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.magichouse</string>
+	<string>in.kmsoft.storyTailor</string>
 	<key>PROJECT_ID</key>
-	<string>magic-house-prod</string>
+	<string>storyhouse-937d9</string>
 	<key>STORAGE_BUCKET</key>
-	<string>magic-house-prod.appspot.com</string>
+	<string>storyhouse-937d9.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:267634737507:ios:42d3cc43d01f977d811356</string>
+	<string>1:125607188198:ios:40f619e937a0ce21124d27</string>
 </dict>
 </plist>

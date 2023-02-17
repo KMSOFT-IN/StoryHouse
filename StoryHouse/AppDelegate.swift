@@ -7,9 +7,13 @@
 
 import UIKit
 import AppsFlyerLib
+import FirebaseMessaging
+import UserNotifications
+import Firebase
+import FirebaseRemoteConfig
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Utility.setVoiceIdentifier()
@@ -29,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         self.launchLog()
         AppData.sharedInstance.isSubscriptionActive = UserDefaultHelper.getIsSubgscriptionActive()
+        AppData.sharedInstance.notificationHelper.registerForPushNotifications()
+        AppData.sharedInstance.notificationHelper.setupDelegate()
+        AppData.sharedInstance.fcmToken = UserDefaultHelper.getFCMToken() ??  ""
         return true
     }
     
@@ -47,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AppData.sharedInstance.logger.setUserProperty(userId: userId)
         }
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.APP_OPEN, parameters: nil)
-//        AppData.sharedInstance.logger.setUserPropertyLastAppOpen()
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.LAST_APP_OPEN, parameters: [Constant.Analytics.LAST_APP_OPEN : (UserDefaultHelper.getLastAppOpen() ?? Date()).getISO8601Date()])
     }
     
@@ -80,6 +86,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppsFlyerLib.shared().start()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+            }
+            else if let token = token {
+                print("FCM registration token: \(token)")
+                AppData.sharedInstance.fcmToken = token
+                UserDefaultHelper.setFCMToken(value: token)
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Fail to register notification")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    }
+    
+    // When Noti. Arrives
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound])
+    }
+    
+    // When USer Interact With Notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.identifier == "Local Notification" {
+            print("Handling notifications with the Local Notification Identifier")
+        }
+        
+        completionHandler()
     }
 }
 

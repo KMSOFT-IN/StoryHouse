@@ -202,6 +202,51 @@ import AVFoundation
         let intervalInt = Int(interval)
         return "\(intervalInt < 0 ? "-" : "+") \(Int(hour)) Hours \(Int(minute)) Minutes \(Int(secods)) secods"
     }
+    
+    class func getAnimalName(index: Int) -> String {
+        switch index {
+        case 0:
+            return "Giraffe"
+        case 1:
+            return "Zebra"
+        case 2:
+            return "Monkey"
+        case 3:
+            return "Fox"
+        default:
+            return "Giraffe"
+        }
+    }
+    
+    class func getObjectName(index: Int) -> String {
+        switch index {
+        case 0:
+            return "magical wand"
+        case 1:
+            return "wizard's hat"
+        case 2:
+            return "magical potion"
+        case 3:
+            return "magical beads"
+        default:
+            return "magical wand"
+        }
+    }
+    
+//    class func getPlaceName(index: Int) -> String {
+//        switch index {
+//        case 0:
+//            return "magical wand"
+//        case 1:
+//            return "wizard's hat"
+//        case 2:
+//            return "magical potion"
+//        case 3:
+//            return "magical beads"
+//        default:
+//            return "magical wand"
+//        }
+//    }
 }
 
 private var kAlertControllerWindow = "kAlertControllerWindow"

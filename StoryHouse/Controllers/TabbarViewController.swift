@@ -41,6 +41,7 @@ class TabbarViewController: UIViewController {
     let name = UserDefaultHelper.getChildname()
     let gifHandler = Gif()
     var animationTimer: Timer?
+    var isFromExploreTab: Bool = false
     let femaleName = ["Gizzy","Gertie","Gira","Gigi","Gracie","Gertrude","Giselle","Zara","Zoe","Zoey","Cassandra","Maria","Carla","Foxy","Fraya","Freya","Fennec","Fawna","Fia","Fiora","Ferris","Lisa","Fuzzy","Fury","Gazelle","Minty","Poppy","Winkie","Fuzzy","Cinderella","Twiggy","Nanny"]
     let maleName = ["Gerald","George","Gizmo","Zebra","Zack","Zippy","Zor","Zeb","Fox","Fin","Felix","Foxy","Finnegan","Fenton","Monkey","Max","Mango"]
     
@@ -241,9 +242,9 @@ class TabbarViewController: UIViewController {
                 }
                 self.imageTitle.text = nameReplaceImageTitle
             }
-            //self.imageTitle.text = replacingString//isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
         } else {
-            self.imageTitle.text = isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she
+            let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
+            self.imageTitle.text = imageTitleStr
         }
         self.imageTitle.textColor = GRAY_COLOR
         self.startImageAnimationTimer()
@@ -253,7 +254,7 @@ class TabbarViewController: UIViewController {
             self.addEndStoryEvent()
         }
     }
-    
+        
     func addStartStoryEvent() {
         AppData.sharedInstance.storyStartTime = Date().toTimeString
         let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),

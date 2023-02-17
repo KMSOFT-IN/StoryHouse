@@ -72,6 +72,14 @@ class UserDefaultHelper {
         return UserDefaults.standard.string(forKey: Constant.UserDefault.VOICE_IDENTIFIER)
     }
     
+    static func setFCMToken(value: String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.FCMTOKEN)
+        UserDefaults.standard.synchronize()
+    }
+    static func getFCMToken() -> String? {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.FCMTOKEN)
+    }
+    
     static func setUserHeroName(value: String) {
         UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.USER_HERO_NAME)
         UserDefaults.standard.synchronize()
@@ -153,6 +161,17 @@ class UserDefaultHelper {
     static func getUser() -> String {
         let userId = UserDefaults.standard.value(forKey: Constant.UserDefault.USER_ID) as? String ?? ""
         return userId
+    }
+    
+    class func saveExploreStory(exploreStoryList: [ExploreStory]) {
+        UserDefaults.standard.set(ExploreStory.get(list: exploreStoryList), forKey:  Constant.UserDefault.EXPLORE_STORY)
+        UserDefaults.standard.synchronize()
+    }
+    
+    class func getExploreStory() -> [ExploreStory]? {
+        let array = UserDefaults.standard.value(forKey: Constant.UserDefault.EXPLORE_STORY) as? [[String: Any]] ?? []
+        let projectToUploadList = ExploreStory.getInstanceFrom(array: array)
+        return projectToUploadList
     }
     
     static func clearUserdefault() {

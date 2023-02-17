@@ -31,6 +31,7 @@ class LoadingViewController: UIViewController {
     
     func navigateToTabbarViewController() {
         let viewController = TabbarViewController.getInstance()
+        viewController.isFromExploreTab = false
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

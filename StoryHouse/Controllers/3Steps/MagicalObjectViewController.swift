@@ -62,8 +62,10 @@ class MagicalObjectViewController: UIViewController {
             AppData.sharedInstance.totalStroyReadingStartTime = Date().toTimeString
         }
         self.addTotalStoryCountEvent()
+        self.saveStoryInExplore()
         if Utility.isDebug() {
             let viewController = TabbarViewController.getInstance()
+            viewController.isFromExploreTab = false
             self.navigationController?.pushViewController(viewController, animated: true)
         } else {
             let viewController = LoadingViewController.getInstance()
@@ -79,6 +81,42 @@ class MagicalObjectViewController: UIViewController {
                         "end_time" : AppData.sharedInstance.totalStroyReadingEndTime,
                         "lapsed" : diff])
     }
+    
+    func saveStoryInExplore() {
+        let storyIndex = ("\(AppData.sharedInstance.selectedCharacterIndex)"  + "\(AppData.sharedInstance.selectedLocationIndex)" + "\(AppData.sharedInstance.selectedMagicalObjectIndex)")
+        let id = self.randomString(length: 6)
+        
+        let animalName = Utility.getAnimalName(index: AppData.sharedInstance.selectedCharacterIndex)
+        let childName = UserDefaultHelper.getChildname()
+        let heroName = AppData.sharedInstance.heroName
+        let placeName = AppData.sharedInstance.placeName
+        let storyImage = "\(storyIndex)-1"
+        let storyNumber = storyIndex
+        let animalCharacterIndex = AppData.sharedInstance.selectedCharacterIndex
+        let locationIndex = AppData.sharedInstance.selectedLocationIndex
+        let magicalObjectName = Utility.getObjectName(index: AppData.sharedInstance.selectedMagicalObjectIndex)
+        let createdAt = Date().timeIntervalSince1970
+        let exploreStoryObject = ExploreStory(id: id,
+                                              animalName: animalName,
+                                              childName: childName,
+                                              heroName: heroName,
+                                              placeName: placeName,
+                                              storyImage: storyImage,
+                                              storyNumber: storyNumber,
+                                              animalCharacterIndex: animalCharacterIndex,
+                                              locationIndex: locationIndex,
+                                              magicalObjectName: magicalObjectName,
+                                              createdAt: createdAt)
+        var tempObject = UserDefaultHelper.getExploreStory() ?? []
+        tempObject.append(exploreStoryObject)
+        UserDefaultHelper.saveExploreStory(exploreStoryList: tempObject)
+    }
+    
+    func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
 }
 
 extension MagicalObjectViewController: UICollectionViewDelegate , UICollectionViewDataSource {

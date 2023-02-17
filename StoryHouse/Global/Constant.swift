@@ -16,6 +16,12 @@ let APPLINK = "https://apps.apple.com/us/app/magic-house-a-i/id1664656561"
 let GRAY_COLOR = UIColor(hex: "#808080")
 let LIGHT_BLUE = UIColor(hex: "#ADD8E6")!
 
+#if DEBUG
+let SERVER_KEY = "AAAAPlBGAWM:APA91bH7La3bSL9Blp3TSrvTli5v73LdLAlcwAWyYfnV4beCb5FJEUTklxXqjY9TTGr-59ZEAJMjiIcs4vvyLwsdFuizKtI1-1adgBYeOTV7hoFSfdLASqsmVgLoojhOQ9WgWgr7bylT"
+#else
+let SERVER_KEY = "AAAAPlBGAWM:APA91bH7La3bSL9Blp3TSrvTli5v73LdLAlcwAWyYfnV4beCb5FJEUTklxXqjY9TTGr-59ZEAJMjiIcs4vvyLwsdFuizKtI1-1adgBYeOTV7hoFSfdLASqsmVgLoojhOQ9WgWgr7bylT"
+#endif
+
 class Constant {
     
     class Storyboard {
@@ -28,12 +34,14 @@ class Constant {
         static let END                        = UIStoryboard(name: "End", bundle: nil)
         static let SETTING                    = UIStoryboard(name: "Setting", bundle: nil)
         static let PREMIUM                    = UIStoryboard(name: "Premium", bundle: nil)
+        static let EXPLORE                    = UIStoryboard(name: "Explore", bundle: nil)
     }
     
     class UserDefault {
         static let VOICE = "Voice"
         static let VOICE_IDENTIFIER = "VoiceIdentifier"
         static let GENDER = "Gender"
+        static let FCMTOKEN = "FCMTOKEN"
         static let USERNAME = "User"
         static let IS_ONBOARDING_DONE = "isOnboardingDone" // for choosen three index from given Category .
         static let PARAGRAPH_INDEX  = "ParagraphIndex"
@@ -47,6 +55,7 @@ class Constant {
         static let USER_ID = "USER_ID"
         static let USER_HERO_NAME = "USER_HERO_NAME"
         static let USER_PLACE_NAME = "USER_PLACE_NAME"
+        static let EXPLORE_STORY = "EXPLORE_STORY"
     }
     
     class Analytics {
@@ -73,7 +82,9 @@ class Constant {
     
     class IN_APP_PURHCHASE_PRODUCTS {
         
-        static let PREMIUM_MONTH = "in.kmsoft.storyTailor"
+        static let PREMIUM_MONTH = "com.magichouse"
+        
+        //static let PREMIUM_MONTH = "in.kmsoft.storyTailor"
  
         static let LIST = [
             IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH
@@ -90,4 +101,5 @@ let YYYYMMDD = "yyyyMMdd"
 let appFullDateFormat = "dd MMM yyyy"
 let appDateFormat = "dd MMM"
 let appTimeFormat = "hh:mm:ss a"
+
 

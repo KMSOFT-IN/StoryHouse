@@ -20,6 +20,7 @@ class HomeViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppData.sharedInstance.childName = UserDefaultHelper.getChildname()
         let name = UserDefaultHelper.getChildname() ?? ""
         self.childName.text = "HELLO" + "\n\(name) !"
         self.setBorderWidth(view: self.createStoryView)
@@ -63,8 +64,10 @@ class HomeViewController : UIViewController {
     }
     
     @IBAction func exploreStoryButtonTapped(_ sender: UIButton) {
-        Utility.showAlert(title: APPNAME, message: "Coming Soon...", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
+//        Utility.showAlert(title: APPNAME, message: "Coming Soon...", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
         self.setBorderWidth(view: self.exploreStoryView)
+        let viewController = ExploreViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
