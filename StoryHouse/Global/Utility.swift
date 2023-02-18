@@ -98,7 +98,7 @@ import AVFoundation
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: okButtonTitle, style: .default, handler: {
             alert -> Void in
-            okClicked?((alertController.textFields![0] as UITextField).text!)
+            okClicked?((alertController.textFields![0] as UITextField).text ?? "")
         }))
         if isCancelButtonNeeded {
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
@@ -136,7 +136,7 @@ import AVFoundation
         }
     }
     
-    class func alert(message: String, title: String, button1: String, button2: String? = nil, button3: String? = nil, action:@escaping (Int)->()) {
+    class func alert(message: String, title: String, button1: String, button2: String? = nil, button3: String? = nil,viewController: UIViewController, action:@escaping (Int)->()) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             let action1 = UIAlertAction(title: button1, style: .default) { _ in
@@ -156,7 +156,7 @@ import AVFoundation
                 }
                 alert.addAction(action3)
             }
-            alert.show()
+            viewController.present(alert, animated: true, completion: nil)
         }
     }
     

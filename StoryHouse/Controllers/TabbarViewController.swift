@@ -42,7 +42,7 @@ class TabbarViewController: UIViewController {
     let gifHandler = Gif()
     var animationTimer: Timer?
     var isFromExploreTab: Bool = false
-    let femaleName = ["Gizzy","Gertie","Gira","Gigi","Gracie","Gertrude","Giselle","Zara","Zoe","Zoey","Cassandra","Maria","Carla","Foxy","Fraya","Freya","Fennec","Fawna","Fia","Fiora","Ferris","Lisa","Fuzzy","Fury","Gazelle","Minty","Poppy","Winkie","Fuzzy","Cinderella","Twiggy","Nanny"]
+    let femaleName = ["Gia","Gizzy","Gertie","Gira","Gigi","Gracie","Gertrude","Giselle","Zara","Zoe","Zoey","Cassandra","Maria","Carla","Foxy","Fraya","Freya","Fennec","Fawna","Fia","Fiora","Ferris","Lisa","Fuzzy","Fury","Gazelle","Minty","Poppy","Winkie","Fuzzy","Cinderella","Twiggy","Nanny"]
     let maleName = ["Gerald","George","Gizmo","Zebra","Zack","Zippy","Zor","Zeb","Fox","Fin","Felix","Foxy","Finnegan","Fenton","Monkey","Max","Mango"]
     
     let placesName = ["forest", "Forest", "underwater", "UnderWater", "Outer Space", "outer space", "savannah", "Savannah"]

@@ -84,7 +84,7 @@ extension InAppPurchaseViewController: IAPProductDelegate {
             }
             //self.showView()
             if(productList.count <= 0) {
-                Utility.alert(message: "Unable to get product on Apple Store. Please try again after sometime.", title: APPNAME, button1: "Ok") { index in
+                Utility.alert(message: "Unable to get product on Apple Store. Please try again after sometime.", title: APPNAME, button1: "Ok", viewController: self) { index in
                 }
             }
         }
@@ -126,7 +126,7 @@ extension InAppPurchaseViewController: IAPProductDelegate {
             self.progressView.stopAnimating()
             self.view.isUserInteractionEnabled = true
             if error?.code != 2 {
-                Utility.alert(message: error?.localizedDescription ?? "Unable to complete transaction. Please try again.", title: APPNAME, button1: "Ok", action: { (index: Int) in
+                Utility.alert(message: error?.localizedDescription ?? "Unable to complete transaction. Please try again.", title: APPNAME, button1: "Ok",viewController: self, action: { (index: Int) in
                 })
             }
         }
@@ -136,7 +136,7 @@ extension InAppPurchaseViewController: IAPProductDelegate {
         DispatchQueue.main.async {
             self.progressView.stopAnimating()
             self.view.isUserInteractionEnabled = true
-            Utility.alert(message: error.localizedDescription, title: APPNAME,button1: "Ok" ,action: { (index: Int) in
+            Utility.alert(message: error.localizedDescription, title: APPNAME,button1: "Ok", viewController: self ,action: { (index: Int) in
             })
         }
     }
@@ -167,13 +167,6 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                                 UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
                                 AppData.sharedInstance.isSubscriptionActive = true
                                 self.purchaseSucessfulCallback?()
-                                
-                                
-                                /*AppData.sharedInstance.profile?.isSubscriptionActive = true
-                                 AppData.sharedInstance.profile?.subscriptionExpireDate = receipt.latest_receipt_info?.first?.expiresDate.timeIntervalSince1970
-                                 AppData.sharedInstance.profile?.productId = receipt.latest_receipt_info?.first?.product_id
-                                 AppData.sharedInstance.profile?.transactionId = receipt.latest_receipt_info?.first?.transaction_id
-                                 AppData.sharedInstance.profile?.saveProfile()*/
                                 callback?(true, receipt, nil)
                                 return
                             }
@@ -181,7 +174,7 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                                 UserDefaultHelper.setSubscriptionExpireDate(value: "")
                                 UserDefaultHelper.setSubscriptionActive(value: false)
                                 AppData.sharedInstance.isSubscriptionActive = false
-                                Utility.alert(message: "Subscription is expired. Please renew.", title: APPNAME,button1: "Ok" ,action: { (index: Int) in
+                                Utility.alert(message: "Subscription is expired. Please renew.", title: APPNAME,button1: "Ok", viewController: self ,action: { (index: Int) in
                                 })
                             }
                             callback?(false, receipt, nil)
