@@ -208,6 +208,9 @@
 		B26EDB61299F9DC30096C596 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26EDB60299F9DC30096C596 /* Explore.storyboard */; };
 		B26EDB64299F9F980096C596 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDB63299F9F980096C596 /* ExploreViewController.swift */; };
 		B26EDB67299FA0730096C596 /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */; };
+		B27DA05429A37A93004E346A /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */; };
+		B27DA05529A37A93004E346A /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */; };
+		B2DC958029A33A68008E58C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DC957F29A33A68008E58C3 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -408,6 +411,9 @@
 		B26EDB60299F9DC30096C596 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		B26EDB63299F9F980096C596 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
+		B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
+		B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2DC957F29A33A68008E58C3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +428,7 @@
 				884B12302990BB6800CE41F9 /* FirebaseCrashlytics in Frameworks */,
 				8838D07D299231D6006FE6ED /* AppCenterAnalytics in Frameworks */,
 				8838D07F299231D6006FE6ED /* AppCenterCrashes in Frameworks */,
+				B2DC958029A33A68008E58C3 /* StoreKit.framework in Frameworks */,
 				8838353C299411B8001C28C3 /* SwiftyReceiptValidator in Frameworks */,
 				8838D0852992528A006FE6ED /* AppsFlyerLib in Frameworks */,
 			);
@@ -1356,6 +1363,7 @@
 		B26EDB53299F71630096C596 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2DC957F29A33A68008E58C3 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1363,6 +1371,7 @@
 		B26EDB62299F9F860096C596 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				B27DA05129A37A7A004E346A /* CollectionView */,
 				B26EDB65299FA0590096C596 /* TableviewCell */,
 				B26EDB63299F9F980096C596 /* ExploreViewController.swift */,
 			);
@@ -1375,6 +1384,15 @@
 				B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */,
 			);
 			path = TableviewCell;
+			sourceTree = "<group>";
+		};
+		B27DA05129A37A7A004E346A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */,
+				B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1566,6 +1584,7 @@
 				88DB92772979729B009DF1FF /* celebration.gif in Resources */,
 				8814030D296D6C9C00930582 /* Poppins-ThinItalic.ttf in Resources */,
 				882A8B9D298F99EA00F71DCF /* glitter2.gif in Resources */,
+				B27DA05529A37A93004E346A /* ExploreCollectionViewCell.xib in Resources */,
 				885404DA2983A07A007F18BE /* 213.json in Resources */,
 				881402F6296D6C8D00930582 /* LuckiestGuy-Regular.ttf in Resources */,
 			);
@@ -1673,6 +1692,7 @@
 				887FEC742996237F00937018 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				88DF44B22976CA9A0070949F /* UserDefaultHelper.swift in Sources */,
 				888A48E2296E62B70097C42D /* AppData.swift in Sources */,
+				B27DA05429A37A93004E346A /* ExploreCollectionViewCell.swift in Sources */,
 				887FEC752996237F00937018 /* IQKeyboardManager.swift in Sources */,
 				886AD46E2996163E0016ADF4 /* MyCell.swift in Sources */,
 				B26EDB5F299F8E7B0096C596 /* ExploreStory.swift in Sources */,
@@ -1827,7 +1847,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NWK58688K7;
@@ -1869,7 +1889,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NWK58688K7;
 				GENERATE_INFOPLIST_FILE = YES;

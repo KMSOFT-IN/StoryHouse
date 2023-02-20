@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         IAPProduct.setProductIndentifiers(productList: Constant.IN_APP_PURHCHASE_PRODUCTS.LIST)
         AppData.sharedInstance.iAPProduct.loadProdictList()
         self.splashScreen()
-        self.checkSubscription()
         FirebaseApp.configure()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
