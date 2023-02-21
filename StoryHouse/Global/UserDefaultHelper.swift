@@ -123,6 +123,15 @@ class UserDefaultHelper {
         UserDefaults.standard.synchronize()
     }
     
+    static func getSubgscriptionProductId() -> String {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.SUBSCRIPTION_PRODUCT_ID) ?? ""
+    }
+    
+    static func setSubscriptionProductId(value: String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.SUBSCRIPTION_PRODUCT_ID)
+        UserDefaults.standard.synchronize()
+    }
+    
     static func getIsRemember() -> Bool {
         return UserDefaults.standard.bool(forKey: Constant.UserDefault.IS_REMEMBER)
     }

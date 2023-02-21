@@ -50,6 +50,7 @@ class Constant {
         static let FIRST_LAUNCH = "FIRST_LAUNCH"
         static let SUBSCRIPTION_ACTIVE = "SUBSCRIPTION_ACTIVE"
         static let SUBSCRIPTION_EXPIRE_DATE = "SUBSCRIPTION_EXPIRE_DATE"
+        static let SUBSCRIPTION_PRODUCT_ID = "SUBSCRIPTION_PRODUCT_ID"
         static let IS_REMEMBER = "IS_REMEMBER"
         static let CURRENT_DATE = "CURRENT_DATE"
         static let USER_ID = "USER_ID"
@@ -83,11 +84,19 @@ class Constant {
     class IN_APP_PURHCHASE_PRODUCTS {
         
         static let PREMIUM_MONTH = "com.magichouse"
+        static let STORYTELLER_MONTHLY_PREMIUM = "com.magichouse.storyteller.monthly"
+        static let STORYTELLER_YEARLY_PREMIUM = "com.magichouse.storyteller.yearly"
+        static let STORYTELLER_HERO_MONTHLY_PREMIUM = "com.magichouse.storyteller.hero.monthly"
+        static let STORYTELLER_HERO_YEARLY_PREMIUM = "com.magichouse.storyteller.hero.yearly"
         
         //static let PREMIUM_MONTH = "in.kmsoft.storyTailor"
  
         static let LIST = [
-            IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH
+            IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH,
+            IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_MONTHLY_PREMIUM,
+            IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_YEARLY_PREMIUM,
+            IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_HERO_MONTHLY_PREMIUM,
+            IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_HERO_YEARLY_PREMIUM
         ]
     }
 }

@@ -7,10 +7,17 @@
 
 import UIKit
 
+
 class PremiumViewController: InAppPurchaseViewController {
 
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var shadowView1: UIView!
+    @IBOutlet weak var storytellerMonthlySelected: UIView!
+    @IBOutlet weak var storytellerYearlySelected: UIView!
+    @IBOutlet weak var storytellerHeroMonthlySelected: UIView!
+    @IBOutlet weak var storytellerHeroYearlySelected: UIView!
     
+    var selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_YEARLY_PREMIUM
     
     static func getInstance() -> PremiumViewController {
         return Constant.Storyboard.PREMIUM.instantiateViewController(withIdentifier: "PremiumViewController") as! PremiumViewController
@@ -22,6 +29,7 @@ class PremiumViewController: InAppPurchaseViewController {
 
         // Do any additional setup after loading the view.
         self.setShadow()
+        self.setSelectedItemBorder(item: 1)
     }
     
     func setShadow() {
@@ -33,6 +41,14 @@ class PremiumViewController: InAppPurchaseViewController {
         self.shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.shadowView.layer.shadowRadius = 10.0
         self.shadowView.layer.masksToBounds = false
+        self.shadowView1.layer.cornerRadius = 8
+        self.shadowView1.layer.masksToBounds = true;
+        self.shadowView1.backgroundColor = UIColor.white
+        self.shadowView1.layer.shadowColor = UIColor(hex: "#DCD9D9")?.cgColor
+        self.shadowView1.layer.shadowOpacity = 0.8
+        self.shadowView1.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.shadowView1.layer.shadowRadius = 10.0
+        self.shadowView1.layer.masksToBounds = false
     }
 
     /*
@@ -45,12 +61,69 @@ class PremiumViewController: InAppPurchaseViewController {
     }
     */
     
+    func setSelectedItemBorder(item: Int) {
+        self.storytellerYearlySelected.borderColor = .clear
+        self.storytellerMonthlySelected.borderColor = .clear
+        self.storytellerHeroMonthlySelected.borderColor = .clear
+        self.storytellerHeroYearlySelected.borderColor = .clear
+        self.storytellerYearlySelected.borderWidth = 0
+        self.storytellerMonthlySelected.borderWidth = 0
+        self.storytellerHeroMonthlySelected.borderWidth = 0
+        self.storytellerHeroYearlySelected.borderWidth = 0
+        
+        if item == 0 {
+            self.storytellerMonthlySelected.borderColor = UIColor(hex: "#")
+            self.storytellerMonthlySelected.borderWidth = 1
+        } else if item == 1 {
+            self.storytellerYearlySelected.borderColor = UIColor(hex: "#")
+            self.storytellerYearlySelected.borderWidth = 1
+        } else if item == 2 {
+            self.storytellerHeroMonthlySelected.borderColor = UIColor(hex: "#")
+            self.storytellerHeroMonthlySelected.borderWidth = 1
+        } else if item == 3 {
+            self.storytellerHeroYearlySelected.borderColor = UIColor(hex: "#")
+            self.storytellerHeroYearlySelected.borderWidth = 1
+        }
+    }
+    
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func pruchaseButtonTapped(_ sender: UIButton) {
-        self.purchaseWithProductId(productId: Constant.IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH)
+        if self.selectedProductId.isEmpty {
+            Utility.alert(message: "Please select any subscriptions.")
+        } else {
+            self.purchaseWithProductId(productId: self.selectedProductId)
+        }
     }
-
+    
+    @IBAction func storytellerMonthlyButtton(_ sender: UIButton) {
+        self.selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_MONTHLY_PREMIUM
+        self.setSelectedItemBorder(item: 0)
+    }
+    
+    @IBAction func storytellerYearlyButtton(_ sender: UIButton) {
+        self.selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_YEARLY_PREMIUM
+        self.setSelectedItemBorder(item: 1)
+    }
+    
+    @IBAction func storytellerHeroMonthlyButtton(_ sender: UIButton) {
+        self.selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_HERO_MONTHLY_PREMIUM
+        self.setSelectedItemBorder(item: 2)
+    }
+    
+    @IBAction func storytellerHeroYearlyButtton(_ sender: UIButton) {
+        self.selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_HERO_YEARLY_PREMIUM
+        self.setSelectedItemBorder(item: 3)
+    }
+    
+    @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        let vc = SettingsViewController.getInstance()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func restoreButtonTapped(_ sender: UIButton) {
+        self.restore()
+    }
 }

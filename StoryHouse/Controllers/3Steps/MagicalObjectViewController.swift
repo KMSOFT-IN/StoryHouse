@@ -27,6 +27,7 @@ class MagicalObjectViewController: UIViewController {
         self.magicalObjectList = CategoryModel.magicalObjectList
         self.magicalObjectCollectionView.dataSource  = self
         self.magicalObjectCollectionView.delegate = self
+        self.magicalObjectCollectionView.reloadData()
     }
     
     static func getInstance() -> MagicalObjectViewController {

@@ -46,10 +46,13 @@ class TabbarViewController: UIViewController {
     let maleName = ["Gerald","George","Gizmo","Zebra","Zack","Zippy","Zor","Zeb","Fox","Fin","Felix","Foxy","Finnegan","Fenton","Monkey","Max","Mango"]
     
     let placesName = ["forest", "Forest", "underwater", "UnderWater", "Outer Space", "outer space", "savannah", "Savannah"]
+    var originalTransform: CGAffineTransform!
+    var isAnimationRunning: Bool = false
+    var isDisappear: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.originalTransform = self.image.transform
         self.setStoryNumber()
         self.loadJson()
         
@@ -74,6 +77,7 @@ class TabbarViewController: UIViewController {
         self.imageTitle.textColor = GRAY_COLOR
         self.setUpUI()
         self.sliderView.isHidden = true
+        self.isDisappear = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -247,7 +251,12 @@ class TabbarViewController: UIViewController {
             self.imageTitle.text = imageTitleStr
         }
         self.imageTitle.textColor = GRAY_COLOR
-        self.startImageAnimationTimer()
+        
+        if !self.isAnimationRunning {
+//            self.startImageAnimationTimer()
+            self.isAnimationRunning = true
+            self.imageAnimationStart()
+        }
         if self.currentIndex == 0 {
             self.addStartStoryEvent()
         } else if self.currentIndex == (totalIndex - 1) {
@@ -292,19 +301,21 @@ class TabbarViewController: UIViewController {
             self.image.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2) // Scale your image
          }) { (finished) in
              UIView.animate(withDuration: 5, animations: {
-              self.image.transform = CGAffineTransform.identity // undo in 1 seconds
+              self.image.transform = self.originalTransform//CGAffineTransform.identity // undo in 1 seconds
              }) { (finished) in
-                 self.startImageAnimationTimer()
+                 if !self.isDisappear {
+                     self.imageAnimationStart()
+                 }
              }
         }
     }
     
     func resetImageAnimation() {
+        self.image.transform = self.originalTransform//CGAffineTransform.identity
         self.stopAnimationTimer()
         self.view.subviews.forEach({$0.layer.removeAllAnimations()})
         self.view.layer.removeAllAnimations()
         self.view.layoutIfNeeded()
-        self.image.image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder") // undo in 1 seconds
     }
     
     func startImageAnimationTimer() {
@@ -335,6 +346,11 @@ class TabbarViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+//        self.stopAnimationTimer()
+//        self.resetImageAnimation()
+        self.isDisappear = true
+        self.isAnimationRunning = false
+        self.resetImageAnimation()
         self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
     }
     
@@ -350,7 +366,7 @@ class TabbarViewController: UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
-        self.resetImageAnimation()
+//        self.resetImageAnimation()
         self.setUpStory(index: self.currentIndex)
         self.resetUI()
     }
@@ -360,7 +376,7 @@ class TabbarViewController: UIViewController {
         if (self.currentIndex < 0) {
             self.currentIndex = 0
         }
-        self.resetImageAnimation()
+//        self.resetImageAnimation()
         self.setUpStory(index: self.currentIndex)
         self.resetUI()
         
@@ -394,6 +410,7 @@ class TabbarViewController: UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
+//        self.resetImageAnimation()
         self.setUpStory(index: self.currentIndex)
         self.isFirstTimePlay = true
         self.isPlayAudioON = true

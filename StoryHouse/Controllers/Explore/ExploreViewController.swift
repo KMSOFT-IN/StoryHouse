@@ -97,6 +97,17 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            AppData.sharedInstance.placeName = self.exploreStoryList[indexPath.item].placeName ?? ""
+            AppData.sharedInstance.heroName = self.exploreStoryList[indexPath.item].heroName ?? ""
+            AppData.sharedInstance.selectedStoryNumber = self.exploreStoryList[indexPath.item].storyNumber ?? ""
+            UserDefaultHelper.setUserHeroName(value: self.exploreStoryList[indexPath.item].heroName ?? "")
+            UserDefaultHelper.setUserPlaceName(value: self.exploreStoryList[indexPath.item].placeName ?? "")
+            UserDefaultHelper.setSelectedStoryNumber(value: self.exploreStoryList[indexPath.item].storyNumber ?? "")
+            let viewController = TabbarViewController.getInstance()
+            self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     func setAttributedTextForStoryTitle(childName: String, heroName: String, placeName: String, animalName: String, objectName: String) -> NSMutableAttributedString {
         let attrs1 = [NSAttributedString.Key.font : UIFont(name: "Poppins-Regular", size: 22.0)!, NSAttributedString.Key.foregroundColor : UIColor(hex: "#292B5C")!]
         

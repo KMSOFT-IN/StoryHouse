@@ -119,11 +119,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                  {
                                 UserDefaultHelper.setSubscriptionActive(value: true)
                                 UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
+                                UserDefaultHelper.setSubscriptionProductId(value: receipt.latest_receipt_info?.first?.product_id ?? "")
                                 AppData.sharedInstance.isSubscriptionActive = true
                                 callback?(true, receipt, nil)
                                 return
                             }
                             else {
+                                UserDefaultHelper.setSubscriptionProductId(value: "")
                                 UserDefaultHelper.setSubscriptionExpireDate(value: "")
                                 UserDefaultHelper.setSubscriptionActive(value: false)
                                 AppData.sharedInstance.isSubscriptionActive = false

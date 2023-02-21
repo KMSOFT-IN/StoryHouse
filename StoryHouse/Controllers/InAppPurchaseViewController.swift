@@ -34,6 +34,7 @@ class InAppPurchaseViewController: UIViewController {
             sessionConfiguration: .default
         )
         
+       //
         self.receiptValidator = SwiftyReceiptValidator(configuration: configuration, isLoggingEnabled: false)
         AppData.sharedInstance.iAPProduct.delegate = self
         IAPProduct.setProductIndentifiers(productList: self.products)
@@ -95,30 +96,35 @@ extension InAppPurchaseViewController: IAPProductDelegate {
             self.progressView.stopAnimating()
             self.view.isUserInteractionEnabled = true
         }
-        let filter = productList.filter({$0.productIdentifier == self.selectedProduct})
-        if self.selectedProduct == Constant.IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH  {
-            if(filter.count > 0) {
-                self.checkUserHaveValidLicense { haveValidLicense, data, error in
-                    if haveValidLicense {
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-            }
-            else {
-                self.checkUserHaveValidLicense { haveValidLicense, data, error in
-                    if haveValidLicense {
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
+        self.checkUserHaveValidLicense { haveValidLicense, data, error in
+            if haveValidLicense {
+                self.navigationController?.popViewController(animated: true)
             }
         }
-        else {
-            self.progressView.stopAnimating()
-            self.view.isUserInteractionEnabled = true
-            self.purchaseSucessfulCallback?()
-            let transactopnId = transaction.transactionIdentifier ?? ""
-            let productId = self.selectedProduct ?? ""
-        }
+//        let filter = productList.filter({$0.productIdentifier == self.selectedProduct})
+//        if self.selectedProduct == Constant.IN_APP_PURHCHASE_PRODUCTS.PREMIUM_MONTH  {
+//            if(filter.count > 0) {
+//                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+//                    if haveValidLicense {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                }
+//            }
+//            else {
+//                self.checkUserHaveValidLicense { haveValidLicense, data, error in
+//                    if haveValidLicense {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                }
+//            }
+//        }
+//        else {
+//            self.progressView.stopAnimating()
+//            self.view.isUserInteractionEnabled = true
+//            self.purchaseSucessfulCallback?()
+//            let transactopnId = transaction.transactionIdentifier ?? ""
+//            let productId = self.selectedProduct ?? ""
+//        }
     }
     
     func purchasedCancelWithError(error: NSError?) {
@@ -165,6 +171,7 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                                 //logAnalyticsInitiatePurchaseEvent(eventName: "InitiatePurchase", parameters: ["PRODUCT_ID":productId])
                                 UserDefaultHelper.setSubscriptionActive(value: true)
                                 UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
+                                UserDefaultHelper.setSubscriptionProductId(value: receipt.latest_receipt_info?.first?.product_id ?? "")
                                 AppData.sharedInstance.isSubscriptionActive = true
                                 self.purchaseSucessfulCallback?()
                                 callback?(true, receipt, nil)
@@ -172,6 +179,7 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                             }
                             else {
                                 UserDefaultHelper.setSubscriptionExpireDate(value: "")
+                                UserDefaultHelper.setSubscriptionProductId(value: "")
                                 UserDefaultHelper.setSubscriptionActive(value: false)
                                 AppData.sharedInstance.isSubscriptionActive = false
                                 Utility.alert(message: "Subscription is expired. Please renew.", title: APPNAME,button1: "Ok", viewController: self ,action: { (index: Int) in

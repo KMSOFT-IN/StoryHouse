@@ -171,7 +171,7 @@ public class IAPHelper : NSObject, SKProductsRequestDelegate, SKPaymentTransacti
     }
     
     func receiptValidation(sandBox: Bool = false, callback: ((_ success: Bool, _ data: Any?, _ error: Error?) -> Void)?) {
-        let SUBSCRIPTION_SECRET = "cd72731f425e40c39dc41f3603b37f26" // MagicHouse App Stoe client
+        let SUBSCRIPTION_SECRET = "144431e717af4c7c994c9f1df2491f51"//"cd72731f425e40c39dc41f3603b37f26" // MagicHouse App Stoe client
         
         let receiptPath = Bundle.main.appStoreReceiptURL?.path
         if FileManager.default.fileExists(atPath: receiptPath!){
