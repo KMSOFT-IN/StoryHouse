@@ -246,6 +246,10 @@ class TabbarViewController: UIViewController {
                 }
                 self.imageTitle.text = nameReplaceImageTitle
             }
+            else {
+                let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
+                self.imageTitle.text = imageTitleStr
+            }
         } else {
             let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
             self.imageTitle.text = imageTitleStr

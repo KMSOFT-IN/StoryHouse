@@ -175,11 +175,11 @@ public class IAPHelper : NSObject, SKProductsRequestDelegate, SKPaymentTransacti
         
         let receiptPath = Bundle.main.appStoreReceiptURL?.path
         if FileManager.default.fileExists(atPath: receiptPath!){
-            var receiptData:NSData?
+            var receiptData: Data?
             do {
-                receiptData = try NSData(contentsOf: Bundle.main.appStoreReceiptURL!)
+                receiptData = try Data(contentsOf: Bundle.main.appStoreReceiptURL!)
             }
-            catch {
+            catch let error {
                 print("ERROR: " + error.localizedDescription)
             }
             //let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))

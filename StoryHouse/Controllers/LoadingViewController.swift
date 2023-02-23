@@ -20,7 +20,7 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = UserDefaultHelper.getChildname()
-        self.chilldNameTitle.text = "creating" + "\n \(name)" + "’s story!"
+        self.chilldNameTitle.text = "creating\n" + (name ?? "") + "’s story!"
     }
     
     override func viewWillAppear(_ animated: Bool) {

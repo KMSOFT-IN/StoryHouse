@@ -62,12 +62,17 @@ class EndViewController: UIViewController {
             }
             UIGraphicsEndImageContext()
     //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-            let objectsToShare = [image, self] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-            activityVC.popoverPresentationController?.sourceView = sender as? UIView
-            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
-            self.present(activityVC, animated: true, completion: nil)
+            if let i = image {
+                let objectsToShare = [i, self] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+                activityVC.popoverPresentationController?.sourceView = sender
+                AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
+                self.present(activityVC, animated: true, completion: nil)
+            }
+            else {
+                // handle error
+            }
         }
     }
     

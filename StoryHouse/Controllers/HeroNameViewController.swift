@@ -26,7 +26,7 @@ class HeroNameViewController: UIViewController {
         super.viewDidLoad()
         self.heroImageView.image = selectedImage
         self.heroImageView.makeRounded()
-        self.heroNameTextField.text = UserDefaultHelper.getUserHeroName() ?? ""
+        self.heroNameTextField.text = UserDefaultHelper.getUserHeroName()
         if UserDefaultHelper.getIsRemember() {
             self.rememberImageView.image = UIImage(named: "ic_check")
             if UserDefaultHelper.getGender() == GENDER.BOY.rawValue {

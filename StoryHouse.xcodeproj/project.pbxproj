@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		881402E0296D6A2E00930582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881402DF296D6A2E00930582 /* AppDelegate.swift */; };
 		881402E2296D6A2E00930582 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881402E1296D6A2E00930582 /* SceneDelegate.swift */; };
-		881402E4296D6A2E00930582 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881402E3296D6A2E00930582 /* ViewController.swift */; };
 		881402E7296D6A2E00930582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881402E5296D6A2E00930582 /* Main.storyboard */; };
 		881402E9296D6A2F00930582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 881402E8296D6A2F00930582 /* Assets.xcassets */; };
 		881402EC296D6A2F00930582 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881402EA296D6A2F00930582 /* LaunchScreen.storyboard */; };
@@ -217,7 +216,6 @@
 		881402DC296D6A2E00930582 /* StoryHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		881402DF296D6A2E00930582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		881402E1296D6A2E00930582 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		881402E3296D6A2E00930582 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		881402E6296D6A2E00930582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		881402E8296D6A2F00930582 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		881402EB296D6A2F00930582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -460,23 +458,13 @@
 				88A38C49296E9D7E00B7910D /* StoryHouse.entitlements */,
 				881402DF296D6A2E00930582 /* AppDelegate.swift */,
 				881402E1296D6A2E00930582 /* SceneDelegate.swift */,
-				881402E3296D6A2E00930582 /* ViewController.swift */,
 				887FEC492996236700937018 /* Library */,
 				882A8BA8298FD5F300F71DCF /* Helper */,
 				881402F3296D6C8300930582 /* Fonts */,
 				88140324296D84FA00930582 /* Extension */,
 				88E1CA8529781672008F3B28 /* GIF Class */,
 				885BE268296EBE6900B09179 /* Model */,
-				881402E5296D6A2E00930582 /* Main.storyboard */,
-				88370B5C2978F0A400B2199C /* Home.storyboard */,
-				88E1CA8029780C69008F3B28 /* End.storyboard */,
-				88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */,
-				B26EDB60299F9DC30096C596 /* Explore.storyboard */,
-				888A48E9296E79770097C42D /* Loading.storyboard */,
-				888A48E7296E79410097C42D /* Category.storyboard */,
-				B2538729299BA09C00982CF5 /* Setting.storyboard */,
-				888A48E3296E77310097C42D /* Onboarding.storyboard */,
-				B26BDCE6299B69A80017CA2A /* Premium.storyboard */,
+				B24C27E129A729CB005890C4 /* Storyboards */,
 				881402E8296D6A2F00930582 /* Assets.xcassets */,
 				881402EA296D6A2F00930582 /* LaunchScreen.storyboard */,
 				881402ED296D6A2F00930582 /* Info.plist */,
@@ -1360,6 +1348,23 @@
 			path = "GIF Class";
 			sourceTree = "<group>";
 		};
+		B24C27E129A729CB005890C4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				881402E5296D6A2E00930582 /* Main.storyboard */,
+				88370B5C2978F0A400B2199C /* Home.storyboard */,
+				88E1CA8029780C69008F3B28 /* End.storyboard */,
+				88F562DD296E8CEE00813BC9 /* Tabbar.storyboard */,
+				B26EDB60299F9DC30096C596 /* Explore.storyboard */,
+				888A48E9296E79770097C42D /* Loading.storyboard */,
+				888A48E7296E79410097C42D /* Category.storyboard */,
+				B2538729299BA09C00982CF5 /* Setting.storyboard */,
+				888A48E3296E77310097C42D /* Onboarding.storyboard */,
+				B26BDCE6299B69A80017CA2A /* Premium.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		B26EDB53299F71630096C596 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1661,7 +1666,6 @@
 				88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */,
 				8814033C296D8EB600930582 /* HeroNameViewController.swift in Sources */,
 				882A8BAA298FD61000F71DCF /* Extractor.swift in Sources */,
-				881402E4296D6A2E00930582 /* ViewController.swift in Sources */,
 				B26EDB59299F740C0096C596 /* AppNotificationHandler.swift in Sources */,
 				88140342296D995700930582 /* SelectStoryViewController.swift in Sources */,
 				887FEC722996237F00937018 /* IQKeyboardManagerConstants.swift in Sources */,

@@ -135,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate, UNUserN
 
 extension UIApplication {
     // Get which VC in top Window
-    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(base: UIViewController? = UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.rootViewController) -> UIViewController? {
 
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)

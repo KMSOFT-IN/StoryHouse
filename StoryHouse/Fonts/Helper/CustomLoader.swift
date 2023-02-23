@@ -36,7 +36,7 @@ class CustomLoader: UIView {
         self.addSubview(self.transparentView)
         self.transparentView.addSubview(self.gifImage)
         self.transparentView.bringSubviewToFront(self.gifImage)
-        UIApplication.shared.keyWindow?.addSubview(transparentView)
+        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.addSubview(transparentView)
         
     }
     
