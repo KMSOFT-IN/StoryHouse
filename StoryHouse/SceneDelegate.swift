@@ -115,8 +115,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     if let dictionary = data as? [String: Any] {
                         if let receipt = ReceiptValidation.getInstance(dictionary: dictionary) {
                             if receipt.status == 0
-                                && (Double(receipt.latest_receipt_info?.first?.expires_date_ms ?? "0") ?? 0) > Date().timeIntervalSince1970 * 1000
-                                 {
+                                && (Double(receipt.latest_receipt_info?.first?.expires_date_ms ?? "0") ?? 0) > Date().timeIntervalSince1970 * 1000 {
                                 UserDefaultHelper.setSubscriptionActive(value: true)
                                 UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
                                 UserDefaultHelper.setSubscriptionProductId(value: receipt.latest_receipt_info?.first?.product_id ?? "")

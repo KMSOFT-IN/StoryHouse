@@ -283,13 +283,13 @@
                                         <rect key="frame" x="383" y="520.5" width="600" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current Subscription" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Az-gM-JCb">
-                                                <rect key="frame" x="30" y="0.0" width="300" height="70"/>
+                                                <rect key="frame" x="30" y="0.0" width="270" height="70"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5t-z8-S9I">
-                                                <rect key="frame" x="330" y="0.0" width="255" height="70"/>
+                                                <rect key="frame" x="300" y="0.0" width="285" height="70"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="22"/>
                                                 <color key="textColor" red="0.16078431369999999" green="0.16899999979999999" blue="0.36100000139999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -302,7 +302,7 @@
                                             <constraint firstItem="7Az-gM-JCb" firstAttribute="leading" secondItem="94y-Sx-VGm" secondAttribute="leading" constant="30" id="QY9-NO-N6U"/>
                                             <constraint firstItem="Y5t-z8-S9I" firstAttribute="top" secondItem="94y-Sx-VGm" secondAttribute="top" id="T1N-6d-6BW"/>
                                             <constraint firstItem="Y5t-z8-S9I" firstAttribute="leading" secondItem="7Az-gM-JCb" secondAttribute="trailing" id="U9h-s5-ro4"/>
-                                            <constraint firstItem="7Az-gM-JCb" firstAttribute="width" secondItem="94y-Sx-VGm" secondAttribute="width" multiplier="0.5" id="aoN-0z-fQM"/>
+                                            <constraint firstItem="7Az-gM-JCb" firstAttribute="width" secondItem="94y-Sx-VGm" secondAttribute="width" multiplier="0.45" id="aoN-0z-fQM"/>
                                             <constraint firstAttribute="bottom" secondItem="Y5t-z8-S9I" secondAttribute="bottom" id="fgv-8v-Igw"/>
                                             <constraint firstItem="7Az-gM-JCb" firstAttribute="top" secondItem="94y-Sx-VGm" secondAttribute="top" id="k3W-wQ-vra"/>
                                             <constraint firstAttribute="height" constant="70" id="lI0-rv-hxf"/>

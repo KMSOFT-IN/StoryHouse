@@ -165,9 +165,8 @@ extension InAppPurchaseViewController: IAPProductDelegate {
                     if let dictionary = data as? [String: Any] {
                         if let receipt = ReceiptValidation.getInstance(dictionary: dictionary) {
                             if receipt.status == 0
-                                && (Double(receipt.latest_receipt_info?.first?.expires_date_ms ?? "0") ?? 0) > Date().timeIntervalSince1970 * 1000
-                                 {
-//                                AppData.sharedInstance.logger.logAnalyticsPurchasedEvent(eventName: "PurchaseCompleted", parameters: ["PRODUCT_ID":self.selectedProduct ?? ""])
+                                && (Double(receipt.latest_receipt_info?.first?.expires_date_ms ?? "0") ?? 0) > Date().timeIntervalSince1970 * 1000 {
+                                //AppData.sharedInstance.logger.logAnalyticsPurchasedEvent(eventName: "PurchaseCompleted", parameters: ["PRODUCT_ID":self.selectedProduct ?? ""])
                                 //logAnalyticsInitiatePurchaseEvent(eventName: "InitiatePurchase", parameters: ["PRODUCT_ID":productId])
                                 UserDefaultHelper.setSubscriptionActive(value: true)
                                 UserDefaultHelper.setSubscriptionExpireDate(value: receipt.latest_receipt_info?.first?.expires_date_ms ?? "0")
