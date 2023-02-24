@@ -40,7 +40,7 @@ class SettingsViewController: UIViewController {
             self.subscriptionTypeLabel.text = "Storyteller hero 1 year"
             break;
         default:
-            self.subscriptionTypeLabel.text = "None"
+            self.subscriptionTypeLabel.text = "Free"
             break
         }
     }
@@ -53,8 +53,8 @@ class SettingsViewController: UIViewController {
             let date = (Date(timeIntervalSince1970: (Double(expireDate) ?? 0) / 1000))
             self.expiredLabel.text = date.toFullDateString
         } else {
-            self.subscriptionTypeLabel.text = "None"
-            self.expiredLabel.text = "Expired"
+            self.subscriptionTypeLabel.text = "Free"
+            self.expiredLabel.text = "Never"
         }
     }
     

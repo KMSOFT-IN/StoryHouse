@@ -38,7 +38,7 @@ class PlaceNameViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let placeName = self.placeNameTextField.text ?? ""
+        let placeName = self.placeNameTextField.text?.trimRight() ?? ""
         if placeName.isEmpty {
             Utility.showAlert(title: APPNAME, message: "Please enter place name.", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
         } else {

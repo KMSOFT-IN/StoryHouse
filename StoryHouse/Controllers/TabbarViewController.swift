@@ -495,7 +495,7 @@ class TabbarViewController: UIViewController {
 
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         backgroundImage.draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
-        watermarkImage.draw(in: CGRect(x: 10, y: size.height - 60, width: 50, height: 50))
+        watermarkImage.draw(in: CGRect(x: 10, y: size.height - 110, width: 100, height: 100))
 
         if let result = UIGraphicsGetImageFromCurrentImageContext() {
             UIGraphicsEndImageContext()

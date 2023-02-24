@@ -25,6 +25,7 @@ class HeroNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.heroImageView.image = selectedImage
+        UserDefaultHelper.setIsRemember(value: true)
         self.heroImageView.makeRounded()
         self.heroNameTextField.text = UserDefaultHelper.getUserHeroName()
         if UserDefaultHelper.getIsRemember() {
@@ -132,7 +133,7 @@ class HeroNameViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let heroName = self.heroNameTextField.text ?? ""
+        let heroName = self.heroNameTextField.text?.trimRight() ?? ""
         if heroName.isEmpty {
             Utility.showAlert(title: APPNAME, message: "Please enter hero name.", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
         } else {
