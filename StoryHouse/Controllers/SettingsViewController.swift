@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
     @IBOutlet weak var expiredLabel:UILabel!
+    @IBOutlet weak var progressView: UIActivityIndicatorView!
     
     static func getInstance() -> SettingsViewController {
         return Constant.Storyboard.SETTING.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
@@ -21,7 +22,15 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+//        self.nameTextField.text = UserDefaultHelper.getChildname()
+//        self.progressView.isHidden = true
+//        self.checkSubscription()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.nameTextField.text = UserDefaultHelper.getChildname()
+        self.progressView.isHidden = true
         self.checkSubscription()
     }
     
@@ -97,9 +106,65 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func cancelSubscriptionTapped(_ sender: UIButton) {
+        self.redirectToManageSubscription()
+    }
+    
+    @IBAction func changePlanButtonTapped(_ sender: UIButton) {
+        self.checkUserHaveValidLicense(callback: { haveValidLicense, data, error in
+            if haveValidLicense {
+                Utility.alert(message: "To change plan please cancel current subscription?", title: APPNAME, button1: "Cancel",button2: "Subscription", viewController: self) { index in
+                    if index == 1 {
+                        self.redirectToManageSubscription()
+                    }
+                }
+            } else {
+                self.navigateToPremiumScreen()
+            }
+        })
+    }
+    
+    func redirectToManageSubscription() {
         if let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:])
+            }
+        }
+    }
+    
+    func navigateToPremiumScreen() {
+        let viewController = PremiumViewController.getInstance()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func checkUserHaveValidLicense(callback: ((_ haveValidLicense: Bool, _ data: ReceiptValidation?, _ error: Error?) -> Void)?) {
+        self.progressView.isHidden = false
+        self.progressView.startAnimating()
+        self.view.isUserInteractionEnabled = false
+        IAPProduct.store.receiptValidation { success, data, error in
+            DispatchQueue.main.async {
+                self.progressView.isHidden = true
+                self.progressView.stopAnimating()
+                self.view.isUserInteractionEnabled = true
+                if success {
+                    print(data ?? "Oh no")
+                    if let dictionary = data as? [String: Any] {
+                        if let receipt = ReceiptValidation.getInstance(dictionary: dictionary) {
+                            if receipt.status == 0 && (receipt.pending_renewal_info?.first?.auto_renew_status ?? "") == "1" {
+                                callback?(true, receipt, nil)
+                                return
+                            }
+                            callback?(false, receipt, nil)
+                            return
+                        }
+                    }
+                    callback?(false, nil, nil)
+                    return
+                }
+                else {
+                    print(error?.localizedDescription ?? "")
+                    callback?(false, nil, error)
+                    return
+                }
             }
         }
     }

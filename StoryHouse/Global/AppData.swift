@@ -35,6 +35,11 @@ class AppData {
     var iAPProduct = IAPProduct()
     let notificationHelper = PushNotificationHelper()
     var fcmToken: String = ""
+    
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
+    var audioPlayer:AVAudioPlayer!
+    
     static let sharedInstance: AppData = {
         let instance = AppData()
         return instance

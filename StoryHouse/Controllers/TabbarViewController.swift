@@ -22,6 +22,10 @@ class TabbarViewController: UIViewController {
     
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var muteLabel: UILabel!
+    
+    @IBOutlet weak var recordAudioButton: UIButton!
+    @IBOutlet weak var playRecordedAudioButton: UIButton!
+    
     var synthesizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     var callback: ((_ volume: Float) -> Void)?
@@ -70,6 +74,7 @@ class TabbarViewController: UIViewController {
         self.setUpSlider()
         self.isFirstTimePlay = true
         self.navigationController?.setViewControllers([self], animated: true)
+        RecordAudioManager.shareInstance().setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -350,8 +355,6 @@ class TabbarViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        self.stopAnimationTimer()
-//        self.resetImageAnimation()
         self.isDisappear = true
         self.isAnimationRunning = false
         self.resetImageAnimation()
@@ -366,7 +369,7 @@ class TabbarViewController: UIViewController {
             let viewController = EndViewController.getInstance()
             let index = 0
             viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
-            viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index] as! String
+            viewController.imageTitle = (isHE ? (self.paragraphDetails?[index].he ?? "") : self.paragraphDetails?[index].she ?? "")
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
@@ -410,7 +413,7 @@ class TabbarViewController: UIViewController {
             let viewController = EndViewController.getInstance()
             let index = 0
             viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
-            viewController.imageTitle = (isHE ? self.paragraphDetails?[index].he : self.paragraphDetails?[index].she) ?? self.paragraphDetails?[index].he as! String
+            viewController.imageTitle = (isHE ? (self.paragraphDetails?[index].he ?? "") : self.paragraphDetails?[index].she ?? "")
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
@@ -476,7 +479,7 @@ class TabbarViewController: UIViewController {
             }
             UIGraphicsEndImageContext()
     //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-            let objectsToShare = [image, self] as [Any]
+            let objectsToShare = [image as Any, self] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             activityVC.popoverPresentationController?.sourceView = sender as? UIView
@@ -521,7 +524,6 @@ extension TabbarViewController: UIActivityItemSource {
     }
 
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-//        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
         let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK).\n\(self.imageTitle.text ?? "")"
         return childName
     }
@@ -529,7 +531,6 @@ extension TabbarViewController: UIActivityItemSource {
     func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
         let metadata = LPLinkMetadata()
         metadata.title = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK)./n\n\(self.imageTitle.text ?? "")"
-//        "\(UserDefaultHelper.getChildname() ?? "") 's Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
         let image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder")!
         metadata.iconProvider = NSItemProvider(object: image)
         return metadata
@@ -574,69 +575,33 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
     
 }
 
-/*
- extension TabbarViewController {
- 
- func playAudio1(text: String) {
- //if text == "!" || text == "," { return }
- self.utterance = AVSpeechUtterance(string: text)
- var voice = " "
- if let voiceObj = AVSpeechSynthesisVoice.speechVoices().filter({$0.name == "Samantha" }).first {
- voice = voiceObj.identifier
- }
- self.utterance.voice = AVSpeechSynthesisVoice(identifier: voice)
- //   self.utterance.rate = 0.5
- //   self.utterance.volume = Float(self.volume)
- self.callback = { (v) in
- self.utterance.volume = Float(v)
- print(v)
- }
- self.synthesizer.delegate = self
- self.synthesizer.speak(utterance)
- }
- 
- func callCharacter() {
- self.isFirstTimeCall = false
- self.stopTimer()
- self.setCharacter(title: self.imageTitle.text ?? "")
- self.playAudio(text: self.imageTitle.text ?? "")
- }
- 
- func setCharacter(title: String) {
- self.isFirstTimeCall = false
- if !isPlayAudioON || isPageChanged { return }
- let words = title.components(separatedBy: " ")
- 
- if self.charCount >= words.count {
- self.resetUI()
- self.nextPageButtontapped(self)
- return
- }
- 
- let word = words[self.charCount]
- self.lastSelectedIndex += (word.count + 1)
- if word == words.last {
- self.lastSelectedIndex -= 1
- }
- 
- let attributedString = NSMutableAttributedString(string:title.trimmingCharacters(in: .whitespacesAndNewlines))
- attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
- value: UIColor.red ,
- range: NSRange(location: 0, length: self.lastSelectedIndex))
- self.imageTitle.attributedText = attributedString
- self.characterIndexTimer = Timer.scheduledTimer(withTimeInterval: 0.35
- , repeats: false) { (timer) in
- self.charCount += 1
- self.setCharacter(title: title)
- }
- }
- 
- func stopTimer()  {
- if characterIndexTimer != nil {
- self.characterIndexTimer?.invalidate()
- self.characterIndexTimer = nil
- }
- }
- }
- 
- */
+extension TabbarViewController {
+    
+    @IBAction func recordButtonTapped(_ sender: UIButton) {
+        if !sender.isSelected {
+            sender.isSelected = true
+            if AppData.sharedInstance.audioRecorder == nil {
+                let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
+                RecordAudioManager.shareInstance().startRecording(fileName: fileName)
+            } else {
+                RecordAudioManager.shareInstance().finishRecording(success: true)
+            }
+        } else {
+            sender.isSelected = false
+            RecordAudioManager.shareInstance().finishRecording(success: true)
+        }
+    }
+    
+    @IBAction func playRecordedAudioButtonTapped(_ sender: UIButton) {
+        if (sender.titleLabel?.text == "Play"){
+            sender.setTitle("Stop", for: .normal)
+            let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
+            RecordAudioManager.shareInstance().preparePlayer(fileName: fileName)
+            AppData.sharedInstance.audioPlayer.play()
+        } else {
+            AppData.sharedInstance.audioPlayer.stop()
+            sender.setTitle("Play", for: .normal)
+        }
+    }
+    
+}

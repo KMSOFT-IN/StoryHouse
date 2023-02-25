@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -195,6 +195,7 @@
 		88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC48297BA4AC003388F4 /* CustomLoader.swift */; };
 		88FDBC4B297BA4B9003388F4 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88FDBC4A297BA4B9003388F4 /* demo.gif */; };
 		88FDBC4E297BA4CE003388F4 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */; };
+		B202CC6D29A9D66600545ED0 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202CC6C29A9D66600545ED0 /* RecordingManager.swift */; };
 		B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2538729299BA09C00982CF5 /* Setting.storyboard */; };
 		B253872C299BA49400982CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253872B299BA49400982CF5 /* SettingsViewController.swift */; };
 		B26BDCE7299B69A80017CA2A /* Premium.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26BDCE6299B69A80017CA2A /* Premium.storyboard */; };
@@ -399,6 +400,7 @@
 		88FDBC48297BA4AC003388F4 /* CustomLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		88FDBC4A297BA4B9003388F4 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
+		B202CC6C29A9D66600545ED0 /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
 		B2538729299BA09C00982CF5 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		B253872B299BA49400982CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B26BDCE6299B69A80017CA2A /* Premium.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Premium.storyboard; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 		882A8BA8298FD5F300F71DCF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B202CC6B29A9D64C00545ED0 /* Recording */,
 				889ABFAC2993D52000A5EDF7 /* IAP */,
 				882A8BA9298FD61000F71DCF /* Extractor.swift */,
 				8838D08629926844006FE6ED /* AppLogger.swift */,
@@ -1348,6 +1351,14 @@
 			path = "GIF Class";
 			sourceTree = "<group>";
 		};
+		B202CC6B29A9D64C00545ED0 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				B202CC6C29A9D66600545ED0 /* RecordingManager.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
 		B24C27E129A729CB005890C4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -1448,7 +1459,7 @@
 				};
 			};
 			buildConfigurationList = 881402D7296D6A2E00930582 /* Build configuration list for PBXProject "StoryHouse" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1691,6 +1702,7 @@
 				881CBF37297680090094109D /* StoryModel.swift in Sources */,
 				8814032C296D84FA00930582 /* UIView.swift in Sources */,
 				88167778297E5B7400725569 /* SettingViewController.swift in Sources */,
+				B202CC6D29A9D66600545ED0 /* RecordingManager.swift in Sources */,
 				88140338296D86F100930582 /* LoadingViewController.swift in Sources */,
 				881402E2296D6A2E00930582 /* SceneDelegate.swift in Sources */,
 				887FEC742996237F00937018 /* IQKeyboardReturnKeyHandler.swift in Sources */,
@@ -1851,7 +1863,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NWK58688K7;
@@ -1893,7 +1905,7 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NWK58688K7;
 				GENERATE_INFOPLIST_FILE = YES;
