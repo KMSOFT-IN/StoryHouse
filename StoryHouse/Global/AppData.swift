@@ -39,6 +39,8 @@ class AppData {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
+    let totalRecordingSeconds: Int = 60
+    
     
     static let sharedInstance: AppData = {
         let instance = AppData()

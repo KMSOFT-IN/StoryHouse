@@ -9,6 +9,8 @@ import AVKit
 import MediaPlayer
 import AVFoundation
 import LinkPresentation
+import Lottie
+
 class TabbarViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
@@ -23,6 +25,8 @@ class TabbarViewController: UIViewController {
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var muteLabel: UILabel!
     
+    @IBOutlet weak var audioRecordView: UIView!
+    @IBOutlet weak var recordAudioImageView: UIImageView!
     @IBOutlet weak var recordAudioButton: UIButton!
     @IBOutlet weak var playRecordedAudioButton: UIButton!
     
@@ -53,6 +57,9 @@ class TabbarViewController: UIViewController {
     var originalTransform: CGAffineTransform!
     var isAnimationRunning: Bool = false
     var isDisappear: Bool = false
+    private var lottieAnimationView: LottieAnimationView?
+    var recordingTimeCount:Int = 0
+    var recordingTimer:Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +89,7 @@ class TabbarViewController: UIViewController {
         self.imageTitle.textColor = GRAY_COLOR
         self.setUpUI()
         self.sliderView.isHidden = true
+        self.audioRecordView.isHidden = false
         self.isDisappear = false
     }
     
@@ -338,6 +346,22 @@ class TabbarViewController: UIViewController {
             self.animationTimer = nil
         }
     }
+    
+    func playLottieAnimation() {
+        self.recordAudioImageView.isHidden = true
+        self.lottieAnimationView = LottieAnimationView(name: "record")
+        self.lottieAnimationView?.frame = CGRect (x: 0, y: 0, width: 80, height: 80)
+        self.lottieAnimationView?.contentMode = .scaleToFill
+        self.lottieAnimationView?.center = self.audioRecordView.center
+        self.lottieAnimationView?.loopMode = .loop
+        self.audioRecordView.insertSubview(self.lottieAnimationView!, at: 0)
+        self.lottieAnimationView?.play()
+    }
+    
+    func stopAnimation() {
+        self.recordAudioImageView.isHidden = false
+        self.lottieAnimationView?.removeFromSuperview()
+    }
 
     @IBAction func homeButtonTapped(_ sender: Any) {
         self.addEndStoryEvent()
@@ -466,6 +490,7 @@ class TabbarViewController: UIViewController {
     
     @IBAction func muteButtonTapped(_ sender: UIButton) {
         self.sliderView.isHidden = !self.sliderView.isHidden
+        self.audioRecordView.isHidden = self.sliderView.isHidden
     }
     
     @IBAction func shareButtontapped(_ sender: Any) {
@@ -577,18 +602,66 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
 
 extension TabbarViewController {
     
+    func startRecordingTimer() {
+        self.stopRecordingTimer()
+        self.recordingTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.timerDidFire), userInfo: nil, repeats: true)
+        RunLoop.current.add(self.recordingTimer, forMode: RunLoop.Mode.common)
+    }
+    
+    @objc func timerDidFire() {
+        self.recordingTimeCount += 1
+        if self.recordingTimeCount > 45 {
+            let leftTime = AppData.sharedInstance.totalRecordingSeconds - self.recordingTimeCount
+            
+            if self.recordingTimeCount >= AppData.sharedInstance.totalRecordingSeconds {
+                self.recordAudioButton.setTitle("", for: .normal)
+                self.finishRecording()
+            } else {
+                self.recordAudioButton.setTitle("\(leftTime)", for: .normal)
+            }
+        }
+    }
+    
+    func stopRecordingTimer() {
+        if self.recordingTimer != nil {
+            self.recordingTimer.invalidate()
+            self.recordingTimer = nil
+            self.recordingTimeCount = 0
+        }
+    }
+    
     @IBAction func recordButtonTapped(_ sender: UIButton) {
-        if !sender.isSelected {
-            sender.isSelected = true
+        if sender.tag == 0 {
+            sender.tag = 1
             if AppData.sharedInstance.audioRecorder == nil {
+//                self.recordAudioImageView.loadGif(name: "record")
+                self.playLottieAnimation()
+                self.startRecordingTimer()
                 let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
                 RecordAudioManager.shareInstance().startRecording(fileName: fileName)
             } else {
+                self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
                 RecordAudioManager.shareInstance().finishRecording(success: true)
             }
         } else {
-            sender.isSelected = false
-            RecordAudioManager.shareInstance().finishRecording(success: true)
+            sender.tag = 0
+//            self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
+            self.finishRecording()
+        }
+    }
+    
+    func finishRecording() {
+        self.stopAnimation()
+        self.stopRecordingTimer()
+        RecordAudioManager.shareInstance().finishRecording(success: true)
+        let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
+        let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
+        UserRecording.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+            if let tempUrl = url {
+                print("downloadurl \(url ?? "")")
+                let temp = UserRecording(url: fileURL.absoluteString,downloadUrl: tempUrl, createdAt: Date().toTimeStamp)
+                temp.saveToFirebase()
+            }
         }
     }
     

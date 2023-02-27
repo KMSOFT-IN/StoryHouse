@@ -7,6 +7,9 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
+import FirebaseCore
+
 
 let APPNAME = "Magic House"
 let PRIVACY_POLICY_URL = "https://www.iubenda.com/privacy-policy/46923166"
@@ -15,6 +18,7 @@ let FAQ_URL = "https://magichouse.studio/FAQ-a34dac768b77410ab965b520a2901d05"
 let APPLINK = "https://apps.apple.com/us/app/magic-house-a-i/id1664656561"
 let GRAY_COLOR = UIColor(hex: "#808080")
 let LIGHT_BLUE = UIColor(hex: "#ADD8E6")!
+
 
 #if DEBUG
 let SERVER_KEY = "AAAAPlBGAWM:APA91bH7La3bSL9Blp3TSrvTli5v73LdLAlcwAWyYfnV4beCb5FJEUTklxXqjY9TTGr-59ZEAJMjiIcs4vvyLwsdFuizKtI1-1adgBYeOTV7hoFSfdLASqsmVgLoojhOQ9WgWgr7bylT"
@@ -35,6 +39,10 @@ class Constant {
         static let SETTING                    = UIStoryboard(name: "Setting", bundle: nil)
         static let PREMIUM                    = UIStoryboard(name: "Premium", bundle: nil)
         static let EXPLORE                    = UIStoryboard(name: "Explore", bundle: nil)
+    }
+    
+    class refs {
+        static let USERRECORDINGS = Firestore.firestore().collection("UserRecordings")
     }
     
     class UserDefault {

@@ -12,7 +12,7 @@ import UserNotifications
 import Firebase
 import FirebaseRemoteConfig
 
-@main
+ @main
 class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

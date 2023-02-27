@@ -198,6 +198,11 @@
 		B202CC6D29A9D66600545ED0 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202CC6C29A9D66600545ED0 /* RecordingManager.swift */; };
 		B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2538729299BA09C00982CF5 /* Setting.storyboard */; };
 		B253872C299BA49400982CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253872B299BA49400982CF5 /* SettingsViewController.swift */; };
+		B263114329AC5681008DB9C4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B263114229AC5681008DB9C4 /* FirebaseStorage */; };
+		B263114529AC5C46008DB9C4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B263114429AC5C46008DB9C4 /* FirebaseFirestore */; };
+		B263114729AC5D4A008DB9C4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B263114629AC5D4A008DB9C4 /* FirebaseDatabase */; };
+		B263114929AC608B008DB9C4 /* UserRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263114829AC608B008DB9C4 /* UserRecording.swift */; };
+		B263114C29AC6161008DB9C4 /* RecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B263114B29AC6161008DB9C4 /* RecordingService.swift */; };
 		B26BDCE7299B69A80017CA2A /* Premium.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26BDCE6299B69A80017CA2A /* Premium.storyboard */; };
 		B26EDB55299F71630096C596 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B26EDB54299F71630096C596 /* FirebaseMessaging */; };
 		B26EDB57299F72720096C596 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDB56299F72720096C596 /* PushNotificationHelper.swift */; };
@@ -210,6 +215,9 @@
 		B26EDB67299FA0730096C596 /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */; };
 		B27DA05429A37A93004E346A /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */; };
 		B27DA05529A37A93004E346A /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */; };
+		B2B645E729ACBE8E005D9BC8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B2B645E629ACBE8E005D9BC8 /* Lottie */; };
+		B2B645EB29ACC0D4005D9BC8 /* record1.json in Resources */ = {isa = PBXBuildFile; fileRef = B2B645EA29ACC0D4005D9BC8 /* record1.json */; };
+		B2B645ED29ACC290005D9BC8 /* record.json in Resources */ = {isa = PBXBuildFile; fileRef = B2B645EC29ACC290005D9BC8 /* record.json */; };
 		B2DC958029A33A68008E58C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DC957F29A33A68008E58C3 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -403,6 +411,8 @@
 		B202CC6C29A9D66600545ED0 /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
 		B2538729299BA09C00982CF5 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		B253872B299BA49400982CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B263114829AC608B008DB9C4 /* UserRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecording.swift; sourceTree = "<group>"; };
+		B263114B29AC6161008DB9C4 /* RecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingService.swift; sourceTree = "<group>"; };
 		B26BDCE6299B69A80017CA2A /* Premium.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Premium.storyboard; sourceTree = "<group>"; };
 		B26EDB56299F72720096C596 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		B26EDB58299F740C0096C596 /* AppNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationHandler.swift; sourceTree = "<group>"; };
@@ -413,6 +423,8 @@
 		B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2B645EA29ACC0D4005D9BC8 /* record1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = record1.json; sourceTree = "<group>"; };
+		B2B645EC29ACC290005D9BC8 /* record.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = record.json; sourceTree = "<group>"; };
 		B2DC957F29A33A68008E58C3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -421,14 +433,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B263114729AC5D4A008DB9C4 /* FirebaseDatabase in Frameworks */,
+				B2B645E729ACBE8E005D9BC8 /* Lottie in Frameworks */,
 				B26EDB5B299F782F0096C596 /* FirebaseRemoteConfig in Frameworks */,
 				B26EDB55299F71630096C596 /* FirebaseMessaging in Frameworks */,
 				884B122E2990BB6800CE41F9 /* FirebaseAnalytics in Frameworks */,
 				8838D082299236D9006FE6ED /* Mixpanel in Frameworks */,
 				884B12302990BB6800CE41F9 /* FirebaseCrashlytics in Frameworks */,
+				B263114529AC5C46008DB9C4 /* FirebaseFirestore in Frameworks */,
 				8838D07D299231D6006FE6ED /* AppCenterAnalytics in Frameworks */,
 				8838D07F299231D6006FE6ED /* AppCenterCrashes in Frameworks */,
 				B2DC958029A33A68008E58C3 /* StoreKit.framework in Frameworks */,
+				B263114329AC5681008DB9C4 /* FirebaseStorage in Frameworks */,
 				8838353C299411B8001C28C3 /* SwiftyReceiptValidator in Frameworks */,
 				8838D0852992528A006FE6ED /* AppsFlyerLib in Frameworks */,
 			);
@@ -466,6 +482,7 @@
 				88140324296D84FA00930582 /* Extension */,
 				88E1CA8529781672008F3B28 /* GIF Class */,
 				885BE268296EBE6900B09179 /* Model */,
+				B263114A29AC614C008DB9C4 /* Service */,
 				B24C27E129A729CB005890C4 /* Storyboards */,
 				881402E8296D6A2F00930582 /* Assets.xcassets */,
 				881402EA296D6A2F00930582 /* LaunchScreen.storyboard */,
@@ -935,6 +952,7 @@
 				88313AB329876DC2000D1248 /* CategoryModel.swift */,
 				889ABFB32993DD9100A5EDF7 /* ReceiptValidation.swift */,
 				B26EDB5E299F8E7B0096C596 /* ExploreStory.swift */,
+				B263114829AC608B008DB9C4 /* UserRecording.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1338,6 +1356,8 @@
 			children = (
 				88FDBC4C297BA4CE003388F4 /* GIF Class */,
 				88FDBC4A297BA4B9003388F4 /* demo.gif */,
+				B2B645EA29ACC0D4005D9BC8 /* record1.json */,
+				B2B645EC29ACC290005D9BC8 /* record.json */,
 				88FDBC48297BA4AC003388F4 /* CustomLoader.swift */,
 			);
 			path = Helper;
@@ -1374,6 +1394,14 @@
 				B26BDCE6299B69A80017CA2A /* Premium.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B263114A29AC614C008DB9C4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B263114B29AC6161008DB9C4 /* RecordingService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		B26EDB53299F71630096C596 /* Frameworks */ = {
@@ -1438,6 +1466,10 @@
 				8838353B299411B8001C28C3 /* SwiftyReceiptValidator */,
 				B26EDB54299F71630096C596 /* FirebaseMessaging */,
 				B26EDB5A299F782F0096C596 /* FirebaseRemoteConfig */,
+				B263114229AC5681008DB9C4 /* FirebaseStorage */,
+				B263114429AC5C46008DB9C4 /* FirebaseFirestore */,
+				B263114629AC5D4A008DB9C4 /* FirebaseDatabase */,
+				B2B645E629ACBE8E005D9BC8 /* Lottie */,
 			);
 			productName = StoryHouse;
 			productReference = 881402DC296D6A2E00930582 /* StoryHouse.app */;
@@ -1473,6 +1505,7 @@
 				8838D080299236D9006FE6ED /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 				8838D0832992528A006FE6ED /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				8838353A299411B8001C28C3 /* XCRemoteSwiftPackageReference "swifty-receipt-validator" */,
+				B2B645E529ACBE8E005D9BC8 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 881402DD296D6A2E00930582 /* Products */;
 			projectDirPath = "";
@@ -1547,6 +1580,7 @@
 				885404D42983A057007F18BE /* 221.json in Resources */,
 				8892D82729839B4C00CD510F /* 100.json in Resources */,
 				88140317296D6C9C00930582 /* Poppins-Regular.ttf in Resources */,
+				B2B645EB29ACC0D4005D9BC8 /* record1.json in Resources */,
 				8892D80B29839AD000CD510F /* 002.json in Resources */,
 				88140319296D6C9C00930582 /* Poppins-Bold.ttf in Resources */,
 				8854047529839D65007F18BE /* 120.json in Resources */,
@@ -1563,6 +1597,7 @@
 				88140315296D6C9C00930582 /* Poppins-BlackItalic.ttf in Resources */,
 				8814031C296D6C9C00930582 /* Poppins-SemiBold.ttf in Resources */,
 				881402EC296D6A2F00930582 /* LaunchScreen.storyboard in Resources */,
+				B2B645ED29ACC290005D9BC8 /* record.json in Resources */,
 				881402E9296D6A2F00930582 /* Assets.xcassets in Resources */,
 				B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */,
 				8892D80F29839AE400CD510F /* 010.json in Resources */,
@@ -1639,6 +1674,7 @@
 				88140336296D861E00930582 /* MagicalObjectViewController.swift in Sources */,
 				88319FEB297ACC4C00FA59B0 /* MPVolumeView.swift in Sources */,
 				88140320296D7DD100930582 /* HeroViewController.swift in Sources */,
+				B263114C29AC6161008DB9C4 /* RecordingService.swift in Sources */,
 				886AD46A2996152E0016ADF4 /* DPDUIView+Extension.swift in Sources */,
 				886AD4682996152E0016ADF4 /* DPDKeyboardListener.swift in Sources */,
 				88D119C6296E98360035B0A0 /* TabbarViewController.swift in Sources */,
@@ -1662,6 +1698,7 @@
 				887FEC6C2996237F00937018 /* IQBarButtonItem.swift in Sources */,
 				889ABFB42993DD9100A5EDF7 /* ReceiptValidation.swift in Sources */,
 				88E1CA7F29780C5D008F3B28 /* EndViewController.swift in Sources */,
+				B263114929AC608B008DB9C4 /* UserRecording.swift in Sources */,
 				88140344296D9B9B00930582 /* SplashViewController.swift in Sources */,
 				887FEC6D2996237F00937018 /* IQToolbar.swift in Sources */,
 				887FEC702996237F00937018 /* IQKeyboardManager+UIKeyboardNotification.swift in Sources */,
@@ -1870,6 +1907,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "For using microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1911,6 +1949,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "For using microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2001,6 +2040,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B2B645E529ACBE8E005D9BC8 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2039,6 +2086,21 @@
 			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
+		B263114229AC5681008DB9C4 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		B263114429AC5C46008DB9C4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B263114629AC5D4A008DB9C4 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
 		B26EDB54299F71630096C596 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -2048,6 +2110,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
+		};
+		B2B645E629ACBE8E005D9BC8 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2B645E529ACBE8E005D9BC8 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

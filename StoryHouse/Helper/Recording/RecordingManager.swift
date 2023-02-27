@@ -62,7 +62,7 @@ class RecordAudioManager: NSObject,AVAudioRecorderDelegate, AVAudioPlayerDelegat
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
+            AVSampleRateKey: 16000,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
@@ -71,9 +71,6 @@ class RecordAudioManager: NSObject,AVAudioRecorderDelegate, AVAudioPlayerDelegat
             AppData.sharedInstance.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             AppData.sharedInstance.audioRecorder.delegate = self
             AppData.sharedInstance.audioRecorder.record()
-            
-//            recordButton.setTitle("Tap to Stop", for: .normal)
-//            playButton.isEnabled = false
         } catch {
             finishRecording(success: false)
         }
