@@ -72,7 +72,7 @@ class UserRecording {
     
     //UploadFile on Storage
     class func uploadAudio(recordingID: String, audioString: URL, callback: ((_ url: String?, _ error: Error?)-> Void)?) {
-        let storageReference = Storage.storage().reference().child("Audios").child("\(recordingID).m4a")
+        let storageReference = Storage.storage().reference().child("Audios").child("\(Date().toStringYYYYMMDD)_\(recordingID).caf")
         do {
             let data = try Data(contentsOf: audioString)
             storageReference.putData(data, metadata: nil, completion: { (metadata, error) in
