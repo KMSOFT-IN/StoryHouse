@@ -64,6 +64,7 @@ class MagicalObjectViewController: UIViewController {
         }
         self.addTotalStoryCountEvent()
         self.saveStoryInExplore()
+        UserDefaultHelper.setLastStoryDate(value: "\(Date().timeIntervalSince1970)")
         if Utility.isDebug() {
             let viewController = TabbarViewController.getInstance()
             viewController.isFromExploreTab = false
@@ -72,6 +73,7 @@ class MagicalObjectViewController: UIViewController {
             let viewController = LoadingViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+        self.sendPushNotification()
     }
     
     func addTotalStoryCountEvent() {
@@ -116,6 +118,54 @@ class MagicalObjectViewController: UIViewController {
     func randomString(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    func sendPushNotification() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "We missing you from 3 days", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Hi \(UserDefaultHelper.getChildname() ?? ""), how about create a magical story tonight?", arguments: nil)
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        
+        let content1 = UNMutableNotificationContent()
+        content1.title = NSString.localizedUserNotificationString(forKey: "We missing you from 7 days", arguments: nil)
+        content1.body = NSString.localizedUserNotificationString(forKey: "Hi \(UserDefaultHelper.getChildname() ?? ""), how about create a magical story tonight?", arguments: nil)
+        content1.sound = UNNotificationSound.default
+        content1.badge = 1
+        
+        let content2 = UNMutableNotificationContent()
+        content2.title = NSString.localizedUserNotificationString(forKey: "We missing you from 11 days", arguments: nil)
+        content2.body = NSString.localizedUserNotificationString(forKey: "Hi \(UserDefaultHelper.getChildname() ?? ""), how about create a magical story tonight?", arguments: nil)
+        content2.sound = UNNotificationSound.default
+        content2.badge = 1
+        
+        var dateInfo = DateComponents()
+        dateInfo.day = 3 //Put your day
+        dateInfo.hour = 17 //Put your hour
+        dateInfo.minute = 00 //Put your minutes
+        
+        var dateInfo1 = DateComponents()
+        dateInfo1.day = 7 //Put your day
+        dateInfo1.hour = 17 //Put your hour
+        dateInfo1.minute = 00 //Put your minutes
+        
+        var dateInfo2 = DateComponents()
+        dateInfo2.day = 11 //Put your day
+        dateInfo2.hour = 17 //Put your hour
+        dateInfo2.minute = 00 //Put your minutes
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+        let trigger1 = UNCalendarNotificationTrigger(dateMatching: dateInfo1, repeats: true)
+        let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateInfo2, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: "notification3", content: content, trigger: trigger)
+        let request1 = UNNotificationRequest(identifier: "notification7", content: content1, trigger: trigger1)
+        let request2 = UNNotificationRequest(identifier: "notification11", content: content2, trigger: trigger2)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request1, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request2, withCompletionHandler: nil)
     }
     
 }

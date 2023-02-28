@@ -183,6 +183,15 @@ class UserDefaultHelper {
         return projectToUploadList
     }
     
+    static func setLastStoryDate(value: String) {
+        UserDefaults.standard.setValue(value, forKey: Constant.UserDefault.LAST_STORY_CREATE)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getLastStoryDate() -> String {
+        return UserDefaults.standard.string(forKey: Constant.UserDefault.LAST_STORY_CREATE) ?? ""
+    }
+    
     static func clearUserdefault() {
         UserDefaultHelper.setVoice(value: "")
         UserDefaultHelper.setVoiceIdentifier(value: "")

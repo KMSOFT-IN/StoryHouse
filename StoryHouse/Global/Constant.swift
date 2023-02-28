@@ -65,6 +65,7 @@ class Constant {
         static let USER_HERO_NAME = "USER_HERO_NAME"
         static let USER_PLACE_NAME = "USER_PLACE_NAME"
         static let EXPLORE_STORY = "EXPLORE_STORY"
+        static let LAST_STORY_CREATE = "LAST_STORY_CREATE"
     }
     
     class Analytics {

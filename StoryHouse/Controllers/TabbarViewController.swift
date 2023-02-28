@@ -27,6 +27,7 @@ class TabbarViewController: UIViewController {
     
     @IBOutlet weak var audioRecordView: UIView!
     @IBOutlet weak var recordAudioImageView: UIImageView!
+    @IBOutlet weak var playRecordAudioImageView: UIImageView!
     @IBOutlet weak var recordAudioButton: UIButton!
     @IBOutlet weak var playRecordedAudioButton: UIButton!
     
@@ -647,12 +648,16 @@ extension TabbarViewController {
     }
     
     @IBAction func recordButtonTapped(_ sender: UIButton) {
+        if AppData.sharedInstance.audioPlayer != nil {
+            AppData.sharedInstance.audioPlayer.stop()
+        }
         if sender.tag == 0 {
             sender.tag = 1
             if AppData.sharedInstance.audioRecorder == nil {
-//                self.recordAudioImageView.loadGif(name: "record")
                 self.playLottieAnimation()
                 self.startRecordingTimer()
+                self.playRecordAudioImageView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+                self.playRecordedAudioButton.isEnabled = false
                 let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
                 RecordAudioManager.shareInstance().startRecording(fileName: fileName)
             } else {
@@ -661,7 +666,7 @@ extension TabbarViewController {
             }
         } else {
             sender.tag = 0
-//            self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
+            //            self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
             self.finishRecording()
         }
     }
@@ -669,6 +674,8 @@ extension TabbarViewController {
     func finishRecording() {
         self.stopAnimation()
         self.stopRecordingTimer()
+        self.playRecordAudioImageView.backgroundColor = UIColor.clear
+        self.playRecordedAudioButton.isEnabled = true
         RecordAudioManager.shareInstance().finishRecording(success: true)
         let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
         let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
