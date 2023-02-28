@@ -26,6 +26,8 @@ class ExploreViewController: UIViewController {
     
     func setUpCollectionView() {
         self.exploreStoryList = UserDefaultHelper.getExploreStory() ?? []
+//        self.exploreStoryList = self.exploreStoryList.filter({Date(timeIntervalSince1970: ($0.createdAt ?? 0.0)) > Date(timeIntervalSince1970: ($0.createdAt ?? 0.0))})
+        self.exploreStoryList = self.exploreStoryList.sorted(by: {($0.createdAt ?? 0.0) > ($1.createdAt ?? 0.0)})
         if self.exploreStoryList.isEmpty {
             self.collectionView.isHidden = true
             self.noDataLabel.isHidden = false

@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var subscriptionTypeLabel: UILabel!
     @IBOutlet weak var expiredLabel:UILabel!
     @IBOutlet weak var progressView: UIActivityIndicatorView!
+    @IBOutlet weak var cancelSubscriptionButton: UIButton!
     
     static func getInstance() -> SettingsViewController {
         return Constant.Storyboard.SETTING.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
@@ -35,6 +36,8 @@ class SettingsViewController: UIViewController {
     }
     
     func setCurrentSubScription(id: String) {
+        self.cancelSubscriptionButton.isEnabled = true
+        self.cancelSubscriptionButton.backgroundColor = UIColor(hex: "#FF0000")?.withAlphaComponent(1.0)
         switch id {
         case Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_MONTHLY_PREMIUM:
             self.subscriptionTypeLabel.text = "Storyteller 1 month"
@@ -50,6 +53,8 @@ class SettingsViewController: UIViewController {
             break;
         default:
             self.subscriptionTypeLabel.text = "Free"
+            self.cancelSubscriptionButton.isEnabled = false
+            self.cancelSubscriptionButton.backgroundColor = UIColor(hex: "#FF0000")?.withAlphaComponent(0.5)
             break
         }
     }
@@ -63,7 +68,9 @@ class SettingsViewController: UIViewController {
             self.expiredLabel.text = date.toFullDateString
         } else {
             self.subscriptionTypeLabel.text = "Free"
-            self.expiredLabel.text = "Never"
+            self.cancelSubscriptionButton.isEnabled = false
+            self.cancelSubscriptionButton.backgroundColor = UIColor(hex: "#FF0000")?.withAlphaComponent(0.5)
+            self.expiredLabel.text = "N/A"
         }
     }
     

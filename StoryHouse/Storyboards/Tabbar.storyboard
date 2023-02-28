@@ -717,7 +717,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="dzX-9Y-le9"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-0K-zc0">
+                                            <stackView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-0K-zc0">
                                                 <rect key="frame" x="31.5" y="20" width="180" height="90"/>
                                                 <subviews>
                                                     <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UgX-tY-hEk">
@@ -873,30 +873,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MF7-gc-J9c">
-                                        <rect key="frame" x="302.5" y="55" width="75" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="hqC-iq-JfL"/>
-                                            <constraint firstAttribute="width" constant="75" id="s5U-zY-agx"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Record"/>
-                                        <connections>
-                                            <action selector="recordButtonTapped:" destination="sI4-7y-cKe" eventType="touchUpInside" id="mO8-Y9-lyy"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBo-id-kM9">
-                                        <rect key="frame" x="402.5" y="55" width="75" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="Jae-kO-4VY"/>
-                                            <constraint firstAttribute="width" constant="75" id="afQ-cb-I7b"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Play"/>
-                                        <connections>
-                                            <action selector="playRecordedAudioButtonTapped:" destination="sI4-7y-cKe" eventType="touchUpInside" id="wY5-Fv-SnP"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -912,15 +888,10 @@
                                     <constraint firstItem="ska-EP-G7b" firstAttribute="top" secondItem="QTv-D1-HWF" secondAttribute="top" id="Juw-0n-VpU"/>
                                     <constraint firstAttribute="bottom" secondItem="4Eq-yn-iLy" secondAttribute="bottom" id="LDW-fk-KVl"/>
                                     <constraint firstAttribute="bottom" secondItem="ska-EP-G7b" secondAttribute="bottom" id="LIT-y3-nrI"/>
-                                    <constraint firstItem="MF7-gc-J9c" firstAttribute="top" secondItem="QTv-D1-HWF" secondAttribute="top" constant="55" id="Y4V-bs-Igg"/>
                                     <constraint firstItem="4Eq-yn-iLy" firstAttribute="leading" secondItem="QTv-D1-HWF" secondAttribute="leading" id="Ygk-eM-uYK"/>
                                     <constraint firstAttribute="trailing" secondItem="4Eq-yn-iLy" secondAttribute="trailing" id="axL-4P-Riy"/>
-                                    <constraint firstItem="NBo-id-kM9" firstAttribute="bottom" secondItem="MF7-gc-J9c" secondAttribute="bottom" id="cAt-q3-79z"/>
                                     <constraint firstItem="nSg-PX-z52" firstAttribute="leading" secondItem="QTv-D1-HWF" secondAttribute="leading" constant="40" id="gRY-5Y-4gi"/>
-                                    <constraint firstItem="MF7-gc-J9c" firstAttribute="centerX" secondItem="6mB-sM-dPw" secondAttribute="centerX" id="gW2-Rv-Yck"/>
                                     <constraint firstItem="ska-EP-G7b" firstAttribute="leading" secondItem="6mB-sM-dPw" secondAttribute="leading" id="hIp-cl-kxR"/>
-                                    <constraint firstItem="NBo-id-kM9" firstAttribute="leading" secondItem="MF7-gc-J9c" secondAttribute="trailing" constant="25" id="laz-I8-idA"/>
-                                    <constraint firstItem="NBo-id-kM9" firstAttribute="top" secondItem="MF7-gc-J9c" secondAttribute="top" id="mIA-rU-Rnu"/>
                                     <constraint firstItem="ska-EP-G7b" firstAttribute="top" secondItem="6mB-sM-dPw" secondAttribute="top" id="pC9-V5-3GV"/>
                                     <constraint firstItem="4Eq-yn-iLy" firstAttribute="top" secondItem="QTv-D1-HWF" secondAttribute="top" id="tcH-No-RlD"/>
                                     <constraint firstItem="H0P-zt-M9A" firstAttribute="leading" secondItem="ska-EP-G7b" secondAttribute="trailing" id="y31-5b-hU1"/>

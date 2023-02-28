@@ -221,8 +221,8 @@
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N14-lr-Ksp">
-                                        <rect key="frame" x="373" y="199.5" width="55" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N14-lr-Ksp">
+                                        <rect key="frame" x="373" y="199.5" width="118.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="DVh-aJ-eog"/>
                                         </constraints>
@@ -353,7 +353,7 @@
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="aPq-ob-MmO">
                                                 <rect key="frame" x="35" y="171" width="550" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87U-Rh-d2b">
+                                                    <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87U-Rh-d2b">
                                                         <rect key="frame" x="0.0" y="0.0" width="257.5" height="50"/>
                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="22"/>
@@ -556,6 +556,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelSubscriptionButton" destination="87U-Rh-d2b" id="hBo-Ye-OLX"/>
                         <outlet property="expiredLabel" destination="lmT-UA-swe" id="JMV-Z5-3xY"/>
                         <outlet property="nameTextField" destination="XNm-Kv-vqc" id="H5b-FT-Ngz"/>
                         <outlet property="progressView" destination="n85-m7-qFo" id="R2u-mv-b6J"/>

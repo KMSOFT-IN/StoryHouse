@@ -53,7 +53,7 @@ class TabbarViewController: UIViewController {
     let femaleName = ["Gia","Gizzy","Gertie","Gira","Gigi","Gracie","Gertrude","Giselle","Zara","Zoe","Zoey","Cassandra","Maria","Carla","Foxy","Fraya","Freya","Fennec","Fawna","Fia","Fiora","Ferris","Lisa","Fuzzy","Fury","Gazelle","Minty","Poppy","Winkie","Fuzzy","Cinderella","Twiggy","Nanny"]
     let maleName = ["Gerald","George","Gizmo","Zebra","Zack","Zippy","Zor","Zeb","Fox","Fin","Felix","Foxy","Finnegan","Fenton","Monkey","Max","Mango"]
     
-    let placesName = ["forest", "Forest", "underwater", "UnderWater", "Outer Space", "outer space", "savannah", "Savannah"]
+    let placesName = ["forest", "Forest", "underwater", "UnderWater", "Outer Space", "outer space", "savannah", "Savannah","savanna","Savanna"]
     var originalTransform: CGAffineTransform!
     var isAnimationRunning: Bool = false
     var isDisappear: Bool = false
@@ -385,6 +385,22 @@ class TabbarViewController: UIViewController {
         self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
     }
     
+    func replaceHeroNameInParagraph() -> String? {
+        let index = 0
+        let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
+        if let findIndex = isHE ? self.maleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) : self.femaleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) {
+            let nameReplace = isHE ? self.maleName[findIndex] : self.femaleName[findIndex]
+            var nameReplaceImageTitle = imageTitleStr?.replacingOccurrences(of: nameReplace, with: AppData.sharedInstance.heroName)
+            if let findPlaceIndex = self.placesName.firstIndex(where: {imageTitleStr?.contains($0) ?? false}) {
+                let placeReplace = self.placesName[findPlaceIndex]
+                let placeRplaceImageTitle = nameReplaceImageTitle?.replacingOccurrences(of: placeReplace, with: AppData.sharedInstance.placeName)
+                nameReplaceImageTitle = placeRplaceImageTitle
+            }
+            return nameReplaceImageTitle
+        }
+        return imageTitleStr
+    }
+    
     @IBAction func nextPageButtontapped(_ sender: Any) {
         self.currentIndex += 1
         if self.currentIndex >= self.totalIndex {
@@ -393,7 +409,7 @@ class TabbarViewController: UIViewController {
             let viewController = EndViewController.getInstance()
             let index = 0
             viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
-            viewController.imageTitle = (isHE ? (self.paragraphDetails?[index].he ?? "") : self.paragraphDetails?[index].she ?? "")
+            viewController.imageTitle = self.replaceHeroNameInParagraph() ?? (isHE ? (self.paragraphDetails?[index].he ?? "") : self.paragraphDetails?[index].she ?? "")
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
@@ -437,7 +453,7 @@ class TabbarViewController: UIViewController {
             let viewController = EndViewController.getInstance()
             let index = 0
             viewController.image = self.paragraphDetails?[index].imageName ?? "ic_placeHolder"
-            viewController.imageTitle = (isHE ? (self.paragraphDetails?[index].he ?? "") : self.paragraphDetails?[index].she ?? "")
+            viewController.imageTitle = self.replaceHeroNameInParagraph() ?? (isHE ? (self.paragraphDetails?[index].he ?? "") : self.paragraphDetails?[index].she ?? "")
             self.navigationController?.pushViewController(viewController, animated: true)
             return
         }
@@ -523,7 +539,7 @@ class TabbarViewController: UIViewController {
 
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         backgroundImage.draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
-        watermarkImage.draw(in: CGRect(x: 10, y: size.height - 110, width: 100, height: 100))
+        watermarkImage.draw(in: CGRect(x: 10, y: size.height - 260, width: 250, height: 250))
 
         if let result = UIGraphicsGetImageFromCurrentImageContext() {
             UIGraphicsEndImageContext()
