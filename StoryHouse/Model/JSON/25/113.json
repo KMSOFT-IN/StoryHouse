@@ -53,8 +53,13 @@
                 },
                 {
                     "imageName":"113-10",
-                    "he":"And they all lived happily ever after, swimming and exploring the wonders of the sea. The end.",
-                    "she":"And they all lived happily ever after, swimming and exploring the wonders of the sea. The end."
+                    "he":"And they all lived happily ever after, swimming and exploring the wonders of the sea.",
+                    "she":"And they all lived happily ever after, swimming and exploring the wonders of the sea."
+                },
+                {
+                    "imageName":"113-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         } ,

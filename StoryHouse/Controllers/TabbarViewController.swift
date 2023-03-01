@@ -82,7 +82,7 @@ class TabbarViewController: UIViewController {
         self.setUpSlider()
         self.isFirstTimePlay = true
         self.navigationController?.setViewControllers([self], animated: true)
-        RecordAudioManager.shareInstance().setupView()
+//        RecordAudioManager.shareInstance().setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -263,6 +263,12 @@ class TabbarViewController: UIViewController {
             else {
                 let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
                 self.imageTitle.text = imageTitleStr
+                if currentIndex == (totalIndex-1) {
+//                    self.imageTitle.text = "\(imageTitleStr ?? "") \nStory by \(UserDefaultHelper.getChildname() ?? "")"
+                    let str1 = "\(imageTitleStr ?? "") \nStory by"
+                    let str2 = " \(UserDefaultHelper.getChildname() ?? "")"
+                    self.setAttributedTextInLabel(string1: str1, string2: str2)
+                }
             }
         } else {
             let imageTitleStr = isHE ? self.paragraphDetails?[index].he! : self.paragraphDetails?[index].she!
@@ -280,6 +286,18 @@ class TabbarViewController: UIViewController {
         } else if self.currentIndex == (totalIndex - 1) {
             self.addEndStoryEvent()
         }
+    }
+    
+    func setAttributedTextInLabel(string1: String, string2: String) {
+        let attrs1 = [NSAttributedString.Key.font : UIFont(name: "Poppins-Regular", size: 40.0)!, NSAttributedString.Key.foregroundColor : UIColor(hex: "#808080")!]
+        
+        let attrs2 = [NSAttributedString.Key.font : UIFont(name: "Poppins-Italic", size: 40.0)!, NSAttributedString.Key.foregroundColor : UIColor(hex: "#808080")!]
+        
+        let attributedString1 = NSMutableAttributedString(string: string1, attributes:attrs1)
+        
+        let attributedString2 = NSMutableAttributedString(string: string2, attributes:attrs2)
+        attributedString1.append(attributedString2)
+        self.imageTitle.attributedText = attributedString1
     }
         
     func addStartStoryEvent() {
@@ -566,13 +584,14 @@ extension TabbarViewController: UIActivityItemSource {
     }
 
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK).\n\(self.imageTitle.text ?? "")"
+        let childName = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s created a story on Magic House. Create your own: \(APPLINK).\n\(self.imageTitle.text ?? "")"
+        
         return childName
     }
 
     func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
         let metadata = LPLinkMetadata()
-        metadata.title = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s Magic House story. Download to create your own: \(APPLINK)./n\n\(self.imageTitle.text ?? "")"
+        metadata.title = (UserDefaultHelper.getChildname()?.capitalizingFirstLetter() ?? "")+"'s created a story on Magic House. Create your own: \(APPLINK).\n\(self.imageTitle.text ?? "")"
         let image = UIImage(named: self.paragraphDetails?[self.currentIndex].imageName ?? "ic_placeHolder")!
         metadata.iconProvider = NSItemProvider(object: image)
         return metadata

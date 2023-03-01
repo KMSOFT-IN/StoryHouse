@@ -52,8 +52,13 @@
                 },
                 {
                     "imageName":"201-10",
-                    "he":"From that day on, Max and his friends would go on many more adventures and they would always have the wizard's hat with them to make their journey easier. They knew that the hat was a powerful tool and they used it wisely. The end.",
-                    "she":"From that day on, Winkie and her friends would go on many more adventures and they would always have the wizard's hat with them to make their journey easier. They knew that the hat was a powerful tool and they used it wisely. The end."
+                    "he":"From that day on, Max and his friends would go on many more adventures and they would always have the wizard's hat with them to make their journey easier. They knew that the hat was a powerful tool and they used it wisely.",
+                    "she":"From that day on, Winkie and her friends would go on many more adventures and they would always have the wizard's hat with them to make their journey easier. They knew that the hat was a powerful tool and they used it wisely."
+                },
+                {
+                    "imageName":"201-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         }

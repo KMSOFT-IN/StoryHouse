@@ -52,8 +52,13 @@
                 },
                 {
                     "imageName":"332-10",
-                    "he":"Finn lived a long and happy life, and his legacy lived on through the stories passed down from generation to generation, of the brave and magical fox who saved the savanna. The end.",
-                    "she":"Gazelle lived a long and happy life, and her legacy lived on through the stories passed down from generation to generation, of the brave and magical fox who saved the savanna. The end."
+                    "he":"Finn lived a long and happy life, and his legacy lived on through the stories passed down from generation to generation, of the brave and magical fox who saved the savanna.",
+                    "she":"Gazelle lived a long and happy life, and her legacy lived on through the stories passed down from generation to generation, of the brave and magical fox who saved the savanna."
+                },
+                {
+                    "imageName":"332-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         }

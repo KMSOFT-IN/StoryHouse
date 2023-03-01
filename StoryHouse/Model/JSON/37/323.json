@@ -52,8 +52,13 @@
                 },
                 {
                     "imageName":"323-10",
-                    "he":"From that day on, Foxy continued to explore and discover new things, but he would always remember the valuable lesson he learned: that true power lies in sharing and helping others. The end.",
-                    "she":"From that day on, Freya continued to explore and discover new things, but she would always remember the valuable lesson she learned: that true power lies in sharing and helping others. The end."
+                    "he":"From that day on, Foxy continued to explore and discover new things, but he would always remember the valuable lesson he learned: that true power lies in sharing and helping others.",
+                    "she":"From that day on, Freya continued to explore and discover new things, but she would always remember the valuable lesson she learned: that true power lies in sharing and helping others."
+                },
+                {
+                    "imageName":"323-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         }

@@ -53,8 +53,13 @@
                 },
                 {
                     "imageName":"101-10",
-                    "he":"From that day on, Zippy was known as the protector of the forest and the animals looked up to him as a leader. He lived a long and happy life, always ready to defend the forest, with his wizard's hat by his side. The end.",
-                    "she":"Zara lived a long and happy life, always ready to defend the forest and its inhabitants. Her wizard's hat was always by her side, a reminder of her bravery and her determination to protect the forest and the animals. The end."
+                    "he":"From that day on, Zippy was known as the protector of the forest and the animals looked up to him as a leader. He lived a long and happy life, always ready to defend the forest, with his wizard's hat by his side.",
+                    "she":"Zara lived a long and happy life, always ready to defend the forest and its inhabitants. Her wizard's hat was always by her side, a reminder of her bravery and her determination to protect the forest and the animals."
+                },
+                {
+                    "imageName":"101-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         } ,

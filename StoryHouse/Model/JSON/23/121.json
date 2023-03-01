@@ -54,8 +54,13 @@
                 },
                 {
                     "imageName":"121-10",
-                    "he":"And from that day on, Zor was known as the bravest and kindest zebra in all the Great Plains. He had proven that with determination, courage and a little bit of magic, anything is possible. The end.",
-                    "she":"And from that day on, Zara was known as the bravest and kindest zebra in all the Great Plains. She had proven that with determination, courage, and a little bit of magic, anything is possible. The end."
+                    "he":"And from that day on, Zor was known as the bravest and kindest zebra in all the Great Plains. He had proven that with determination, courage and a little bit of magic, anything is possible.",
+                    "she":"And from that day on, Zara was known as the bravest and kindest zebra in all the Great Plains. She had proven that with determination, courage, and a little bit of magic, anything is possible."
+                },
+                {
+                    "imageName":"121-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         } ,

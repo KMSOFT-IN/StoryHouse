@@ -53,8 +53,13 @@
                 },
                 {
                     "imageName":"102-10",
-                    "he":"And so, Zack lived happily ever after, exploring the magical forest and spreading joy wherever he went. The end.",
-                    "she":"And so, Zara lived happily ever after, exploring the magical forest and spreading joy wherever she went. The end."
+                    "he":"And so, Zack lived happily ever after, exploring the magical forest and spreading joy wherever he went.",
+                    "she":"And so, Zara lived happily ever after, exploring the magical forest and spreading joy wherever she went."
+                },
+                {
+                    "imageName":"102-10",
+                    "he":"The End.",
+                    "she":"The End."
                 },
             ]
         } ,
