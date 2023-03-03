@@ -215,6 +215,8 @@
 		B26EDB67299FA0730096C596 /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */; };
 		B27DA05429A37A93004E346A /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */; };
 		B27DA05529A37A93004E346A /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */; };
+		B280F17929B05F570056F35F /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = B280F17829B05F570056F35F /* Fire.sks */; };
+		B280F18129B064560056F35F /* dust2.gif in Resources */ = {isa = PBXBuildFile; fileRef = B280F18029B064560056F35F /* dust2.gif */; };
 		B2B645E729ACBE8E005D9BC8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B2B645E629ACBE8E005D9BC8 /* Lottie */; };
 		B2B645EB29ACC0D4005D9BC8 /* record1.json in Resources */ = {isa = PBXBuildFile; fileRef = B2B645EA29ACC0D4005D9BC8 /* record1.json */; };
 		B2B645ED29ACC290005D9BC8 /* record.json in Resources */ = {isa = PBXBuildFile; fileRef = B2B645EC29ACC290005D9BC8 /* record.json */; };
@@ -423,6 +425,8 @@
 		B26EDB66299FA0730096C596 /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		B27DA05229A37A93004E346A /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B27DA05329A37A93004E346A /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
+		B280F17829B05F570056F35F /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		B280F18029B064560056F35F /* dust2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dust2.gif; sourceTree = "<group>"; };
 		B2B645EA29ACC0D4005D9BC8 /* record1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = record1.json; sourceTree = "<group>"; };
 		B2B645EC29ACC290005D9BC8 /* record.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = record.json; sourceTree = "<group>"; };
 		B2DC957F29A33A68008E58C3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -476,6 +480,7 @@
 				88A38C49296E9D7E00B7910D /* StoryHouse.entitlements */,
 				881402DF296D6A2E00930582 /* AppDelegate.swift */,
 				881402E1296D6A2E00930582 /* SceneDelegate.swift */,
+				B280F17829B05F570056F35F /* Fire.sks */,
 				887FEC492996236700937018 /* Library */,
 				882A8BA8298FD5F300F71DCF /* Helper */,
 				881402F3296D6C8300930582 /* Fonts */,
@@ -1337,6 +1342,7 @@
 				88319FE6297AC78A00FA59B0 /* strimmer.gif */,
 				88DB92762979729B009DF1FF /* celebration.gif */,
 				882A8BA4298FA46F00F71DCF /* dust.gif */,
+				B280F18029B064560056F35F /* dust2.gif */,
 				88DB927429796898009DF1FF /* slider.swift */,
 			);
 			path = "GIF Class";
@@ -1536,6 +1542,7 @@
 				8892D81929839B1300CD510F /* 021.json in Resources */,
 				885404B729839F64007F18BE /* 332.json in Resources */,
 				885404C629839FE2007F18BE /* 201.json in Resources */,
+				B280F18129B064560056F35F /* dust2.gif in Resources */,
 				888A48EA296E79770097C42D /* Loading.storyboard in Resources */,
 				8854048529839E17007F18BE /* 132.json in Resources */,
 				8854049F29839EE5007F18BE /* 322.json in Resources */,
@@ -1590,6 +1597,7 @@
 				886AD46F2996163E0016ADF4 /* MyCell.xib in Resources */,
 				88140313296D6C9C00930582 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				88140318296D6C9C00930582 /* Poppins-LightItalic.ttf in Resources */,
+				B280F17929B05F570056F35F /* Fire.sks in Resources */,
 				8892D80729839A5000CD510F /* 000.json in Resources */,
 				88140316296D6C9C00930582 /* OFL.txt in Resources */,
 				88140312296D6C9C00930582 /* Poppins-SemiBoldItalic.ttf in Resources */,
