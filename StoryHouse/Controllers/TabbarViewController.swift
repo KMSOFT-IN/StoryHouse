@@ -84,7 +84,6 @@ class TabbarViewController: UIViewController {
         self.isFirstTimePlay = true
         self.navigationController?.setViewControllers([self], animated: true)
 //        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.createView(count:)), userInfo: nil, repeats: true)
-        self.createView()
         
 //        RecordAudioManager.shareInstance().setupView()
     }
@@ -96,6 +95,10 @@ class TabbarViewController: UIViewController {
         self.sliderView.isHidden = true
         self.audioRecordView.isHidden = false
         self.isDisappear = false
+        self.addFireDustAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.addFireDustAnimationTemporary()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -352,61 +355,84 @@ class TabbarViewController: UIViewController {
         }
     }
     
-    @objc func createView(count: Int = 145) {
+    //MARK:- Fire Dust Animation On Image
+    @objc func addFireDustAnimation(count: Int = 145) {
         for _ in 0...count {
             let randomGenerateX = CGFloat.random(in: 0..<self.view.frame.size.width)
-            let randomTag = Int.random(in: 0...count)
-            let randomGeneratey = CGFloat.random(in: 0..<350.0)
+            let randomTag = Int.random(in: 0...90)
+            let randomGeneratey = CGFloat.random(in: -50..<0.0)
             let randomWidth = Int.random(in: 0..<6)
-            let randomy = CGFloat.random(in: (self.view.frame.size.height - 50)..<self.view.frame.size.height)
+            let randomy = CGFloat.random(in: (self.view.frame.size.height + 50)..<self.view.frame.size.height + 100)
             let view = UIView(frame: CGRect(x: randomGenerateX, y: randomGeneratey, width: CGFloat(randomWidth), height: CGFloat(randomWidth)))
             view.layer.cornerRadius = view.frame.size.height / 2
             view.backgroundColor = UIColor(hex: "#FFE783")
             view.tag = randomTag
-            view.layer.shadowColor = UIColor.white.cgColor
+            view.layer.shadowColor = UIColor(hex: "#FFE783")?.cgColor
             view.layer.shadowRadius = 4.0
             view.layer.shadowOpacity = 0.9
             view.layer.shadowOffset = .zero
             view.layer.masksToBounds = false
             self.image.addSubview(view)
             bottom()
-//            sizeAutoIncremt()
+            sizeAutoIncremt()
             func bottom()  {
-                
-                let randomDuration = CGFloat.random(in: 0..<12)
+                let randomDuration = CGFloat.random(in: 5..<12)
+                UIView.animate(withDuration: randomDuration, delay: 0.0, options: [.curveEaseInOut], animations: {
+                    view.frame = CGRect(x: randomGenerateX, y: randomy, width: CGFloat(randomWidth), height: CGFloat(randomWidth))
+                }) { (finished) in
+                    if finished {
+//                        let randomGeneratey = CGFloat.random(in: 0..<20.0)
+                        view.frame = CGRect(x: randomGenerateX, y: randomGeneratey, width: CGFloat(randomWidth), height: CGFloat(randomWidth))
+                        bottom()
+                        sizeAutoIncremt()
+                    }
+                }
+            }
+            
+            func sizeAutoIncremt() {
+                UIView.animate(withDuration: 0.5, delay: 0.0) {
+                    if (view.tag % 4) == 0 {
+                        view.transform = view.transform.scaledBy(x: 1.2, y: 1.2)
+                    }
+                } completion: { finish in
+                    view.transform = .identity
+                }
+            }
+        }
+    }
+    
+    @objc func addFireDustAnimationTemporary(count: Int = 50) {
+        for _ in 0...count {
+            let randomGenerateX = CGFloat.random(in: 0..<self.view.frame.size.width)
+            let randomTag = Int.random(in: 0...90)
+            let randomGeneratey = CGFloat.random(in: -50..<0.0)
+            let randomWidth = Int.random(in: 0..<6)
+            let randomy = CGFloat.random(in: (self.view.frame.size.height + 50)..<self.view.frame.size.height + 100)
+            let view = UIView(frame: CGRect(x: randomGenerateX, y: randomGeneratey, width: CGFloat(randomWidth), height: CGFloat(randomWidth)))
+            view.layer.cornerRadius = view.frame.size.height / 2
+            view.backgroundColor = UIColor(hex: "#FFE783")
+            view.tag = randomTag
+            view.layer.shadowColor = UIColor(hex: "#FFE783")?.cgColor
+            view.layer.shadowRadius = 4.0
+            view.layer.shadowOpacity = 0.9
+            view.layer.shadowOffset = .zero
+            view.layer.masksToBounds = false
+            self.image.addSubview(view)
+            bottom()
+            func bottom()  {
+                let randomDuration = CGFloat.random(in: 5..<12)
                 UIView.animate(withDuration: randomDuration, delay: 0.0, options: [.curveEaseInOut], animations: {
                     view.frame = CGRect(x: randomGenerateX, y: randomy, width: CGFloat(randomWidth), height: CGFloat(randomWidth))
                     
                 }) { (finished) in
                     if finished {
-                        
-//                        let randomGeneratey = CGFloat.random(in: 0..<150.0)
-                        view.frame = CGRect(x: randomGenerateX, y: randomy, width: CGFloat(randomWidth), height: CGFloat(randomWidth))
-                        if !self.isDisappear {
-                            
-                        } else {
-                            view.removeFromSuperview()
-                        }
+//                        let randomGeneratey = CGFloat.random(in: 0..<20.0)
+//                        view.frame = CGRect(x: randomGenerateX, y: randomGeneratey, width: CGFloat(randomWidth), height: CGFloat(randomWidth))
+                        view.removeFromSuperview()
                     }
                 }
             }
-            
-//            func sizeAutoIncremt() {
-//                UIView.animate(withDuration: 0.5, delay: 0.0) {
-//                    if (view.tag % 4) == 0 {
-//                        view.transform = view.transform.scaledBy(x: 1.2, y: 1.2)
-//                    }
-//                } completion: { finish in
-//                    view.transform = .identity
-//                    if !self.isDisappear {
-////                        sizeAutoIncremt()
-//                    }
-//
-//                }
-//
-//            }
         }
-        
     }
     
     func resetImageAnimation() {
@@ -429,7 +455,7 @@ class TabbarViewController: UIViewController {
         }
     }
     
-    func playLottieAnimation() {
+    func playRecordLottieAnimation() {
         self.recordAudioImageView.isHidden = true
         self.lottieAnimationView = LottieAnimationView(name: "record")
         self.lottieAnimationView?.frame = CGRect (x: 0, y: 0, width: 80, height: 80)
@@ -440,7 +466,7 @@ class TabbarViewController: UIViewController {
         self.lottieAnimationView?.play()
     }
     
-    func stopAnimation() {
+    func stopRecordAnimation() {
         self.recordAudioImageView.isHidden = false
         self.lottieAnimationView?.removeFromSuperview()
     }
@@ -736,7 +762,7 @@ extension TabbarViewController {
         if sender.tag == 0 {
             sender.tag = 1
             if AppData.sharedInstance.audioRecorder == nil {
-                self.playLottieAnimation()
+                self.playRecordLottieAnimation()
                 self.startRecordingTimer()
                 self.playRecordAudioImageView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
                 self.playRecordedAudioButton.isEnabled = false
@@ -754,7 +780,7 @@ extension TabbarViewController {
     }
     
     func finishRecording() {
-        self.stopAnimation()
+        self.stopRecordAnimation()
         self.stopRecordingTimer()
         self.playRecordAudioImageView.backgroundColor = UIColor.clear
         self.playRecordedAudioButton.isEnabled = true

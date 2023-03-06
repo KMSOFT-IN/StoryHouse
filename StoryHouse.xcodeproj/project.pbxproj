@@ -196,6 +196,8 @@
 		88FDBC4B297BA4B9003388F4 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88FDBC4A297BA4B9003388F4 /* demo.gif */; };
 		88FDBC4E297BA4CE003388F4 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */; };
 		B202CC6D29A9D66600545ED0 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202CC6C29A9D66600545ED0 /* RecordingManager.swift */; };
+		B226E7EB29B5D3DF00C4C57B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B226E7EA29B5D3DF00C4C57B /* Auth.storyboard */; };
+		B226E7EE29B5D58700C4C57B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226E7ED29B5D58700C4C57B /* AuthViewController.swift */; };
 		B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2538729299BA09C00982CF5 /* Setting.storyboard */; };
 		B253872C299BA49400982CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253872B299BA49400982CF5 /* SettingsViewController.swift */; };
 		B263114329AC5681008DB9C4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B263114229AC5681008DB9C4 /* FirebaseStorage */; };
@@ -411,6 +413,8 @@
 		88FDBC4A297BA4B9003388F4 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
 		B202CC6C29A9D66600545ED0 /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
+		B226E7EA29B5D3DF00C4C57B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		B226E7ED29B5D58700C4C57B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B2538729299BA09C00982CF5 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		B253872B299BA49400982CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B263114829AC608B008DB9C4 /* UserRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecording.swift; sourceTree = "<group>"; };
@@ -540,6 +544,7 @@
 		88140323296D83B300930582 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B226E7EC29B5D57700C4C57B /* Auth */,
 				B26EDB62299F9F860096C596 /* Explore */,
 				882462A2297F9B32004005CE /* 3Steps */,
 				88140337296D86F100930582 /* LoadingViewController.swift */,
@@ -1385,6 +1390,14 @@
 			path = Recording;
 			sourceTree = "<group>";
 		};
+		B226E7EC29B5D57700C4C57B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B226E7ED29B5D58700C4C57B /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		B24C27E129A729CB005890C4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -1398,6 +1411,7 @@
 				B2538729299BA09C00982CF5 /* Setting.storyboard */,
 				888A48E3296E77310097C42D /* Onboarding.storyboard */,
 				B26BDCE6299B69A80017CA2A /* Premium.storyboard */,
+				B226E7EA29B5D3DF00C4C57B /* Auth.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1599,6 +1613,7 @@
 				88140318296D6C9C00930582 /* Poppins-LightItalic.ttf in Resources */,
 				B280F17929B05F570056F35F /* Fire.sks in Resources */,
 				8892D80729839A5000CD510F /* 000.json in Resources */,
+				B226E7EB29B5D3DF00C4C57B /* Auth.storyboard in Resources */,
 				88140316296D6C9C00930582 /* OFL.txt in Resources */,
 				88140312296D6C9C00930582 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				888A48E8296E79410097C42D /* Category.storyboard in Resources */,
@@ -1721,6 +1736,7 @@
 				887FEC682996237F00937018 /* IQTextView.swift in Sources */,
 				88FDBC49297BA4AC003388F4 /* CustomLoader.swift in Sources */,
 				8814033C296D8EB600930582 /* HeroNameViewController.swift in Sources */,
+				B226E7EE29B5D58700C4C57B /* AuthViewController.swift in Sources */,
 				882A8BAA298FD61000F71DCF /* Extractor.swift in Sources */,
 				B26EDB59299F740C0096C596 /* AppNotificationHandler.swift in Sources */,
 				88140342296D995700930582 /* SelectStoryViewController.swift in Sources */,
