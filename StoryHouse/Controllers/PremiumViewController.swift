@@ -16,6 +16,8 @@ class PremiumViewController: InAppPurchaseViewController {
     @IBOutlet weak var storytellerYearlySelected: UIView!
     @IBOutlet weak var storytellerHeroMonthlySelected: UIView!
     @IBOutlet weak var storytellerHeroYearlySelected: UIView!
+    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var privacyButton: UIButton!
     
     var selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_YEARLY_PREMIUM
     
@@ -125,5 +127,15 @@ class PremiumViewController: InAppPurchaseViewController {
     
     @IBAction func restoreButtonTapped(_ sender: UIButton) {
         self.restore()
+    }
+    
+    @IBAction func termsButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: TERMS_URL) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    @IBAction func privacyButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: PRIVACY_POLICY_URL) else { return }
+        UIApplication.shared.open(url)
     }
 }
