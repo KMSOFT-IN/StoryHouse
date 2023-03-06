@@ -31,5 +31,8 @@ class AuthViewController: UIViewController {
     }
     */
     
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        
+    }
 
 }
