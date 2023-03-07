@@ -43,6 +43,8 @@ class Constant {
     
     class refs {
         static let USERRECORDINGS = Firestore.firestore().collection("UserRecordings")
+        static let USERS = Firestore.firestore().collection("Users")
+        static let STORIES = Firestore.firestore().collection("Stories")
     }
     
     class UserDefault {

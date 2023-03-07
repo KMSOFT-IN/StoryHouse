@@ -10,6 +10,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import FirebaseAuth
 
 class AppData {
     
@@ -40,7 +41,7 @@ class AppData {
     var audioRecorder: AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
     let totalRecordingSeconds: Int = 60
-    
+    var user: User? = nil
     
     static let sharedInstance: AppData = {
         let instance = AppData()
@@ -61,6 +62,20 @@ class AppData {
         AppData.sharedInstance.isSubscriptionActive = false
         UserDefaultHelper.setSubscriptionActive(value: false)
         UserDefaultHelper.setSubscriptionExpireDate(value: "")
+    }
+    
+    func isUserLoggedIn() -> Bool {
+      return Auth.auth().currentUser != nil
+    }
+    
+    func logoutFirebase() {
+        if self.isUserLoggedIn() {
+            do {
+              try Auth.auth().signOut()
+            } catch {
+              print("Sign out error")
+            }
+        }
     }
 
 }

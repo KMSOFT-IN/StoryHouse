@@ -6,18 +6,34 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AuthViewController: UIViewController {
 
     @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpLoginButton: UIButton!
     
+    var isLogin: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.isLogin {
+            self.signInLabel.text = "Sing In"
+            self.signUpLoginButton.setTitle("Sign In", for: .normal)
+        } else {
+            self.signInLabel.text = "Sign Up"
+            self.signUpLoginButton.setTitle("Create User", for: .normal)
+        }
+        
     }
     
 
@@ -34,5 +50,77 @@ class AuthViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
     }
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: false)
+    }
+    
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        self.isLogin = false
+        self.signInLabel.text = "Sign Up"
+        self.signUpLoginButton.setTitle("Create User", for: .normal)
+    }
 
+}
+
+extension AuthViewController {
+    
+    func createUserWithFirebase(email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let tempError = error as NSError? {
+                switch AuthErrorCode.Code(rawValue: tempError.code) {
+                case .operationNotAllowed:
+                  // Error: The given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.
+                    break;
+                case .emailAlreadyInUse:
+                  // Error: The email address is already in use by another account.
+                    break;
+                case .invalidEmail:
+                  // Error: The email address is badly formatted.
+                    break;
+                case .weakPassword:
+                  // Error: The password must be 6 characters long or more.
+                    break;
+                default:
+                    break;
+                }
+            } else {
+                let newUserInfo = Auth.auth().currentUser
+//                let email = newUserInfo?.email
+                let uid = newUserInfo?.uid ?? ""
+                let credit = 0
+                let user = User(uid: uid, credit: credit, createdAt: Date().timeIntervalSince1970, updatedAt: Date().timeIntervalSince1970)
+                User.saveToFirebase(user: user)
+            }
+        }
+    }
+    
+    func loginWithFirebase(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let tempError = error as NSError? {
+            switch AuthErrorCode.Code(rawValue: tempError.code) {
+            case .operationNotAllowed:
+              // Error: Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.
+                break;
+            case .userDisabled:
+              // Error: The user account has been disabled by an administrator.
+                break;
+            case .wrongPassword:
+              // Error: The password is invalid or the user does not have a password.
+                break;
+            case .invalidEmail:
+              // Error: Indicates the email address is malformed.
+                break;
+            default:
+                print("Error: \(tempError.localizedDescription)")
+                break;
+            }
+          } else {
+            print("User signs in successfully")
+            let userInfo = Auth.auth().currentUser
+            let email = userInfo?.email
+          }
+        }
+    }
+    
 }

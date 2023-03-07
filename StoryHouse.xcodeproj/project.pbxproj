@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		481C60A929B5F19300A1C58C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 481C60A829B5F19300A1C58C /* FirebaseAuth */; };
 		881402E0296D6A2E00930582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881402DF296D6A2E00930582 /* AppDelegate.swift */; };
 		881402E2296D6A2E00930582 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881402E1296D6A2E00930582 /* SceneDelegate.swift */; };
 		881402E7296D6A2E00930582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881402E5296D6A2E00930582 /* Main.storyboard */; };
@@ -442,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B263114729AC5D4A008DB9C4 /* FirebaseDatabase in Frameworks */,
+				481C60A929B5F19300A1C58C /* FirebaseAuth in Frameworks */,
 				B2B645E729ACBE8E005D9BC8 /* Lottie in Frameworks */,
 				B26EDB5B299F782F0096C596 /* FirebaseRemoteConfig in Frameworks */,
 				B26EDB55299F71630096C596 /* FirebaseMessaging in Frameworks */,
@@ -1490,6 +1492,7 @@
 				B263114429AC5C46008DB9C4 /* FirebaseFirestore */,
 				B263114629AC5D4A008DB9C4 /* FirebaseDatabase */,
 				B2B645E629ACBE8E005D9BC8 /* Lottie */,
+				481C60A829B5F19300A1C58C /* FirebaseAuth */,
 			);
 			productName = StoryHouse;
 			productReference = 881402DC296D6A2E00930582 /* StoryHouse.app */;
@@ -2075,6 +2078,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		481C60A829B5F19300A1C58C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		8838353B299411B8001C28C3 /* SwiftyReceiptValidator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8838353A299411B8001C28C3 /* XCRemoteSwiftPackageReference "swifty-receipt-validator" */;

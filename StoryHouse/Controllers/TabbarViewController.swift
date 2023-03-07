@@ -11,6 +11,7 @@ import AVFoundation
 import LinkPresentation
 import Lottie
 import SpriteKit
+import FirebaseAuth
 
 class TabbarViewController: UIViewController {
     
@@ -785,6 +786,15 @@ extension TabbarViewController {
         self.playRecordAudioImageView.backgroundColor = UIColor.clear
         self.playRecordedAudioButton.isEnabled = true
         RecordAudioManager.shareInstance().finishRecording(success: true)
+        
+        let storyId = AppData.sharedInstance.selectedStoryNumber
+        let userId = Auth.auth().currentUser?.uid ?? ""
+        let uuid = UUID().uuidString
+        let createdAt = Date().timeIntervalSince1970
+        var paragraph: [Paragraph] = []
+        
+        let tempStory = StoryDetails(uniqueShareId: uuid, userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [:])
+        
         let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
         let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
         UserRecording.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
