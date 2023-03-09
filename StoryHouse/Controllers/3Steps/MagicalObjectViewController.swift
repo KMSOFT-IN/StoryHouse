@@ -49,10 +49,10 @@ class MagicalObjectViewController: UIViewController {
         let storyIndex = ("\(AppData.sharedInstance.selectedCharacterIndex)"  + "\(AppData.sharedInstance.selectedLocationIndex)" + "\(AppData.sharedInstance.selectedMagicalObjectIndex)")
         UserDefaultHelper.setSelectedStoryNumber(value: storyIndex)
         UserDefaultHelper.set_Is_Onboarding_Done(value: true)
-        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUserId(),
                      "OBJECT_INDEX" : self.selectedIndex] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_OBJECT, parameters: param)
-        let storyParam = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+        let storyParam = [Constant.Analytics.USER_ID: UserDefaultHelper.getUserId(),
                           "HERO_INDEX": AppData.sharedInstance.selectedCharacterIndex,
                           "PLACE_INDEX": AppData.sharedInstance.selectedLocationIndex,
                           "OBJECT_INDEX": AppData.sharedInstance.selectedMagicalObjectIndex,
@@ -78,7 +78,7 @@ class MagicalObjectViewController: UIViewController {
     
     func addTotalStoryCountEvent() {
         let diff = Utility.findDateDiff(time1Str: AppData.sharedInstance.totalStroyReadingStartTime, time2Str: AppData.sharedInstance.totalStroyReadingEndTime)
-        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.TOTAL_STORY_CREATED_COUNT_IN_SESSION, parameters: [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+        AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.TOTAL_STORY_CREATED_COUNT_IN_SESSION, parameters: [Constant.Analytics.USER_ID: UserDefaultHelper.getUserId(),
                         "COUNT" : AppData.sharedInstance.storyCreatedCount,
                         "start_time": AppData.sharedInstance.totalStroyReadingStartTime,
                         "end_time" : AppData.sharedInstance.totalStroyReadingEndTime,

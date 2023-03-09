@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad7_9" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,7 +21,7 @@
         <!--Auth View Controller-->
         <scene sceneID="pLO-x4-17t">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="qLt-kz-tkB" customClass="AuthViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qLt-kz-tkB" customClass="AuthViewController" customModule="StoryHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QoN-JY-oCA">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,11 +47,11 @@
                                         <state key="normal" image="ic_backButton"/>
                                         <buttonConfiguration key="configuration" style="plain" image="ic_backButton"/>
                                         <connections>
-                                            <action selector="backButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="HUd-Hv-UBJ"/>
+                                            <action selector="backButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="vGM-oW-M4q"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create my story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-Q2-KbX">
-                                        <rect key="frame" x="474.5" y="37" width="184.5" height="32.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-Q2-KbX">
+                                        <rect key="frame" x="528.5" y="37" width="76" height="33"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
                                         <color key="textColor" name="font_color(#292B5C)"/>
                                         <nil key="highlightedColor"/>
@@ -83,9 +83,6 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="ic_clear"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_clear"/>
-                                                <connections>
-                                                    <action selector="clearTextFieldButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="bj1-yD-pWa"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.90196078430000004" green="0.94901960780000005" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -138,9 +135,6 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="ic_clear"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_clear"/>
-                                                <connections>
-                                                    <action selector="clearTextHisHerFielddButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="fB1-pS-On9"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.90196078430000004" green="0.94901960780000005" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -183,7 +177,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="nextButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="LRA-1e-acA"/>
+                                            <action selector="loginButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="FVr-z0-ae9"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_story3" translatesAutoresizingMaskIntoConstraints="NO" id="7r1-PU-pdX">
@@ -197,9 +191,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AE-6w-nFe">
+                                        <rect key="frame" x="603" y="475.5" width="208" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Tap To Create New User"/>
+                                        <connections>
+                                            <action selector="signUpButtonTapped:" destination="qLt-kz-tkB" eventType="touchUpInside" id="gv4-HR-30T"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="6AE-6w-nFe" firstAttribute="top" secondItem="1dG-ap-kXS" secondAttribute="bottom" constant="25" id="1hQ-Ea-YQ7"/>
                                     <constraint firstItem="Ybm-dj-hYx" firstAttribute="leading" secondItem="P5e-x2-DTh" secondAttribute="leading" id="56i-ha-W7P"/>
                                     <constraint firstItem="6gS-9g-8nE" firstAttribute="leading" secondItem="P5e-x2-DTh" secondAttribute="leading" constant="50" id="6Gi-Fo-h4o"/>
                                     <constraint firstItem="plb-uN-Jdf" firstAttribute="leading" secondItem="N64-DR-JUT" secondAttribute="leading" id="6rT-74-JKg"/>
@@ -214,6 +217,7 @@
                                     <constraint firstItem="NBk-Q2-KbX" firstAttribute="centerY" secondItem="6gS-9g-8nE" secondAttribute="centerY" id="IZK-vb-WQH"/>
                                     <constraint firstItem="1dG-ap-kXS" firstAttribute="leading" secondItem="0TC-Oy-JHP" secondAttribute="leading" id="Q44-i8-3jz"/>
                                     <constraint firstItem="0TC-Oy-JHP" firstAttribute="leading" secondItem="N64-DR-JUT" secondAttribute="leading" id="RPY-Ml-7gQ"/>
+                                    <constraint firstItem="6AE-6w-nFe" firstAttribute="leading" secondItem="dyb-Uw-AVL" secondAttribute="leading" id="RhL-va-qeU"/>
                                     <constraint firstItem="1dG-ap-kXS" firstAttribute="top" secondItem="0TC-Oy-JHP" secondAttribute="bottom" constant="20" id="Tdh-Ae-V9f"/>
                                     <constraint firstAttribute="bottom" secondItem="6it-QZ-K95" secondAttribute="bottom" constant="60" id="TeE-0N-aVX"/>
                                     <constraint firstItem="7r1-PU-pdX" firstAttribute="leading" secondItem="P5e-x2-DTh" secondAttribute="leading" constant="50" id="Vb6-Uk-NCt"/>
@@ -237,9 +241,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="heroImageView" destination="7r1-PU-pdX" id="yp9-FK-blT"/>
-                        <outlet property="heroNameTextField" destination="s2e-eT-iP0" id="VnJ-fF-GYU"/>
-                        <outlet property="hisherNameTextField" destination="dyb-Uw-AVL" id="esr-9N-Ett"/>
+                        <outlet property="emailTextField" destination="s2e-eT-iP0" id="5Uk-HG-vUJ"/>
+                        <outlet property="passwordTextField" destination="dyb-Uw-AVL" id="YRD-Q3-Dwh"/>
+                        <outlet property="signInButton" destination="6it-QZ-K95" id="SSv-On-wez"/>
+                        <outlet property="signInLabel" destination="NBk-Q2-KbX" id="OnV-nP-mMb"/>
+                        <outlet property="signUpLoginButton" destination="6AE-6w-nFe" id="54y-FI-OMH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="St7-R9-s7X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -37,7 +37,7 @@ class HeroViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUserId(),
                      "HERO_INDEX" : self.selectedIndex] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_HERO, parameters: param)
         AppData.sharedInstance.selectedCharacterIndex =  self.selectedIndex

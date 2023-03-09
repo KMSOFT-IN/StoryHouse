@@ -54,7 +54,7 @@ class PlacesViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser(),
+        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUserId(),
                      "PLACE_INDEX" : self.selectedIndex] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SELECTED_STORY_PLACE, parameters: param)
         AppData.sharedInstance.selectedLocationIndex = selectedIndex

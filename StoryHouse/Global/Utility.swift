@@ -36,9 +36,9 @@ import AVFoundation
         } else if let karenVoice = voiceList.filter({$0.name.contains("Karen")}).first {
             utterance.voice = AVSpeechSynthesisVoice(identifier: karenVoice.identifier)
         }
-//        if let identifier = UserDefaultHelper.getVoiceIdentifier() {
-//            utterance.voice = AVSpeechSynthesisVoice(identifier: identifier)
-//        }
+        //        if let identifier = UserDefaultHelper.getVoiceIdentifier() {
+        //            utterance.voice = AVSpeechSynthesisVoice(identifier: identifier)
+        //        }
         AppData.sharedInstance.synthesizer!.speak(utterance)
     }
     
@@ -53,8 +53,17 @@ import AVFoundation
         }
     }
     
+    class func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
     
-     
+    class func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
     class func getDateFromTimeStamp(timeStamp : Double) -> String {
         let date = Date(timeIntervalSince1970: timeStamp)
         let dayTimePeriodFormatter = DateFormatter()
@@ -189,12 +198,12 @@ import AVFoundation
     class func findDateDiff(time1Str: String, time2Str: String) -> String {
         let timeformatter = DateFormatter()
         timeformatter.dateFormat = "hh:mm:ss a"
-
+        
         guard let time1 = timeformatter.date(from: time1Str),
-            let time2 = timeformatter.date(from: time2Str) else { return "" }
-
+              let time2 = timeformatter.date(from: time2Str) else { return "" }
+        
         //You can directly use from here if you have two dates
-
+        
         let interval = time2.timeIntervalSince(time1)
         let hour = interval / 3600;
         let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
@@ -233,20 +242,20 @@ import AVFoundation
         }
     }
     
-//    class func getPlaceName(index: Int) -> String {
-//        switch index {
-//        case 0:
-//            return "magical wand"
-//        case 1:
-//            return "wizard's hat"
-//        case 2:
-//            return "magical potion"
-//        case 3:
-//            return "magical beads"
-//        default:
-//            return "magical wand"
-//        }
-//    }
+    //    class func getPlaceName(index: Int) -> String {
+    //        switch index {
+    //        case 0:
+    //            return "magical wand"
+    //        case 1:
+    //            return "wizard's hat"
+    //        case 2:
+    //            return "magical potion"
+    //        case 3:
+    //            return "magical beads"
+    //        default:
+    //            return "magical wand"
+    //        }
+    //    }
 }
 
 private var kAlertControllerWindow = "kAlertControllerWindow"

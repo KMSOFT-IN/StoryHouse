@@ -162,12 +162,12 @@ class UserDefaultHelper {
         return storedDate
     }
     
-    static func saveUser(userId: String) {
+    static func saveUserId(userId: String) {
         UserDefaults.standard.set(userId, forKey: Constant.UserDefault.USER_ID)
         UserDefaults.standard.synchronize()
     }
     
-    static func getUser() -> String {
+    static func getUserId() -> String {
         let userId = UserDefaults.standard.value(forKey: Constant.UserDefault.USER_ID) as? String ?? ""
         return userId
     }
@@ -190,6 +190,32 @@ class UserDefaultHelper {
     
     static func getLastStoryDate() -> String {
         return UserDefaults.standard.string(forKey: Constant.UserDefault.LAST_STORY_CREATE) ?? ""
+    }
+    
+    static func saveUser(user: User) {
+        let dictionary = user.getDictionary()
+        UserDefaults.standard.set(dictionary, forKey: Constant.UserDefault.USER)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getUser() -> User? {
+        let userDictionary: [String: Any] = UserDefaults.standard.value(forKey: Constant.UserDefault.USER) as? [String: Any] ?? [:]
+        if userDictionary.isEmpty {
+            return nil
+        }
+        return User.getInstance(dictionary: userDictionary)
+    }
+    
+    class func saveAudioToUpload(stroyList: [StoryDetails]) {
+        let dictionary = StoryDetails.getArrayFromData(data: stroyList)
+        UserDefaults.standard.set(dictionary, forKey:  Constant.UserDefault.STORY_TO_UPLOAD)
+        UserDefaults.standard.synchronize()
+    }
+    
+    class func getStoryToUpload() -> [StoryDetails]? {
+        let array = UserDefaults.standard.value(forKey: Constant.UserDefault.STORY_TO_UPLOAD) as? [[String: Any]] ?? []
+        let projectToUploadList = StoryDetails.getArray(array: array)
+        return projectToUploadList
     }
     
     static func clearUserdefault() {

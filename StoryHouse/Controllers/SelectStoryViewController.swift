@@ -58,7 +58,7 @@ class HomeViewController : UIViewController {
     @IBAction func createStoryButtonTapped(_ sender: UIButton) {
         self.setBorderWidth(view: self.createStoryView)
         let viewController = HeroViewController.getInstance()
-        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUser()]
+        let param = [Constant.Analytics.USER_ID: UserDefaultHelper.getUserId()]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.INITIATE_CREATE_STORY, parameters: param)
         self.navigationController?.pushViewController(viewController, animated: true)
     }

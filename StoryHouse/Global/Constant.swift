@@ -39,6 +39,7 @@ class Constant {
         static let SETTING                    = UIStoryboard(name: "Setting", bundle: nil)
         static let PREMIUM                    = UIStoryboard(name: "Premium", bundle: nil)
         static let EXPLORE                    = UIStoryboard(name: "Explore", bundle: nil)
+        static let AUTH                    = UIStoryboard(name: "Auth", bundle: nil)
     }
     
     class refs {
@@ -68,6 +69,8 @@ class Constant {
         static let USER_PLACE_NAME = "USER_PLACE_NAME"
         static let EXPLORE_STORY = "EXPLORE_STORY"
         static let LAST_STORY_CREATE = "LAST_STORY_CREATE"
+        static let USER = "FirebaseUser"
+        static let STORY_TO_UPLOAD = "STORY_TO_UPLOAD"
     }
     
     class Analytics {

@@ -63,6 +63,7 @@ class TabbarViewController: UIViewController {
     private var lottieAnimationView: LottieAnimationView?
     var recordingTimeCount:Int = 0
     var recordingTimer:Timer!
+    var currentAudioStoryDetails: StoryDetails?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,7 @@ class TabbarViewController: UIViewController {
         self.navigationController?.setViewControllers([self], animated: true)
 //        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.createView(count:)), userInfo: nil, repeats: true)
         
-//        RecordAudioManager.shareInstance().setupView()
+        RecordAudioManager.shareInstance().setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -310,7 +311,7 @@ class TabbarViewController: UIViewController {
         
     func addStartStoryEvent() {
         AppData.sharedInstance.storyStartTime = Date().toTimeString
-        let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),
+        let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUserId(),
                           "startTime" : AppData.sharedInstance.storyStartTime,
                           "endTime" : "",
                           "lapsed" : "",
@@ -323,7 +324,7 @@ class TabbarViewController: UIViewController {
         AppData.sharedInstance.storyEndTime = Date().toTimeString
         AppData.sharedInstance.totalStroyReadingEndTime = Date().toTimeString
         let getDiffernece = Utility.findDateDiff(time1Str: AppData.sharedInstance.storyStartTime, time2Str: AppData.sharedInstance.storyEndTime)
-        let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),
+        let storyParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUserId(),
                           "startTime" : AppData.sharedInstance.storyStartTime,
                           "endTime" : AppData.sharedInstance.storyEndTime,
                           "lapsed" : getDiffernece,
@@ -331,7 +332,7 @@ class TabbarViewController: UIViewController {
                           "story_index": UserDefaultHelper.getSelectedStoryNumber() ?? ""] as [String : Any]
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_READ_TIME, parameters: storyParam)
         if self.currentIndex == (self.totalIndex - 1) {
-            let completeStoryParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUser(),
+            let completeStoryParam = [Constant.Analytics.USER_ID : UserDefaultHelper.getUserId(),
                                       "completed_page_index" : self.currentIndex,
                                       "story_index": UserDefaultHelper.getSelectedStoryNumber() ?? ""] as [String : Any]
             AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.STORY_COMPLETED, parameters: completeStoryParam)
@@ -619,23 +620,38 @@ class TabbarViewController: UIViewController {
     }
     
     @IBAction func shareButtontapped(_ sender: Any) {
-        self.addWaterMarkToImage { tempImage in
-            UIGraphicsBeginImageContext(self.view.frame.size)
-            self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
-            
-            var image = self.image.image
-            if tempImage != nil {
-                image = tempImage
+        if !AppData.sharedInstance.isUserLoggedIn() {
+            let vc = AuthViewController.getInstance()
+            self.navigationController?.pushViewController(vc, animated: false)
+        } else {
+            AppData.sharedInstance.user?.credit = 4
+            AppData.sharedInstance.user?.updatedAt = Date().timeIntervalSince1970
+            if let tempUser = AppData.sharedInstance.user ?? UserDefaultHelper.getUser() {
+                User.saveToFirebase(user: tempUser) { error in
+                    print(error?.localizedDescription ?? "")
+                    User.getUserDetail(uid: tempUser.uid ?? "") { status, user, error in
+                        print(user?.credit)
+                    }
+                }
             }
-            UIGraphicsEndImageContext()
-    //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-            let objectsToShare = [image as Any, self] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-            activityVC.popoverPresentationController?.sourceView = sender as? UIView
-            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
-            self.present(activityVC, animated: true, completion: nil)
         }
+//        self.addWaterMarkToImage { tempImage in
+//            UIGraphicsBeginImageContext(self.view.frame.size)
+//            self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+//
+//            var image = self.image.image
+//            if tempImage != nil {
+//                image = tempImage
+//            }
+//            UIGraphicsEndImageContext()
+//    //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+//            let objectsToShare = [image as Any, self] as [Any]
+//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+//            activityVC.popoverPresentationController?.sourceView = sender as? UIView
+//            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
+//            self.present(activityVC, animated: true, completion: nil)
+//        }
         
     }
     
@@ -786,25 +802,48 @@ extension TabbarViewController {
         self.playRecordAudioImageView.backgroundColor = UIColor.clear
         self.playRecordedAudioButton.isEnabled = true
         RecordAudioManager.shareInstance().finishRecording(success: true)
-        
-        let storyId = AppData.sharedInstance.selectedStoryNumber
-        let userId = Auth.auth().currentUser?.uid ?? ""
-        let uuid = UUID().uuidString
-        let createdAt = Date().timeIntervalSince1970
-        var paragraph: [Paragraph] = []
-        
-        let tempStory = StoryDetails(uniqueShareId: uuid, userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [:])
-        
         let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
         let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
-        UserRecording.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-            if let tempUrl = url {
-                print("downloadurl \(url ?? "")")
-                let temp = UserRecording(url: fileURL.absoluteString,downloadUrl: tempUrl, createdAt: Date().toTimeStamp)
-                temp.saveToFirebase()
+        if currentIndex == 1 {
+            let storyId = AppData.sharedInstance.selectedStoryNumber
+            let userId = Auth.auth().currentUser?.uid ?? ""
+            let uuid = UUID().uuidString
+            let createdAt = Date().timeIntervalSince1970
+            let id = Utility.randomString(length: 6)
+            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+                let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+                let tempStory = StoryDetails(uniqueShareId: uuid,id: id ,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
+                tempStory.saveToFirebase()
+                self.currentAudioStoryDetails = tempStory
+                AppData.sharedInstance.storyAudioUploadList.append(tempStory)
+            }
+        } else {
+            let storyList = UserDefaultHelper.getStoryToUpload() ?? []
+            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+                if let findCurrentStoryIndex = storyList.firstIndex(where: {$0.id == self.currentAudioStoryDetails?.id}) {
+                    let currentStory = storyList[findCurrentStoryIndex]
+                    let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+                    currentStory.paragraph.append(paraGraph)
+                    StoryDetails.saveToFirebase(story: currentStory) { error in
+                        print(error?.localizedDescription ?? "")
+                    }
+                }
             }
         }
+//        let tempStory = StoryDetails(uniqueShareId: uuid, userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [:])
+//
+//        let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
+//        let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
+//        UserRecording.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+//            if let tempUrl = url {
+//                print("downloadurl \(url ?? "")")
+//                let temp = UserRecording(url: fileURL.absoluteString,downloadUrl: tempUrl, createdAt: Date().toTimeStamp)
+//                temp.saveToFirebase()
+//            }
+//        }
     }
+    
+    
     
     @IBAction func playRecordedAudioButtonTapped(_ sender: UIButton) {
         if (sender.titleLabel?.text == "Play"){

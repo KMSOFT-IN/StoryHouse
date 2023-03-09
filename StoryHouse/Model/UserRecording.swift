@@ -15,6 +15,7 @@ typealias StoryCallback = (Bool, StoryDetails?, Error?) -> Void
 
 class StoryDetails {
     var uniqueShareId: String?
+    var id: String?
     var userId: String?
     var storyId: String?
     var paragraph: [Paragraph] = []
@@ -23,6 +24,7 @@ class StoryDetails {
     
     init(dictionary: [String: Any]) {
         self.uniqueShareId = dictionary["uniqueShareId"] as? String
+        self.id = dictionary["id"] as? String
         self.userId = dictionary["userId"] as? String
         self.storyId = dictionary["storyId"] as? String
         self.createdAt = dictionary["createdAt"] as? Double
@@ -32,20 +34,23 @@ class StoryDetails {
     }
     
     init(uniqueShareId: String = "",
+         id: String = "",
          userId: String = "",
          createdAt: Double = 0.0,
          storyId: String = "",
-         paragraph: [[String:Any]] = []) {
+         paragraph: [Paragraph] = []) {
         self.uniqueShareId = uniqueShareId
+        self.id = id
         self.userId = userId
         self.storyId = storyId
         self.createdAt = createdAt
-        self.paragraph = Paragraph.getArray(array: paragraph) ?? []
+        self.paragraph = paragraph
     }
 
     func getDictionary() -> [String : Any] {
         var dictionary: [String: Any] = [:]
         dictionary["uniqueShareId"] = self.uniqueShareId
+        dictionary["id"] = self.id
         dictionary["userId"] = self.userId
         dictionary["storyId"] = self.storyId
         dictionary["createdAt"] = self.createdAt
@@ -83,7 +88,7 @@ class StoryDetails {
         StoryDetails.databaseRef.addDocument(data: dictionary)
     }
     
-    func getUserDetail(uid: String, callback: StoryCallback?) {
+   class func getStoryDetail(uid: String, callback: StoryCallback?) {
         StoryDetails.databaseRef.document(uid).getDocument(completion: { (snapshot, error) in
             if error != nil {
                 callback?(false,nil, error)
@@ -91,6 +96,23 @@ class StoryDetails {
                 let dictionary = snapshot?.data() ?? [:]
                 let story = StoryDetails(dictionary: dictionary)
                 callback?(true, story, nil)
+            }
+        })
+    }
+    
+    class func saveToFirebase(story: StoryDetails, callback: ErrorCallback?) {
+//        story.updatedAt = Date().timeIntervalSince1970
+        let dictionary = story.getDictionary()
+        StoryDetails.databaseRef.document(story.id ?? "").setData(dictionary, completion: { (error) in
+            if error != nil {
+                callback?(error)
+            }
+            else {
+//                if AppData.sharedInstance.user?.uid == user.uid {
+//                    AppData.sharedInstance.user = user
+//                    UserDefaultHelper.saveUser(user: user)
+//                }
+                callback?(nil)
             }
         })
     }
@@ -228,13 +250,11 @@ class User {
     class func saveToFirebase(user: User) {
         let dictionary = user.getDictionary()
         User.databaseRef.document(user.uid ?? "").setData(dictionary)
-//        if AppData.sharedInstance.user?.uid == user.uid {
-//            AppData.sharedInstance.user = user
-////            UserDefaultHelper.saveUser(user: user)
-//        }
+        AppData.sharedInstance.user = user
+        UserDefaultHelper.saveUser(user: user)
     }
     
-    func saveToFirebase(user: User, callback: ErrorCallback?) {
+    class func saveToFirebase(user: User, callback: ErrorCallback?) {
         user.updatedAt = Date().timeIntervalSince1970
         let dictionary = user.getDictionary()
         User.databaseRef.document(user.uid ?? "").setData(dictionary, completion: { (error) in
@@ -242,11 +262,24 @@ class User {
                 callback?(error)
             }
             else {
-//                if AppData.sharedInstance.user?.uID == user.uID {
-//                    AppData.sharedInstance.user = user
-//                    UserDefaultHelper.saveUser(user: user)
-//                }
+                if AppData.sharedInstance.user?.uid == user.uid {
+                    AppData.sharedInstance.user = user
+                    UserDefaultHelper.saveUser(user: user)
+                }
                 callback?(nil)
+            }
+        })
+    }
+    
+    class func getUserDetail(uid: String, callback: ((_ status: Bool, _ user: User?, _ error: Error?)->Void)?) {
+        print(uid)
+        Constant.refs.USERS.document(uid).getDocument(completion: { (snapshot, error) in
+            if error != nil {
+                callback?(false,nil, error)
+            } else {
+                let dictionary = snapshot?.data() ?? [:]
+                let user = User.getInstance(dictionary: dictionary)
+                callback?(true, user, nil)
             }
         })
     }

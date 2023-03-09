@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate, UNUserN
         AppData.sharedInstance.notificationHelper.registerForPushNotifications()
         AppData.sharedInstance.notificationHelper.setupDelegate()
         AppData.sharedInstance.fcmToken = UserDefaultHelper.getFCMToken() ??  ""
+        AppData.sharedInstance.user = UserDefaultHelper.getUser()
+        AppData.sharedInstance.storyAudioUploadList = UserDefaultHelper.getStoryToUpload() ?? []
         return true
     }
     
@@ -48,9 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate, UNUserN
             AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.FIRST_APP_OPEN, parameters: nil)
             UserDefaultHelper.setFirstLaunch(value: true)
         }
-        if (UserDefaultHelper.getUser().isEmpty) {
+        if (UserDefaultHelper.getUserId().isEmpty) {
             let userId = UUID().uuidString
-            UserDefaultHelper.saveUser(userId: userId)
+            UserDefaultHelper.saveUserId(userId: userId)
             AppData.sharedInstance.logger.setUserProperty(userId: userId)
         }
         AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.APP_OPEN, parameters: nil)

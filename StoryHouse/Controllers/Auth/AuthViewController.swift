@@ -14,8 +14,13 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpLoginButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
     
     var isLogin: Bool = true
+    
+    static func getInstance() -> AuthViewController {
+        return Constant.Storyboard.AUTH.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +33,12 @@ class AuthViewController: UIViewController {
         
         if self.isLogin {
             self.signInLabel.text = "Sing In"
-            self.signUpLoginButton.setTitle("Sign In", for: .normal)
+            self.signUpLoginButton.setTitle("Tap To Create User", for: .normal)
+            self.signInButton.setTitle("Sign In", for: .normal)
         } else {
             self.signInLabel.text = "Sign Up"
-            self.signUpLoginButton.setTitle("Create User", for: .normal)
+            self.signUpLoginButton.setTitle("Tap To Sign In", for: .normal)
+            self.signInButton.setTitle("Create User", for: .normal)
         }
         
     }
@@ -48,7 +55,21 @@ class AuthViewController: UIViewController {
     */
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        
+        let email = self.emailTextField.text ?? ""
+        let password = self.passwordTextField.text ?? ""
+        if email.isEmpty {
+            Utility.alert(message: "Please enter email id.")
+        } else if password.isEmpty {
+            Utility.alert(message: "Please enter password.")
+        } else if !Utility.isValidEmail(email) {
+            Utility.alert(message: "Please enter valid email address.")
+        } else {
+            if self.isLogin {
+                self.loginWithFirebase(email: email, password: password)
+            } else {
+                self.createUserWithFirebase(email: email, password: password)
+            }
+        }
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -56,9 +77,17 @@ class AuthViewController: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        self.isLogin = false
-        self.signInLabel.text = "Sign Up"
-        self.signUpLoginButton.setTitle("Create User", for: .normal)
+        if self.isLogin {
+            self.isLogin = false
+            self.signInLabel.text = "Sign Up"
+            self.signUpLoginButton.setTitle("Tap To Sign In", for: .normal)
+            self.signInButton.setTitle("Create User", for: .normal)
+        } else {
+            self.isLogin = true
+            self.signInLabel.text = "Sign in"
+            self.signUpLoginButton.setTitle("Tap To Create User", for: .normal)
+            self.signInButton.setTitle("Sign In", for: .normal)
+        }
     }
 
 }
@@ -91,6 +120,7 @@ extension AuthViewController {
                 let credit = 0
                 let user = User(uid: uid, credit: credit, createdAt: Date().timeIntervalSince1970, updatedAt: Date().timeIntervalSince1970)
                 User.saveToFirebase(user: user)
+                self.navigationController?.popViewController(animated: false)
             }
         }
     }
@@ -117,8 +147,13 @@ extension AuthViewController {
             }
           } else {
             print("User signs in successfully")
-            let userInfo = Auth.auth().currentUser
-            let email = userInfo?.email
+              let newUserInfo = Auth.auth().currentUser
+//                let email = newUserInfo?.email
+              let uid = newUserInfo?.uid ?? ""
+              let credit = 0
+              let user = User(uid: uid, credit: credit, createdAt: Date().timeIntervalSince1970, updatedAt: Date().timeIntervalSince1970)
+              User.saveToFirebase(user: user)
+              self.navigationController?.popViewController(animated: false)
           }
         }
     }
