@@ -11,11 +11,12 @@ import FirebaseStorage
 import FirebaseFirestore
 
 typealias ErrorCallback = (Error?) -> Void
-typealias StoryCallback = (Bool, StoryDetails?, Error?) -> Void
+typealias StoryCallback = (Bool, [StoryDetails]?, Error?) -> Void
+
 
 class StoryDetails {
     var uniqueShareId: String?
-    var id: String?
+    var id: String = ""
     var userId: String?
     var storyId: String?
     var paragraph: [Paragraph] = []
@@ -24,7 +25,7 @@ class StoryDetails {
     
     init(dictionary: [String: Any]) {
         self.uniqueShareId = dictionary["uniqueShareId"] as? String
-        self.id = dictionary["id"] as? String
+        self.id = dictionary["id"] as? String ?? ""
         self.userId = dictionary["userId"] as? String
         self.storyId = dictionary["storyId"] as? String
         self.createdAt = dictionary["createdAt"] as? Double
@@ -84,20 +85,28 @@ class StoryDetails {
     
     // MARK: - Save to Firebase
     func saveToFirebase() {
-        let dictionary = self.getDictionary()
-        StoryDetails.databaseRef.addDocument(data: dictionary)
+        if self.id.isEmpty {
+            self.id = StoryDetails.databaseRef.document().documentID
+        }
+        StoryDetails.databaseRef.document(self.id).setData(self.getDictionary(), completion: { (error: Error?) in
+            
+        })
     }
     
-   class func getStoryDetail(uid: String, callback: StoryCallback?) {
-       StoryDetails.databaseRef.document().getDocument(completion: { (snapshot, error) in
-           if error != nil {
-               callback?(false,nil, error)
+   class func getStoryDetail(callback: StoryCallback?) {
+       Constant.refs.STORIES.getDocuments {(snapshot, error) in
+           if let err = error {
+               print("Error getting documents: \(err)")
+               callback?(false, nil, error)
            } else {
-               let dictionary = snapshot?.data() ?? [:]
-               let story = StoryDetails(dictionary: dictionary)
-               callback?(true, story, nil)
+               var tempArray: [StoryDetails] = []
+               for document in snapshot!.documents {
+                   let model = StoryDetails(dictionary: document.data())
+                   tempArray.append(model)
+               }
+               callback?(true, tempArray, nil)
            }
-       })
+       }
 //       StoryDetails.databaseRef.document(uid).getDocument(completion: { (snapshot, error) in
 //            if error != nil {
 //                callback?(false,nil, error)
@@ -112,7 +121,7 @@ class StoryDetails {
     class func saveToFirebase(story: StoryDetails, callback: ErrorCallback?) {
 //        story.updatedAt = Date().timeIntervalSince1970
         let dictionary = story.getDictionary()
-        StoryDetails.databaseRef.document(story.id ?? "").setData(dictionary, completion: { (error) in
+        StoryDetails.databaseRef.document(story.id).setData(dictionary, completion: { (error) in
             if error != nil {
                 callback?(error)
             }

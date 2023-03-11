@@ -807,39 +807,73 @@ extension TabbarViewController {
         self.playRecordAudioImageView.backgroundColor = UIColor.clear
         self.playRecordedAudioButton.isEnabled = true
         RecordAudioManager.shareInstance().finishRecording(success: true)
-        let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
+        let storyNumber = AppData.sharedInstance.selectedStoryNumber
+        let fileName = "\(storyNumber)_\(self.currentIndex)"
         let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
-        
-        if currentIndex == 0 {
-            StoryDetails.getStoryDetail(uid: "") { success, details, error in
-                
-            }
-            let storyId = AppData.sharedInstance.selectedStoryNumber
-            let userId = Auth.auth().currentUser?.uid ?? ""
-            let uuid = UUID().uuidString
-            let createdAt = Date().timeIntervalSince1970
-            let id = Utility.randomString(length: 6)
-            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-                let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-                let tempStory = StoryDetails(uniqueShareId: uuid,id: id ,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
-                tempStory.saveToFirebase()
-                self.currentAudioStoryDetails = tempStory
-                AppData.sharedInstance.storyAudioUploadList.append(tempStory)
-                UserDefaultHelper.saveAudioToUpload(stroyList: AppData.sharedInstance.storyAudioUploadList)
-            }
-        } else {
-            let storyList = UserDefaultHelper.getStoryToUpload() ?? []
-            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-                if let findCurrentStoryIndex = storyList.firstIndex(where: {$0.id == self.currentAudioStoryDetails?.id}) {
-                    let currentStory = storyList[findCurrentStoryIndex]
-                    let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-                    currentStory.paragraph.append(paraGraph)
-                    StoryDetails.saveToFirebase(story: currentStory) { error in
-                        print(error?.localizedDescription ?? "")
+        let storyId = AppData.sharedInstance.selectedStoryNumber
+        let userId = Auth.auth().currentUser?.uid ?? ""
+        let uuid = UUID().uuidString
+        let createdAt = Date().timeIntervalSince1970
+        StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+//            let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+//            let tempStory = StoryDetails(uniqueShareId: uuid,id: id ,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
+//            tempStory.saveToFirebase()
+//            self.currentAudioStoryDetails = tempStory
+//            AppData.sharedInstance.storyAudioUploadList.append(tempStory)
+//            UserDefaultHelper.saveAudioToUpload(stroyList: AppData.sharedInstance.storyAudioUploadList)
+            StoryDetails.getStoryDetail { success, storyArray, error in
+                if let temp = storyArray {
+                    if let currentStoryIndex = temp.firstIndex(where: {$0.storyId == storyNumber && $0.userId == AppData.sharedInstance.user?.uid}){
+                        let currentStory = temp[currentStoryIndex]
+                        self.currentAudioStoryDetails = currentStory
+                        if let paragraphIsExist = currentStory.paragraph.filter({$0.index == String(self.currentIndex)}).first {
+                            paragraphIsExist.file_url = ""
+                        } else {
+                            let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+                            currentStory.paragraph.append(paraGraph)
+                        }
+                        StoryDetails.saveToFirebase(story: currentStory) { error in
+                            print(error?.localizedDescription ?? "")
+                        }
+                    } else {
+                        let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+                        let tempStory = StoryDetails(uniqueShareId: uuid,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
+                        tempStory.saveToFirebase()
+                        self.currentAudioStoryDetails = tempStory
                     }
                 }
             }
         }
+        
+        
+//        if currentIndex == 0 {
+//            let storyId = AppData.sharedInstance.selectedStoryNumber
+//            let userId = Auth.auth().currentUser?.uid ?? ""
+//            let uuid = UUID().uuidString
+//            let createdAt = Date().timeIntervalSince1970
+//            let id = Utility.randomString(length: 6)
+//
+//            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+//                let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+//                let tempStory = StoryDetails(uniqueShareId: uuid,id: id ,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
+//                tempStory.saveToFirebase()
+//                self.currentAudioStoryDetails = tempStory
+//                AppData.sharedInstance.storyAudioUploadList.append(tempStory)
+//                UserDefaultHelper.saveAudioToUpload(stroyList: AppData.sharedInstance.storyAudioUploadList)
+//            }
+//        } else {
+//            let storyList = UserDefaultHelper.getStoryToUpload() ?? []
+//            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
+//                if let findCurrentStoryIndex = storyList.firstIndex(where: {$0.id == self.currentAudioStoryDetails?.id}) {
+//                    let currentStory = storyList[findCurrentStoryIndex]
+//                    let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
+//                    currentStory.paragraph.append(paraGraph)
+//                    StoryDetails.saveToFirebase(story: currentStory) { error in
+//                        print(error?.localizedDescription ?? "")
+//                    }
+//                }
+//            }
+//        }
 //        let tempStory = StoryDetails(uniqueShareId: uuid, userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [:])
 //
 //        let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
