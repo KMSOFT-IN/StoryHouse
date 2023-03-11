@@ -89,15 +89,24 @@ class StoryDetails {
     }
     
    class func getStoryDetail(uid: String, callback: StoryCallback?) {
-        StoryDetails.databaseRef.document(uid).getDocument(completion: { (snapshot, error) in
-            if error != nil {
-                callback?(false,nil, error)
-            } else {
-                let dictionary = snapshot?.data() ?? [:]
-                let story = StoryDetails(dictionary: dictionary)
-                callback?(true, story, nil)
-            }
-        })
+       StoryDetails.databaseRef.document().getDocument(completion: { (snapshot, error) in
+           if error != nil {
+               callback?(false,nil, error)
+           } else {
+               let dictionary = snapshot?.data() ?? [:]
+               let story = StoryDetails(dictionary: dictionary)
+               callback?(true, story, nil)
+           }
+       })
+//       StoryDetails.databaseRef.document(uid).getDocument(completion: { (snapshot, error) in
+//            if error != nil {
+//                callback?(false,nil, error)
+//            } else {
+//                let dictionary = snapshot?.data() ?? [:]
+//                let story = StoryDetails(dictionary: dictionary)
+//                callback?(true, story, nil)
+//            }
+//        })
     }
     
     class func saveToFirebase(story: StoryDetails, callback: ErrorCallback?) {

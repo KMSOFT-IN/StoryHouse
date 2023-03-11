@@ -776,23 +776,28 @@ extension TabbarViewController {
         if AppData.sharedInstance.audioPlayer != nil {
             AppData.sharedInstance.audioPlayer.stop()
         }
-        if sender.tag == 0 {
-            sender.tag = 1
-            if AppData.sharedInstance.audioRecorder == nil {
-                self.playRecordLottieAnimation()
-                self.startRecordingTimer()
-                self.playRecordAudioImageView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-                self.playRecordedAudioButton.isEnabled = false
-                let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
-                RecordAudioManager.shareInstance().startRecording(fileName: fileName)
-            } else {
-                self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
-                RecordAudioManager.shareInstance().finishRecording(success: true)
-            }
+        if !AppData.sharedInstance.isUserLoggedIn() {
+            let vc = AuthViewController.getInstance()
+            self.navigationController?.pushViewController(vc, animated: false)
         } else {
-            sender.tag = 0
-            //            self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
-            self.finishRecording()
+            if sender.tag == 0 {
+                sender.tag = 1
+                if AppData.sharedInstance.audioRecorder == nil {
+                    self.playRecordLottieAnimation()
+                    self.startRecordingTimer()
+                    self.playRecordAudioImageView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+                    self.playRecordedAudioButton.isEnabled = false
+                    let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
+                    RecordAudioManager.shareInstance().startRecording(fileName: fileName)
+                } else {
+                    self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
+                    RecordAudioManager.shareInstance().finishRecording(success: true)
+                }
+            } else {
+                sender.tag = 0
+                //            self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
+                self.finishRecording()
+            }            
         }
     }
     
@@ -804,7 +809,11 @@ extension TabbarViewController {
         RecordAudioManager.shareInstance().finishRecording(success: true)
         let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
         let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
-        if currentIndex == 1 {
+        
+        if currentIndex == 0 {
+            StoryDetails.getStoryDetail(uid: "") { success, details, error in
+                
+            }
             let storyId = AppData.sharedInstance.selectedStoryNumber
             let userId = Auth.auth().currentUser?.uid ?? ""
             let uuid = UUID().uuidString
@@ -816,6 +825,7 @@ extension TabbarViewController {
                 tempStory.saveToFirebase()
                 self.currentAudioStoryDetails = tempStory
                 AppData.sharedInstance.storyAudioUploadList.append(tempStory)
+                UserDefaultHelper.saveAudioToUpload(stroyList: AppData.sharedInstance.storyAudioUploadList)
             }
         } else {
             let storyList = UserDefaultHelper.getStoryToUpload() ?? []
