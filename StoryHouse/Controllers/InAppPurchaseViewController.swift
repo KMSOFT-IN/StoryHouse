@@ -8,10 +8,12 @@
 import StoreKit
 import UIKit
 import SwiftyReceiptValidator
-
+import MHLoadingButton
 class InAppPurchaseViewController: UIViewController {
 
     @IBOutlet weak var progressView: UIActivityIndicatorView!
+    @IBOutlet weak var purchaseButton: LoadingButton!
+    @IBOutlet weak var restoreButton: LoadingButton!
     var selectedProduct: String?
     let products = Constant.IN_APP_PURHCHASE_PRODUCTS.LIST
     var isFromPurchase = false
@@ -38,11 +40,21 @@ class InAppPurchaseViewController: UIViewController {
         self.receiptValidator = SwiftyReceiptValidator(configuration: configuration, isLoggingEnabled: false)
         AppData.sharedInstance.iAPProduct.delegate = self
         IAPProduct.setProductIndentifiers(productList: self.products)
-        self.progressView.startAnimating()
-        self.view.isUserInteractionEnabled = false
+//        self.progressView.startAnimating()
+//        self.view.isUserInteractionEnabled = false
         AppData.sharedInstance.iAPProduct.loadProdictList()
-        
+        self.setUpLoadingButtons()
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpLoadingButtons() {
+//        let lineIndicator = IndicatorType.material
+        purchaseButton.indicator =  MaterialLoadingIndicator(color: .white)
+        restoreButton.indicator =  MaterialLoadingIndicator(color: .white)
+        purchaseButton.indicator.color = .white
+        purchaseButton.indicator.color = .white
+        self.purchaseButton.bgColor = UIColor(hex: "#F48D40")!
+        self.restoreButton.bgColor = UIColor(hex: "#F48D40")!
     }
     
     /*
@@ -58,7 +70,13 @@ class InAppPurchaseViewController: UIViewController {
     func purchaseWithProductId(productId: String) {
         self.isFromPurchase = true
         if let product = IAPProduct.productList.filter({$0.productIdentifier == productId}).first {
-            self.progressView.startAnimating()
+//            self.progressView.startAnimating()
+            if !self.purchaseButton.isLoading {
+                self.purchaseButton.showLoader(userInteraction: false)
+            }
+//            if self.restoreButton.isLoading {
+//                !btnFill.hideLoader()
+//            }
             self.view.isUserInteractionEnabled = false
             self.selectedProduct = product.productIdentifier
             AppData.sharedInstance.iAPProduct.purchaseProduct(product: product)
@@ -68,7 +86,10 @@ class InAppPurchaseViewController: UIViewController {
     
     func restore() {
         self.isFromPurchase = true
-        self.progressView.startAnimating()
+//        self.progressView.startAnimating()
+        if !self.restoreButton.isLoading {
+            self.restoreButton.showLoader(userInteraction: false)
+        }
         self.view.isUserInteractionEnabled = false
         AppData.sharedInstance.iAPProduct.restorePurchase()
     }
@@ -80,7 +101,10 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     func getProductList(productList: [SKProduct]) {
         DispatchQueue.main.async {
             if (!self.isFromPurchase) {
-                self.progressView.stopAnimating()
+//                self.progressView.stopAnimating()
+                if self.purchaseButton.isLoading {
+                    self.purchaseButton.hideLoader()
+                }
                 self.view.isUserInteractionEnabled = true
             }
             //self.showView()
@@ -93,7 +117,10 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     
     func purchasedProductListWithIndex(transaction: SKPaymentTransaction, productList: [SKProduct], index: [Int]) {
         if (!self.isFromPurchase) {
-            self.progressView.stopAnimating()
+//            self.progressView.stopAnimating()
+            if self.purchaseButton.isLoading {
+                self.purchaseButton.hideLoader()
+            }
             self.view.isUserInteractionEnabled = true
         }
         self.checkUserHaveValidLicense { haveValidLicense, data, error in
@@ -129,7 +156,10 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     
     func purchasedCancelWithError(error: NSError?) {
         DispatchQueue.main.async {
-            self.progressView.stopAnimating()
+//            self.progressView.stopAnimating()
+            if self.purchaseButton.isLoading {
+                self.purchaseButton.hideLoader()
+            }
             self.view.isUserInteractionEnabled = true
             if error?.code != 2 {
                 Utility.alert(message: error?.localizedDescription ?? "Unable to complete transaction. Please try again.", title: APPNAME, button1: "Ok",viewController: self, action: { (index: Int) in
@@ -140,7 +170,10 @@ extension InAppPurchaseViewController: IAPProductDelegate {
     
     func restoreWithError(error: NSError) {
         DispatchQueue.main.async {
-            self.progressView.stopAnimating()
+//            self.progressView.stopAnimating()
+            if self.restoreButton.isLoading {
+                self.restoreButton.hideLoader()
+            }
             self.view.isUserInteractionEnabled = true
             Utility.alert(message: error.localizedDescription, title: APPNAME,button1: "Ok", viewController: self ,action: { (index: Int) in
             })
@@ -154,7 +187,15 @@ extension InAppPurchaseViewController: IAPProductDelegate {
         self.isReceiptValidationRunning = true
         IAPProduct.store.receiptValidation { success, data, error in
             DispatchQueue.main.async {
-                self.progressView.stopAnimating()
+//                self.progressView.stopAnimating()
+                if self.purchaseButton.isLoading {
+                    self.purchaseButton.hideLoader()
+                    self.purchaseButton.bgColor = UIColor(hex: "#F48D40")!
+                }
+                if self.restoreButton.isLoading {
+                    self.restoreButton.hideLoader()
+                    self.restoreButton.bgColor = UIColor(hex: "#F48D40")!
+                }
                 self.view.isUserInteractionEnabled = true
             }
             self.isFromPurchase = false

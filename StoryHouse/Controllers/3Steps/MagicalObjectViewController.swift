@@ -65,14 +65,14 @@ class MagicalObjectViewController: UIViewController {
         self.addTotalStoryCountEvent()
         self.saveStoryInExplore()
         UserDefaultHelper.setLastStoryDate(value: "\(Date().timeIntervalSince1970)")
-//        if Utility.isDebug() {
-//            let viewController = TabbarViewController.getInstance()
-//            viewController.isFromExploreTab = false
-//            self.navigationController?.pushViewController(viewController, animated: true)
-//        } else {
+        if Utility.isDebug() {
+            let viewController = TabbarViewController.getInstance()
+            viewController.isFromExploreTab = false
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
             let viewController = LoadingViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
-//        }
+        }
         self.sendPushNotification()
     }
     

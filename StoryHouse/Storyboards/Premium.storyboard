@@ -570,9 +570,9 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="miw-4W-dtM">
                                                 <rect key="frame" x="893" y="226.5" width="200" height="160"/>
                                                 <subviews>
-                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcI-yT-K0Z">
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcI-yT-K0Z" customClass="LoadingButton" customModule="MHLoadingButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
-                                                        <color key="backgroundColor" name="orange_color(#F48D40)"/>
+                                                        <color key="backgroundColor" red="0.95686274509803926" green="0.55294117647058827" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="Gox-gA-noy"/>
                                                             <constraint firstAttribute="width" constant="200" id="xfH-B0-GiU"/>
@@ -590,7 +590,7 @@
                                                             <action selector="pruchaseButtonTapped:" destination="zsg-OM-wTy" eventType="touchUpInside" id="CrW-E2-YAD"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rE-vx-9Vq">
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rE-vx-9Vq" customClass="LoadingButton" customModule="MHLoadingButton">
                                                         <rect key="frame" x="0.0" y="90" width="200" height="70"/>
                                                         <color key="backgroundColor" name="orange_color(#F48D40)"/>
                                                         <constraints>
@@ -716,6 +716,8 @@
                     <connections>
                         <outlet property="privacyButton" destination="PBn-YW-mAf" id="6S3-eb-cTA"/>
                         <outlet property="progressView" destination="oi2-33-hHt" id="1wM-5G-oy2"/>
+                        <outlet property="purchaseButton" destination="BcI-yT-K0Z" id="v1G-Eg-XZ1"/>
+                        <outlet property="restoreButton" destination="0rE-vx-9Vq" id="rP9-nz-D8j"/>
                         <outlet property="shadowView" destination="HDG-hO-PaV" id="55g-2x-xcW"/>
                         <outlet property="shadowView1" destination="318-Ts-7iG" id="lPi-2R-OVi"/>
                         <outlet property="storytellerHeroMonthlySelected" destination="CdU-QO-kbV" id="gwS-yF-qt3"/>
@@ -730,6 +732,14 @@
             <point key="canvasLocation" x="4828.9897510980963" y="595.8984375"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="0rE-vx-9Vq">
+            <size key="intrinsicContentSize" width="95" height="47"/>
+        </designable>
+        <designable name="BcI-yT-K0Z">
+            <size key="intrinsicContentSize" width="126" height="47"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_appBackGroud" width="1193.5" height="834"/>
         <image name="ic_backButton" width="30" height="52.5"/>

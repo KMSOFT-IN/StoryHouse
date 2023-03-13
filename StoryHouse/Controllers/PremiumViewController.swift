@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import MHLoadingButton
 
 class PremiumViewController: InAppPurchaseViewController {
 
@@ -18,6 +18,7 @@ class PremiumViewController: InAppPurchaseViewController {
     @IBOutlet weak var storytellerHeroYearlySelected: UIView!
     @IBOutlet weak var termsButton: UIButton!
     @IBOutlet weak var privacyButton: UIButton!
+
     
     var selectedProductId = Constant.IN_APP_PURHCHASE_PRODUCTS.STORYTELLER_YEARLY_PREMIUM
     
@@ -52,7 +53,6 @@ class PremiumViewController: InAppPurchaseViewController {
         self.shadowView1.layer.shadowRadius = 10.0
         self.shadowView1.layer.masksToBounds = false
     }
-
     /*
     // MARK: - Navigation
 

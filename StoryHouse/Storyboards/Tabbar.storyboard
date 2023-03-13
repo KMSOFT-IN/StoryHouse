@@ -372,7 +372,7 @@
                                                 <rect key="frame" x="333" y="40" width="100" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 1  / 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-Gc-ftZ">
-                                                        <rect key="frame" x="11.5" y="7.5" width="77" height="35"/>
+                                                        <rect key="frame" x="16.5" y="4" width="67.5" height="42"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -712,13 +712,13 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRb-hC-F55" customClass="Slider" customModule="StoryHouse" customModuleProvider="target">
-                                                <rect key="frame" x="18" y="40" width="206" height="51"/>
+                                                <rect key="frame" x="20" y="40" width="203" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="dzX-9Y-le9"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-0K-zc0">
-                                                <rect key="frame" x="31" y="20" width="180" height="90"/>
+                                            <stackView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-0K-zc0">
+                                                <rect key="frame" x="31.5" y="20" width="180" height="90"/>
                                                 <subviews>
                                                     <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UgX-tY-hEk">
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="90"/>
@@ -797,16 +797,16 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="r8q-E8-YIg">
-                                                <rect key="frame" x="232" y="45" width="91" height="40"/>
+                                                <rect key="frame" x="233" y="45" width="90" height="40"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mute" translatesAutoresizingMaskIntoConstraints="NO" id="WwB-Ub-leY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="1q6-k9-NAu"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOLUME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="138-4i-sSF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
                                                         <color key="textColor" name="font_color(#292B5C)"/>
                                                         <nil key="highlightedColor"/>
@@ -817,7 +817,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2N-Ul-J7E">
-                                                <rect key="frame" x="232" y="48" width="91" height="34.5"/>
+                                                <rect key="frame" x="233" y="48" width="90" height="34.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
                                                 <connections>

@@ -133,7 +133,7 @@ class HeroNameViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let heroName = self.heroNameTextField.text?.trimRight() ?? ""
+        let heroName = self.heroNameTextField.text?.trimRight().capitalizingFirstLetter() ?? ""
         if heroName.isEmpty {
             Utility.showAlert(title: APPNAME, message: "Please enter hero name.", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
         } else {

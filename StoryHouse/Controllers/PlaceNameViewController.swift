@@ -17,6 +17,7 @@ class PlaceNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.placeNameTextField.text = UserDefaultHelper.getUserPlaceName()
         self.placeImageView.image = selectedImage
         self.placeImageView.makeRounded()
     }
@@ -38,15 +39,15 @@ class PlaceNameViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let placeName = self.placeNameTextField.text?.trimRight() ?? ""
-        if placeName.isEmpty {
-            Utility.showAlert(title: APPNAME, message: "Please enter place name.", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
-        } else {
+        let placeName = self.placeNameTextField.text?.trimRight().capitalizingFirstLetter() ?? ""
+//        if placeName.isEmpty {
+//            Utility.showAlert(title: APPNAME, message: "Please enter place name.", viewController: self, okButtonTitle: "Ok", isCancelButtonNeeded: false)
+//        } else {
             AppData.sharedInstance.placeName = placeName
             UserDefaultHelper.setUserPlaceName(value: AppData.sharedInstance.placeName)
             let viewController = MagicalObjectViewController.getInstance()
             self.navigationController?.pushViewController(viewController, animated: true)
-        }
+//        }
     }
     
 }

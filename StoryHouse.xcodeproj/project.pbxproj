@@ -197,6 +197,8 @@
 		88FDBC4B297BA4B9003388F4 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88FDBC4A297BA4B9003388F4 /* demo.gif */; };
 		88FDBC4E297BA4CE003388F4 /* Gif+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */; };
 		B202CC6D29A9D66600545ED0 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202CC6C29A9D66600545ED0 /* RecordingManager.swift */; };
+		B21D5E9129BF2D9C0035B420 /* MHLoadingButton in Frameworks */ = {isa = PBXBuildFile; productRef = B21D5E9029BF2D9C0035B420 /* MHLoadingButton */; };
+		B21D5E9329BF30740035B420 /* LoadingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D5E9229BF30740035B420 /* LoadingButtons.swift */; };
 		B226E7EB29B5D3DF00C4C57B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B226E7EA29B5D3DF00C4C57B /* Auth.storyboard */; };
 		B226E7EE29B5D58700C4C57B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226E7ED29B5D58700C4C57B /* AuthViewController.swift */; };
 		B253872A299BA09C00982CF5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2538729299BA09C00982CF5 /* Setting.storyboard */; };
@@ -414,6 +416,7 @@
 		88FDBC4A297BA4B9003388F4 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		88FDBC4D297BA4CE003388F4 /* Gif+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Image.swift"; sourceTree = "<group>"; };
 		B202CC6C29A9D66600545ED0 /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
+		B21D5E9229BF30740035B420 /* LoadingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButtons.swift; sourceTree = "<group>"; };
 		B226E7EA29B5D3DF00C4C57B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		B226E7ED29B5D58700C4C57B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B2538729299BA09C00982CF5 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -456,6 +459,7 @@
 				B2DC958029A33A68008E58C3 /* StoreKit.framework in Frameworks */,
 				B263114329AC5681008DB9C4 /* FirebaseStorage in Frameworks */,
 				8838353C299411B8001C28C3 /* SwiftyReceiptValidator in Frameworks */,
+				B21D5E9129BF2D9C0035B420 /* MHLoadingButton in Frameworks */,
 				8838D0852992528A006FE6ED /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -965,6 +969,7 @@
 				889ABFB32993DD9100A5EDF7 /* ReceiptValidation.swift */,
 				B26EDB5E299F8E7B0096C596 /* ExploreStory.swift */,
 				B263114829AC608B008DB9C4 /* UserRecording.swift */,
+				B21D5E9229BF30740035B420 /* LoadingButtons.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1493,6 +1498,7 @@
 				B263114629AC5D4A008DB9C4 /* FirebaseDatabase */,
 				B2B645E629ACBE8E005D9BC8 /* Lottie */,
 				481C60A829B5F19300A1C58C /* FirebaseAuth */,
+				B21D5E9029BF2D9C0035B420 /* MHLoadingButton */,
 			);
 			productName = StoryHouse;
 			productReference = 881402DC296D6A2E00930582 /* StoryHouse.app */;
@@ -1529,6 +1535,7 @@
 				8838D0832992528A006FE6ED /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				8838353A299411B8001C28C3 /* XCRemoteSwiftPackageReference "swifty-receipt-validator" */,
 				B2B645E529ACBE8E005D9BC8 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				B21D5E8F29BF2D9C0035B420 /* XCRemoteSwiftPackageReference "loading-buttons-ios" */,
 			);
 			productRefGroup = 881402DD296D6A2E00930582 /* Products */;
 			projectDirPath = "";
@@ -1778,6 +1785,7 @@
 				B26EDB5F299F8E7B0096C596 /* ExploreStory.swift in Sources */,
 				886AD4662996152E0016ADF4 /* DropDownCell.swift in Sources */,
 				B26EDB64299F9F980096C596 /* ExploreViewController.swift in Sources */,
+				B21D5E9329BF30740035B420 /* LoadingButtons.swift in Sources */,
 				889ABFB22993D89D00A5EDF7 /* InAppPurchaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1927,14 +1935,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NWK58688K7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "For using microphone";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need microphone usage permission for user audio recording so they can share story audio on his own voice to their loved once.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1947,7 +1955,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.magichouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MagicHouse_Dev;
@@ -1970,13 +1978,13 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NWK58688K7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoryHouse/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Magic House";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "For using microphone";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need microphone usage permission for user audio recording so they can share story audio on his own voice to their loved once.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1989,7 +1997,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.magichouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MagicHouse_Dist;
@@ -2067,6 +2075,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B21D5E8F29BF2D9C0035B420 /* XCRemoteSwiftPackageReference "loading-buttons-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twho/loading-buttons-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 		B2B645E529ACBE8E005D9BC8 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -2117,6 +2133,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 884B122C2990BB6800CE41F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		B21D5E9029BF2D9C0035B420 /* MHLoadingButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B21D5E8F29BF2D9C0035B420 /* XCRemoteSwiftPackageReference "loading-buttons-ios" */;
+			productName = MHLoadingButton;
 		};
 		B263114229AC5681008DB9C4 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;

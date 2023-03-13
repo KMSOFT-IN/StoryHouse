@@ -87,7 +87,7 @@ class TabbarViewController: UIViewController {
         self.navigationController?.setViewControllers([self], animated: true)
 //        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.createView(count:)), userInfo: nil, repeats: true)
         
-        RecordAudioManager.shareInstance().setupView()
+//        RecordAudioManager.shareInstance().setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -262,10 +262,12 @@ class TabbarViewController: UIViewController {
             if let findIndex = isHE ? self.maleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) : self.femaleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) {
                 let nameReplace = isHE ? self.maleName[findIndex] : self.femaleName[findIndex]
                 var nameReplaceImageTitle = imageTitleStr?.replacingOccurrences(of: nameReplace, with: AppData.sharedInstance.heroName)
-                if let findPlaceIndex = self.placesName.firstIndex(where: {imageTitleStr?.contains($0) ?? false}) {
-                    let placeReplace = self.placesName[findPlaceIndex]
-                    let placeRplaceImageTitle = nameReplaceImageTitle?.replacingOccurrences(of: placeReplace, with: AppData.sharedInstance.placeName)
-                    nameReplaceImageTitle = placeRplaceImageTitle
+                if !AppData.sharedInstance.placeName.isEmpty {
+                    if let findPlaceIndex = self.placesName.firstIndex(where: {imageTitleStr?.contains($0) ?? false}) {
+                        let placeReplace = self.placesName[findPlaceIndex]
+                        let placeRplaceImageTitle = nameReplaceImageTitle?.replacingOccurrences(of: placeReplace, with: AppData.sharedInstance.placeName)
+                        nameReplaceImageTitle = placeRplaceImageTitle
+                    }
                 }
                 self.imageTitle.text = nameReplaceImageTitle
             }
@@ -501,10 +503,12 @@ class TabbarViewController: UIViewController {
         if let findIndex = isHE ? self.maleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) : self.femaleName.firstIndex(where: {(imageTitleStr?.contains($0) ?? false)}) {
             let nameReplace = isHE ? self.maleName[findIndex] : self.femaleName[findIndex]
             var nameReplaceImageTitle = imageTitleStr?.replacingOccurrences(of: nameReplace, with: AppData.sharedInstance.heroName)
-            if let findPlaceIndex = self.placesName.firstIndex(where: {imageTitleStr?.contains($0) ?? false}) {
-                let placeReplace = self.placesName[findPlaceIndex]
-                let placeRplaceImageTitle = nameReplaceImageTitle?.replacingOccurrences(of: placeReplace, with: AppData.sharedInstance.placeName)
-                nameReplaceImageTitle = placeRplaceImageTitle
+            if !AppData.sharedInstance.placeName.isEmpty {
+                if let findPlaceIndex = self.placesName.firstIndex(where: {imageTitleStr?.contains($0) ?? false}) {
+                    let placeReplace = self.placesName[findPlaceIndex]
+                    let placeRplaceImageTitle = nameReplaceImageTitle?.replacingOccurrences(of: placeReplace, with: AppData.sharedInstance.placeName)
+                    nameReplaceImageTitle = placeRplaceImageTitle
+                }
             }
             return nameReplaceImageTitle
         }
@@ -620,38 +624,38 @@ class TabbarViewController: UIViewController {
     }
     
     @IBAction func shareButtontapped(_ sender: Any) {
-        if !AppData.sharedInstance.isUserLoggedIn() {
-            let vc = AuthViewController.getInstance()
-            self.navigationController?.pushViewController(vc, animated: false)
-        } else {
-            AppData.sharedInstance.user?.credit = 4
-            AppData.sharedInstance.user?.updatedAt = Date().timeIntervalSince1970
-            if let tempUser = AppData.sharedInstance.user ?? UserDefaultHelper.getUser() {
-                User.saveToFirebase(user: tempUser) { error in
-                    print(error?.localizedDescription ?? "")
-                    User.getUserDetail(uid: tempUser.uid ?? "") { status, user, error in
-                        print(user?.credit)
-                    }
-                }
-            }
-        }
-//        self.addWaterMarkToImage { tempImage in
-//            UIGraphicsBeginImageContext(self.view.frame.size)
-//            self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
-//
-//            var image = self.image.image
-//            if tempImage != nil {
-//                image = tempImage
+//        if !AppData.sharedInstance.isUserLoggedIn() {
+//            let vc = AuthViewController.getInstance()
+//            self.navigationController?.pushViewController(vc, animated: false)
+//        } else {
+//            AppData.sharedInstance.user?.credit = 4
+//            AppData.sharedInstance.user?.updatedAt = Date().timeIntervalSince1970
+//            if let tempUser = AppData.sharedInstance.user ?? UserDefaultHelper.getUser() {
+//                User.saveToFirebase(user: tempUser) { error in
+//                    print(error?.localizedDescription ?? "")
+//                    User.getUserDetail(uid: tempUser.uid ?? "") { status, user, error in
+//                        print(user?.credit)
+//                    }
+//                }
 //            }
-//            UIGraphicsEndImageContext()
-//    //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
-//            let objectsToShare = [image as Any, self] as [Any]
-//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-//            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-//            activityVC.popoverPresentationController?.sourceView = sender as? UIView
-//            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
-//            self.present(activityVC, animated: true, completion: nil)
 //        }
+        self.addWaterMarkToImage { tempImage in
+            UIGraphicsBeginImageContext(self.view.frame.size)
+            self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+
+            var image = self.image.image
+            if tempImage != nil {
+                image = tempImage
+            }
+            UIGraphicsEndImageContext()
+    //        let childName = (UserDefaultHelper.getChildname() ?? "") + "'s Magic House Story, assisted by MagicalHouse.studio\n\(self.imageTitle.text ?? "")"
+            let objectsToShare = [image as Any, self] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.popoverPresentationController?.sourceView = sender as? UIView
+            AppData.sharedInstance.logger.logAnalyticsEvent(eventName: Constant.Analytics.SHARE_STORY, parameters: ["STORY_INDEX" : AppData.sharedInstance.selectedStoryNumber])
+            self.present(activityVC, animated: true, completion: nil)
+        }
         
     }
     
