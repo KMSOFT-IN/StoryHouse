@@ -27,11 +27,6 @@ class TabbarViewController: UIViewController {
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var muteLabel: UILabel!
     
-    @IBOutlet weak var audioRecordView: UIView!
-    @IBOutlet weak var recordAudioImageView: UIImageView!
-    @IBOutlet weak var playRecordAudioImageView: UIImageView!
-    @IBOutlet weak var recordAudioButton: UIButton!
-    @IBOutlet weak var playRecordedAudioButton: UIButton!
     
     var synthesizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
@@ -60,10 +55,8 @@ class TabbarViewController: UIViewController {
     var originalTransform: CGAffineTransform!
     var isAnimationRunning: Bool = false
     var isDisappear: Bool = false
-    private var lottieAnimationView: LottieAnimationView?
-    var recordingTimeCount:Int = 0
-    var recordingTimer:Timer!
-    var currentAudioStoryDetails: StoryDetails?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +88,6 @@ class TabbarViewController: UIViewController {
         self.imageTitle.textColor = GRAY_COLOR
         self.setUpUI()
         self.sliderView.isHidden = true
-        self.audioRecordView.isHidden = false
         self.isDisappear = false
         self.addFireDustAnimation()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -459,21 +451,6 @@ class TabbarViewController: UIViewController {
         }
     }
     
-    func playRecordLottieAnimation() {
-        self.recordAudioImageView.isHidden = true
-        self.lottieAnimationView = LottieAnimationView(name: "record")
-        self.lottieAnimationView?.frame = CGRect (x: 0, y: 0, width: 80, height: 80)
-        self.lottieAnimationView?.contentMode = .scaleToFill
-        self.lottieAnimationView?.center = self.audioRecordView.center
-        self.lottieAnimationView?.loopMode = .loop
-        self.audioRecordView.insertSubview(self.lottieAnimationView!, at: 0)
-        self.lottieAnimationView?.play()
-    }
-    
-    func stopRecordAnimation() {
-        self.recordAudioImageView.isHidden = false
-        self.lottieAnimationView?.removeFromSuperview()
-    }
 
     @IBAction func homeButtonTapped(_ sender: Any) {
         self.addEndStoryEvent()
@@ -620,7 +597,6 @@ class TabbarViewController: UIViewController {
     
     @IBAction func muteButtonTapped(_ sender: UIButton) {
         self.sliderView.isHidden = !self.sliderView.isHidden
-        self.audioRecordView.isHidden = self.sliderView.isHidden
     }
     
     @IBAction func shareButtontapped(_ sender: Any) {
@@ -746,163 +722,3 @@ extension TabbarViewController : AVSpeechSynthesizerDelegate {
     
 }
 
-extension TabbarViewController {
-    
-    func startRecordingTimer() {
-        self.stopRecordingTimer()
-        self.recordingTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.timerDidFire), userInfo: nil, repeats: true)
-        RunLoop.current.add(self.recordingTimer, forMode: RunLoop.Mode.common)
-    }
-    
-    @objc func timerDidFire() {
-        self.recordingTimeCount += 1
-        if self.recordingTimeCount > 45 {
-            let leftTime = AppData.sharedInstance.totalRecordingSeconds - self.recordingTimeCount
-            
-            if self.recordingTimeCount >= AppData.sharedInstance.totalRecordingSeconds {
-                self.recordAudioButton.setTitle("", for: .normal)
-                self.finishRecording()
-            } else {
-                self.recordAudioButton.setTitle("\(leftTime)", for: .normal)
-            }
-        }
-    }
-    
-    func stopRecordingTimer() {
-        if self.recordingTimer != nil {
-            self.recordingTimer.invalidate()
-            self.recordingTimer = nil
-            self.recordingTimeCount = 0
-        }
-    }
-    
-    @IBAction func recordButtonTapped(_ sender: UIButton) {
-        if AppData.sharedInstance.audioPlayer != nil {
-            AppData.sharedInstance.audioPlayer.stop()
-        }
-        if !AppData.sharedInstance.isUserLoggedIn() {
-            let vc = AuthViewController.getInstance()
-            self.navigationController?.pushViewController(vc, animated: false)
-        } else {
-            if sender.tag == 0 {
-                sender.tag = 1
-                if AppData.sharedInstance.audioRecorder == nil {
-                    self.playRecordLottieAnimation()
-                    self.startRecordingTimer()
-                    self.playRecordAudioImageView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-                    self.playRecordedAudioButton.isEnabled = false
-                    let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
-                    RecordAudioManager.shareInstance().startRecording(fileName: fileName)
-                } else {
-                    self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
-                    RecordAudioManager.shareInstance().finishRecording(success: true)
-                }
-            } else {
-                sender.tag = 0
-                //            self.recordAudioImageView.image = UIImage(named: "ic_record_stop")
-                self.finishRecording()
-            }            
-        }
-    }
-    
-    func finishRecording() {
-        self.stopRecordAnimation()
-        self.stopRecordingTimer()
-        self.playRecordAudioImageView.backgroundColor = UIColor.clear
-        self.playRecordedAudioButton.isEnabled = true
-        RecordAudioManager.shareInstance().finishRecording(success: true)
-        let storyNumber = AppData.sharedInstance.selectedStoryNumber
-        let fileName = "\(storyNumber)_\(self.currentIndex)"
-        let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
-        let storyId = AppData.sharedInstance.selectedStoryNumber
-        let userId = Auth.auth().currentUser?.uid ?? ""
-        let uuid = UUID().uuidString
-        let createdAt = Date().timeIntervalSince1970
-        StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-//            let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-//            let tempStory = StoryDetails(uniqueShareId: uuid,id: id ,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
-//            tempStory.saveToFirebase()
-//            self.currentAudioStoryDetails = tempStory
-//            AppData.sharedInstance.storyAudioUploadList.append(tempStory)
-//            UserDefaultHelper.saveAudioToUpload(stroyList: AppData.sharedInstance.storyAudioUploadList)
-            StoryDetails.getStoryDetail { success, storyArray, error in
-                if let temp = storyArray {
-                    if let currentStoryIndex = temp.firstIndex(where: {$0.storyId == storyNumber && $0.userId == AppData.sharedInstance.user?.uid}){
-                        let currentStory = temp[currentStoryIndex]
-                        self.currentAudioStoryDetails = currentStory
-                        if let paragraphIsExist = currentStory.paragraph.filter({$0.index == String(self.currentIndex)}).first {
-                            paragraphIsExist.file_url = ""
-                        } else {
-                            let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-                            currentStory.paragraph.append(paraGraph)
-                        }
-                        StoryDetails.saveToFirebase(story: currentStory) { error in
-                            print(error?.localizedDescription ?? "")
-                        }
-                    } else {
-                        let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-                        let tempStory = StoryDetails(uniqueShareId: uuid,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
-                        tempStory.saveToFirebase()
-                        self.currentAudioStoryDetails = tempStory
-                    }
-                }
-            }
-        }
-        
-        
-//        if currentIndex == 0 {
-//            let storyId = AppData.sharedInstance.selectedStoryNumber
-//            let userId = Auth.auth().currentUser?.uid ?? ""
-//            let uuid = UUID().uuidString
-//            let createdAt = Date().timeIntervalSince1970
-//            let id = Utility.randomString(length: 6)
-//
-//            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-//                let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-//                let tempStory = StoryDetails(uniqueShareId: uuid,id: id ,userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [paraGraph])
-//                tempStory.saveToFirebase()
-//                self.currentAudioStoryDetails = tempStory
-//                AppData.sharedInstance.storyAudioUploadList.append(tempStory)
-//                UserDefaultHelper.saveAudioToUpload(stroyList: AppData.sharedInstance.storyAudioUploadList)
-//            }
-//        } else {
-//            let storyList = UserDefaultHelper.getStoryToUpload() ?? []
-//            StoryDetails.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-//                if let findCurrentStoryIndex = storyList.firstIndex(where: {$0.id == self.currentAudioStoryDetails?.id}) {
-//                    let currentStory = storyList[findCurrentStoryIndex]
-//                    let paraGraph = Paragraph(index: "\(self.currentIndex)", file_url: url ?? "")
-//                    currentStory.paragraph.append(paraGraph)
-//                    StoryDetails.saveToFirebase(story: currentStory) { error in
-//                        print(error?.localizedDescription ?? "")
-//                    }
-//                }
-//            }
-//        }
-//        let tempStory = StoryDetails(uniqueShareId: uuid, userId: userId, createdAt: createdAt, storyId: storyId, paragraph: [:])
-//
-//        let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
-//        let fileURL = RecordAudioManager.shareInstance().getFileURL(fileName: fileName)
-//        UserRecording.uploadAudio(recordingID: fileName, audioString: fileURL) { url, error in
-//            if let tempUrl = url {
-//                print("downloadurl \(url ?? "")")
-//                let temp = UserRecording(url: fileURL.absoluteString,downloadUrl: tempUrl, createdAt: Date().toTimeStamp)
-//                temp.saveToFirebase()
-//            }
-//        }
-    }
-    
-    
-    
-    @IBAction func playRecordedAudioButtonTapped(_ sender: UIButton) {
-        if (sender.titleLabel?.text == "Play"){
-            sender.setTitle("Stop", for: .normal)
-            let fileName = "\(AppData.sharedInstance.selectedStoryNumber)_\(self.currentIndex)"
-            RecordAudioManager.shareInstance().preparePlayer(fileName: fileName)
-            AppData.sharedInstance.audioPlayer.play()
-        } else {
-            AppData.sharedInstance.audioPlayer.stop()
-            sender.setTitle("Play", for: .normal)
-        }
-    }
-    
-}

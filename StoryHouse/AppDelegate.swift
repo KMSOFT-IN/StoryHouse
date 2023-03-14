@@ -36,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate, UNUserN
         AppData.sharedInstance.notificationHelper.registerForPushNotifications()
         AppData.sharedInstance.notificationHelper.setupDelegate()
         AppData.sharedInstance.fcmToken = UserDefaultHelper.getFCMToken() ??  ""
-        AppData.sharedInstance.user = UserDefaultHelper.getUser()
-        AppData.sharedInstance.storyAudioUploadList = UserDefaultHelper.getStoryToUpload() ?? []
         return true
     }
     
